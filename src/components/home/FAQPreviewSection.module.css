@@ -1,0 +1,37 @@
+/* ==============================
+   FAQPreviewSection.module.css
+   ============================== */
+
+.faqPreviewSection {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.ctaWrap {
+  text-align: center;
+  margin-top: var(--space-xl);
+}
+
+.ctaLink {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: underline;
+  font-size: var(--font-size-base);
+  transition: color 0.2s ease;
+}
+
+.ctaLink:hover,
+.ctaLink:focus {
+  color: var(--color-primary);
+}
+
+/* Mobile */
+@media (max-width: var(--breakpoint-2xl)) {
+  .faqPreviewSection {
+    max-width: 100%;
+  }
+}
+  

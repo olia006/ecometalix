@@ -1,0 +1,193 @@
+.footer {
+  padding: var(--space-xl) var(--space-lg);
+  background: var(--glass-heavy);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  font-size: var(--font-size-sm);
+  position: relative;
+  margin-top: var(--space-xl);
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--space-lg);
+  right: var(--space-lg);
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--glass-border) 20%, 
+    var(--glass-border) 80%, 
+    transparent 100%);
+  opacity: 0.8;
+}
+
+.brandRow, .contactRow, .legalRow, .footerNav, .langSwitch {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: var(--space-xs);
+}
+
+.location {
+  color: var(--color-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--glass-light);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-size: var(--font-size-xs);
+}
+
+.footerNav {
+  gap: var(--space-lg);
+  margin: var(--space-sm) 0;
+}
+
+.footerNav a {
+  color: var(--color-text);
+  text-decoration: none;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  transition: all 0.2s ease;
+  font-weight: var(--font-weight-medium);
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.footerNav a:hover {
+  background: var(--glass-light);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--color-primary);
+  border: 1px solid var(--glass-border);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.contactRow {
+  gap: var(--space-lg);
+  margin: var(--space-md) 0;
+}
+
+.socialLinks {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text);
+  text-decoration: none;
+  background: var(--glass-light);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-pill);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+  border: 1px solid var(--glass-border);
+  font-size: var(--font-size-sm);
+}
+
+.phone:hover {
+  background: var(--glass-medium);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.legalRow {
+  font-size: var(--font-size-xs);
+  color: var(--color-muted);
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--glass-border);
+  width: 100%;
+  text-align: center;
+}
+
+.legalRow a {
+  color: var(--color-accent);
+  text-decoration: none;
+  margin-left: var(--space-xs);
+  transition: color 0.2s ease;
+}
+
+.legalRow a:hover {
+  color: var(--color-primary);
+}
+
+.langSwitch {
+  margin-top: var(--space-sm);
+  font-size: var(--font-size-xs);
+  background: var(--glass-light);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Responsive adjustments */
+@media (max-width: var(--breakpoint-3xl)) {
+  .footer {
+    padding: var(--space-lg) var(--space-md);
+    gap: var(--space-sm);
+  }
+  
+  .brandRow, .contactRow, .footerNav {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  
+  .contactRow {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .phone {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: var(--breakpoint-md)) {
+  .footer {
+    padding: var(--space-md) var(--space-sm);
+  }
+  
+  .footerNav {
+    gap: var(--space-md);
+  }
+  
+  .contactRow {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+}
+  

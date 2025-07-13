@@ -1,0 +1,416 @@
+/* Material Page Styles - Using Design System */
+.container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.heroSection {
+  padding: var(--space-xxl) 0;
+  background: var(--glass-surface);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-xxl);
+  box-shadow: var(--shadow-md);
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xxl);
+  align-items: center;
+}
+
+.heroText {
+  max-width: 500px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-lg);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-subheading);
+  margin-bottom: var(--space-xl);
+  line-height: 1.5;
+}
+
+.tags {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: var(--color-error);
+  color: white;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.tag:nth-child(2) {
+  background: var(--color-info);
+}
+
+.tag:nth-child(3) {
+  background: var(--color-success);
+}
+
+.heroImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImage img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  transition: transform 0.3s ease;
+}
+
+.heroImage img:hover {
+  transform: scale(1.05);
+}
+
+.content {
+  margin-bottom: var(--space-xxl);
+}
+
+.section {
+  margin-bottom: var(--space-xxl);
+}
+
+.characteristics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-xxl);
+}
+
+.characteristicItem {
+  background: var(--color-neutral);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--glass-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.characteristicItem:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.characteristicItem h4 {
+  color: var(--color-text-heading);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-md);
+}
+
+.characteristicItem p {
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.storyContent {
+  background: var(--color-neutral);
+  padding: var(--space-xxl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--glass-border);
+  margin-top: var(--space-xxl);
+}
+
+.storyContent h3 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-lg);
+  line-height: 1.3;
+}
+
+.storyContent p {
+  color: var(--color-text);
+  line-height: 1.8;
+  font-size: var(--font-size-md);
+  margin-bottom: var(--space-lg);
+}
+
+.storyContent p em {
+  font-style: italic;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.storyContent p:last-child {
+  margin-bottom: 0;
+}
+
+.articleContent {
+  background: var(--color-neutral);
+  padding: var(--space-xxl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--glass-border);
+  margin-top: var(--space-xxl);
+}
+
+.articleContent h3 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-lg);
+  line-height: 1.3;
+}
+
+.articleContent p {
+  color: var(--color-text);
+  line-height: 1.8;
+  font-size: var(--font-size-md);
+  margin-bottom: var(--space-lg);
+}
+
+.articleContent p:last-child {
+  margin-bottom: 0;
+}
+
+/* === Price Factors Section === */
+.priceFactors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  margin: var(--space-xl) 0;
+}
+
+.priceFactor {
+  background: var(--color-surface);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.priceFactor:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.priceFactor h4 {
+  color: var(--color-text-heading);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.priceFactor p {
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.factBox {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: var(--space-xxl);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-xxl);
+  display: flex;
+  gap: var(--space-lg);
+  align-items: flex-start;
+  box-shadow: var(--shadow-lg);
+}
+
+.factIcon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.factContent h4 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-md);
+  color: white;
+}
+
+.factContent p {
+  line-height: 1.7;
+  font-size: var(--font-size-md);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+/* Update gradient sections */
+.ctaSection {
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  padding: var(--space-xxl);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  margin-top: var(--space-xxl);
+}
+
+.priceSection {
+  background: var(--gradient-secondary);
+  color: var(--color-white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-xl);
+}
+
+/* === Curiosities Grid === */
+.curiositiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+/* === References Section === */
+.references ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.references li {
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.2s ease;
+}
+
+.references li:last-child {
+  border-bottom: none;
+}
+
+.references li:hover {
+  background-color: var(--color-surface);
+}
+
+.references a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.2s ease;
+}
+
+.references a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: var(--breakpoint-3xl)) {
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    text-align: center;
+  }
+  
+  .heroSection {
+    padding: var(--space-xxl) var(--space-lg);
+  }
+  
+  .title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .subtitle {
+    font-size: var(--font-size-md);
+  }
+  
+  .characteristics {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .characteristicItem {
+    padding: var(--space-lg);
+  }
+  
+  .storyContent {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .articleContent {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .priceFactors {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .factBox {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-md);
+    padding: var(--space-xl) var(--space-lg);
+  }
+  
+  .ctaSection {
+    padding: var(--space-xxl) var(--space-lg);
+  }
+  
+  .ctaContent h3 {
+    font-size: var(--font-size-lg);
+  }
+  
+  .curiositiesGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: var(--breakpoint-xl)) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+  
+  .title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .heroSection {
+    padding: var(--space-xl) var(--space-md);
+  }
+  
+  .tags {
+    justify-content: center;
+  }
+  
+  .tag {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--font-size-xs);
+  }
+
+  .priceFactors {
+    gap: var(--space-md);
+  }
+
+  .priceFactor {
+    padding: var(--space-md);
+  }
+} 

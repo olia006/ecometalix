@@ -1,0 +1,46 @@
+/* ==========================
+   LegalNotice.module.css
+   ========================== */
+
+/* Container for legal notice section */
+.legalNotice {
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.55);      /* Glassmorphic background */
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    box-shadow: var(--shadow-sm);
+    color: var(--color-muted);
+    font-size: var(--font-size-sm);
+    text-align: center;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background 0.2s;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: var(--breakpoint-xl)) {
+    .legalNotice {
+      font-size: var(--font-size-xs);
+      padding: 0.75rem 0.5rem;
+      max-width: 100%;
+    }
+  }
+  
+  /* Privacy policy link styling */
+  .legalNotice a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: var(--font-weight-medium);
+    transition: color 0.15s;
+  }
+  
+  .legalNotice a:hover,
+  .legalNotice a:focus {
+    color: var(--color-accent);
+    outline: none;
+  }
+  

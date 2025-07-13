@@ -1,0 +1,117 @@
+/* ==============================
+   MapSection.module.css
+   ============================== */
+
+   .mapSection {
+    padding: var(--space-xl) var(--space-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    max-width: 900px;
+    margin: var(--space-lg) auto;
+    text-align: center;
+  }
+  
+  .heading {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .infoWrap {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  
+  .mapWrap {
+    flex: 1 1 360px;
+    min-width: 320px;
+    max-width: 480px;
+  }
+  
+  .mapIframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    min-height: 320px;
+  }
+  
+  .addressBlock {
+    flex: 1 1 260px;
+    min-width: 200px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+  
+  .icon {
+    color: var(--color-primary);
+    margin-right: var(--space-xs);
+    vertical-align: middle;
+  }
+  
+  .directionsBtn {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #fff;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-pill);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    margin-top: var(--space-md);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+  }
+  
+  .directionsBtn:hover,
+  .directionsBtn:focus {
+    background: var(--color-accent);
+    color: var(--color-text);
+  }
+  
+  /* Tablet and mobile adjustments */
+  @media (max-width: var(--breakpoint-4xl)) {
+    .infoWrap {
+      flex-direction: column;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+  
+    .addressBlock {
+      align-items: center;
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: var(--breakpoint-2xl)) {
+    .mapSection {
+      padding: var(--space-lg) var(--space-sm);
+      max-width: 100%;
+    }
+  
+    .heading {
+      font-size: var(--font-size-lg);
+    }
+  
+    .mapWrap,
+    .addressBlock {
+      min-width: 100%;
+      max-width: 100%;
+    }
+  
+    .mapIframe {
+      min-height: 200px;
+      aspect-ratio: 1.4 / 1;
+    }
+  }
+  

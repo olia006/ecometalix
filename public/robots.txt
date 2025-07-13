@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /api/
+
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot  
+Allow: /
+
+# Sitemap location
+Sitemap: https://ecometalix.cl/sitemap.xml
+
+# Crawl delay for bots
+Crawl-delay: 1
+
+# Host preference
+Host: https://ecometalix.cl

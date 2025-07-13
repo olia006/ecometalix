@@ -1,0 +1,30 @@
+.materialGridSection {
+    max-width: 1100px;
+    margin: var(--space-xxl) auto;
+    padding: 0 var(--space-md) var(--space-xl) var(--space-md);
+    background: transparent; /* section1 from bgStyles will apply background */
+  }
+  .heading {
+    text-align: center;
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    margin-bottom: var(--space-lg);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-lg);
+  }
+  @media (max-width: var(--breakpoint-3xl)) {
+    .materialGridSection {
+      padding: 0 var(--space-xs) var(--space-lg) var(--space-xs);
+    }
+    .heading {
+      font-size: var(--font-size-lg);
+    }
+    .grid {
+      gap: var(--space-md);
+    }
+  }
+  

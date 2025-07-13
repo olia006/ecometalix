@@ -1,0 +1,79 @@
+/* MaterialCard - Individual material card */
+.card {
+  background: var(--background-container);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+  background: var(--background-section);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+.image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-gray-200);
+  display: block;
+}
+.content {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1;
+}
+.name {
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-xs);
+}
+.tags {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+.tag {
+  background: var(--color-success);
+  color: var(--color-white);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  padding: 2px 10px;
+  font-weight: var(--font-weight-medium);
+}
+.description {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  line-height: 1.45;
+}
+.readMore {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: underline;
+  margin-top: var(--space-xs);
+  align-self: flex-start;
+  transition: color 0.2s;
+}
+.readMore:hover,
+.readMore:focus {
+  color: var(--color-primary);
+}
+.soon {
+  font-size: var(--font-size-xs);
+  color: var(--color-muted);
+  margin-top: var(--space-xs);
+}

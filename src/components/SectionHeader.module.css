@@ -1,0 +1,26 @@
+.header {
+    font-size: var(--font-size-xxl);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.25em;
+    margin-right: var(--space-xs);
+  }
+  @media (max-width: var(--breakpoint-3xl)) {
+    .header {
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--space-md);
+    }
+  }
+  

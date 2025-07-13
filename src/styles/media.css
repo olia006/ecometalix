@@ -1,0 +1,102 @@
+/* ==========================
+   media.css — Responsive Utilities (Global)
+   Prefix: u- (utility)
+   ========================== */
+
+/* Mobile First — up to phablet */
+@media (max-width: var(--breakpoint-xl)) {
+  .u-hide-mobile {
+    display: none !important;
+  }
+  .u-text-sm {
+    font-size: var(--font-size-sm);
+  }
+  .u-mobile-stack {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+}
+
+/* Small Devices (phones) */
+@media (min-width: calc(var(--breakpoint-xl) + 1px)) and (max-width: calc(var(--breakpoint-3xl) - 1px)) {
+  .u-phone-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+  }
+  .u-text-md {
+    font-size: var(--font-size-md);
+  }
+}
+
+/* Tablets */
+@media (min-width: var(--breakpoint-3xl)) and (max-width: calc(var(--breakpoint-5xl) - 1px)) {
+  .u-tablet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+  .u-text-lg {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* Desktop and Up */
+@media (min-width: var(--breakpoint-5xl)) {
+  .u-container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+  }
+  .u-text-xl {
+    font-size: var(--font-size-xl);
+  }
+  .u-show-desktop {
+    display: block !important;
+  }
+  .u-show-mobile {
+    display: none !important;
+  }
+}
+
+/* Desktop */
+@media (min-width: var(--breakpoint-6xl)) {
+  .u-container-xl {
+    max-width: var(--container-xl);
+  }
+}
+
+/* Retina/Ultrawide */
+@media (min-width: var(--breakpoint-8xl)) {
+  .u-container-2xl {
+    max-width: var(--container-2xl);
+  }
+}
+
+/* Always visible on mobile */
+.u-show-mobile {
+  display: block !important;
+}
+
+/* Always hidden on desktop */
+.u-show-desktop {
+  display: none !important;
+}
+
+/* Hiding helpers */
+.u-hide-desktop {
+  display: block !important;
+}
+@media (min-width: var(--breakpoint-5xl)) {
+  .u-hide-desktop {
+    display: none !important;
+  }
+}
+
+/* Optional: force utility with !important for maximum override. 
+   Only use !important in utilities, not in module styles.
+*/
+
+/* ==========================
+   End Responsive Utilities
+   ========================== */

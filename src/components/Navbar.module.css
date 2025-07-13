@@ -1,0 +1,194 @@
+/* src/components/Navbar.module.css */
+
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: var(--z-header);
+  background: var(--glass-heavy);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-lg);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: block; /* Show by default on desktop */
+}
+
+/* Light theme explicit background */
+:global(html[data-theme="light"]) .header {
+  background: var(--glass-medium);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+}
+
+/* Dark theme explicit background */
+:global(html[data-theme="dark"]) .header {
+  background: var(--glass-medium);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.nav {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  padding: 0 var(--space-lg);
+  position: relative;
+}
+
+.nav::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: var(--space-lg);
+  right: var(--space-lg);
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--glass-border) 20%, 
+    var(--glass-border) 80%, 
+    transparent 100%);
+  opacity: 0.5;
+}
+
+.logoContainer {
+  flex: 0 0 auto;
+}
+
+.logo {
+  height: 56px; /* Increased back to original size */
+  width: auto;
+  display: block;
+  -webkit-user-select: none;
+  user-select: none;
+  filter: drop-shadow(var(--shadow-sm));
+  transition: filter 0.2s ease;
+}
+
+.logo:hover {
+  filter: drop-shadow(var(--shadow-md));
+}
+
+.navLinks {
+  display: flex;
+  gap: var(--space-lg);
+  list-style: none;
+}
+
+.navLinks li a,
+.navLinks li .activeLink {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  text-decoration: none;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-pill);
+  transition: all 0.2s ease;
+  font-size: var(--font-size-base);
+  position: relative;
+  background: transparent;
+  /* Ensure proper contrast */
+  text-shadow: var(--shadow-sm);
+}
+
+/* Dark mode text contrast */
+:global(html[data-theme="dark"]) .navLinks li a,
+:global(html[data-theme="dark"]) .navLinks li .activeLink {
+  text-shadow: var(--shadow-sm);
+}
+
+.navLinks li a:hover {
+  background: var(--glass-light);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.navLinks li .activeLink {
+  background: var(--glass-medium);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: var(--color-primary);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.ctaGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.langSwitcher {
+  background: var(--glass-light);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--color-text);
+  border-radius: var(--radius-pill);
+  padding: var(--space-xs) var(--space-md);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  /* Ensure proper contrast */
+  text-shadow: var(--shadow-sm);
+}
+
+/* Dark mode contrast for language switcher */
+:global(html[data-theme="dark"]) .langSwitcher {
+  text-shadow: var(--shadow-sm);
+}
+
+.langSwitcher:hover, .langSwitcher:focus {
+  background: var(--glass-medium);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Focus states for accessibility */
+.navLinks li a:focus,
+.langSwitcher:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Hide desktop navbar on mobile and tablets */
+@media (max-width: 1024px) {
+  .header, .nav {
+    display: none !important;
+  }
+}
+
+/* Small desktop adjustments */
+@media (max-width: var(--breakpoint-6xl)) {
+  .nav {
+    padding: 0 var(--space-md);
+  }
+  
+  .navLinks {
+    gap: var(--space-md);
+  }
+  
+  .ctaGroup {
+    gap: var(--space-sm);
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .logo,
+  .navLinks li a,
+  .langSwitcher {
+    transition: none;
+  }
+}
+  

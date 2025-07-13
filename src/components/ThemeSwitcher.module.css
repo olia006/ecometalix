@@ -1,0 +1,123 @@
+/* src/components/ThemeSwitcher.module.css */
+
+/* Theme Switcher */
+.themeSwitcher {
+  position: relative;
+  background: var(--background-section);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.themeSwitcher:hover {
+  background: var(--background-container);
+  box-shadow: var(--shadow-sm);
+}
+
+.themeSwitcher:active {
+  box-shadow: 0 0 10px -8px rgba(0, 0, 0, 0.3);
+}
+
+.themeSwitcher:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.themeSwitcher > i {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation-duration: 300ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.icon.moon {
+  opacity: 0;
+}
+
+/* Light theme animations */
+:global(html[data-theme="light"]) .icon.sun {
+  animation-name: risein;
+}
+
+:global(html[data-theme="light"]) .icon.moon {
+  animation-name: setout;
+}
+
+/* Dark theme animations */
+:global(html[data-theme="dark"]) .icon.sun {
+  animation-name: setout;
+}
+
+:global(html[data-theme="dark"]) .icon.moon {
+  animation-name: risein;
+}
+
+/* Animation keyframes */
+@keyframes risein {
+  from {
+    transform-origin: 200% 100%;
+    transform: rotate(-50deg);
+    opacity: 0;
+  }
+  to {
+    transform-origin: 200% 100%;
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes setout {
+  from {
+    transform-origin: 200% 100%;
+    transform: rotate(0);
+    opacity: 1;
+  }
+  to {
+    transform-origin: 200% 100%;
+    transform: rotate(50deg);
+    opacity: 0;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .themeSwitcher {
+    transition: none;
+  }
+  
+  .icon {
+    animation: none !important;
+  }
+  
+  .icon.sun {
+    opacity: 1;
+  }
+  
+  .icon.moon {
+    opacity: 0;
+  }
+  
+  :global(html[data-theme="dark"]) .icon.sun {
+    opacity: 0;
+  }
+  
+  :global(html[data-theme="dark"]) .icon.moon {
+    opacity: 1;
+  }
+}
+  

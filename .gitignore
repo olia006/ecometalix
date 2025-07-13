@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+.vite/
+.env
+.env.*
+.DS_Store
+*.log
+.idea/
+.vscode/
+coverage/
+public/og-image.png
+public/*.webp
+public/*.png
+public/*.ico

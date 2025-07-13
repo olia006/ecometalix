@@ -1,0 +1,110 @@
+/* ==============================
+   TrustCues.module.css - Continuous Running Animation
+   ============================== */
+
+.trustCues {
+  overflow: hidden;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  background: transparent;
+}
+
+.runningLine {
+  white-space: nowrap;
+  overflow: hidden;
+  padding: var(--space-md) 0;
+}
+
+.runningContent {
+  display: inline-flex;
+  gap: var(--space-xl);
+  animation: scroll 20s linear infinite;
+  will-change: transform;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-lg);
+  border: 1px solid var(--color-divider);
+  white-space: nowrap;
+  min-width: max-content;
+}
+
+.icon {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.badgeText {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Pause animation on hover for accessibility */
+.runningContent:hover {
+  animation-play-state: paused;
+}
+
+/* Responsive Design */
+@media (max-width: var(--breakpoint-3xl)) {
+  
+  .runningContent {
+    gap: var(--space-lg);
+    animation-duration: 15s;
+  }
+  
+  .badge {
+    padding: var(--space-xs) var(--space-md);
+    gap: var(--space-xs);
+  }
+  
+  .icon {
+    font-size: 1rem;
+  }
+  
+  .badgeText {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: var(--breakpoint-xl)) {
+  .runningContent {
+    animation-duration: 12s;
+  }
+  
+  .badge {
+    padding: var(--space-xs) var(--space-sm);
+  }
+  
+  .badgeText {
+    font-size: var(--font-size-xs);
+  }
+}
+  

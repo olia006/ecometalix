@@ -1,0 +1,250 @@
+/* Base Section Card Styles */
+.sectionCard {
+  display: block;
+  min-height: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  background: var(--color-primary);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.sectionCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.sectionCard:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Flip Animation Styles */
+.flippableCard {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.flippableCard.flipped {
+  transform: rotateY(180deg);
+}
+
+.flippableCard:hover {
+  transform: translateY(-4px);
+}
+
+.flippableCard.flipped:hover {
+  transform: translateY(-4px) rotateY(180deg);
+}
+
+.flipInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.flipped .flipInner {
+  transform: rotateY(180deg);
+}
+
+.flipFront,
+.flipBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.flipBack {
+  transform: rotateY(180deg);
+}
+
+/* Overlay for glassmorphism effect */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, var(--glass-light)),
+    rgba(255, 255, 255, var(--glass-medium))
+  );
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+}
+
+/* Content container */
+.content {
+  width: 100%;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Title styles */
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+  font-family: var(--font-heading);
+}
+
+/* Description styles */
+.description {
+  font-size: 1rem;
+  margin: 0 0 1rem 0;
+  opacity: 0.9;
+  line-height: 1.4;
+  font-family: var(--font-body);
+}
+
+/* Animated price styles */
+.animatedPrice {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+  font-family: var(--font-heading);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Arrow indicator */
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.sectionCard:hover .arrow {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(4px);
+}
+
+.arrow svg {
+  width: 16px;
+  height: 16px;
+  color: white;
+}
+
+/* Variant styles */
+.primary {
+  background: var(--gradient-primary);
+}
+
+.secondary {
+  background: var(--gradient-secondary);
+}
+
+.accent {
+  background: var(--gradient-accent);
+}
+
+.neutral {
+  background: var(--gradient-neutral);
+}
+
+/* Responsive design */
+@media (max-width: var(--breakpoint-3xl)) {
+  .sectionCard {
+    min-height: 240px;
+  }
+  
+  .overlay {
+    padding: 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+  }
+  
+  .animatedPrice {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: var(--breakpoint-xl)) {
+  .sectionCard {
+    min-height: 200px;
+  }
+  
+  .overlay {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+  }
+  
+  .description {
+    font-size: 0.8rem;
+  }
+  
+  .animatedPrice {
+    font-size: 1.5rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .sectionCard {
+    transition: none;
+  }
+  
+  .sectionCard:hover {
+    transform: none;
+  }
+  
+  .sectionCard:hover .arrow {
+    transform: none;
+  }
+  
+  .flipInner {
+    transition: none;
+  }
+  
+  .flippableCard {
+    perspective: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .overlay {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid white;
+  }
+  
+  .title,
+  .description {
+    text-shadow: none;
+  }
+} 

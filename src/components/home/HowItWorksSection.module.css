@@ -1,0 +1,166 @@
+/* ==============================
+   HowItWorksSection.module.css
+   Exact Glassmorphic Implementation
+   ============================== */
+
+.section {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heading {
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-xxl);
+}
+
+.stepsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+      gap: calc(var(--space-xxl) + var(--space-md));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cards {
+  position: relative;
+}
+
+.cardGlass {
+  --blur: 12px;
+  --width: 21.1em;
+  --height: 12.8em;
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+  background: linear-gradient(90deg, var(--glass-heavy), var(--glass-light));
+  color: transparent;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: var(--width);
+  height: var(--height);
+  border-radius: 1em;
+  box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.1);
+}
+
+.cardGlass::before,
+.cardGlass::after {
+  border-radius: inherit;
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.cardGlass::before {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  -webkit-mask-image: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 50%);
+  mask-image: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 50%);
+}
+
+.cardGlass::after {
+  border: 1px solid var(--color-primary);
+  -webkit-mask-image: linear-gradient(135deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1));
+  mask-image: linear-gradient(135deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1));
+}
+
+.cardContent {
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0) 3.125em,
+      var(--color-primary) 3.375em,
+      var(--color-accent) 4.5em
+    ) 0 0 / calc(var(--width) - 4em) 50%,
+    linear-gradient(
+      90deg,
+      var(--color-accent) 13em,
+      var(--color-primary) calc(var(--width) - 4em),
+      rgba(255, 255, 255, 0) 19.1em
+    ) 0 100% / 100% 50%,
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.5) 4em,
+      rgba(255, 255, 255, 0.2)
+    ) 0 0 / 100% 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.25em 1.5em;
+  position: relative;
+  height: 100%;
+  z-index: 1;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-repeat: no-repeat;
+}
+
+.cardLogo,
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 1.17;
+}
+
+.cardLogo {
+  text-align: end;
+  width: 25%;
+  color: var(--color-primary);
+}
+
+.cardTitle {
+  width: 75%;
+  color: var(--color-text-heading);
+}
+
+.cardUrl {
+  font-size: 0.75em;
+  align-self: flex-end;
+  margin-left: auto;
+  color: var(--color-text);
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: var(--breakpoint-5xl)) {
+  .stepsGrid {
+    gap: var(--space-xxl);
+  }
+  
+  .cardGlass {
+    --width: 18em;
+    --height: 11em;
+  }
+}
+
+@media (max-width: var(--breakpoint-4xl)) {
+  .stepsGrid {
+    flex-direction: column;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+  
+  .cardGlass {
+    --width: 16em;
+    --height: 10em;
+  }
+}
+
+@media (max-width: var(--breakpoint-xl)) {
+  .cardGlass {
+    --width: 14em;
+    --height: 9em;
+  }
+}
+  

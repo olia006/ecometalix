@@ -1,0 +1,341 @@
+/* MaterialHero - Content Layout (Background handled by Background component) */
+.breadcrumbWrapper {
+  padding: 0 var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: var(--space-xxl);
+  align-items: center;
+  min-height: 400px;
+}
+
+/* === MATERIAL INFO SECTION === */
+.info {
+  z-index: 2;
+  position: relative;
+}
+
+.category {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-sm);
+  opacity: 0.8;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  font-size: var(--font-size-lg);
+  line-height: 1.5;
+  margin-bottom: var(--space-xl);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: var(--font-weight-medium);
+}
+
+.tags {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xl);
+}
+
+.tag {
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* === STATS SECTION === */
+.stats {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.stat {
+  text-align: center;
+}
+
+.statValue {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: white;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: var(--space-xs);
+}
+
+/* === VISUAL SECTION === */
+.visual {
+  position: relative;
+  height: 400px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.imageWrapper:hover .image {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    transparent 50%, 
+    rgba(255, 255, 255, 0.1) 100%);
+  pointer-events: none;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-lg);
+  color: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.placeholderIcon {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+}
+
+/* === INDICATOR === */
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xxl);
+  opacity: 0.6;
+}
+
+.indicatorLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+.indicatorText {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+/* === COLOR SCHEMES === */
+
+/* Copper - Warm metallics */
+.hero--copper {
+  background: linear-gradient(135deg, 
+    #B87333 0%, 
+    #CD7F32 30%, 
+    #8B4513 100%);
+}
+
+.hero--copper .tag--1 { background: rgba(184, 115, 51, 0.8); color: white; }
+.hero--copper .tag--2 { background: rgba(205, 127, 50, 0.8); color: white; }
+.hero--copper .tag--3 { background: rgba(139, 69, 19, 0.8); color: white; }
+
+/* Bronze - Rich golden tones */
+.hero--bronze {
+  background: linear-gradient(135deg, 
+    #CD7F32 0%, 
+    #B8860B 30%, 
+    #DAA520 100%);
+}
+
+.hero--bronze .tag--1 { background: rgba(205, 127, 50, 0.8); color: white; }
+.hero--bronze .tag--2 { background: rgba(184, 134, 11, 0.8); color: white; }
+.hero--bronze .tag--3 { background: rgba(218, 165, 32, 0.8); color: white; }
+
+/* Aluminum - Cool silver */
+.hero--aluminum {
+  background: linear-gradient(135deg, 
+    #C0C0C0 0%, 
+    #A8A8A8 30%, 
+    #808080 100%);
+}
+
+.hero--aluminum .tag--1 { background: rgba(192, 192, 192, 0.8); color: var(--color-gray-700); }
+.hero--aluminum .tag--2 { background: rgba(168, 168, 168, 0.8); color: var(--color-gray-700); }
+.hero--aluminum .tag--3 { background: rgba(128, 128, 128, 0.8); color: white; }
+
+/* Iron - Industrial steel */
+.hero--iron {
+  background: linear-gradient(135deg, 
+    var(--color-primary) 0%, 
+    var(--color-secondary) 50%, 
+    #2C3E50 100%);
+}
+
+.hero--iron .tag--1 { background: rgba(65, 129, 142, 0.8); color: white; }
+.hero--iron .tag--2 { background: rgba(55, 108, 119, 0.8); color: white; }
+.hero--iron .tag--3 { background: rgba(44, 62, 80, 0.8); color: white; }
+
+/* Iron Dark - Darker steel for long iron */
+.hero--iron-dark {
+  background: linear-gradient(135deg, 
+    #2C3E50 0%, 
+    #34495E 30%, 
+    #1B2631 100%);
+}
+
+.hero--iron-dark .tag--1 { background: rgba(44, 62, 80, 0.8); color: white; }
+.hero--iron-dark .tag--2 { background: rgba(52, 73, 94, 0.8); color: white; }
+.hero--iron-dark .tag--3 { background: rgba(27, 38, 49, 0.8); color: white; }
+
+/* Iron Light - Lighter steel for short iron */
+.hero--iron-light {
+  background: linear-gradient(135deg, 
+    #5D6D7E 0%, 
+    #85929E 30%, 
+    #AEB6BF 100%);
+}
+
+.hero--iron-light .tag--1 { background: rgba(93, 109, 126, 0.8); color: white; }
+.hero--iron-light .tag--2 { background: rgba(133, 146, 158, 0.8); color: white; }
+.hero--iron-light .tag--3 { background: rgba(174, 182, 191, 0.8); color: var(--color-gray-700); }
+
+/* Mixed - Multi-color gradient */
+.hero--mixed {
+  background: linear-gradient(135deg, 
+    #8E44AD 0%, 
+    #3498DB 25%, 
+    #E67E22 50%, 
+    #27AE60 75%, 
+    #E74C3C 100%);
+}
+
+.hero--mixed .tag--1 { background: rgba(142, 68, 173, 0.8); color: white; }
+.hero--mixed .tag--2 { background: rgba(52, 152, 219, 0.8); color: white; }
+.hero--mixed .tag--3 { background: rgba(230, 126, 34, 0.8); color: white; }
+
+/* Metal Shavings - Industrial metallic gradient */
+.hero--shavings {
+  background: conic-gradient(from 45deg,
+    #2C3E50 0deg,
+    #34495E 72deg,
+    #4A5F7A 144deg,
+    #566B82 216deg,
+    #7F8C8D 288deg,
+    #2C3E50 360deg);
+}
+
+.hero--shavings .tag--1 { background: rgba(44, 62, 80, 0.8); color: white; }
+.hero--shavings .tag--2 { background: rgba(52, 73, 94, 0.8); color: white; }
+.hero--shavings .tag--3 { background: rgba(127, 140, 141, 0.8); color: white; }
+
+/* Electrical - Electric blue gradient */
+.hero--electric {
+  background: linear-gradient(135deg, 
+    #1E3A8A 0%, 
+    #3B82F6 30%, 
+    #06B6D4 60%, 
+    #0EA5E9 100%);
+}
+
+.hero--electric .tag--1 { background: rgba(30, 58, 138, 0.8); color: white; }
+.hero--electric .tag--2 { background: rgba(59, 130, 246, 0.8); color: white; }
+.hero--electric .tag--3 { background: rgba(6, 182, 212, 0.8); color: white; }
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: var(--breakpoint-3xl)) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    text-align: center;
+  }
+  
+  .visual {
+    height: 300px;
+  }
+  
+  .stats {
+    justify-content: center;
+  }
+  
+  .indicator {
+    margin-top: var(--space-xl);
+  }
+}
+
+@media (max-width: var(--breakpoint-xl)) {
+  .hero {
+    padding: var(--space-lg) 0;
+  }
+  
+  .breadcrumbWrapper,
+  .container {
+    padding: 0 var(--space-md);
+  }
+  
+  .tags {
+    justify-content: center;
+  }
+  
+  .visual {
+    height: 250px;
+  }
+} 

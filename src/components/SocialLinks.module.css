@@ -1,0 +1,53 @@
+.socialLinks {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--space-xl) + var(--space-sm));
+  height: calc(var(--space-xl) + var(--space-sm));
+  border-radius: 50%;
+  background: var(--glass-light);
+  color: var(--color-muted);
+  font-size: var(--font-size-lg);
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-xs);
+  outline: none;
+  cursor: pointer;
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus {
+  background: var(--glass-medium);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+  
+  /* Brand colors only on hover/focus */
+  .whatsapp:hover, .whatsapp:focus {
+    color: var(--color-whatsapp); /* WhatsApp green */
+  }
+  .telegram:hover, .telegram:focus {
+    color: var(--color-telegram); /* Telegram blue */
+  }
+  .instagram:hover, .instagram:focus {
+    color: var(--color-instagram); /* Instagram pink/red */
+  }
+  /* Add more brands if needed */
+  
+  @media (max-width: var(--breakpoint-2xl)) {
+    .link {
+          width: calc(var(--space-xl) + var(--space-xs));
+    height: calc(var(--space-xl) + var(--space-xs));
+      font-size: var(--font-size-md);
+    }
+  }
+  

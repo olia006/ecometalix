@@ -1,0 +1,66 @@
+/* ==========================
+   ErrorBoundary.module.css
+   ========================== */
+
+   .errorBoundaryContainer {
+    max-width: 440px;
+    margin: 6vh auto 0 auto;
+    padding: 2.5rem 1.5rem;
+    background: rgba(255,255,255,0.85);
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: 0 6px 40px 0 rgba(80,80,80,0.12);
+    text-align: center;
+    font-family: var(--font-body, 'Inter', Arial, sans-serif);
+    border: 1.5px solid var(--color-surface, #E0E0E0);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  
+  .errorTitle {
+    font-size: var(--font-size-xl, 2rem);
+    color: var(--color-error, #D32F2F);
+    margin-bottom: var(--space-md, 1rem);
+    font-weight: var(--font-weight-bold, 700);
+  }
+  
+  .errorMessage {
+    font-size: var(--font-size-md, 1.125rem);
+    color: var(--color-text, #212121);
+    margin-bottom: var(--space-lg, 1.5rem);
+    line-height: 1.7;
+  }
+  
+  .errorButton {
+    display: inline-block;
+    padding: 0.75rem 1.7rem;
+    border-radius: var(--radius-md, 8px);
+    background: var(--color-primary, #4CAF50);
+    color: #fff;
+    font-size: var(--font-size-base, 1rem);
+    font-weight: var(--font-weight-semibold, 600);
+    border: none;
+    cursor: pointer;
+    transition: background 0.18s;
+    box-shadow: var(--shadow-md, 0 2px 6px rgba(0,0,0,0.12));
+  }
+  
+  .errorButton:hover,
+  .errorButton:focus {
+    background: var(--color-secondary, #2E7D32);
+    outline: 2px solid var(--color-accent, #FFC107);
+  }
+  
+  @media (max-width: var(--breakpoint-xl)) {
+    .errorBoundaryContainer {
+      padding: 1.2rem 0.5rem;
+      max-width: 96vw;
+    }
+    .errorTitle {
+      font-size: 1.3rem;
+    }
+    .errorButton {
+      font-size: 0.96rem;
+      padding: 0.6rem 1.1rem;
+    }
+  }
+  

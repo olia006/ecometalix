@@ -1,0 +1,161 @@
+.background {
+  position: relative;
+  width: 100%;
+  background: var(--background-section);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--section-spacing-y);
+  padding: var(--section-padding-y) var(--section-padding-x);
+}
+
+/* Background Variants */
+.page {
+  background: var(--background-page);
+  max-width: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.container {
+  background: var(--background-container);
+}
+
+/* Special case for header/hero - keep existing functionality */
+.hero {
+  background: var(--background-hero);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--section-spacing-y);
+  max-width: none;
+  padding: 0; /* Remove any inherited padding for perfect edge-to-edge coverage */
+}
+
+/* Gradient Variants */
+.gradient {
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.gradient--primary {
+  background: var(--gradient-primary);
+}
+
+.gradient--primary-soft {
+  background: var(--gradient-primary-soft);
+}
+
+.gradient--secondary {
+  background: var(--gradient-secondary);
+}
+
+.gradient--accent {
+  background: var(--gradient-accent);
+}
+
+.gradient--neutral {
+  background: var(--gradient-neutral);
+}
+
+/* Glass Morphism Variants */
+.glass {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.glass--light {
+  background: var(--glass-background-light);
+}
+
+.glass--medium {
+  background: var(--glass-background-medium);
+}
+
+.glass--heavy {
+  background: var(--glass-background-heavy);
+}
+
+.glass--hero {
+  background: var(--glass-background-hero);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+/* Overlay for background images using CSS variables */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-black) 0%,
+    transparent 50%,
+    var(--color-black) 100%
+  );
+  opacity: 0.4;
+  z-index: 1;
+}
+
+/* Dark theme overlay adjustments */
+html[data-theme="dark"] .overlay {
+  opacity: 0.6;
+}
+
+/* Ensure content appears above overlay */
+.background > *:not(.overlay) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: var(--breakpoint-3xl)) {
+  .background {
+    max-width: 100%;
+    padding: var(--section-padding-y-mobile) var(--space-md);
+    margin-bottom: var(--section-spacing-y-mobile);
+  }
+  
+  .hero {
+    margin-bottom: var(--section-spacing-y-mobile);
+  }
+  
+  .page {
+    padding: 0;
+  }
+  
+  .gradient {
+    margin-bottom: var(--section-spacing-y-mobile);
+  }
+}
+
+@media (max-width: var(--breakpoint-md)) {
+  .background {
+    max-width: 100%;
+    padding: var(--space-xxl) var(--space-sm);
+    margin-bottom: var(--space-xxl);
+  }
+  
+  .hero {
+    margin-bottom: var(--space-xxl);
+  }
+  
+  .page {
+    padding: 0;
+  }
+  
+  .gradient {
+    margin-bottom: var(--space-xxl);
+  }
+}
+  

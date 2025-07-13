@@ -1,0 +1,48 @@
+/* Section Cards Grid Container */
+.sectionCardsGrid {
+  background: transparent;
+}
+
+.container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Grid Layout - 2x2 on desktop */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--space-xl);
+  max-width: 800px; /* Control width for better 2×2 proportions */
+  margin: 0 auto; /* Center the grid */
+}
+
+/* Tablets (≤1024px): 2×2 responsive */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto; /* Let rows adapt to content */
+    gap: var(--space-lg);
+    max-width: none; /* Remove width constraint */
+  }
+}
+
+/* Mobile (≤768px): 1 column stacked */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: var(--space-md);
+    max-width: none;
+  }
+  
+  .container {
+    padding: 0 var(--space-sm);
+  }
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .sectionCardsGrid {
+} 

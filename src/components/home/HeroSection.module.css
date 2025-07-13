@@ -1,0 +1,346 @@
+/* ==============================
+   HeroSection.module.css
+   Left Overlay Glassmorphism Design
+   ============================== */
+
+.heroContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  padding: 0; /* Remove any padding that might create gaps */
+}
+
+.glassContainer {
+  /* Matte glassmorphism effect using CSS variables */
+  background: var(--glass-medium);
+  
+  /* Enhanced backdrop blur for matte effect */
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  
+  /* Remove border and add strong right edge shadow */
+  border: none;
+  border-radius: 0;
+  box-shadow: 
+    var(--shadow-xl),
+    5px 0 15px rgba(0, 0, 0, 0.2),
+    10px 0 30px rgba(0, 0, 0, 0.15);
+  
+  /* Layout and positioning - covers left part perfectly */
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 55%;
+  max-width: 700px;
+  padding: var(--space-xxl, 3rem) var(--space-xl, 2rem);
+  
+  /* Ensure content positioning */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  
+  /* Subtle interactions */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glassContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    var(--glass-light) 0%,
+    transparent 50%,
+    var(--glass-light) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glassContainer:hover {
+  transform: translateX(2px);
+  box-shadow: var(--shadow-xl);
+  filter: brightness(1.05);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 500px;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  text-shadow: var(--shadow-sm);
+}
+
+.highlight {
+  color: var(--color-accent);
+  text-shadow: var(--shadow-md);
+}
+
+.subheading {
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  color: var(--color-gray-100);
+  margin-bottom: var(--space-lg);
+  font-weight: var(--font-weight-medium);
+  max-width: 100%;
+  line-height: 1.35;
+  text-shadow: var(--shadow-sm);
+}
+
+.trustCues {
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  
+  /* Enhanced matte badge styling using CSS variables */
+  background: var(--glass-heavy);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  
+  /* Refined shadows */
+  box-shadow: var(--shadow-lg);
+  
+  /* Typography refinements */
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em;
+  text-shadow: var(--shadow-sm);
+  
+  /* Subtle interactions */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.trustCues::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--glass-light) 50%, 
+    transparent 100%);
+  transition: left 0.6s ease;
+}
+
+.trustCues:hover::before {
+  left: 100%;
+}
+
+.trustCues:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Individual trust items */
+.trustCues > * {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+}
+
+/* Icons styling */
+.trustCues svg {
+  font-size: 1em;
+  color: var(--color-accent);
+  opacity: 0.9;
+  filter: drop-shadow(0 0.5px 1px var(--color-accent));
+}
+
+/* Separators */
+.trustCues > *:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: calc(-1 * var(--space-lg) / 2);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 12px;
+  background: linear-gradient(180deg, 
+    transparent 0%, 
+    var(--glass-border) 50%, 
+    transparent 100%);
+  border-radius: 1px;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .glassContainer,
+  .trustCues {
+    transition: none;
+  }
+  .glassContainer:hover,
+  .trustCues:hover {
+    transform: none;
+  }
+  .trustCues::before {
+    display: none;
+  }
+}
+
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+  width: 100%;
+}
+
+.lastUpdated {
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  opacity: 0.9;
+  margin-top: var(--space-md);
+  text-shadow: var(--shadow-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em;
+}
+
+.locationStatus {
+  margin-top: var(--space-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  opacity: 0.85;
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.locationStatus span {
+  text-shadow: var(--shadow-sm);
+}
+
+.status {
+  color: var(--color-error);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Responsive Design */
+@media (max-width: var(--breakpoint-5xl)) {
+  .glassContainer {
+    width: 65%;
+    max-width: 500px;
+    padding: var(--space-xl) var(--space-lg);
+  }
+  
+  .content {
+    max-width: 400px;
+  }
+  
+  .heading {
+    font-size: var(--font-size-xxl);
+  }
+}
+
+@media (max-width: var(--breakpoint-3xl)) {
+  .heroContainer {
+    justify-content: center;
+  }
+  
+  .glassContainer {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    padding: var(--space-lg) var(--space-md);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border); /* Restore border on mobile */
+    left: auto;
+    top: auto;
+    bottom: auto;
+  }
+  
+  .glassContainer:hover {
+    transform: translateY(-2px);
+  }
+  
+  .content {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+  
+  .heading {
+    font-size: var(--font-size-xl);
+  }
+  
+  .subheading {
+    font-size: var(--font-size-base);
+  }
+  
+  .trustCues {
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--font-size-xs);
+    justify-content: center;
+  }
+  
+  .trustCues > *:not(:last-child)::after {
+    display: none;
+  }
+  
+  .ctaGroup {
+    justify-content: center;
+  }
+}
+
+@media (max-width: var(--breakpoint-md)) {
+  .glassContainer {
+    padding: var(--space-md) var(--space-sm);
+  }
+  
+  .heading {
+    font-size: var(--font-size-xl);
+  }
+  
+  .subheading {
+    font-size: var(--font-size-sm);
+  }
+  
+  .ctaGroup {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  
+  .trustCues {
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-xs);
+  }
+}
+  

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+public/
+*.config.js
+*.config.cjs
+*.config.mjs
+*.json
+assets/
