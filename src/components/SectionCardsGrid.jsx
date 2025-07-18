@@ -14,7 +14,7 @@ const SectionCardsGrid = ({ isEnglish = false }) => {
       description: isEnglish ? 'Discover our simple and transparent process' : 'Descubre nuestro proceso simple y transparente',
       variant: 'accent',
       backgroundImage: '/images/materials/materialhero.jpg',
-      href: isEnglish ? '/en/como-funciona' : '/como-funciona'
+      href: isEnglish ? '/en/how-it-works' : '/como-funciona'
     },
     {
       id: 'materiales',
@@ -22,7 +22,7 @@ const SectionCardsGrid = ({ isEnglish = false }) => {
       description: isEnglish ? 'Explore the types of metals we buy' : 'Explora los tipos de metales que compramos',
       variant: 'neutral',
       backgroundImage: '/images/materials/fierromixto.JPG',
-      href: '/materiales'
+      href: isEnglish ? '/en/materials' : '/materiales'
     },
     {
       id: 'porque-nosotros',
@@ -38,7 +38,7 @@ const SectionCardsGrid = ({ isEnglish = false }) => {
       description: isEnglish ? 'Find answers to common questions about our services' : 'Encuentra respuestas a preguntas comunes sobre nuestros servicios',
       variant: 'primary',
       backgroundImage: '/images/faqpreviewpage.jpg',
-      href: '/faq'
+      href: isEnglish ? '/en/faq' : '/faq'
     }
   ];
 

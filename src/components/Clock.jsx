@@ -9,9 +9,15 @@ import { Clock as ClockIcon, MapPin } from "lucide-react";
 export default function Clock({ variant = "default" }) {
   const [now, setNow] = useState(new Date());
   const [showDots, setShowDots] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   // Santiago timezone offset (UTC-4), adjust if needed for DST
   const closingHour = 20;
+
+  // Prevent hydration mismatch by only showing time after component mounts
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     // Update time every second for smoother animation
@@ -38,12 +44,12 @@ export default function Clock({ variant = "default" }) {
   const minutes = santiagoTime.getMinutes();
 
   // Format time manually to control the dots animation
-  const timeStr = `${hours.toString().padStart(2, '0')}${showDots ? ':' : ' '}${minutes.toString().padStart(2, '0')}`;
+  const timeStr = mounted ? `${hours.toString().padStart(2, '0')}${showDots ? ':' : ' '}${minutes.toString().padStart(2, '0')}` : '--:--';
 
   const hoursLeft = closingHour - hours - (minutes > 0 ? 1 : 0);
   const minutesLeft = (60 - minutes) % 60;
 
-  const openNow = hours < closingHour && hours >= 8;
+  const openNow = mounted ? (hours < closingHour && hours >= 8) : true;
 
   if (variant === "minimal") {
     return (
@@ -58,7 +64,7 @@ export default function Clock({ variant = "default" }) {
         </div>
         <div className={styles.statusLine}>
           <span className={openNow ? styles.open : styles.closed}>
-            {openNow ? "ABIERTO" : "CERRADO"}
+            {mounted ? (openNow ? "ABIERTO" : "CERRADO") : "ABIERTO"}
           </span>
         </div>
       </div>
