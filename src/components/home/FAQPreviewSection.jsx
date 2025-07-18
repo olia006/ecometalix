@@ -1,8 +1,8 @@
 // src/components/home/FAQPreviewSection.jsx
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { FaQuestionCircle } from "react-icons/fa";
+import Link from "next/link";
+import { HelpCircle } from "lucide-react";
 import Background from "../Background";
 import SectionHeader from "../SectionHeader";
 import FAQAccordion from "../FAQAccordion";
@@ -36,12 +36,13 @@ export default function FAQPreviewSection({ faqs = defaultFaqs }) {
   const categories = faqs === defaultFaqs ? faqCategories : [{ faqs }];
   
   return (
-    <Background>
+    <Background variant="hero" image="/images/faqpreviewpage.jpg">
       <section
+        id="faq-preview" 
         className={styles.faqPreviewSection}
         aria-labelledby="faq-heading"
       >
-        <SectionHeader icon={<FaQuestionCircle />}>
+        <SectionHeader icon={<HelpCircle />}>
           ¿Dudas? Te respondemos:
         </SectionHeader>
 
@@ -51,11 +52,9 @@ export default function FAQPreviewSection({ faqs = defaultFaqs }) {
           showOneAtTime={true}
         />
 
-        <div className={styles.ctaWrap}>
-          <Link to="/faq" className={styles.ctaLink}>
-            Ver todas las preguntas frecuentes
-          </Link>
-        </div>
+        <Link href="/faq" className={styles.readMoreLink}>
+          Ver todas las preguntas frecuentes →
+        </Link>
       </section>
     </Background>
   );

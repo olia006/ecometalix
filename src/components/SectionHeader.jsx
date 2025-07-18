@@ -1,5 +1,6 @@
 // src/components/SectionHeader.jsx
 import React from "react";
+import PropTypes from "prop-types";
 import styles from "./SectionHeader.module.css";
 
 /**
@@ -18,3 +19,10 @@ export default function SectionHeader({ children, icon = null, className = "", a
     </HeadingTag>
   );
 }
+
+SectionHeader.propTypes = {
+  children: PropTypes.node.isRequired,
+  icon: PropTypes.node,
+  className: PropTypes.string,
+  as: PropTypes.string,
+};

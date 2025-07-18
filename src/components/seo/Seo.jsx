@@ -1,10 +1,12 @@
 // src/components/SEO/Seo.jsx
+import React from 'react';
 import MetaTags from './MetaTags';
 import CanonicalLink from './CanonicalLink';
 import HreflangTags from './HreflangTags';
 import OpenGraphTags from './OpenGraphTags';
 import TwitterCardTags from './TwitterCardTags';
 import StructuredData from './StructuredData';
+import FaviconTags from './FaviconTags';
 
 const Seo = ({
   title,
@@ -17,7 +19,7 @@ const Seo = ({
   ogUrl,
   ogType = 'website',
   ogSiteName = 'MetalRecycla',
-  locale = 'es_CL', // <-- Added default locale (Chilean Spanish)
+  locale = 'es_CL',
   structuredData,
   children,
   // Twitter Card props
@@ -31,6 +33,7 @@ const Seo = ({
   return (
     <>
       <MetaTags title={title} description={description} keywords={keywords} />
+      <FaviconTags />
       <CanonicalLink url={canonicalLink} />
       <HreflangTags links={hreflangs} />
       <OpenGraphTags

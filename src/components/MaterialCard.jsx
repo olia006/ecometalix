@@ -1,20 +1,23 @@
 // src/components/MaterialCard.jsx
 import React from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import Link from "next/link";
+
 import OptimizedImage from "./OptimizedImage";
 import styles from "./MaterialCard.module.css";
 
 export default function MaterialCard({ name, image, description, tags = [], articleLink }) {
-  return (
-    <div className={styles.card} aria-label={name}>
-      <OptimizedImage
-        src={image}
-        alt={`Foto de ${name}`}
-        className={styles.image}
-        width={320}
-        height={180}
-      />
+  const cardContent = (
+    <>
+      <div className={styles.imageContainer}>
+        <OptimizedImage
+          src={image}
+          alt={`Foto de ${name}`}
+          className={styles.image}
+          width={320}
+          height={180}
+        />
+      </div>
       <div className={styles.content}>
         <h3 className={styles.name}>{name}</h3>
         {tags.length > 0 && (
@@ -26,13 +29,27 @@ export default function MaterialCard({ name, image, description, tags = [], arti
         )}
         <p className={styles.description}>{description}</p>
         {articleLink ? (
-          <Link to={articleLink} className={styles.readMore}>
+          <span className={styles.readMore}>
             Leer más →
-          </Link>
+          </span>
         ) : (
           <span className={styles.soon}>Más info pronto</span>
         )}
       </div>
+    </>
+  );
+
+  if (articleLink) {
+    return (
+      <Link href={articleLink} className={styles.card} aria-label={`Ver información sobre ${name}`}>
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return (
+    <div className={styles.card} aria-label={name}>
+      {cardContent}
     </div>
   );
 }

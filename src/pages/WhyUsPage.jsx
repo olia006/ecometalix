@@ -1,68 +1,143 @@
 import React from "react";
 import styles from "./WhyUsPage.module.css";
 
-{/*SEO*/}
+// SEO Components
 import Seo from "../components/seo/Seo";
 import PageHeader from "../components/PageHeader";
 import Breadcrumb from "../components/Breadcrumb";
 import { generateHreflangs } from "../utils/hreflangUtils";
-{/*UI Elements*/} 
+
+// UI Elements
 import FloatingCTA from "../components/FloatingCTA";
 import TrustCues from "../components/TrustCues";
-import TestimonialSection from "../components/home/TestimonialSection";
-import PrimaryButton from "../components/PrimaryButton";
+import MapSection from "../components/home/MapSection";
 import SecondaryButton from "../components/SecondaryButton";
+import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../config/constants";
 
-{/*SVG Icons (Install with: npm install react-icons)*/}
-import { FaMoneyBillWave, FaClock, FaWeightHanging, FaHandshake, FaBuilding, FaWhatsapp, FaShieldAlt } from "react-icons/fa";
+// Icons
+import { 
+  DollarSign, 
+  Clock, 
+  Weight, 
+  Handshake, 
+  Building, 
+  Shield,
+  CheckCircle,
+  Star,
+  Users,
+  Award,
+  TrendingUp,
+  Phone
+} from "lucide-react";
+import WhatsAppIcon from "../components/WhatsAppIcon";
+import OptimizedImage from "../components/OptimizedImage";
 
-
-{/*Unique Selling Points DATA*/}
-const sellingPoints = [
+// Professional USP Data with enhanced descriptions
+const mainAdvantages = [
   {
-    icon: <FaMoneyBillWave className={styles.uspIcon} aria-label="Pago inmediato" />,
-    title: "Pago inmediato",
-    text: "Te pagamos en el momento, en efectivo o transferencia. Sin esperas.",
+    icon: <DollarSign />,
+    title: "Pago Inmediato",
+    subtitle: "Sin esperas ni trámites",
+    description: "Te pagamos en el momento, en efectivo o transferencia bancaria. Sin burocracia, sin demoras, sin excusas.",
+    highlight: "100% inmediato",
+    color: "success"
   },
   {
-    icon: <FaClock className={styles.uspIcon} aria-label="Horario ampliado" />,
-    title: "Horario ampliado",
-    text: "Abierto de 8 a 20h, incluyendo fines de semana y hasta más tarde para clientes frecuentes.",
+    icon: <Clock />,
+    title: "Horario Extendido",
+    subtitle: "Máxima flexibilidad",
+    description: "Abierto de 8:00 a 20:00, incluidos fines de semana. Horarios especiales para clientes frecuentes.",
+    highlight: "7 días a la semana",
+    color: "primary"
   },
   {
-    icon: <FaWeightHanging className={styles.uspIcon} aria-label="Balanza para camiones" />,
-    title: "Balanza para camiones",
-    text: "80 toneladas y 18 metros: pesamos los camiones más grandes.",
+    icon: <Weight />,
+    title: "Balanza Industrial",
+    subtitle: "Tecnología de precisión",
+         description: "Balanza certificada INN para camiones de hasta 80 toneladas y 18 metros de longitud. Pesaje transparente y preciso.",
+    highlight: "Certificada INN",
+    color: "accent"
   },
   {
-    icon: <FaHandshake className={styles.uspIcon} aria-label="Trato directo" />,
-    title: "Trato directo",
-    text: "Olga (dueña) y equipo siempre presentes, sin burocracia.",
-  },
-  {
-    icon: <FaBuilding className={styles.uspIcon} aria-label="Empresas y particulares" />,
-    title: "Empresas y particulares",
-    text: "Ofertas personalizadas para grandes volúmenes o ventas frecuentes.",
-  },
-  {
-    icon: <FaWhatsapp className={styles.uspIcon} aria-label="WhatsApp inmediato" />,
-    title: "WhatsApp inmediato",
-    text: "Respuestas rápidas por WhatsApp: ventas, consultas y cotizaciones.",
-  },
-  {
-    icon: <FaShieldAlt className={styles.uspIcon} aria-label="Confianza certificada" />,
-    title: "Confianza certificada",
-    text: "Permisos, balanza certificada, ambiente seguro.",
-  },
+    icon: <Handshake />,
+    title: "Trato Personal",
+    subtitle: "Atención humana garantizada",
+    description: "Olga (propietaria) y su equipo siempre presentes. Trato directo, sin intermediarios, con años de experiencia.",
+    highlight: "Dueña presente",
+    color: "secondary"
+  }
 ];
+
+const additionalBenefits = [
+  {
+    icon: <Building />,
+    title: "Empresas y Particulares",
+    description: "Ofertas personalizadas para grandes volúmenes y contratos empresariales."
+  },
+  {
+    icon: <Shield />,
+    title: "Confianza Certificada",
+    description: "Permisos municipales, balanza certificada, ambiente seguro y profesional."
+  },
+  {
+    icon: <Users />,
+    title: "Equipo Experimentado",
+    description: "10 años de experiencia internacional, 3 años establecidos en Chile con conocimiento profundo del mercado local."
+  },
+  {
+    icon: <Award />,
+    title: "Mejor Precio del Mercado",
+    description: "Precios competitivos y actualizados diariamente según cotizaciones internacionales."
+  }
+];
+
+const stats = [
+  { value: "500+", label: "Clientes Satisfechos", icon: <Users /> },
+  { value: "100%", label: "Pagos Inmediatos", icon: <DollarSign /> },
+  { value: "7", label: "Días a la Semana", icon: <Clock /> },
+  { value: "80T/18M", label: "Balanza: 80 Tons, 18 Metros", icon: <Weight /> }
+];
+
+const ProcessStep = ({ number, title, description, icon }) => (
+  <div className="process-step">
+    <div className="step-number">{number}</div>
+    <div className="step-icon">{icon}</div>
+    <div>
+      <h3 className="step-title">{title}</h3>
+      <p className="step-description">{description}</p>
+    </div>
+  </div>
+);
+
+const AdvantageCard = ({ advantage, index }) => (
+  <div className={`professional-card professional-card--${advantage.color}`}>
+    <div className="card-header">
+      <div className="card-icon">
+        {advantage.icon}
+      </div>
+      <div className="card-badge">
+        {advantage.highlight}
+      </div>
+    </div>
+    <div className="card-content">
+      <h3 className="card-title">{advantage.title}</h3>
+      <p className="card-subtitle">{advantage.subtitle}</p>
+      <p className="card-description">{advantage.description}</p>
+    </div>
+    <div className="card-footer">
+                  <CheckCircle className="verification-icon" size={20} />
+            <span className="verification-badge">Verificado</span>
+    </div>
+  </div>
+);
 
 export default function WhyUsPage() {
   return (
-    <main className={styles.whyUsMain}>
+    <main className="professional-page">
       {/* SEO */}
       <Seo
-        title="¿Por Qué Elegir Ecometalix? | Compra de Chatarra Santiago"
-        description="Pago inmediato, horario extendido, balanza certificada, trato humano. Descubre por qué Ecometalix es el líder en reciclaje de metales."
+        title="¿Por Qué Elegir Ecometalix? | Líder en Reciclaje de Metales Santiago"
+        description="Pago inmediato, horario extendido, balanza certificada, trato humano. Descubre por qué Ecometalix es el líder en reciclaje de metales en Santiago."
         canonical="/por-que-nosotros"
         hreflangs={generateHreflangs('/por-que-nosotros')}
       />
@@ -72,80 +147,178 @@ export default function WhyUsPage() {
         <Breadcrumb />
       </div>
 
- {/* --- Page Header --- */}
- <PageHeader
+      {/* Page Header */}
+      <PageHeader
         title="¿Por Qué Elegir Ecometalix?"
-        subtitle="Pago inmediato, horario extendido, balanza certificada, trato humano. Descubre la diferencia."
+        subtitle="La diferencia está en cada detalle: experiencia, confianza y compromiso con nuestros clientes."
         variant="secondary"
       />
 
       {/* Floating WhatsApp CTA */}
       <FloatingCTA />
 
-      {/* Top Visual & Headline */}
-      <section className={styles.topSection}>
-        <img
-          src="/images/team-scale.jpg"
-          alt="Equipo Ecometalix en la balanza"
-          className={styles.teamPhoto}
-        />
-        <div>
-          <h1 className={styles.heading}>
-            ¿Por Qué Elegir <span className={styles.brand}>Ecometalix</span>?
-          </h1>
-          <p className={styles.subheading}>
-            La diferencia está en cada detalle: vende tu chatarra sin esperas, con trato humano y <strong>pago inmediato</strong>.
-          </p>
+      {/* Hero Section */}
+      <section className="professional-section">
+        <div className={styles.heroContent}>
+          <div className={styles.heroText}>
+            <h1 className={styles.heroTitle}>
+              La Empresa Líder en <span className={styles.highlight}>Reciclaje de Metales</span>
+            </h1>
+            <p className={styles.heroDescription}>
+              Con 10 años de experiencia internacional y 3 años consolidados en Chile, somos la opción preferida para empresas 
+              y particulares que buscan <strong>pago inmediato</strong>, <strong>trato profesional</strong> 
+              y <strong>precios justos</strong> en Santiago.
+            </p>
+            <div className="stats-grid">
+              {stats.map((stat, index) => (
+                <div key={index} className="stat-item">
+                  <div className="stat-icon">{stat.icon}</div>
+                  <div className="stat-content">
+                    <span className="stat-value">{stat.value}</span>
+                    <span className="stat-label">{stat.label}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className={styles.heroVisual}>
+            <div className="image-container">
+              <OptimizedImage
+                src="/images/hometestimonial.jpg"
+                alt="Instalaciones profesionales de Ecometalix"
+                className="professional-image professional-image--hero"
+              />
+              <div className="image-overlay">
+                <div className="overlay-content">
+                  <TrendingUp className="overlay-icon" />
+                  <span className="overlay-text">Líder del Mercado</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Unique Selling Points */}
-      <section className={styles.uspSection} aria-label="Nuestras Ventajas">
-        <ul className={styles.uspList}>
-          {sellingPoints.map(({ icon, title, text }) => (
-            <li key={title} className={styles.uspItem}>
-              {icon}
-              <div>
-                <h3 className={styles.uspTitle}>{title}</h3>
-                <p className={styles.uspText}>{text}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+      {/* Main Advantages Section */}
+      <section className="professional-section">
+        <div className="section-container">
+          <div className="section-header">
+            <h2 className="section-title">
+              <Star className="section-title-icon" />
+              Nuestras Ventajas Competitivas
+            </h2>
+            <p className="section-subtitle">
+              Lo que nos convierte en la mejor opción para vender tu chatarra
+            </p>
+          </div>
+          <div className="professional-grid professional-grid--2">
+            {mainAdvantages.map((advantage, index) => (
+              <AdvantageCard key={index} advantage={advantage} index={index} />
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* Trust cues (certifications, official badges) */}
-      <section className={styles.trustSection} aria-label="Certificaciones y confianza">
+      {/* Additional Benefits */}
+      <section className="professional-section professional-background">
+        <div className="section-container--lg">
+          <h2 className="section-title additional-benefits-title">Beneficios Adicionales</h2>
+          <div className="professional-grid professional-grid--3">
+            {additionalBenefits.map((benefit, index) => (
+              <div key={index} className="professional-card professional-card--light">
+                <div className="benefit-card-layout">
+                  <div className="card-icon card-icon--sm benefit-icon-small">
+                    {benefit.icon}
+                  </div>
+                  <div className="benefit-content-flex">
+                    <h3 className="card-title benefit-title-large">{benefit.title}</h3>
+                    <p className="card-description">{benefit.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="professional-section">
+        <div className="section-container--lg">
+          <div className="section-header">
+            <h2 className="section-title">Nuestro Proceso Profesional</h2>
+            <p className="section-subtitle">
+              Un sistema probado que garantiza transparencia y eficiencia
+            </p>
+          </div>
+          <div className="process-steps">
+          <ProcessStep
+            number="01"
+            title="Contacto Inmediato"
+            description="Escríbenos por WhatsApp o visítanos directamente. Respuesta garantizada en minutos."
+            icon={<Phone />}
+          />
+          <ProcessStep
+            number="02"
+            title="Evaluación Profesional"
+            description="Nuestro equipo evalúa tu material con transparencia y experiencia."
+            icon={<CheckCircle />}
+          />
+          <ProcessStep
+            number="03"
+            title="Pesaje Certificado"
+            description="Balanza certificada INN, proceso transparente que puedes presenciar."
+            icon={<Weight />}
+          />
+          <ProcessStep
+            number="04"
+            title="Pago Inmediato"
+            description="Efectivo al instante o transferencia inmediata. Sin esperas ni trámites."
+            icon={<DollarSign />}
+          />
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Section */}
+      <section className={styles.trustSection}>
         <TrustCues />
       </section>
 
-      {/* Customer Testimonials */}
-      <section className={styles.testimonialsSection} aria-label="Testimonios de clientes">
-        <TestimonialSection />
+      {/* Map Section */}
+      <section className={styles.mapSection}>
+        <MapSection />
       </section>
 
-      {/* Main Call To Action */}
-      <section className={styles.ctaSection}>
-        <h2 className={styles.ctaHeading}>¿Listo para vender?</h2>
-        <p className={styles.ctaText}>
-          Escríbenos por WhatsApp o visítanos hoy mismo.<br />
-          <strong>Pago inmediato, atención humana.</strong>
-        </p>
-        <div className={styles.ctaButtons}>
-          <PrimaryButton
-            href="https://wa.me/56912345678"
-            aria-label="Vender ahora por WhatsApp"
-            size="lg"
-          >
-            Vender ahora por WhatsApp
-          </PrimaryButton>
-          <SecondaryButton
-            href="/mapa"
-            aria-label="Ver cómo llegar"
-            size="lg"
-          >
-            Ver cómo llegar
-          </SecondaryButton>
+      {/* Call to Action Section */}
+      <section className="professional-section">
+        <div className="section-container--md">
+          <div className="professional-cta">
+            <h2 className="cta-title">¿Listo para Experimentar la Diferencia?</h2>
+            <p className="cta-description">
+              Únete a los más de 500 clientes que han elegido la excelencia. 
+              <br /><strong>Pago inmediato, trato profesional, precios justos.</strong>
+            </p>
+            <div className="cta-buttons">
+              <a
+                href={CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.general)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.buttonLink}
+              >
+                <SecondaryButton>
+                  <WhatsAppIcon /> Cotizar por WhatsApp
+                </SecondaryButton>
+              </a>
+              <a
+                href="/precios"
+                className={styles.buttonLink}
+              >
+                <SecondaryButton>
+                  Ver Precios Actualizados
+                </SecondaryButton>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </main>

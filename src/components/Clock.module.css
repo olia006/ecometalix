@@ -1,21 +1,30 @@
 .minimal {
   margin-top: var(--space-xs);
   font-size: var(--font-size-sm);
-  color: var(--color-white);
-  opacity: 0.85;
+  color: inherit;
+  opacity: 1;
   display: flex;
-  gap: var(--space-sm);
-  align-items: center;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
 }
 
-.minimal span {
-  text-shadow: var(--shadow-sm);
+.locationTimeLine {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.statusLine {
+  display: flex;
+  align-items: center;
 }
 
 .location {
   display: flex;
   align-items: center;
   gap: var(--space-xs);
+  color: var(--color-electric-blue); /* Electric blue */
 }
 
 .locationIcon {
@@ -26,16 +35,24 @@
 .time {
   font-family: var(--font-mono);
   letter-spacing: 0.05em;
+  color: var(--color-electric-blue); /* Electric blue */
+  font-weight: var(--font-weight-medium);
 }
 
 .open {
-  color: var(--color-success);
-  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.8em;
 }
 
 .closed {
   color: var(--color-error);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.8em;
 }
 
 /* Default clock styles */
@@ -82,6 +99,15 @@
 @media (max-width: var(--breakpoint-3xl)) {
   .minimal {
     font-size: var(--font-size-xs);
+  }
+  
+  .locationIcon {
+    font-size: 0.8em;
+  }
+  
+  .open,
+  .closed {
+    font-size: var(--font-size-sm);
   }
   
   .timeValue {

@@ -1,21 +1,10 @@
 // src/data/materials.js
 
-// Import actual images and placeholders for materials without images
-import cobreImg from "../assets/images/materials/cobre.jpg";
-import bronceImg from "../assets/images/materials/bronce.jpg";
-import fierroLataImg from "../assets/images/materials/FierroLata.jpg";
-import fierroLargoImg from "../assets/images/materials/FierroLargo.jpg";
-import fierroCortoImg from "../assets/images/materials/FierroCorto.jpg";
-import aluminioImg from "../assets/images/materials/aluminium.jpg";
-import virutaImg from "../assets/images/materials/viruta.jpg";
-import electricoImg from "../assets/images/materials/electrico.jpg";
-import fierroMixtoImg from "../assets/images/materials/fierromixto.JPG";
-
 export const materials = [
   {
     key: "cobre",
     name: "Cobre",
-    image: cobreImg,
+    image: "/images/materials/cobre.jpg",
     description: "Metal rojizo brillante, conductor y de alto valor. Se paga más si está limpio, sin soldaduras ni restos de plástico.",
     tags: ["No ferroso", "Alta demanda", "Aceptado"],
     articleLink: "/materiales/cobre"
@@ -23,7 +12,7 @@ export const materials = [
   {
     key: "bronce",
     name: "Bronce",
-    image: bronceImg,
+    image: "/images/materials/bronce.jpg",
     description: "Aleación de cobre y estaño. Color marrón dorado, no magnético. Mejor precio si está limpio.",
     tags: ["No ferroso", "Aceptado"],
     articleLink: "/materiales/bronce"
@@ -31,57 +20,68 @@ export const materials = [
   {
     key: "fierro-lata",
     name: "Fierro Lata",
-    image: fierroLataImg,
-    description: "Chatarra liviana y delgada, común en latas, estanterías y láminas. Puede contener pintura o residuos.",
-    tags: ["Ferroso", "Común", "Aceptado"],
+    image: "/images/materials/FierroLata.jpg",
+    description: "Chatarra ferrosa liviana: latas, chapas finas, estructuras ligeras. Magnético.",
+    tags: ["Ferroso", "Aceptado"],
     articleLink: "/materiales/fierro-lata"
   },
   {
     key: "fierro-largo",
     name: "Fierro Largo",
-    image: fierroLargoImg,
-    description: "Barras, perfiles, tubos y vigas largas de fierro. Aceptado en piezas mayores a 1 metro.",
-    tags: ["Ferroso", "Voluminoso", "Aceptado"],
+    image: "/images/materials/FierroLargo.jpg",
+    description: "Perfiles, vigas, barras de construcción. Material ferroso pesado de alta calidad.",
+    tags: ["Ferroso", "Aceptado"],
     articleLink: "/materiales/fierro-largo"
   },
   {
     key: "fierro-corto",
     name: "Fierro Corto",
-    image: fierroCortoImg,
-    description: "Piezas de fierro menores a 1 metro. Se paga por peso y condición.",
+    image: "/images/materials/FierroCorto.jpg",
+    description: "Chatarra ferrosa fragmentada: piezas pequeñas, tornillos, partes mecánicas.",
     tags: ["Ferroso", "Aceptado"],
     articleLink: "/materiales/fierro-corto"
   },
   {
-    key: "fierro-mixto",
-    name: "Fierro Mixto",
-    image: fierroMixtoImg,
-    description: "Mezcla de diferentes tipos de fierro y otros metales. Consultar condiciones para mejor precio.",
-    tags: ["Ferroso", "Mixto"],
-    articleLink: "/materiales/fierro-mixto"
-  },
-  {
     key: "aluminio",
     name: "Aluminio",
-    image: aluminioImg,
-    description: "Ligero y no magnético. Se paga bien si está limpio y sin mezclas con otros materiales.",
-    tags: ["No ferroso", "Ligero", "Aceptado"],
+    image: "/images/materials/aluminium.jpg",
+    description: "Metal plateado ligero, no magnético. Marcos, perfiles, latas. Mejor precio si está limpio.",
+    tags: ["No ferroso", "Aceptado"],
     articleLink: "/materiales/aluminio"
   },
   {
     key: "viruta",
-    name: "Viruta Metálica",
-    image: virutaImg,
-    description: "Virutas y residuos metálicos de procesos industriales. Precio según tipo de metal y limpieza.",
-    tags: ["Mixto", "Industrial", "Aceptado"],
+    name: "Viruta",
+    image: "/images/materials/viruta.jpg",
+    description: "Restos de mecanizado: virutas de torno, limaduras metálicas de diversos metales.",
+    tags: ["Mixto", "Aceptado"],
     articleLink: "/materiales/viruta"
   },
   {
     key: "electrico",
-    name: "Electrónicos",
-    image: electricoImg,
-    description: "Residuos electrónicos: placas, circuitos, componentes de computadores, TV y equipos. Contiene metales preciosos recuperables.",
-    tags: ["Electrónicos", "Metales preciosos", "Aceptado"],
+    name: "Eléctrico",
+    image: "/images/materials/electrico.jpg",
+    description: "Cables, motores, transformadores, componentes eléctricos con contenido de cobre.",
+    tags: ["Especializado", "Aceptado"],
     articleLink: "/materiales/electrico"
+  },
+  {
+    key: "fierro-mixto",
+    name: "Fierro Mixto",
+    image: "/images/materials/fierromixto.JPG",
+    description: "Chatarra ferrosa de diferentes tipos mezclada. Material magnético variado.",
+    tags: ["Ferroso", "Aceptado"],
+    articleLink: "/materiales/fierro-mixto"
   }
 ];
+
+// Filter functions for easy categorization
+export const getFerroMaterials = () => materials.filter(m => m.tags.includes("Ferroso"));
+export const getNonFerroMaterials = () => materials.filter(m => m.tags.includes("No ferroso"));
+export const getAcceptedMaterials = () => materials.filter(m => m.tags.includes("Aceptado"));
+
+// Get material by key
+export const getMaterialByKey = (key) => materials.find(m => m.key === key);
+
+// Default export
+export default materials;

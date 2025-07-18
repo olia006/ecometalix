@@ -1,14 +1,15 @@
 // src/components/SEO/StructuredData.jsx
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import Head from 'next/head';
 
 const StructuredData = ({ jsonLd }) => {
   return (
-    <Helmet>
-      <script type="application/ld+json">
-        {JSON.stringify(jsonLd)}
-      </script>
-    </Helmet>
+    <Head>
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+    </Head>
   );
 };
 

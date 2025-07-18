@@ -36,7 +36,7 @@
 
 .breadcrumbLink:hover,
 .breadcrumbLink:focus {
-  background-color: rgba(77, 165, 82, 0.1);
+  background-color: rgba(98, 154, 87, 0.08);
   color: var(--color-secondary);
   text-decoration: underline;
 }

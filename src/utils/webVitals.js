@@ -4,7 +4,7 @@ import { onCLS, onFID, onFCP, onLCP, onTTFB } from 'web-vitals';
 // Simple function to log web vitals (replace with analytics service later)
 function sendToAnalytics(metric) {
   // In production, you'd send this to Google Analytics, DataDog, etc.
-  console.log('Web Vital:', metric);
+  // Web Vital tracked
   
   // Optional: Send to Google Analytics 4 if available
   // eslint-disable-next-line no-undef

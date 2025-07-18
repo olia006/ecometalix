@@ -20,39 +20,39 @@
         "santiago",
         "scrap metal",
         "recycling",
-        "vite",
-        "react",
-        "spa"
+        "next.js",
+        "react"
     ],
     "private": false,
-    "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "build:analyze": "vite build --mode analyze",
-        "preview": "vite preview",
-        "lint": "eslint . --ext .js,.jsx --ignore-path .eslintignore",
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
         "format": "prettier --write ."
     },
     "dependencies": {
+        "critters": "^0.0.23",
         "date-fns": "^4.1.0",
+        "lucide-react": "^0.525.0",
+        "next": "^15.1.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-helmet-async": "^2.0.4",
-        "react-icons": "^4.12.0",
-        "react-router-dom": "^6.30.1",
-        "swiper": "^11.2.10",
         "web-vitals": "^4.2.4"
     },
     "devDependencies": {
-        "@vitejs/plugin-react": "^4.2.1",
+        "@next/eslint-plugin-next": "^15.1.0",
+        "@types/node": "^22.10.0",
+        "@types/react": "^18.3.12",
+        "@types/react-dom": "^18.3.1",
         "eslint": "^8.57.1",
+        "eslint-config-next": "^15.1.0",
         "eslint-config-prettier": "^10.1.5",
         "eslint-plugin-jsx-a11y": "^6.10.2",
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^4.6.2",
         "prettier": "^3.2.5",
-        "rollup-plugin-visualizer": "^5.12.0",
-        "vite": "^7.0.4"
+        "typescript": "^5.7.2"
     }
 }

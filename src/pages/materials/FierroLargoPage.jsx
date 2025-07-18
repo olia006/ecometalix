@@ -4,9 +4,11 @@ import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
 import SectionHeader from "../../components/SectionHeader";
-import PrimaryButton from "../../components/PrimaryButton";
+import SecondaryButton from "../../components/SecondaryButton";
 import styles from "./MaterialPage.module.css";
-import fierroLargoImg from "../../assets/images/materials/FierroLargo.jpg";
+// Image will be referenced directly as string path
+import { getPriceById } from "../../data/prices";
+import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 
 export default function FierroLargoPage() {
   return (
@@ -23,9 +25,10 @@ export default function FierroLargoPage() {
         materialKey="fierro-largo"
         name="Fierro Largo"
         subtitle="Estructuras robustas que construyeron ciudades"
-        image={fierroLargoImg}
+                  image="/images/materials/FierroLargo.jpg"
         tags={["Ferroso", "Voluminoso", "Aceptado"]}
         stats={[
+          { value: getPriceById("fierro-largo")?.display || "$240", label: "Precio por kg" },
           { value: ">1m", label: "Longitud mín." },
           { value: "410", label: "Días Empire State" },
           { value: "60,000", label: "Toneladas acero" }
@@ -108,13 +111,13 @@ export default function FierroLargoPage() {
             <div className={styles.ctaContent}>
               <h3>¿Tienes fierro largo para vender?</h3>
               <p>Aceptamos vigas, perfiles y tubos largos. Facilitamos el transporte de materiales voluminosos.</p>
-              <PrimaryButton 
-                href="https://wa.me/56912345678?text=Hola,%20tengo%20fierro%20largo%20para%20vender"
+              <SecondaryButton 
+                href={CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.materialInquiry('fierro largo'))}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Cotizar por WhatsApp
-              </PrimaryButton>
+              </SecondaryButton>
             </div>
           </section>
         </div>

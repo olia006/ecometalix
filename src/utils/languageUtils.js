@@ -1,4 +1,5 @@
 // src/utils/languageUtils.js
+import { SEO_CONFIG } from '../config/constants';
 
 /**
  * Detect current language from URL path
@@ -34,15 +35,15 @@ export function getAlternateUrls(currentPath) {
     // Currently on English page, get Spanish equivalent
     const spanishPath = currentPath.replace('/en', '') || '/';
     return {
-      es: `https://ecometalix.cl${spanishPath}`,
-      en: `https://ecometalix.cl${currentPath}`
+          es: `${SEO_CONFIG.baseUrl}${spanishPath}`,
+    en: `${SEO_CONFIG.baseUrl}${currentPath}`
     };
   } else {
     // Currently on Spanish page, get English equivalent
     const englishPath = `/en${currentPath === '/' ? '' : currentPath}`;
     return {
-      es: `https://ecometalix.cl${currentPath}`,
-      en: `https://ecometalix.cl${englishPath}`
+          es: `${SEO_CONFIG.baseUrl}${currentPath}`,
+    en: `${SEO_CONFIG.baseUrl}${englishPath}`
     };
   }
 }
@@ -73,7 +74,7 @@ export const content = {
       description: "Ecometalix Spa: Compra y venta de chatarra, pago inmediato, horario extendido, balanza certificada. Santiago. Recibe tu dinero al instante. ¡Contáctanos por WhatsApp!",
       hero: {
         title: "Vende tu chatarra y recibe el pago al instante",
-        subtitle: "Compra y reciclaje de chatarra y metales en Santiago — pesaje certificado, atención personalizada y cotización por WhatsApp.",
+        subtitle: "Compra y reciclaje de chatarra y metales en Santiago — pesaje certificado, cotización por WhatsApp.",
         lastUpdated: "8 de julio 2025"
       },
       prices: {

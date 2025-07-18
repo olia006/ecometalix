@@ -1,32 +1,33 @@
+"use client";
+
 import React from "react";
-import { useLocation } from "react-router-dom";
 import Seo from "../components/seo/Seo";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import ServiceSchema from "../components/seo/ServiceSchema";
 import FloatingCTA from "../components/FloatingCTA";
 
 // Language utilities
-import { detectLanguage, generateBilingualHreflangs, getContent } from "../utils/languageUtils";
+import { getContent } from "../utils/languageUtils";
 
 // Home Sections
 import HeroSection from "../components/home/HeroSection";
 import SectionCardsGrid from "../components/SectionCardsGrid";
 import StatsSection from "../components/home/StatsSection";
 import PricesPreviewSection from "../components/home/PricesPreviewSection";
-import TestimonialSection from "../components/home/TestimonialSection";
 import FAQPreviewSection from "../components/home/FAQPreviewSection";
 import MapSection from "../components/home/MapSection";
 import TrustCues from "../components/TrustCues";
 
-export default function BilingualHomePage() {
-  const location = useLocation();
-  
-  // Detect current language from URL
-  const lang = detectLanguage(location.pathname);
-  const isEnglish = lang === 'en';
+export default function BilingualHomePage({ 
+  pathname = "/", 
+  lang = "es" 
+}) {
+  // Detect language (simplified for initial migration)
+  const isEnglish = lang === 'en' || pathname.startsWith('/en');
+  const currentLang = isEnglish ? 'en' : 'es';
   
   // Get content for current language
-  const pageContent = getContent('home', lang);
+  const pageContent = getContent('home', currentLang) || {};
   
   // Generate proper canonical URL
   const canonicalUrl = isEnglish ? '/en/' : '/';
@@ -35,10 +36,9 @@ export default function BilingualHomePage() {
     <>
       {/* SEO with dynamic content based on language */}
       <Seo
-        title={pageContent.title}
-        description={pageContent.description}
+        title={pageContent.title || "Ecometalix - Reciclaje de Metales"}
+        description={pageContent.description || "Compra y venta de chatarra en Santiago"}
         canonical={canonicalUrl}
-        hreflangs={generateBilingualHreflangs(location.pathname)}
       />
       
       {/* Structured data (same for both languages) */}
@@ -50,10 +50,8 @@ export default function BilingualHomePage() {
 
       {/* 1. Hero Section with dynamic content */}
       <HeroSection
-        title={pageContent.hero.title}
-        subtitle={pageContent.hero.subtitle}
-        showCTAs={true}
-        lastUpdated={pageContent.hero.lastUpdated}
+        subtitle={pageContent.hero?.subtitle || "Compra y reciclaje de chatarra y metales en Santiago"}
+        lastUpdated={pageContent.hero?.lastUpdated || "8 de julio 2025"}
       />
 
       {/* 2. Trust/Certification Badges */}
@@ -70,16 +68,13 @@ export default function BilingualHomePage() {
       {/* 5. Stats Section (compact, inline) */}
       <StatsSection />
 
-      {/* 6. Testimonials Section */}
-      <TestimonialSection />
-
-      {/* 7. FAQ Preview Section */}
+      {/* 6. FAQ Preview Section */}
       <FAQPreviewSection />
 
-      {/* 8. Map Section - Location and contact information */}
+      {/* 7. Google Business Profile & Location */}
       <MapSection />
 
-      {/* Removed Footer - it's already in App.jsx globally */}
+      {/* Footer is handled in layout.tsx globally */}
     </>
   );
 } 

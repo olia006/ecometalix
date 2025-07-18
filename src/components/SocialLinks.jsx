@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import styles from "./SocialLinks.module.css";
 import { socialLinksData, getMainSocialLinks } from "../data/socialLinks";
 
@@ -27,7 +27,4 @@ export default function SocialLinks({ className = "", maxCount = 3 }) {
   );
 }
 
-SocialLinks.propTypes = {
-  className: PropTypes.string,
-  maxCount: PropTypes.number
-};
+

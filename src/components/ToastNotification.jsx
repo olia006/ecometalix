@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import styles from "./ToastNotification.module.css";
-import { FaCheckCircle, FaTimesCircle, FaExclamationCircle, FaInfoCircle } from "react-icons/fa";
+import { CheckCircle, XCircle, AlertCircle, Info } from "lucide-react";
 
 /**
  * ToastNotification
@@ -30,16 +31,16 @@ export default function ToastNotification({
   let Icon;
   switch (type) {
     case "success":
-      Icon = FaCheckCircle;
+      Icon = CheckCircle;
       break;
     case "error":
-      Icon = FaTimesCircle;
+      Icon = XCircle;
       break;
     case "warning":
-      Icon = FaExclamationCircle;
+      Icon = AlertCircle;
       break;
     default:
-      Icon = FaInfoCircle;
+      Icon = Info;
   }
 
   return (
@@ -58,3 +59,11 @@ export default function ToastNotification({
     </div>
   );
 }
+
+ToastNotification.propTypes = {
+  type: PropTypes.oneOf(['success', 'error', 'info', 'warning']),
+  message: PropTypes.string,
+  onClose: PropTypes.func.isRequired,
+  duration: PropTypes.number,
+  show: PropTypes.bool,
+}; 

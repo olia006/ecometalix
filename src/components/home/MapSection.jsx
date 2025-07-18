@@ -2,62 +2,46 @@
 import React from "react";
 import styles from "./MapSection.module.css";
 import Background from "../Background";
-import { FaMapMarkerAlt, FaClock, FaWhatsapp } from "react-icons/fa";
 import SectionHeader from "../SectionHeader";
 
 export default function MapSection() {
   return (
     <Background>
-      <section
-        className={styles.mapSection}
-        aria-labelledby="map-heading"
-      >
+      <section id="mapa" className={styles.mapSection} aria-label="Perfil de empresa en Google">
         <SectionHeader>
-          ¿Dónde estamos?
+          Nuestra Empresa en Google
         </SectionHeader>
+        
+        {/* Official Google Business Profile Widget */}
+        <div className={styles.widgetContainer}>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.5!2d-70.7984129!3d-33.3120766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662bf78657b6e2f%3A0x692dfae6ce3b688d!2sEcoMetalix!5e0!3m2!1ses!2scl!4v1699876543210!5m2!1ses!2scl"
+            className={styles.googleWidget}
+            title="EcoMetalix - Perfil de Empresa en Google con Reseñas"
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
 
-        <div className={styles.infoWrap}>
-          <div className={styles.mapWrap}>
-            <iframe
-              className={styles.mapIframe}
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d362.8300049035455!2d-70.72776733228044!3d-33.31207661992254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662bf78657b6e2f%3A0x692dfae6ce3b688d!2sEcoMetalix!5e0!3m2!1sen!2scl!4v1752088765418!5m2!1sen!2scl"
-              title="Mapa Ecometalix"
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-
-          <div className={styles.addressBlock}>
-            <p>
-              <FaMapMarkerAlt className={styles.icon} />
-              <strong>Dirección:</strong> Calle Ficticia 1234, Santiago, Chile
-            </p>
-            <p>
-              <FaClock className={styles.icon} />
-              <strong>Horario:</strong> Lunes a Sábado, 8:00–20:00
-            </p>
-            <p>
-              <FaWhatsapp className={styles.icon} />
-              <strong>WhatsApp:</strong>{" "}
-              <a
-                href="https://wa.me/56912345678"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                +56 9 1234 5678
-              </a>
-            </p>
-
-            <a
-              href="https://share.google/9dVvaWworIPC8YAiq"
-              className={styles.directionsBtn}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ver en Google Maps
-            </a>
-          </div>
+        {/* Quick access links */}
+        <div className={styles.quickLinks}>
+          <a
+            href="https://www.google.com/maps/place/EcoMetalix/@-33.3120766,-70.7984129,17z/data=!4m8!3m7!1s0x9662bf78657b6e2f:0x692dfae6ce3b688d!8m2!3d-33.3120766!4d-70.798438!9m1!1b1!16s%2Fg%2F11q3j6y6yt?hl=es"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.linkBtn}
+          >
+            Ver ubicación completa
+          </a>
+          <a
+            href="https://www.google.com/maps/place/EcoMetalix/@-33.3120766,-70.7984129,17z/data=!4m8!3m7!1s0x9662bf78657b6e2f:0x692dfae6ce3b688d!8m2!3d-33.3120766!4d-70.798438!9m1!1b1!16s%2Fg%2F11q3j6y6yt?hl=es&lsig=AB86z5WqhT9gKgR0R5oOJMC_W0dj#lrd=0x9662bf78657b6e2f:0x692dfae6ce3b688d,1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.linkBtn}
+          >
+            Leer todas las reseñas
+          </a>
         </div>
       </section>
     </Background>

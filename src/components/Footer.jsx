@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import styles from "./Footer.module.css";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { MapPin } from "lucide-react";
 import SocialLinks from "./SocialLinks";
 
 export default function Footer() {
@@ -11,7 +11,7 @@ export default function Footer() {
       <div className={styles.brandRow}>
         <span className={styles.brand}>Ecometalix Spa</span>
         <span className={styles.location}>
-          <FaMapMarkerAlt aria-hidden /> Santiago, Chile
+          <MapPin aria-hidden /> Santiago, Chile
         </span>
       </div>
 
@@ -29,11 +29,11 @@ export default function Footer() {
 
       {/* Nav links */}
       <nav className={styles.footerNav} aria-label="Pie de página">
-        <Link to="/">Inicio</Link>
-        <Link to="/por-que-nosotros">Por qué Nosotros</Link>
-        <Link to="/precios">Precios</Link>
-        <Link to="/materiales">Materiales</Link>
-        <Link to="/faq">FAQ</Link>
+        <Link href="/">Inicio</Link>
+        <Link href="/por-que-nosotros">Por qué Nosotros</Link>
+        <Link href="/precios">Precios</Link>
+        <Link href="/materiales">Materiales</Link>
+        <Link href="/faq">FAQ</Link>
         <a href="/#mapa">Ubicación</a>
       </nav>
 
@@ -53,7 +53,7 @@ export default function Footer() {
       </div>
       {/* Language switcher (optional) */}
       <div className={styles.langSwitch}>
-        <Link to="/" aria-label="Español">ES</Link> | <Link to="/en" aria-label="English">EN</Link>
+        <Link href="/" aria-label="Español">ES</Link> | <Link href="/en" aria-label="English">EN</Link>
       </div>
     </footer>
   );

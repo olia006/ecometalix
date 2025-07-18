@@ -1,5 +1,6 @@
 import React from 'react';
 import StructuredData from './StructuredData';
+import { SEO_CONFIG, BUSINESS_INFO } from '../../config/constants';
 
 export default function LocalBusinessSchema() {
   const businessData = {
@@ -8,9 +9,9 @@ export default function LocalBusinessSchema() {
     "name": "Ecometalix Spa",
     "alternateName": "Ecometalix",
     "description": "Compra y venta de chatarra y metales reciclables en Santiago. Pago inmediato, balanza certificada y atención personalizada.",
-    "url": "https://ecometalix.cl",
-    "telephone": "+56940244042",
-    "email": "contacto@ecometalix.cl",
+    "url": SEO_CONFIG.baseUrl,
+    "telephone": `+${BUSINESS_INFO.phone}`,
+    "email": BUSINESS_INFO.email,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Calle Ficticia 1234",

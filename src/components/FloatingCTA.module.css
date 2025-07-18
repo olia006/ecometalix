@@ -6,7 +6,7 @@
     position: fixed;
     right: var(--space-xl);
     bottom: calc(var(--space-xl) + var(--space-xs));
-    z-index: var(--z-tooltip);
+    z-index: 9999;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -19,18 +19,23 @@
   font-family: var(--font-body, 'Inter', Arial, sans-serif);
   border-radius: 50%;
   box-shadow: var(--shadow-lg);
-    width: calc(var(--space-xl) + var(--space-lg));
-height: calc(var(--space-xl) + var(--space-lg));
+    width: var(--space-3xl); /* UX-compliant desktop FAB size (64px) */
+height: var(--space-3xl);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-xl);
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
-  border: 2px solid var(--color-white-20);
+  border: 2px solid var(--color-white-30);
   position: relative;
   overflow: hidden;
+  animation: subtlePulse 2s ease-in-out 3;
+}
+
+@keyframes subtlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
 }
 
   .floatingCtaButton::before {
@@ -48,17 +53,31 @@ height: calc(var(--space-xl) + var(--space-lg));
     left: 100%;
   }
   
-  .floatingCtaButton:hover,
-  .floatingCtaButton:focus {
+  .floatingCtaButton:hover {
     box-shadow: var(--shadow-xl);
-    transform: translateY(-3px) scale(1.08);
-          background: var(--color-whatsapp);
+    transform: translateY(-2px) scale(1.03);
+    background: var(--color-whatsapp-hover);
     text-decoration: none;
   }
 
+  .floatingCtaButton:focus {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-2px) scale(1.03);
+    background: var(--color-whatsapp);
+    text-decoration: none;
+  }
+
+  .floatingCtaButton:active {
+    transform: translateY(0) scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
   .icon {
-    font-size: 1.6em;
+    font-size: var(--font-size-xl); /* Large icon for desktop UX compliance (32px) */
     filter: drop-shadow(0 2px 4px var(--color-shadow-md));
+    color: white;
   }
   
   .text {
@@ -77,8 +96,29 @@ height: calc(var(--space-xl) + var(--space-lg));
     bottom: calc(var(--space-md) + var(--space-xxs));
     }
     .floatingCtaButton {
-      padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-sm);
-      font-size: var(--font-size-base);
+      width: calc(var(--space-3xl) - var(--space-xs)); /* Slightly smaller for medium screens */
+      height: calc(var(--space-3xl) - var(--space-xs));
+    }
+    .icon {
+      font-size: var(--font-size-lg); /* Proportionally smaller for medium screens (24px) */
+    }
+  }
+  
+  /* Tablet adjustments */
+  @media (max-width: var(--breakpoint-3xl)) {
+    .floatingCtaButton {
+      width: calc(var(--space-3xl) - var(--space-sm)); /* Smaller for tablets */
+      height: calc(var(--space-3xl) - var(--space-sm));
+    }
+    .icon {
+      font-size: var(--font-size-md); /* Smaller icon for tablets (18px) */
+    }
+  }
+
+  /* Hide FloatingCTA on mobile devices */
+  @media (max-width: var(--mobile-breakpoint)) {
+    .floatingCtaWrapper {
+      display: none !important;
     }
   }
   

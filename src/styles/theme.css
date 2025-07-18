@@ -3,6 +3,12 @@
    EcoMetalix Spa, Santiago
    ======================== */
 
+/* Modern Typography Imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700,900&display=swap');
+
 /* ---------- Light Theme (Default) ---------- */
 :root {
   /* ===== BRAND & INDUSTRIAL COLORS ===== */
@@ -14,6 +20,12 @@
   --color-warning: #f59e0b;        /* Alerts, warnings */
   --color-info: #639283;           /* Copper Patina for info states/links */
   --color-link: #639283;           /* Default link color */
+
+  /* ===== RGB VALUES FOR ALPHA USAGE ===== */
+  --success-rgb: 98, 154, 87;      /* RGB values of --color-success for alpha usage */
+  --primary-rgb: 99, 146, 131;     /* RGB values of --color-primary for alpha usage */
+  --accent-rgb: 136, 176, 75;      /* RGB values of --color-accent for alpha usage */
+  --secondary-rgb: 65, 129, 142;   /* RGB values of --color-secondary for alpha usage */
 
   /* ===== GRADIENT COLORS FOR SECTION CARDS ===== */
   --color-primary-dark: #4a6b5f;    /* Darker copper patina */
@@ -28,6 +40,7 @@
   --color-text: #23272A;           /* Industrial graphite */
   --color-text-heading: #1B2025;   /* Charleston Green for strong headings */
   --color-text-subheading: #639283; /* Copper Patina for subheadings, small accents */
+  --color-text-secondary: #666666; /* Secondary text color */
   --color-muted: #888E94;          /* Muted/secondary text (mid gray) */
   --color-divider: #E0E3E7;        /* Subtle card or section divider */
 
@@ -70,17 +83,36 @@
   --color-gray-800: #1a1a1a;
   --color-gray-900: #111315;
 
+  /* ===== ELECTRIC BLUE ===== */
+  --color-electric-blue: #4343f5;        /* Electric blue for active states/highlights */
+
   /* ===== SOCIAL COLORS (for icons/links) ===== */
   --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #128C7E;
   --color-instagram: #E1306C;
   --color-facebook: #1877F2;
   --color-twitter: #1DA1F2;
   --color-telegram: #229ED9;
 
+  /* ===== THEME SWITCHER SPECIFIC ===== */
+  --color-sun: #f59e0b;
+  --color-moon-light: #6b7280;
+  --color-moon-dark: #e5e7eb;
+  --radius-theme-icon: 0px;
+
+  /* ===== MOBILE NAVBAR SPECIFIC ===== */
+  --mobile-navbar-bg-light: rgba(255, 255, 255, 0.45);
+  --mobile-navbar-bg-dark: rgba(27, 32, 37, 0.45);
+  --mobile-navbar-border-light: rgba(65, 129, 142, 0.15);
+  --mobile-navbar-border-dark: rgba(65, 129, 142, 0.2);
+  --mobile-breakpoint: 640px;
+  --mobile-breakpoint-small: 375px;
+
   /* ===== TYPOGRAPHY ===== */
-  --font-heading: 'IBM Plex Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-  --font-body: 'Inter', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-  --font-mono: 'Roboto Mono', 'SF Mono', 'Monaco', 'Consolas', monospace;
+  --font-heading: 'Satoshi', 'Inter', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Inter', 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-accent: 'IBM Plex Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Consolas', monospace;
 
   --font-size-xs: 0.75rem;      /* 12px */
   --font-size-sm: 0.875rem;     /* 14px */
@@ -91,10 +123,19 @@
   --font-size-xxl: 3rem;        /* 48px */
   --font-size-hero: 4rem;       /* 64px - Large hero headings */
 
+  --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  /* Font pairings for trust/credibility */
+  --font-heading-weight: var(--font-weight-bold);
+  --font-subheading-weight: var(--font-weight-light);
+  --font-tagline-weight: var(--font-weight-regular);
+  --font-stats-weight: var(--font-weight-black);
+  --font-stats-label-weight: var(--font-weight-light);
 
   /* ===== SPACING & LAYOUT ===== */
   --space-xxs: 0.25rem;    /* 4px */
@@ -115,10 +156,10 @@
   --section-padding-x: var(--space-lg);            /* 24px - Horizontal padding within sections */
 
   /* ===== RADIUS ===== */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
-  --radius-xl: 32px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
   --radius-pill: 999px;
 
   /* ===== SHADOWS (GLASSMORPH/NEURO) ===== */
@@ -133,10 +174,22 @@
   --glass-heavy: rgba(255,255,255,0.63);
   --glass-border: rgba(99,146,131,0.15);
 
-  /* ===== NEUMORPHISM (if used) ===== */
+  /* ===== NEUMORPHISM (REFINED FOR WORKING COMPONENTS) ===== */
   --neuro-light: linear-gradient(145deg, #fff, #eaeaea);
-  --neuro-shadow-light: 9px 9px 16px #d4d4d4, -9px -9px 16px #fff;
-  --neuro-inset: inset 9px 9px 16px #d4d4d4, inset -9px -9px 16px #fff;
+  --neuro-shadow-light: 3px 3px 6px rgba(0, 0, 0, 0.12), -3px -3px 6px rgba(255, 255, 255, 0.8);
+  --neuro-shadow-hover: 2px 2px 4px rgba(0, 0, 0, 0.15), -2px -2px 4px rgba(255, 255, 255, 0.9);
+  --neuro-inset: inset 1px 1px 3px rgba(0, 0, 0, 0.15), inset -1px -1px 3px rgba(255, 255, 255, 0.8);
+  --neuro-focus: 3px 3px 6px rgba(0, 0, 0, 0.12), -3px -3px 6px rgba(255, 255, 255, 0.8), 0 0 0 2px var(--color-primary);
+
+  /* ===== FLOATING MOBILE THEME SWITCHER ===== */
+  --floating-mobile-bg-light: rgba(255, 255, 255, 0.85);
+  --floating-mobile-bg-dark: rgba(0, 0, 0, 0.7);
+  --floating-mobile-border-light: rgba(255, 255, 255, 0.3);
+  --floating-mobile-border-dark: rgba(255, 255, 255, 0.1);
+  --floating-mobile-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  --floating-mobile-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --floating-mobile-shadow-hover-light: 0 6px 16px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.15);
+  --floating-mobile-shadow-hover-dark: 0 6px 16px rgba(0, 0, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.3);
 
   /* ===== BREAKPOINTS & CONTAINERS ===== */
   --breakpoint-xs: 320px;      /* ultra-small */
@@ -212,7 +265,14 @@ html[data-theme="dark"] {
   --color-text: #F7F7F7;
   --color-text-heading: #FFFFFF;
   --color-text-subheading: #639283;
+  --color-text-secondary: #b3b3b3;
   --color-muted: #8b99a6;
+
+  /* ===== RGB VALUES FOR ALPHA USAGE (DARK) ===== */
+  --success-rgb: 98, 154, 87;      /* RGB values of --color-success for alpha usage */
+  --primary-rgb: 99, 146, 131;     /* RGB values of --color-primary for alpha usage */
+  --accent-rgb: 136, 176, 75;      /* RGB values of --color-accent for alpha usage */
+  --secondary-rgb: 65, 129, 142;   /* RGB values of --color-secondary for alpha usage */
   --color-divider: #223139;
 
   --color-copper-primary: #b87333;
@@ -237,27 +297,25 @@ html[data-theme="dark"] {
   --color-gray-800: #F7F7F7;
   --color-gray-900: #fff;
 
+  /* ===== ELECTRIC BLUE ===== */
+  --color-electric-blue: #4343f5;        /* Electric blue for active states/highlights */
+
   --glass-light: rgba(27,32,37,0.23);
   --glass-medium: rgba(27,32,37,0.40);
   --glass-heavy: rgba(27,32,37,0.60);
   --glass-border: rgba(99,146,131,0.26);
 
   --neuro-light: linear-gradient(145deg, #23272A, #15191d);
-  --neuro-shadow-light: 9px 9px 16px #111315, -9px -9px 16px #23272A;
-  --neuro-inset: inset 9px 9px 16px #111315, inset -9px -9px 16px #23272A;
+  --neuro-shadow-light: 3px 3px 6px rgba(0, 0, 0, 0.4), -3px -3px 6px rgba(255, 255, 255, 0.03);
+  --neuro-shadow-hover: 2px 2px 4px rgba(0, 0, 0, 0.5), -2px -2px 4px rgba(255, 255, 255, 0.05);
+  --neuro-inset: inset 1px 1px 3px rgba(0, 0, 0, 0.4), inset -1px -1px 3px rgba(255, 255, 255, 0.03);
+  --neuro-focus: 3px 3px 6px rgba(0, 0, 0, 0.4), -3px -3px 6px rgba(255, 255, 255, 0.03), 0 0 0 2px var(--color-primary);
 
   /* ===== STANDARDIZED BACKGROUNDS (DARK) ===== */
   --background-page: var(--color-background);           /* Main page background */
   --background-section: var(--color-surface);           /* Section/card background */
   --background-container: var(--color-neutral);         /* Container background */
   --background-hero: var(--color-background);           /* Hero section background */
-  
-  /* ===== STANDARDIZED GRADIENTS (DARK) ===== */
-  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-  --gradient-primary-soft: linear-gradient(135deg, var(--color-primary) 40%, var(--color-secondary) 100%);
-  --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary-dark) 100%);
-  --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
-  --gradient-neutral: linear-gradient(135deg, var(--color-neutral-600) 0%, var(--color-neutral-800) 100%);
   
   /* ===== GLASS MORPHISM BACKGROUNDS (DARK) ===== */
   --glass-background-light: var(--glass-light);

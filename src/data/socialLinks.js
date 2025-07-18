@@ -2,13 +2,14 @@
 // CENTRALIZED SOCIAL LINKS CONFIGURATION
 // Update social media links here and they will change across the entire website
 
-import { FaWhatsapp, FaTelegramPlane, FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
+import { Send, Instagram, Facebook, Twitter } from "lucide-react";
+import WhatsAppIcon from "../components/WhatsAppIcon";
 
 export const socialLinksData = [
   {
     id: "whatsapp",
     href: "https://wa.me/56940244042",
-    iconComponent: FaWhatsapp,
+    iconComponent: WhatsAppIcon,
     label: "WhatsApp Ecometalix",
     brand: "whatsapp",
     priority: 1 // Higher priority = more prominent
@@ -16,7 +17,7 @@ export const socialLinksData = [
   {
     id: "instagram", 
     href: "https://www.instagram.com/ecometalix_spa",
-    iconComponent: FaInstagram,
+    iconComponent: Instagram,
     label: "Instagram Ecometalix",
     brand: "instagram",
     priority: 2
@@ -24,7 +25,7 @@ export const socialLinksData = [
   {
     id: "facebook",
     href: "https://www.facebook.com/ecometalix.spa", 
-    iconComponent: FaFacebook,
+    iconComponent: Facebook,
     label: "Facebook Ecometalix",
     brand: "facebook",
     priority: 3
@@ -32,7 +33,7 @@ export const socialLinksData = [
   {
     id: "twitter",
     href: "https://twitter.com/ecometalix_spa",
-    iconComponent: FaTwitter,
+    iconComponent: Twitter,
     label: "Twitter Ecometalix", 
     brand: "twitter",
     priority: 4
@@ -40,7 +41,7 @@ export const socialLinksData = [
   {
     id: "telegram",
     href: "https://t.me/ecometalix_spa",
-    iconComponent: FaTelegramPlane,
+    iconComponent: Send,
     label: "Telegram Ecometalix",
     brand: "telegram",
     priority: 5

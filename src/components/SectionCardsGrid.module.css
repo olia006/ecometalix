@@ -20,7 +20,7 @@
 }
 
 /* Tablets (≤1024px): 2×2 responsive */
-@media (max-width: 1024px) {
+@media (max-width: var(--breakpoint-5xl)) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto; /* Let rows adapt to content */
@@ -30,7 +30,7 @@
 }
 
 /* Mobile (≤768px): 1 column stacked */
-@media (max-width: 768px) {
+@media (max-width: var(--breakpoint-3xl)) {
   .grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;

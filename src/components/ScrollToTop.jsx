@@ -1,17 +1,19 @@
+"use client";
+
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
 
 export default function ScrollToTop() {
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     // Handle scroll on route change
     const handleRouteChange = () => {
       // Check if this is an anchor link (hash in URL)
-      if (location.hash) {
+      if (window.location.hash) {
         // Small delay to ensure DOM is updated
         setTimeout(() => {
-          const element = document.querySelector(location.hash);
+          const element = document.querySelector(window.location.hash);
           if (element) {
             scrollToElement(element);
           }
@@ -23,7 +25,7 @@ export default function ScrollToTop() {
     };
 
     handleRouteChange();
-  }, [location]);
+  }, [pathname]);
 
   return null;
 }

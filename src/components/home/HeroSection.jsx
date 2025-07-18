@@ -3,18 +3,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import heroStyles from "./HeroSection.module.css";
 import Background from "../Background";
-import { FaWhatsapp } from "react-icons/fa";
-import PrimaryButton from "../PrimaryButton";
+import WhatsAppIcon from "../WhatsAppIcon";
 import SecondaryButton from "../SecondaryButton";
-import Clock from "../Clock";
-import heroImage from "../../assets/images/homehero.jpg";
+import { ArrowRight } from "lucide-react";
+
+import { CONTACT_URLS } from "../../config/constants";
 
 export default function HeroSection({ 
   subtitle = "Compra y reciclaje de chatarra y metales en Santiago — pesaje certificado, atención personalizada y cotización por WhatsApp.",
   lastUpdated = "8 de julio 2025" 
 }) {
   return (
-    <Background variant="hero" image={heroImage}>
+    <Background variant="hero" image="/images/homehero.jpg">
       <div className={heroStyles.heroContainer}>
         <div className={heroStyles.glassContainer}>
           <div className={heroStyles.content}>
@@ -26,24 +26,43 @@ export default function HeroSection({
             </p>
 
             <div className={heroStyles.ctaGroup}>
-              <PrimaryButton
-                href="https://wa.me/56912345678"
-                size="lg"
+              <a 
+                href={CONTACT_URLS.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Cotizar por WhatsApp"
+                className={`${heroStyles.whatsappLink} ${heroStyles.buttonLink}`}
               >
-                <FaWhatsapp /> Cotizar por WhatsApp
-              </PrimaryButton>
-              <SecondaryButton
-                href="/precios"
-                size="lg"
+                <SecondaryButton>
+                  <WhatsAppIcon /> Cotizar por WhatsApp
+                </SecondaryButton>
+              </a>
+              <a
+                href="#precios"
+                className={heroStyles.readMoreLink}
                 aria-label="Ver precios actualizados"
               >
-                Ver precios
-              </SecondaryButton>
+                Ver precios <ArrowRight size={14} />
+              </a>
             </div>
-            <div className={heroStyles.lastUpdated}>
-              <small>Precios actualizados: {lastUpdated}</small>
-              <Clock variant="minimal" />
+            
+            {/* Bottom information unit */}
+            <div className={heroStyles.bottomInfo}>
+              <div className={heroStyles.lastUpdated}>
+                <small>Precios actualizados: {lastUpdated}</small>
+              </div>
+              <div className={heroStyles.workingHours}>
+                <small>Todos los días 8:30-20:00 • Sin descanso</small>
+              </div>
+              <div className={heroStyles.processLink}>
+                <a
+                  href="/como-funciona"
+                  className={heroStyles.learnProcessLink}
+                  aria-label="Conoce nuestro proceso"
+                >
+                  Conoce nuestro proceso <ArrowRight size={12} />
+                </a>
+              </div>
             </div>
           </div>
         </div>

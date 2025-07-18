@@ -1,6 +1,6 @@
 // src/components/SEO/MetaTags.jsx
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import Head from 'next/head';
 
 const MetaTags = ({
   title = 'Página sin título',
@@ -11,7 +11,7 @@ const MetaTags = ({
   children,
 }) => {
   return (
-    <Helmet htmlAttributes={{ lang }}>
+    <Head>
       {/* ✅ Primary Meta Tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
@@ -24,9 +24,12 @@ const MetaTags = ({
       {/* ✅ Charset */}
       <meta charSet="utf-8" />
 
+      {/* ✅ Language */}
+      <html lang={lang} />
+
       {/* ✅ Custom */}
       {children}
-    </Helmet>
+    </Head>
   );
 };
 

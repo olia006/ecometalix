@@ -72,6 +72,14 @@ export const metalPrices = [
     description: "Residuos electrónicos"
   },
   { 
+    id: "viruta",
+    metal: "Viruta", 
+    price: 180,
+    display: "$180 / kg",
+    category: "ferroso",
+    description: "Restos de mecanizado y limaduras"
+  },
+  { 
     id: "grandes",
     metal: "Piezas Grandes", 
     price: null,
@@ -103,14 +111,6 @@ export const animatedPrices = metalPrices
     price: item.display.split(" / kg")[0], // Extract price part
     unit: "/ kg"
   }));
-
-// Calculator prices (simplified object for easy lookup)
-export const calculatorPrices = metalPrices
-  .filter(item => item.price !== null)
-  .reduce((acc, item) => {
-    acc[item.metal] = item.price;
-    return acc;
-  }, {});
 
 // Helper functions
 export const getPriceById = (id) => {

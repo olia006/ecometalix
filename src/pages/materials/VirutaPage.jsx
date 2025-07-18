@@ -1,12 +1,15 @@
 import React from "react";
+import { Wrench, Package, Lightbulb } from "lucide-react";
 import Seo from "../../components/seo/Seo";
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
 import SectionHeader from "../../components/SectionHeader";
-import PrimaryButton from "../../components/PrimaryButton";
+import SecondaryButton from "../../components/SecondaryButton";
 import styles from "./MaterialPage.module.css";
-import virutaImg from "../../assets/images/materials/viruta.jpg";
+// Image will be referenced directly as string path
+import { getPriceById } from "../../data/prices";
+import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 
 export default function VirutaPage() {
   // FAQ structured data for SEO
@@ -57,9 +60,10 @@ export default function VirutaPage() {
         materialKey="viruta"
         name="Viruta Metálica"
         subtitle="Los residuos industriales con valor oculto"
-        image={virutaImg}
+                  image="/images/materials/viruta.jpg"
         tags={["Mixto", "Industrial", "Aceptado"]}
         stats={[
+          { value: getPriceById("viruta")?.display || "$180", label: "Precio por kg" },
           { value: "1000°C", label: "Temperatura" },
           { value: "Tornos", label: "Origen" },
           { value: "WWII", label: "Valor histórico" }
@@ -171,14 +175,14 @@ export default function VirutaPage() {
               
               <div className={styles.priceFactors}>
                 <div className={styles.priceFactor}>
-                  <h4>🔧 Pureza del Material</h4>
+                  <h4><Wrench size={16} /> Pureza del Material</h4>
                   <p>
                     La viruta mixta (diferentes metales) paga menos que la viruta pura de acero. La presencia de aceites, lubricantes o contaminantes también reduce el valor.
                   </p>
                 </div>
                 
                 <div className={styles.priceFactor}>
-                  <h4>📦 Densidad y Compactación</h4>
+                  <h4><Package size={16} /> Densidad y Compactación</h4>
                   <p>
                     La viruta suelta ocupa mucho espacio, encareciendo el transporte. La viruta compactada en briquetas o fardos obtiene mejor precio.
                   </p>
@@ -200,7 +204,7 @@ export default function VirutaPage() {
               </div>
               
               <div className="fact-box">
-                <div className="fact-icon">💡</div>
+                <div className="fact-icon"><Lightbulb size={24} /></div>
                 <div className="fact-content">
                   <h4>Consejo para talleres</h4>
                   <p>
@@ -231,13 +235,13 @@ export default function VirutaPage() {
             <div className={styles.ctaContent}>
               <h3>¿Tienes viruta metálica para vender?</h3>
               <p>Evaluamos la composición de tu viruta para ofrecerte el mejor precio según el tipo de metal.</p>
-              <PrimaryButton 
-                href="https://wa.me/56912345678?text=Hola,%20tengo%20viruta%20metálica%20para%20vender"
+              <SecondaryButton 
+                href={CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.materialInquiry('viruta metálica'))}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Cotizar por WhatsApp
-              </PrimaryButton>
+              </SecondaryButton>
             </div>
           </section>
         </div>

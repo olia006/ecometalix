@@ -1,0 +1,40 @@
+/* ==============================
+   DesktopNavInfo.module.css
+   Desktop navigation info component
+   ============================== */
+
+.infoContainer {
+  display: flex;
+  align-items: center;
+  padding: var(--space-xs) var(--space-md);
+  background: transparent;
+  border: none;
+  border-radius: var(--border-radius-lg);
+  transition: all 0.3s ease;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+
+
+
+
+/* Dark theme adjustments */
+:global(html[data-theme="dark"]) .infoContainer {
+  background: transparent;
+  border: none;
+}
+
+/* Hide on mobile and smaller screens to prevent overlap with FloatingInfo */
+@media (max-width: 900px) {
+  .infoContainer {
+    display: none;
+  }
+} 

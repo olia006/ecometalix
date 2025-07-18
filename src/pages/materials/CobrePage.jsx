@@ -4,10 +4,11 @@ import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
 import SectionHeader from "../../components/SectionHeader";
-import PrimaryButton from "../../components/PrimaryButton";
+import SecondaryButton from "../../components/SecondaryButton";
 import styles from "./MaterialPage.module.css";
-import cobreImg from "../../assets/images/materials/cobre.jpg";
+// Image will be referenced directly as string path
 import { getPriceById } from "../../data/prices";
+import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 
 export default function CobrePage() {
   return (
@@ -54,7 +55,7 @@ export default function CobrePage() {
         materialKey="cobre"
         name="Cobre"
         subtitle="El metal rojizo de alta conductividad y valor excepcional"
-        image={cobreImg}
+                  image="/images/materials/cobre.jpg"
         tags={["No ferroso", "Alta demanda", "Aceptado"]}
         stats={[
           { value: getPriceById("cobre")?.display || "$4.300", label: "Precio por kg" },
@@ -185,13 +186,13 @@ export default function CobrePage() {
             <div className={styles.ctaContent}>
               <h3>¿Tienes cobre para vender?</h3>
               <p>Obtén el mejor precio por tu chatarra de cobre. Pesaje certificado y pago inmediato.</p>
-              <PrimaryButton 
-                href="https://wa.me/56912345678?text=Hola,%20tengo%20cobre%20para%20vender"
+              <SecondaryButton 
+                href={CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.materialInquiry('cobre'))}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Cotizar por WhatsApp
-              </PrimaryButton>
+              </SecondaryButton>
             </div>
           </section>
         </div>

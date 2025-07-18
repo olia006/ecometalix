@@ -4,7 +4,7 @@
   "description": "Compra y reciclaje de chatarra y metales en Santiago — pesaje certificado, atención personalizada y cotización por WhatsApp.",
   "start_url": "/",
   "background_color": "#F7F7F7",
-  "theme_color": "#41818E",
+  "theme_color": "#639283",
   "display": "standalone",
   "orientation": "portrait",
   "categories": ["business", "shopping"],

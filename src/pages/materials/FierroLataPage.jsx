@@ -1,13 +1,15 @@
 import React from "react";
+import { Wrench, Package, Lightbulb } from "lucide-react";
 import Seo from "../../components/seo/Seo";
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
 import SectionHeader from "../../components/SectionHeader";
-import PrimaryButton from "../../components/PrimaryButton";
+import SecondaryButton from "../../components/SecondaryButton";
 import styles from "./MaterialPage.module.css";
-import fierroLataImg from "../../assets/images/materials/FierroLata.jpg";
+// Image will be referenced directly as string path
 import { getPriceById } from "../../data/prices";
+import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 
 export default function FierroLataPage() {
   // FAQ structured data for SEO
@@ -58,7 +60,7 @@ export default function FierroLataPage() {
         materialKey="fierro-lata"
         name="Fierro Lata"
         subtitle="Chatarra liviana y versátil de uso cotidiano"
-        image={fierroLataImg}
+                  image="/images/materials/FierroLata.jpg"
         tags={["Ferroso", "Común", "Aceptado"]}
         stats={[
           { value: getPriceById("fierro-lata")?.display || "$220", label: "Precio por kg" },
@@ -179,14 +181,14 @@ export default function FierroLataPage() {
                 </div>
                 
                 <div className={styles.priceFactor}>
-                  <h4>🔧 Procesamiento Adicional</h4>
+                  <h4><Wrench size={16} /> Procesamiento Adicional</h4>
                   <p>
                     Requiere pasos extra como limpieza de pintura, óxido o galvanizado. Estos procesos adicionales reducen la eficiencia operativa y se reflejan en el precio final.
                   </p>
                 </div>
                 
                 <div className={styles.priceFactor}>
-                  <h4>📦 Compactación Necesaria</h4>
+                  <h4><Package size={16} /> Compactación Necesaria</h4>
                   <p>
                     Su forma plana requiere compactación para optimizar el transporte. Este proceso adicional genera costos que se descuentan del precio de compra.
                   </p>
@@ -201,7 +203,7 @@ export default function FierroLataPage() {
               </div>
               
               <div className="fact-box">
-                <div className="fact-icon">💡</div>
+                <div className="fact-icon"><Lightbulb size={24} /></div>
                 <div className="fact-content">
                   <h4>Consejo para vendedores</h4>
                   <p>
@@ -231,13 +233,13 @@ export default function FierroLataPage() {
             <div className={styles.ctaContent}>
               <h3>¿Tienes fierro lata para vender?</h3>
               <p>Aceptamos fierro lata en cualquier condición. Pesaje justo y pago inmediato.</p>
-              <PrimaryButton 
-                href="https://wa.me/56912345678?text=Hola,%20tengo%20fierro%20lata%20para%20vender"
+              <SecondaryButton 
+                href={CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.materialInquiry('fierro lata'))}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Cotizar por WhatsApp
-              </PrimaryButton>
+              </SecondaryButton>
             </div>
           </section>
         </div>

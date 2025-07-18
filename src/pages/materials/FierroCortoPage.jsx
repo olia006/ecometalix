@@ -1,14 +1,18 @@
 import React from "react";
+import { Settings, DollarSign } from "lucide-react";
 import Seo from "../../components/seo/Seo";
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
 import SectionHeader from "../../components/SectionHeader";
-import PrimaryButton from "../../components/PrimaryButton";
+import SecondaryButton from "../../components/SecondaryButton";
 import styles from "./MaterialPage.module.css";
-import fierroCortoImg from "../../assets/images/materials/FierroCorto.jpg";
+// Image will be referenced directly as string path
+import { getPriceById } from "../../data/prices";
+import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 
 export default function FierroCortoPage() {
+  const fierroCortoImg = "/images/materials/FierroCorto.jpg";
   // FAQ structured data for SEO
   const faqStructuredData = {
     "@context": "https://schema.org",
@@ -60,8 +64,8 @@ export default function FierroCortoPage() {
         image={fierroCortoImg}
         tags={["Ferroso", "Compacto", "Aceptado"]}
         stats={[
+          { value: getPriceById("fierro-corto")?.display || "$230", label: "Precio por kg" },
           { value: "<1m", label: "Longitud máx." },
-          { value: "$100", label: "Tornillo titanio" },
           { value: "75%", label: "Ahorro energía" }
         ]}
       />
@@ -178,7 +182,7 @@ export default function FierroCortoPage() {
                 </div>
                 
                 <div className={styles.priceFactor}>
-                  <h4>⚙️ Procesamiento Directo</h4>
+                  <h4><Settings size={16} /> Procesamiento Directo</h4>
                   <p>
                     Su tamaño y forma permiten alimentar directamente hornos de fundición sin necesidad de compactación previa, ahorrando tiempo y costos de procesamiento.
                   </p>
@@ -193,7 +197,7 @@ export default function FierroCortoPage() {
               </div>
               
               <div className="fact-box">
-                <div className="fact-icon">💰</div>
+                <div className="fact-icon"><DollarSign size={24} /></div>
                 <div className="fact-content">
                   <h4>Consejo para maximizar valor</h4>
                   <p>
@@ -223,13 +227,13 @@ export default function FierroCortoPage() {
             <div className={styles.ctaContent}>
               <h3>¿Tienes fierro corto para vender?</h3>
               <p>Aceptamos piezas pequeñas de fierro y acero. Cada kilogramo cuenta.</p>
-              <PrimaryButton 
-                href="https://wa.me/56912345678?text=Hola,%20tengo%20fierro%20corto%20para%20vender"
+              <SecondaryButton 
+                href={CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.materialInquiry('fierro corto'))}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Cotizar por WhatsApp
-              </PrimaryButton>
+              </SecondaryButton>
             </div>
           </section>
         </div>

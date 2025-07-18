@@ -4,10 +4,11 @@ import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
 import SectionHeader from "../../components/SectionHeader";
-import PrimaryButton from "../../components/PrimaryButton";
+import SecondaryButton from "../../components/SecondaryButton";
 import styles from "./MaterialPage.module.css";
-import aluminioImg from "../../assets/images/materials/aluminium.jpg";
+// Image will be referenced directly as string path
 import { getPriceById } from "../../data/prices";
+import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 
 export default function AluminiumPage() {
   return (
@@ -54,7 +55,7 @@ export default function AluminiumPage() {
         materialKey="aluminio"
         name="Aluminio"
         subtitle="El metal ligero que revolucionó la industria moderna"
-        image={aluminioImg}
+                  image="/images/materials/aluminium.jpg"
         tags={["No ferroso", "Ligero", "Aceptado"]}
         stats={[
           { value: getPriceById("aluminio")?.display || "$1.350", label: "Precio por kg" },
@@ -177,13 +178,13 @@ export default function AluminiumPage() {
             <div className={styles.ctaContent}>
               <h3>¿Tienes aluminio para vender?</h3>
               <p>El aluminio limpio y sin mezclas obtiene el mejor precio. Evaluamos tu material al momento.</p>
-              <PrimaryButton 
-                href="https://wa.me/56912345678?text=Hola,%20tengo%20aluminio%20para%20vender"
+              <SecondaryButton 
+                href={CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.materialInquiry('aluminio'))}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Cotizar por WhatsApp
-              </PrimaryButton>
+              </SecondaryButton>
             </div>
           </section>
         </div>

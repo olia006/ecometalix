@@ -2,6 +2,24 @@
    SecondaryButton.module.css
    ============================== */
 
+/* Remove link styling when SecondaryButton is wrapped in <a> tag */
+.buttonLink {
+  text-decoration: none !important;
+  color: inherit !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.buttonLink:hover,
+.buttonLink:focus,
+.buttonLink:active,
+.buttonLink:visited {
+  text-decoration: none !important;
+  color: inherit !important;
+  border: none !important;
+  outline: none !important;
+}
+
    @property --angle-1 {
     syntax: "<angle>";
     inherits: false;
@@ -13,11 +31,7 @@
     initial-value: -45deg;
   }
   
-  :root {
-    --global--size: clamp(2rem, 4vw, 5rem);
-    --anim--hover-time: 400ms;
-    --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
-  }
+  /* CSS custom properties moved to global.css */
   
   /* ========== BUTTON ========== */
   
@@ -31,7 +45,7 @@
   }
   
   .buttonShadow {
-    --shadowCutoffFix: 2em;
+    --shadowCutoffFix: 0.5em;
     position: absolute;
     width: calc(100% + var(--shadowCutoffFix));
     height: calc(100% + var(--shadowCutoffFix));
@@ -48,11 +62,11 @@
     inset: 0;
     border-radius: 999vw;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
-    width: calc(100% - var(--shadowCutoffFix) - 0.25em);
-    height: calc(100% - var(--shadowCutoffFix) - 0.25em);
-    top: calc(var(--shadowCutoffFix) - 0.5em);
-    left: calc(var(--shadowCutoffFix) - 0.875em);
-    padding: 0.125em;
+      width: calc(100% - var(--shadowCutoffFix));
+  height: calc(100% - var(--shadowCutoffFix));
+  top: calc(var(--shadowCutoffFix) / 2);
+  left: calc(var(--shadowCutoffFix) / 2);
+  padding: 0;
     box-sizing: border-box;
     mask:
       linear-gradient(#000 0 0) content-box,
@@ -75,9 +89,9 @@
     z-index: 3;
     background: linear-gradient(
       -75deg,
-      rgba(255, 255, 255, 0.05),
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.05)
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.25)
     );
     border-radius: 999vw;
     box-shadow:
@@ -110,13 +124,16 @@
   /* Button Text */
   .btnText {
     position: relative;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
     user-select: none;
     font-family: "Inter", sans-serif;
     letter-spacing: -0.05em;
     font-weight: 500;
     font-size: 1em;
-    color: rgba(50, 50, 50, 1);
+    color: var(--color-black);
     text-shadow: 0em 0.25em 0.05em rgba(0, 0, 0, 0.1);
     transition: all var(--anim--hover-time) var(--anim--hover-ease);
     padding-inline: 1.5em;
@@ -206,7 +223,7 @@
     transition: filter var(--anim--hover-time) var(--anim--hover-ease);
   }
   .buttonWrap:has(.btn:hover) .buttonShadow::after {
-    top: calc(var(--shadowCutoffFix) - 0.875em);
+    top: calc(var(--shadowCutoffFix) / 4);
     opacity: 1;
   }
   
@@ -228,7 +245,7 @@
     filter: blur(clamp(2px, 0.125em, 12px));
   }
   .buttonWrap:has(.btn:active) .buttonShadow::after {
-    top: calc(var(--shadowCutoffFix) - 0.5em);
+    top: calc(var(--shadowCutoffFix) / 3);
     opacity: 0.75;
   }
   .buttonWrap:has(.btn:active) .btnText {

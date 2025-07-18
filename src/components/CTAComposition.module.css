@@ -74,4 +74,22 @@
       gap: var(--space-sm, 0.75rem);
     }
   }
+
+/* Remove link styling for button links */
+.buttonLink {
+  text-decoration: none !important;
+  color: inherit !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.buttonLink:hover,
+.buttonLink:focus,
+.buttonLink:active,
+.buttonLink:visited {
+  text-decoration: none !important;
+  color: inherit !important;
+  border: none !important;
+  outline: none !important;
+}
   

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Settings, Wrench } from "lucide-react";
 import Breadcrumb from "./Breadcrumb";
 import OptimizedImage from "./OptimizedImage";
 import styles from "./MaterialHero.module.css";
@@ -97,7 +98,7 @@ export default function MaterialHero({
             ) : (
               <div className={styles.placeholder}>
                 <div className={styles.placeholderIcon}>
-                  {materialKey === 'fierro-mixto' ? '⚙️' : '🔧'}
+                  {materialKey === 'fierro-mixto' ? <Settings size={48} /> : <Wrench size={48} />}
                 </div>
                 <span>Imagen próximamente</span>
               </div>

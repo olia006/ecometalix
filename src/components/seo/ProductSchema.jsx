@@ -1,7 +1,7 @@
 import React from 'react';
 import StructuredData from './StructuredData';
+import { SEO_CONFIG } from '../../config/constants';
 
-// eslint-disable-next-line react/prop-types
 export default function ProductSchema({ materials = [] }) {
   // Generate product schema for each metal type
   const productSchemas = materials.map(material => ({
@@ -23,7 +23,7 @@ export default function ProductSchema({ materials = [] }) {
       "seller": {
         "@type": "LocalBusiness",
         "name": "Ecometalix Spa",
-        "url": "https://ecometalix.cl"
+        "url": SEO_CONFIG.baseUrl
       },
       "priceSpecification": {
         "@type": "PriceSpecification",
@@ -44,8 +44,8 @@ export default function ProductSchema({ materials = [] }) {
         "value": material.tags.includes("Aceptado") ? "Accepted" : "Contact for Details"
       }
     ],
-    "url": `https://ecometalix.cl${material.articleLink}`,
-    "image": material.image ? `https://ecometalix.cl${material.image}` : null
+    "url": `${SEO_CONFIG.baseUrl}${material.articleLink}`,
+    "image": material.image ? `${SEO_CONFIG.baseUrl}${material.image}` : null
   }));
 
   // Create a collection schema that includes all products
@@ -62,7 +62,7 @@ export default function ProductSchema({ materials = [] }) {
         "@type": "Product",
         "name": material.name,
         "description": material.description,
-        "url": `https://ecometalix.cl${material.articleLink}`
+        "url": `${SEO_CONFIG.baseUrl}${material.articleLink}`
       }
     }))
   };

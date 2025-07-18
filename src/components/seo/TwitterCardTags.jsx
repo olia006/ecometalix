@@ -1,6 +1,6 @@
 // src/components/SEO/TwitterCardTags.jsx
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import Head from 'next/head';
 
 const TwitterCardTags = ({
   title,
@@ -10,13 +10,13 @@ const TwitterCardTags = ({
   cardType = 'summary_large_image',
 }) => {
   return (
-    <Helmet>
+    <Head>
       <meta name="twitter:card" content={cardType} />
       <meta name="twitter:site" content={site} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-    </Helmet>
+    </Head>
   );
 };
 

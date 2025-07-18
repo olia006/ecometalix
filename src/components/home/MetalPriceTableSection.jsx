@@ -1,76 +1,235 @@
 import React from "react";
+import { Package, TrendingUp, Clock } from "lucide-react";
 import styles from "./MetalPriceTableSection.module.css";
-import { FaWhatsapp } from "react-icons/fa";
+import WhatsAppIcon from "../WhatsAppIcon";
+import SecondaryButton from "../SecondaryButton";
 import { metalPrices, lastUpdated } from "../../data/prices";
+import { materials } from "../../data/materials";
+import OptimizedImage from "../OptimizedImage";
 
-// Convert centralized prices to display format
-const prices = metalPrices.map(item => ({
-  metal: item.metal,
-  price: item.display
-}));
+// Create a mapping function to get material images by price ID
+const getMaterialImage = (priceId) => {
+  const material = materials.find(m => m.key === priceId);
+  return material ? material.image : null;
+};
 
-export default function MetalPriceTableSection() {
-  return (
-    <section className={styles.priceTableSection} aria-label="Precios actualizados de metales">
-      <h2 className={styles.heading}>Precios de Compra de Metales</h2>
-      <p className={styles.lastUpdated}>
-        <strong>Actualizado:</strong> {lastUpdated}
-      </p>
+// Organize prices by category for better presentation
+const organizeByCategory = () => {
+  const ferrous = [];
+  const nonFerrous = [];
+  const special = [];
 
-      {/* Optional ErrorMessage for future use */}
-      {/* <ErrorMessage message="No se pudieron cargar los precios." /> */}
+  metalPrices.forEach(item => {
+    const material = {
+      metal: item.metal,
+      price: item.display,
+      rawPrice: item.price,
+      image: getMaterialImage(item.id),
+      id: item.id,
+      category: item.category,
+      description: item.description
+    };
 
-      <div className={styles.tableWrap}>
-        <table className={styles.priceTable}>
-          <thead>
-            <tr>
-              <th>Metal / Tipo</th>
-              <th>Precio</th>
-            </tr>
-          </thead>
-          <tbody>
-            {prices.map(({ metal, price }) => (
-              <tr key={metal}>
-                <td>{metal}</td>
-                <td>
-                  {price.toLowerCase().includes("consultar") ? (
-                    <>
-                      <span className={styles.consultar}>Consultar</span>
-                      <a
-                        href="https://wa.me/56940244042"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.whatsappBtn}
-                        title="Consultar por WhatsApp"
-                      >
-                        <FaWhatsapp /> WhatsApp
-                      </a>
-                    </>
-                  ) : (
-                    price
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    switch(item.category) {
+      case 'ferroso':
+        ferrous.push(material);
+        break;
+      case 'no-ferroso':
+        nonFerrous.push(material);
+        break;
+      default:
+        special.push(material);
+    }
+  });
+
+  return { ferrous, nonFerrous, special };
+};
+
+const PriceTableRow = ({ material, isHighValue = false }) => (
+  <tr className={`${styles.tableRow} ${isHighValue ? styles.highValueRow : ''}`}>
+    <td className={styles.materialCell}>
+      <div className={styles.materialInfo}>
+        {material.image ? (
+          <div className={styles.imageContainer}>
+            <OptimizedImage 
+              src={material.image} 
+              alt={material.metal}
+              className={styles.tableImage}
+            />
+          </div>
+        ) : (
+          <div className={styles.imagePlaceholder}>
+            <Package className={styles.placeholderIcon} size={20} />
+          </div>
+        )}
+        <div className={styles.materialDetails}>
+          <h3 className={styles.materialName}>{material.metal}</h3>
+          {material.description && (
+            <p className={styles.materialDescription}>{material.description}</p>
+          )}
+        </div>
       </div>
-
-      <div className={styles.ctaInfo}>
-        <p>
-          ¿Tienes grandes volúmenes o materiales especiales?{" "}
-          <a
+    </td>
+    <td className={styles.priceCell}>
+      {material.price.toLowerCase().includes("consultar") ? (
+        <div className={styles.consultarWrapper}>
+          <span className={styles.consultarText}>Precio bajo consulta</span>
+          <a 
             href="https://wa.me/56940244042"
-            className={styles.whatsappCta}
             target="_blank"
             rel="noopener noreferrer"
+            className={styles.buttonLink}
           >
-            <FaWhatsapp /> Cotiza tu precio real por WhatsApp
+            <SecondaryButton>
+              <WhatsAppIcon /> Consultar
+            </SecondaryButton>
           </a>
-        </p>
-        <p className={styles.nota}>
-          <em>Los precios son referenciales y pueden variar según el mercado y cantidad. Recomendamos cotizar antes de tu visita.</em>
-        </p>
+        </div>
+      ) : (
+        <div className={styles.priceWrapper}>
+          <span className={styles.priceValue}>{material.price}</span>
+          {isHighValue && <TrendingUp className={styles.highValueIcon} size={16} />}
+        </div>
+      )}
+    </td>
+  </tr>
+);
+
+export default function MetalPriceTableSection() {
+  const { ferrous, nonFerrous, special } = organizeByCategory();
+  
+  // High value materials (above $1000/kg)
+  const highValueMaterials = [...nonFerrous, ...ferrous, ...special].filter(
+    material => material.rawPrice && material.rawPrice > 1000
+  );
+
+  return (
+    <section className={styles.priceTableSection} aria-label="Precios actualizados de metales">
+      {/* Header Section */}
+      <div className={styles.header}>
+        <div className={styles.titleGroup}>
+          <h2 className={styles.heading}>
+            <TrendingUp className={styles.headingIcon} />
+            Precios de Compra Actualizados
+          </h2>
+          <p className={styles.subtitle}>
+            Consulta nuestros precios competitivos para todos los tipos de metales y chatarra
+          </p>
+        </div>
+        <div className={styles.updateInfo}>
+          <Clock className={styles.clockIcon} size={16} />
+          <span className={styles.lastUpdated}>
+            Actualizado: <strong>{lastUpdated}</strong>
+          </span>
+        </div>
+      </div>
+
+      {/* Non-Ferrous Metals (High Value) */}
+      {nonFerrous.length > 0 && (
+        <div className={styles.categorySection}>
+          <h3 className={styles.categoryTitle}>Metales No Ferrosos</h3>
+          <div className={styles.tableContainer}>
+            <table className={styles.priceTable}>
+              <thead>
+                <tr>
+                  <th className={styles.materialHeader}>Material</th>
+                  <th className={styles.priceHeader}>Precio por Kilogramo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {nonFerrous.map((material) => (
+                  <PriceTableRow 
+                    key={material.id} 
+                    material={material} 
+                    isHighValue={material.rawPrice > 1000}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Ferrous Metals */}
+      {ferrous.length > 0 && (
+        <div className={styles.categorySection}>
+          <h3 className={styles.categoryTitle}>Metales Ferrosos</h3>
+          <div className={styles.tableContainer}>
+            <table className={styles.priceTable}>
+              <thead>
+                <tr>
+                  <th className={styles.materialHeader}>Material</th>
+                  <th className={styles.priceHeader}>Precio por Kilogramo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ferrous.map((material) => (
+                  <PriceTableRow key={material.id} material={material} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Special Materials */}
+      {special.length > 0 && (
+        <div className={styles.categorySection}>
+          <h3 className={styles.categoryTitle}>Materiales Especiales</h3>
+          <div className={styles.tableContainer}>
+            <table className={styles.priceTable}>
+              <thead>
+                <tr>
+                  <th className={styles.materialHeader}>Material</th>
+                  <th className={styles.priceHeader}>Precio por Kilogramo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {special.map((material) => (
+                  <PriceTableRow key={material.id} material={material} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Call to Action Section */}
+      <div className={styles.ctaSection}>
+        <div className={styles.ctaContent}>
+          <h3 className={styles.ctaTitle}>¿Necesitas una cotización personalizada?</h3>
+          <p className={styles.ctaDescription}>
+            Para grandes volúmenes, materiales especiales o cotizaciones empresariales, 
+            contáctanos directamente y obten el mejor precio del mercado.
+          </p>
+          <a
+            href="https://wa.me/56940244042"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.buttonLink}
+          >
+            <SecondaryButton>
+              <WhatsAppIcon /> Solicitar Cotización Personalizada
+            </SecondaryButton>
+          </a>
+        </div>
+        
+        <div className={styles.disclaimer}>
+          <div className={styles.legalInfo}>
+            <p className={styles.disclaimerText}>
+              *Precios referenciales. Pueden variar según el mercado y el estado del material.
+            </p>
+            <p className={styles.disclaimerText}>
+              Pago inmediato sujeto a verificación y condiciones legales.
+            </p>
+            <p className={styles.disclaimerText}>
+              Empresa autorizada por el Ministerio del Medio Ambiente.
+            </p>
+            <p className={styles.disclaimerText}>
+              Consulta nuestra <a href="/privacy" className={styles.privacyLink}>Política de Privacidad</a>.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

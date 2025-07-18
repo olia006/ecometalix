@@ -1,11 +1,14 @@
 import React from "react";
+import { Search } from "lucide-react";
 import Seo from "../../components/seo/Seo";
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
 import SectionHeader from "../../components/SectionHeader";
-import PrimaryButton from "../../components/PrimaryButton";
+import SecondaryButton from "../../components/SecondaryButton";
 import styles from "./MaterialPage.module.css";
+import { getPriceById } from "../../data/prices";
+import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 
 export default function FierroMixtoPage() {
   return (
@@ -25,6 +28,7 @@ export default function FierroMixtoPage() {
         image={null}
         tags={["Ferroso", "Mixto", "Variable"]}
         stats={[
+          { value: getPriceById("fierro-mixto")?.display || "$215", label: "Precio por kg" },
           { value: "100+", label: "Tipos detectables" },
           { value: "0.1%", label: "Precisión separación" },
           { value: "Variable", label: "Composición" }
@@ -88,14 +92,14 @@ export default function FierroMixtoPage() {
               subtitle="¿Sabías que...?"
             />
             <div className="fact-box">
-              <div className="fact-icon">🔍</div>
+              <div className="fact-icon"><Search size={24} /></div>
               <div className="fact-content">
                 <h4>Los imanes pueden separar más de 100 tipos diferentes de metales</h4>
                 <p>
                   Las plantas de reciclaje modernas usan separadores magnéticos tan sofisticados 
                   que pueden distinguir entre más de 100 tipos diferentes de aleaciones férreas. 
                   Algunos imanes son tan potentes que pueden separar metales que difieren en solo 
-                  0.1% en su composición. El fierro mixto que parece "basura" para el ojo humano 
+                  0.1% en su composición. El fierro mixto que parece &ldquo;basura&rdquo; para el ojo humano 
                   puede ser separado en docenas de categorías diferentes, cada una con su propio 
                   valor de mercado.
                 </p>
@@ -107,13 +111,13 @@ export default function FierroMixtoPage() {
             <div className={styles.ctaContent}>
               <h3>¿Tienes fierro mixto para vender?</h3>
               <p>Analizamos tu material para determinar la mejor categorización y precio. Consulta condiciones especiales.</p>
-              <PrimaryButton 
-                href="https://wa.me/56912345678?text=Hola,%20tengo%20fierro%20mixto%20para%20vender"
+              <SecondaryButton 
+                href={CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.materialInquiry('fierro mixto'))}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Cotizar por WhatsApp
-              </PrimaryButton>
+              </SecondaryButton>
             </div>
           </section>
         </div>

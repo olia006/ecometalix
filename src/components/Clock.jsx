@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./Clock.module.css";
-import { FaClock, FaMapMarkerAlt } from "react-icons/fa";
+import { Clock as ClockIcon, MapPin } from "lucide-react";
 
 export default function Clock({ variant = "default" }) {
   const [now, setNow] = useState(new Date());
@@ -46,24 +46,29 @@ export default function Clock({ variant = "default" }) {
   if (variant === "minimal") {
     return (
       <div className={styles.minimal}>
-        <span className={styles.location}>
-          <FaMapMarkerAlt className={styles.locationIcon} />
-          Santiago, Chile
-        </span>
-        <span className={styles.time}>{timeStr}</span>
-        <span className={openNow ? styles.open : styles.closed}>
-          {openNow ? "Abierto" : "Cerrado"}
-        </span>
+        <div className={styles.locationTimeLine}>
+          <span className={styles.location}>
+            Stgo., Chile
+          </span>
+          <span className={styles.time}>
+            {timeStr}
+          </span>
+        </div>
+        <div className={styles.statusLine}>
+          <span className={openNow ? styles.open : styles.closed}>
+            {openNow ? "ABIERTO" : "CERRADO"}
+          </span>
+        </div>
       </div>
     );
   }
 
   return (
     <div className={styles.clockWrap}>
-      <FaClock className={styles.icon} />
+                <ClockIcon className={styles.icon} />
       <div className={styles.timeDisplay}>
         <span className={styles.timeLabel}>
-          <FaMapMarkerAlt className={styles.locationIcon} />
+          <MapPin className={styles.locationIcon} />
           Santiago, Chile
         </span>
         <span className={styles.timeValue}>{timeStr}</span>

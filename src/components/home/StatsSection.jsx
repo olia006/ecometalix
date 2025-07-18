@@ -1,25 +1,26 @@
 // src/components/home/StatsSection.jsx
 import React from "react";
 import styles from "./StatsSection.module.css";
-import { FaCheckCircle } from "react-icons/fa";
+import { CheckCircle } from "lucide-react";
+import { CONTACT_URLS, BUSINESS_INFO } from "../../config/constants";
 
 const statsData = [
   {
-    icon: <FaCheckCircle className={styles.checkIcon} aria-hidden="true" />,
+    icon: <CheckCircle className={styles.checkIcon} aria-hidden="true" />,
     text: "Atención personalizada, sin burocracia",
     schemaProperty: "serviceType"
   },
   {
-    icon: <FaCheckCircle className={styles.checkIcon} aria-hidden="true" />,
+    icon: <CheckCircle className={styles.checkIcon} aria-hidden="true" />,
     text: "Opiniones 100% reales en Google",
     schemaProperty: "aggregateRating",
-    link: "https://www.google.com/maps/place/EcoMetalix/"
+    link: "https://www.google.com/maps/place/EcoMetalix/@-33.3120766,-70.7984129,17z/data=!4m8!3m7!1s0x9662bf78657b6e2f:0x692dfae6ce3b688d!8m2!3d-33.3120766!4d-70.798438!9m1!1b1!16s%2Fg%2F11q3j6y6yt?hl=es&lsig=AB86z5WqhT9gKgR0R5oOJMC_W0dj#lrd=0x9662bf78657b6e2f:0x692dfae6ce3b688d,1"
   },
   {
-    icon: <FaCheckCircle className={styles.checkIcon} aria-hidden="true" />,
+    icon: <CheckCircle className={styles.checkIcon} aria-hidden="true" />,
     text: "cotizar por whatsapp",
     schemaProperty: "contactPoint",
-    link: "https://wa.me/56912345678"
+    link: CONTACT_URLS.whatsapp
   }
 ];
 
@@ -79,7 +80,7 @@ export default function StatsSection() {
             "serviceType": "Scrap Metal Buying and Selling",
             "contactPoint": {
               "@type": "ContactPoint",
-              "telephone": "+56912345678",
+              "telephone": `+${BUSINESS_INFO.phone}`,
               "contactType": "customer service",
               "availableLanguage": "Spanish"
             },

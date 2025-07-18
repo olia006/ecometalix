@@ -1,39 +1,147 @@
+/* ===============================================
+   Professional Price Table Section
+   =============================================== */
+
 .priceTableSection {
-  padding: var(--space-xl) 0;
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  margin: var(--space-lg) auto;
-  max-width: 900px;
-  text-align: center;
+  padding: var(--space-xxl) 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.04) 100%);
+  border-radius: var(--radius-xl);
+  margin: var(--space-xl) auto;
+  max-width: 1200px;
   position: relative;
+  overflow: hidden;
+}
+
+.priceTableSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    transparent 0%, 
+    rgba(var(--success-rgb), 0.03) 50%, 
+    transparent 100%);
+  pointer-events: none;
+}
+
+/* ===============================================
+   Header Section
+   =============================================== */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-xl);
+  padding: 0 var(--space-lg);
+  gap: var(--space-lg);
+}
+
+.titleGroup {
+  flex: 1;
 }
 
 .heading {
-  font-size: var(--font-size-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-xxl);
   font-family: var(--font-heading);
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
-  margin-bottom: var(--space-md);
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.02em;
+}
+
+.headingIcon {
+  color: var(--color-accent);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+.updateInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--glass-light);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+}
+
+.clockIcon {
+  color: var(--color-accent);
 }
 
 .lastUpdated {
-  font-size: var(--font-size-xs);
-  color: var(--color-success);
-  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  white-space: nowrap;
 }
 
-.tableWrap {
-  background: rgba(255, 255, 255, 0.18);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
-  overflow-x: auto;
-  padding: var(--space-md) 0;
-  margin-bottom: var(--space-lg);
+/* ===============================================
+   Category Sections
+   =============================================== */
+
+.categorySection {
+  margin-bottom: var(--space-xl);
+  padding: 0 var(--space-lg);
 }
+
+.categoryTitle {
+  font-size: var(--font-size-xl);
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-lg);
+  padding-left: var(--space-md);
+  border-left: 4px solid var(--color-primary);
+  letter-spacing: -0.01em;
+}
+
+.tableContainer {
+  background: var(--glass-heavy);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 
+    var(--shadow-lg),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.tableContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255,255,255,0.2) 50%, 
+    transparent 100%);
+}
+
+/* ===============================================
+   Table Styling
+   =============================================== */
 
 .priceTable {
   width: 100%;
@@ -41,98 +149,438 @@
   border-spacing: 0;
   background: none;
   font-family: var(--font-body);
-  color: var(--color-text);
 }
 
-.priceTable th,
-.priceTable td {
-  padding: var(--space-md) var(--space-lg);
-  text-align: left;
-  font-size: var(--font-size-base);
-  border-bottom: 1px solid var(--color-surface);
-  background: transparent;
+.priceTable thead tr {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.15) 0%, 
+    rgba(255, 255, 255, 0.08) 100%);
 }
 
-.priceTable th {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--color-primary);
+.materialHeader,
+.priceHeader {
+  padding: var(--space-lg) var(--space-xl);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  letter-spacing: 0.05em;
+  text-align: left;
+  border-bottom: 2px solid rgba(var(--success-rgb), 0.2);
+  position: relative;
 }
 
-.priceTable tr:last-child td {
+.priceHeader {
+  text-align: right;
+}
+
+/* ===============================================
+   Table Rows
+   =============================================== */
+
+.tableRow {
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tableRow:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tableRow:last-child {
   border-bottom: none;
 }
 
-.consultar {
-  color: var(--color-accent);
-  font-weight: var(--font-weight-semibold);
-  margin-right: var(--space-xs);
+.highValueRow {
+  background: linear-gradient(135deg, 
+    rgba(var(--success-rgb), 0.08) 0%, 
+    rgba(var(--success-rgb), 0.04) 100%);
+  border-left: 3px solid var(--color-accent);
 }
 
-.whatsappBtn {
-  display: inline-flex;
+.highValueRow:hover {
+  background: linear-gradient(135deg, 
+    rgba(var(--success-rgb), 0.12) 0%, 
+    rgba(var(--success-rgb), 0.08) 100%);
+}
+
+/* ===============================================
+   Table Cells
+   =============================================== */
+
+.materialCell {
+  padding: var(--space-lg) var(--space-xl);
+  width: 60%;
+}
+
+.priceCell {
+  padding: var(--space-lg) var(--space-xl);
+  text-align: right;
+  width: 40%;
+}
+
+/* ===============================================
+   Material Information
+   =============================================== */
+
+.materialInfo {
+  display: flex;
   align-items: center;
-      gap: var(--space-xs);
-  color: var(--color-success);
-  font-weight: var(--font-weight-semibold);
-  text-decoration: underline;
-  font-size: 1em;
-  transition: color 0.2s;
+  gap: var(--space-lg);
 }
 
-.whatsappBtn:hover,
-.whatsappBtn:focus {
-  color: var(--color-accent);
+.imageContainer {
+  position: relative;
+  flex-shrink: 0;
 }
 
-.ctaInfo {
-  text-align: center;
-  margin-top: var(--space-lg);
+.priceTable .tableImage {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: 
+    var(--shadow-md),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  top: auto;
+  left: auto;
+  max-width: 64px;
+  flex-shrink: 0;
+  display: block;
 }
 
-.whatsappCta {
-  display: inline-flex;
+.priceTable .tableImage img {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  top: auto;
+  left: auto;
+  max-width: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.tableRow:hover .tableImage {
+  transform: scale(1.05);
+  box-shadow: 
+    var(--shadow-lg),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.imagePlaceholder {
+  width: 64px;
+  height: 64px;
+  display: flex;
   align-items: center;
-      gap: var(--space-xs);
+  justify-content: center;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.05) 100%);
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.placeholderIcon {
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+.materialDetails {
+  flex: 1;
+  min-width: 0;
+}
+
+.materialName {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-xs);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.materialDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ===============================================
+   Price Display
+   =============================================== */
+
+.priceWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}
+
+.priceValue {
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.highValueIcon {
   color: var(--color-success);
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+}
+
+.consultarWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-sm);
+}
+
+.consultarText {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+/* ===============================================
+   Call to Action Section
+   =============================================== */
+
+.ctaSection {
+  margin-top: var(--space-xxl);
+  padding: var(--space-xl) var(--space-lg);
+  background: linear-gradient(135deg, 
+    rgba(var(--success-rgb), 0.08) 0%, 
+    rgba(var(--success-rgb), 0.04) 100%);
+  border: 1px solid rgba(var(--success-rgb), 0.2);
+  border-radius: var(--radius-xl);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255,255,255,0.3) 50%, 
+    transparent 100%);
+}
+
+.ctaContent {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.ctaTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.01em;
+}
+
+.ctaDescription {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.disclaimer {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legalInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.disclaimerText {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.disclaimerText:first-child {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  font-style: italic;
+}
+
+.privacyLink {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.2s ease;
+}
+
+.privacyLink:hover,
+.privacyLink:focus {
+  color: var(--color-accent);
   text-decoration: none;
 }
 
-.whatsappCta:hover,
-.whatsappCta:focus {
-  color: var(--color-accent);
-  text-decoration: underline;
+/* ===============================================
+   Button Link Styling
+   =============================================== */
+
+.buttonLink {
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
 }
 
-.nota {
-  color: var(--color-muted);
-  font-size: var(--font-size-sm);
-  margin-top: var(--space-md);
+.buttonLink:hover,
+.buttonLink:focus,
+.buttonLink:active,
+.buttonLink:visited {
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
 }
 
-/* Mobile Optimization */
-@media (max-width: var(--breakpoint-2xl)) {
+/* ===============================================
+   Responsive Design
+   =============================================== */
+
+@media (max-width: var(--breakpoint-xl)) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+  
+  .heading {
+    font-size: var(--font-size-xl);
+  }
+  
+  .subtitle {
+    font-size: var(--font-size-md);
+  }
+}
+
+@media (max-width: var(--breakpoint-lg)) {
   .priceTableSection {
-    padding: var(--space-lg) var(--space-sm);
+    padding: var(--space-xl) 0;
   }
-
-  .tableWrap {
-    padding: var(--space-sm) 0;
-    border-radius: var(--radius-md);
+  
+  .header,
+  .categorySection,
+  .ctaSection {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
   }
-
-  .priceTable th,
-  .priceTable td {
-    padding: var(--space-sm) var(--space-xs);
-    font-size: var(--font-size-sm);
+  
+  .materialHeader,
+  .priceHeader {
+    padding: var(--space-md) var(--space-lg);
+    font-size: var(--font-size-xs);
   }
+  
+  .materialCell,
+  .priceCell {
+    padding: var(--space-md) var(--space-lg);
+  }
+  
+  .materialInfo {
+    gap: var(--space-md);
+  }
+  
+  .priceTable .tableImage {
+    width: 48px;
+    height: 48px;
+    max-width: 48px;
+  }
+  
+  .priceTable .tableImage img {
+    width: 48px;
+    height: 48px;
+    max-width: 48px;
+  }
+  
+  .imagePlaceholder {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .materialName {
+    font-size: var(--font-size-base);
+  }
+  
+  .materialDescription {
+    font-size: var(--font-size-xs);
+  }
+  
+  .priceValue {
+    font-size: var(--font-size-lg);
+  }
+}
 
-  .whatsappBtn {
-    font-size: 0.95em;
+@media (max-width: var(--breakpoint-md)) {
+  .materialInfo {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-sm);
+  }
+  
+  .materialCell,
+  .priceCell {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: var(--space-lg);
+  }
+  
+  .priceHeader {
+    text-align: center;
+  }
+  
+  .priceWrapper,
+  .consultarWrapper {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .ctaDescription {
+    font-size: var(--font-size-base);
+  }
+  
+  .legalInfo {
+    gap: var(--space-xs);
+  }
+  
+  .disclaimerText {
+    font-size: var(--font-size-xs);
   }
 }

@@ -1,0 +1,127 @@
+/* ==============================
+   FloatingInfo.module.css
+   Mobile floating info panel - Brutalism style
+   ============================== */
+
+.floatingContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1500;
+  pointer-events: none;
+}
+
+.infoPanel {
+  background: var(--color-black);
+  border: none;
+  border-radius: 0;
+  padding: calc(var(--space-xs) * 0.5) var(--space-md);
+  transition: none;
+  pointer-events: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 0;
+  gap: 0;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Right-align clock content */
+.infoRow :global(.minimal) {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.logo {
+  height: var(--space-xl);
+  width: auto;
+  display: block;
+  object-fit: contain;
+  transition: none;
+  margin: 0;
+}
+
+
+
+
+
+
+
+/* Reset margins with higher specificity to ensure equal top/bottom spacing */
+.floatingContainer .infoPanel .infoRow > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.floatingContainer .infoPanel .infoRow :global(.minimal) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.floatingContainer .infoPanel .infoRow :global(.clockWrap) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Dark theme */
+:global(html[data-theme="dark"]) .infoPanel {
+  background: var(--color-background);
+}
+
+:global(html[data-theme="dark"]) .infoRow {
+  color: var(--color-white);
+}
+
+:global(html[data-theme="dark"]) .logo {
+  /* No filters - using original logo colors */
+}
+
+/* Hide on desktop - ensure no overlap with desktop navbar */
+@media (min-width: 901px) {
+  .floatingContainer {
+    display: none;
+  }
+}
+
+/* Hide during tablet-desktop transition to prevent overlap */
+@media (min-width: calc(var(--breakpoint-2xl) + 1px)) and (max-width: 900px) {
+  .floatingContainer {
+    display: none;
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: var(--breakpoint-md)) {
+  .infoPanel {
+    padding: calc(var(--space-xs) * 0.25) var(--space-sm);
+  }
+  
+  .infoRow {
+    font-size: var(--font-size-xs);
+    gap: var(--space-sm);
+  }
+  
+  .logo {
+    height: var(--space-md);
+  }
+} 

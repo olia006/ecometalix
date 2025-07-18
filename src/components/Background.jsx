@@ -1,6 +1,5 @@
 // src/components/Background.jsx
 import React from "react";
-import PropTypes from "prop-types";
 import styles from "./Background.module.css";
 
 /**
@@ -59,14 +58,5 @@ const Background = React.forwardRef(({
 });
 
 Background.displayName = 'Background';
-
-Background.propTypes = {
-  variant: PropTypes.oneOf(['default', 'hero', 'page', 'container', 'gradient', 'glass']),
-  gradientType: PropTypes.oneOf(['primary', 'primary-soft', 'secondary', 'accent', 'neutral']),
-  glassType: PropTypes.oneOf(['light', 'medium', 'heavy', 'hero']),
-  image: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.node
-};
 
 export default Background;

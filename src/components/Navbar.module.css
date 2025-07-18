@@ -5,27 +5,22 @@
   top: 0;
   width: 100%;
   z-index: var(--z-header);
-  background: var(--glass-heavy);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
+  background-color: var(--color-background);
   border-bottom: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 
+    0 -6px 25px rgba(0, 0, 0, 0.12),
+    0 15px 35px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   display: block; /* Show by default on desktop */
 }
 
-/* Light theme explicit background */
+/* Force dark background like mobile navbar in both themes */
 :global(html[data-theme="light"]) .header {
-  background: var(--glass-medium);
-  border-bottom: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-md);
+  background-color: var(--color-gray-800);
 }
 
-/* Dark theme explicit background */
 :global(html[data-theme="dark"]) .header {
-  background: var(--glass-medium);
-  border-bottom: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-lg);
+  background-color: var(--color-background);
 }
 
 .nav {
@@ -37,6 +32,28 @@
   height: 72px;
   padding: 0 var(--space-lg);
   position: relative;
+}
+
+/* Light text for dark navbar in both themes */
+:global(html[data-theme="light"]) .nav {
+  color: var(--color-white);
+}
+
+:global(html[data-theme="dark"]) .nav {
+  color: var(--color-text);
+}
+
+.centerGroup {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.rightGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
 }
 
 .nav::after {
@@ -59,17 +76,18 @@
 }
 
 .logo {
-  height: 56px; /* Increased back to original size */
+  height: var(--space-xxl);
   width: auto;
   display: block;
+  object-fit: contain;
   -webkit-user-select: none;
   user-select: none;
-  filter: drop-shadow(var(--shadow-sm));
+  filter: hue-rotate(-190deg) drop-shadow(var(--shadow-sm));
   transition: filter 0.2s ease;
 }
 
 .logo:hover {
-  filter: drop-shadow(var(--shadow-md));
+  filter: hue-rotate(-190deg) drop-shadow(var(--shadow-md));
 }
 
 .navLinks {
@@ -161,8 +179,8 @@
   outline-offset: 2px;
 }
 
-/* Hide desktop navbar on mobile and tablets */
-@media (max-width: 1024px) {
+/* Hide desktop navbar on phones only */
+@media (max-width: var(--breakpoint-2xl)) {
   .header, .nav {
     display: none !important;
   }

@@ -3,75 +3,106 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./PricesPreviewSection.module.css";
 import Background from "../Background";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
-  FaCoins,
-  FaCogs,
-  FaBolt,
-  FaFire,
-  FaWrench,
-  FaIndustry,
-  FaMemory,
-  FaQuestionCircle,
-} from "react-icons/fa";
+  Coins,
+  Settings,
+  Zap,
+  Flame,
+  Wrench,
+  Factory,
+  Cpu,
+  HelpCircle,
+} from "lucide-react";
+import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 import SectionHeader from "../SectionHeader";
+import SecondaryButton from "../SecondaryButton";
 import { metalPrices, lastUpdated } from "../../data/prices";
+import { materials, getMaterialByKey } from "../../data/materials";
+import OptimizedImage from "../OptimizedImage";
 
 const METAL_ICONS = {
-  cobre: <FaBolt />,
-  aluminio: <FaCogs />,
-  bronce: <FaCoins />,
-  "fierro-lata": <FaFire />,
-  "fierro-largo": <FaWrench />,
-  "fierro-corto": <FaFire />,
-  "fierro-mixto": <FaIndustry />,
-  electrico: <FaMemory />,
-  grandes: <FaIndustry />,
-  otros: <FaQuestionCircle />,
+  cobre: <Zap />,
+  aluminio: <Settings />,
+  bronce: <Coins />,
+  "fierro-lata": <Flame />,
+  "fierro-largo": <Wrench />,
+  "fierro-corto": <Flame />,
+  "fierro-mixto": <Factory />,
+  electrico: <Cpu />,
+  grandes: <Factory />,
+  otros: <HelpCircle />,
+};
+
+// Create a mapping function to get material images by price ID
+const getMaterialImage = (priceId) => {
+  const material = materials.find(m => m.key === priceId);
+  return material ? material.image : null;
 };
 
 const PricesPreviewSection = ({
   title = "Precios de Materiales",
   subtitle = "Consulta todos los materiales que compramos y sus precios actualizados.",
   prices = metalPrices
-    .filter(item => item.price !== null)
+    .filter(item => item.price !== null && item.id !== 'viruta')
     .map(item => ({
       metal: item.metal.replace(" (diferente)", "").toLowerCase(),
       key: item.id,
-      price: item.display
+      price: item.display,
+      image: getMaterialImage(item.id)
     })),
   lastUpdated: updatedTime = lastUpdated,
   ctaText = "Ver todos los precios",
   ctaHref = "/precios",
-  whatsappHref = "https://wa.me/56912345678?text=Hola,%20quisiera%20cotizar%20el%20precio%20de%20mi%20chatarra"
+  whatsappHref = CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.priceInquiry)
 }) => {
   return (
     <Background>
-      <section className={styles.pricesPreviewSection} aria-label="Precios de materiales">
+      <section id="precios" className={styles.pricesPreviewSection} aria-label="Precios de materiales">
         <SectionHeader>{title}</SectionHeader>
         <p className={styles.subtitle}>{subtitle}</p>
         <div className={styles.pricesList}>
-          {prices.map(({ metal, key, price }) => (
-            <div key={key} className={styles.priceItem}>
-              <span className={styles.icon}>{METAL_ICONS[key] || <FaCoins />}</span>
-              <h2 className={styles.metal}>precio del {metal} por kilo hoy</h2>
-              <span className={styles.price}>{price}</span>
+          {prices.map(({ metal, key, price, image }) => {
+            const material = getMaterialByKey(key);
+            const materialLink = material?.articleLink || `/materiales/${key}`;
+            
+            return (
+              <Link key={key} href={materialLink} className={styles.priceItemLink}>
+                <div className={styles.priceItem}>
+                  <div className={styles.materialInfo}>
+                    {image ? (
+                      <OptimizedImage 
+                        src={image} 
+                        alt={metal.toUpperCase()}
+                        className={styles.previewImage}
+                      />
+                    ) : (
+                      <span className={styles.icon}>{METAL_ICONS[key] || <Coins />}</span>
+                    )}
+                    <h2 className={styles.metal}>precio del {metal.toUpperCase()} por kilo hoy</h2>
+                  </div>
+                  <span className={styles.price}>{price}</span>
+                </div>
+              </Link>
+            );
+          })}
+          
+          {/* Other Materials Card */}
+          <Link href="/materiales" className={styles.priceItemLink}>
+            <div className={`${styles.priceItem} ${styles.otherMaterialsCard}`}>
+              <div className={styles.materialInfo}>
+                <span className={styles.icon}><HelpCircle /></span>
+                <h2 className={styles.metal}>conoce todos los materiales que compramos</h2>
+              </div>
+              <span className={styles.price}>Ver catálogo</span>
             </div>
-          ))}
+          </Link>
         </div>
         <div className={styles.lastUpdated}>Actualizado: {updatedTime}</div>
         <div className={styles.ctaGroup}>
-          <Link to={ctaHref} className={styles.primaryBtn}>
-            {ctaText}
+          <Link href={ctaHref} className={styles.readMoreLink}>
+            {ctaText} →
           </Link>
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondaryBtn}
-          >
-            Cotizar por WhatsApp
-          </a>
         </div>
       </section>
     </Background>

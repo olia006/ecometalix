@@ -1,9 +1,14 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
 
 const OfflineIndicator = () => {
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isOnline, setIsOnline] = useState(true);
 
   useEffect(() => {
+    // Set initial state
+    setIsOnline(navigator.onLine);
+
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
 
@@ -24,8 +29,8 @@ const OfflineIndicator = () => {
       top: 0,
       left: 0,
       right: 0,
-              backgroundColor: 'var(--color-warning)',
-              color: 'var(--color-white)',
+      backgroundColor: 'var(--color-warning)',
+      color: 'var(--color-white)',
       padding: '8px 16px',
       textAlign: 'center',
       fontSize: '14px',

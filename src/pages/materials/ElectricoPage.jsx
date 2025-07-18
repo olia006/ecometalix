@@ -1,12 +1,15 @@
 import React from "react";
+import { Search, Package } from "lucide-react";
 import Seo from "../../components/seo/Seo";
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
 import SectionHeader from "../../components/SectionHeader";
-import PrimaryButton from "../../components/PrimaryButton";
+import SecondaryButton from "../../components/SecondaryButton";
 import styles from "./MaterialPage.module.css";
-import electricoImg from "../../assets/images/materials/electrico.jpg";
+// Image will be referenced directly as string path
+import { getPriceById } from "../../data/prices";
+import { CONTACT_URLS } from "../../config/constants";
 
 export default function ElectricoPage() {
   return (
@@ -53,10 +56,10 @@ export default function ElectricoPage() {
         materialKey="electrico"
         name="Electrónicos"
         subtitle="Residuos electrónicos con metales preciosos recuperables"
-        image={electricoImg}
+                  image="/images/materials/electrico.jpg"
         tags={["Electrónicos", "Metales preciosos", "Aceptado"]}
         stats={[
-          { value: "Variable", label: "Precio por kg" },
+          { value: getPriceById("electrico")?.display || "Consultar", label: "Precio por kg" },
           { value: "Au + Ag", label: "Oro y plata" },
           { value: "50M ton", label: "E-waste mundial" }
         ]}
@@ -169,7 +172,7 @@ export default function ElectricoPage() {
             <div className={styles.articleContent}>
               <div className={styles.priceFactors}>
                 <div className={styles.priceFactor}>
-                  <h4>🔍 Separar por tipo</h4>
+                  <h4><Search size={16} /> Separar por tipo</h4>
                   <p>
                     Separa placas madre, procesadores, memorias RAM y tarjetas gráficas. Cada tipo tiene un precio diferente según su contenido de metales preciosos.
                   </p>
@@ -190,7 +193,7 @@ export default function ElectricoPage() {
                 </div>
                 
                 <div className={styles.priceFactor}>
-                  <h4>📦 Volumen mínimo</h4>
+                  <h4><Package size={16} /> Volumen mínimo</h4>
                   <p>
                     Acumula cantidad suficiente antes de vender. Los compradores especializados requieren volúmenes mínimos para hacer rentable el procesamiento.
                   </p>
@@ -218,13 +221,13 @@ export default function ElectricoPage() {
             <div className={styles.ctaContent}>
               <h3>¿Tienes residuos electrónicos para reciclar?</h3>
               <p>Procesamos placas, componentes y equipos electrónicos. Recuperamos metales preciosos con tecnología especializada.</p>
-              <PrimaryButton 
-                href="https://wa.me/56912345678?text=Hola,%20tengo%20residuos%20electrónicos%20para%20reciclar"
+              <SecondaryButton 
+                href={CONTACT_URLS.whatsappWithText("Hola, tengo residuos electrónicos para reciclar")}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Cotizar por WhatsApp
-              </PrimaryButton>
+              </SecondaryButton>
             </div>
           </section>
         </div>

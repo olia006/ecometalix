@@ -1,7 +1,8 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./Breadcrumb.module.css";
-import { FaChevronRight, FaHome } from "react-icons/fa";
+import { ChevronRight, Home } from "lucide-react";
 
 // Route to title mapping
 const routeTitles = {
@@ -22,15 +23,15 @@ const routeTitles = {
 
 // eslint-disable-next-line react/prop-types
 export default function Breadcrumb({ className = "" }) {
-  const location = useLocation();
-  const pathnames = location.pathname.split("/").filter(x => x);
+  const pathname = usePathname();
+  const pathnames = pathname.split("/").filter(x => x);
   
   // Don't show breadcrumbs on home page
-  if (location.pathname === "/" || location.pathname === "/en") {
+  if (pathname === "/" || pathname === "/en") {
     return null;
   }
 
-  const isEnglish = location.pathname.startsWith("/en");
+  const isEnglish = pathname.startsWith("/en");
   const homeUrl = isEnglish ? "/en" : "/";
   const homeTitle = isEnglish ? "Home" : "Inicio";
 
@@ -39,8 +40,8 @@ export default function Breadcrumb({ className = "" }) {
       <ol className={styles.breadcrumbList}>
         {/* Home link */}
         <li className={styles.breadcrumbItem}>
-          <Link to={homeUrl} className={styles.breadcrumbLink}>
-            <FaHome className={styles.homeIcon} aria-hidden="true" />
+          <Link href={homeUrl} className={styles.breadcrumbLink}>
+                          <Home className={styles.homeIcon} aria-hidden="true" />
             <span className={styles.srOnly}>{homeTitle}</span>
           </Link>
         </li>
@@ -53,13 +54,13 @@ export default function Breadcrumb({ className = "" }) {
 
           return (
             <li key={routeTo} className={styles.breadcrumbItem}>
-              <FaChevronRight className={styles.separator} aria-hidden="true" />
+              <ChevronRight className={styles.separator} aria-hidden="true" />
               {isLast ? (
                 <span className={styles.breadcrumbCurrent} aria-current="page">
                   {title}
                 </span>
               ) : (
-                <Link to={routeTo} className={styles.breadcrumbLink}>
+                <Link href={routeTo} className={styles.breadcrumbLink}>
                   {title}
                 </Link>
               )}

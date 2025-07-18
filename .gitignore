@@ -1,7 +1,8 @@
 node_modules/
+.next/
+out/
 dist/
 build/
-.vite/
 .env
 .env.*
 .DS_Store

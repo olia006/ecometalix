@@ -1,7 +1,7 @@
 import React from 'react';
 import StructuredData from './StructuredData';
+import { SEO_CONFIG, BUSINESS_INFO } from '../../config/constants';
 
-// eslint-disable-next-line react/prop-types
 export default function ServiceSchema({ services = [] }) {
   // Default services if none provided
   const defaultServices = [
@@ -47,15 +47,15 @@ export default function ServiceSchema({ services = [] }) {
     "provider": {
       "@type": "LocalBusiness",
       "name": "Ecometalix Spa",
-      "url": "https://ecometalix.cl",
+      "url": SEO_CONFIG.baseUrl,
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Santiago",
         "addressRegion": "Región Metropolitana",
         "addressCountry": "CL"
       },
-      "telephone": "+56940244042",
-      "email": "contacto@ecometalix.cl"
+      "telephone": `+${BUSINESS_INFO.phone}`,
+      "email": BUSINESS_INFO.email
     },
     "areaServed": {
       "@type": "City",

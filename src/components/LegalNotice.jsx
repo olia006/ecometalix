@@ -11,7 +11,7 @@ const LegalNotice = ({
       *Precios referenciales. Pueden variar según el mercado y el estado del material.<br />
       Pago inmediato sujeto a verificación y condiciones legales.<br />
       Empresa autorizada por el Ministerio del Medio Ambiente.<br />
-      Consulta nuestra <a href="/privacy-policy">Política de Privacidad</a>.
+      Consulta nuestra <a href="/privacy">Política de Privacidad</a>.
     </>
   );
 

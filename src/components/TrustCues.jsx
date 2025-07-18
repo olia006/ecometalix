@@ -2,23 +2,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./TrustCues.module.css";
-import { FaClock, FaMapMarkerAlt, FaMoneyBillWave, FaBalanceScale } from "react-icons/fa";
+import { Clock, MapPin, DollarSign, Scale } from "lucide-react";
 
 const trustCuesData = [
   {
-    icon: <FaClock className={styles.icon} aria-hidden="true" />,
+    icon: <Clock className={styles.icon} aria-hidden="true" />,
     text: "10+ años de experiencia"
   },
   {
-    icon: <FaMapMarkerAlt className={styles.icon} aria-hidden="true" />,
+    icon: <MapPin className={styles.icon} aria-hidden="true" />,
     text: "3 años en Chile"
   },
   {
-    icon: <FaMoneyBillWave className={styles.icon} aria-hidden="true" />,
+    icon: <DollarSign className={styles.icon} aria-hidden="true" />,
     text: "97% de pagos al instante"
   },
   {
-    icon: <FaBalanceScale className={styles.icon} aria-hidden="true" />,
+    icon: <Scale className={styles.icon} aria-hidden="true" />,
     text: "Balanza certificada 80t/18m"
   }
 ];

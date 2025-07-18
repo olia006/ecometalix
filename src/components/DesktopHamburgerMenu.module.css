@@ -1,0 +1,249 @@
+/* ==============================
+   DesktopHamburgerMenu.module.css
+   Desktop hamburger menu with overlay
+   ============================== */
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hamburgerButton {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: var(--space-xs);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburgerButton:hover {
+  background: var(--color-primary-15);
+  color: var(--color-primary);
+}
+
+.hamburgerButton:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.menuPanel {
+  background: var(--color-neutral);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-xl);
+  min-width: 300px;
+  max-width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid var(--color-divider);
+}
+
+/* Header Section Styles */
+.headerSection {
+  padding: var(--space-lg) var(--space-lg) var(--space-md);
+  text-align: center;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.companyName {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.welcomeMessage {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* Search Section Styles */
+.searchSection {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: var(--space-sm);
+  color: var(--color-text-muted);
+  z-index: 1;
+}
+
+.searchInput {
+  width: 100%;
+  padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-xl);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-15);
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-muted);
+}
+
+.navigation {
+  flex: 1;
+  padding: var(--space-lg);
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.navLink {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.navLink:hover {
+  background: var(--color-primary-15);
+  color: var(--color-primary);
+}
+
+.activeLink {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-primary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-15);
+  font-weight: 600;
+}
+
+/* Featured Links - More prominent styling */
+.featuredLink {
+  display: block;
+  padding: var(--space-md) var(--space-lg);
+  color: var(--color-electric-blue);
+  text-decoration: none;
+  border: 1px solid var(--color-electric-blue);
+  border-radius: var(--radius-md);
+  background: transparent;
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  text-align: center;
+  transition: all 0.3s ease;
+  margin: var(--space-xs) 0;
+}
+
+.featuredLink:hover {
+  background: var(--color-electric-blue);
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.activeFeaturedLink {
+  display: block;
+  padding: var(--space-md) var(--space-lg);
+  color: var(--color-white);
+  text-decoration: none;
+  border: 1px solid var(--color-electric-blue);
+  border-radius: var(--radius-md);
+  background: var(--color-electric-blue);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  text-align: center;
+  margin: var(--space-xs) 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.languageSection {
+  border-top: 1px solid var(--color-divider);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  justify-content: center;
+}
+
+.languageLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+}
+
+.languageLink:hover {
+  background: var(--color-primary-15);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Dark theme adjustments */
+:global(html[data-theme="dark"]) .menuPanel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+}
+
+:global(html[data-theme="dark"]) .languageLink {
+  background: var(--color-background);
+}
+
+:global(html[data-theme="dark"]) .searchInput {
+  background: var(--color-background);
+}
+
+/* Hide on mobile */
+@media (max-width: var(--breakpoint-3xl)) {
+  .container {
+    display: none;
+  }
+} 

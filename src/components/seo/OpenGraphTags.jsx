@@ -1,6 +1,6 @@
 // src/components/SEO/OpenGraphTags.jsx
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import Head from 'next/head';
 
 const OpenGraphTags = ({
   title,
@@ -12,7 +12,7 @@ const OpenGraphTags = ({
   locale = 'es_CL',
 }) => {
   return (
-    <Helmet>
+    <Head>
       <meta property="og:title" content={title} />
       {description && <meta property="og:description" content={description} />}
       {image && <meta property="og:image" content={image} />}
@@ -20,7 +20,7 @@ const OpenGraphTags = ({
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content={locale} />
-    </Helmet>
+    </Head>
   );
 };
 

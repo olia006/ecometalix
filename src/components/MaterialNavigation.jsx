@@ -1,12 +1,13 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { materials } from "../data/materials";
 import OptimizedImage from "./OptimizedImage";
 import styles from "./MaterialNavigation.module.css";
 
 export default function MaterialNavigation() {
-  const location = useLocation();
-  const currentPath = location.pathname;
+  const pathname = usePathname();
+  const currentPath = pathname;
 
   return (
     <section className={styles.navigation}>
@@ -23,7 +24,7 @@ export default function MaterialNavigation() {
             return (
               <Link
                 key={material.key}
-                to={material.articleLink}
+                href={material.articleLink}
                 className={`${styles.materialCard} ${isActive ? styles.active : ''}`}
               >
                 <div className={styles.imageWrapper}>
@@ -57,7 +58,7 @@ export default function MaterialNavigation() {
         </div>
         
         <div className={styles.footer}>
-          <Link to="/materiales" className={styles.viewAllLink}>
+          <Link href="/materiales" className={styles.viewAllLink}>
             Ver todos los materiales →
           </Link>
         </div>

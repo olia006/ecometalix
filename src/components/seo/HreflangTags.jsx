@@ -1,19 +1,19 @@
 // src/components/SEO/HreflangTags.jsx
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import Head from 'next/head';
 
 const HreflangTags = ({ links = [] }) => {
   return (
-    <Helmet>
+    <Head>
       {links.map(({ hrefLang, href }) => (
         <link
-          key={hrefLang} // ✅ better than index
+          key={hrefLang}
           rel="alternate"
           hrefLang={hrefLang}
           href={href}
         />
       ))}
-    </Helmet>
+    </Head>
   );
 };
 

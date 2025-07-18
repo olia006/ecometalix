@@ -1,46 +1,48 @@
 // src/utils/hreflangUtils.js
+import { SEO_CONFIG } from '../config/constants';
 
 // Define URL mappings for Spanish and English versions
+const BASE_URL = SEO_CONFIG.baseUrl;
 const pageMapping = {
   '/': {
-    es: 'https://ecometalix.cl/',
-    en: 'https://ecometalix.cl/en/'
+    es: `${BASE_URL}/`,
+    en: `${BASE_URL}/en/`
   },
   '/por-que-nosotros': {
-    es: 'https://ecometalix.cl/por-que-nosotros',
-    en: 'https://ecometalix.cl/en/why-us'
+    es: `${BASE_URL}/por-que-nosotros`,
+    en: `${BASE_URL}/en/why-us`
   },
   '/precios': {
-    es: 'https://ecometalix.cl/precios',
-    en: 'https://ecometalix.cl/en/prices'
+    es: `${BASE_URL}/precios`,
+    en: `${BASE_URL}/en/prices`
   },
   '/faq': {
-    es: 'https://ecometalix.cl/faq',
-    en: 'https://ecometalix.cl/en/faq'
+    es: `${BASE_URL}/faq`,
+    en: `${BASE_URL}/en/faq`
   },
   '/contacto': {
-    es: 'https://ecometalix.cl/contacto',
-    en: 'https://ecometalix.cl/en/contact'
+    es: `${BASE_URL}/contacto`,
+    en: `${BASE_URL}/en/contact`
   },
   '/en/': {
-    es: 'https://ecometalix.cl/',
-    en: 'https://ecometalix.cl/en/'
+    es: `${BASE_URL}/`,
+    en: `${BASE_URL}/en/`
   },
   '/en/why-us': {
-    es: 'https://ecometalix.cl/por-que-nosotros',
-    en: 'https://ecometalix.cl/en/why-us'
+    es: `${BASE_URL}/por-que-nosotros`,
+    en: `${BASE_URL}/en/why-us`
   },
   '/en/prices': {
-    es: 'https://ecometalix.cl/precios',
-    en: 'https://ecometalix.cl/en/prices'
+    es: `${BASE_URL}/precios`,
+    en: `${BASE_URL}/en/prices`
   },
   '/en/faq': {
-    es: 'https://ecometalix.cl/faq',
-    en: 'https://ecometalix.cl/en/faq'
+    es: `${BASE_URL}/faq`,
+    en: `${BASE_URL}/en/faq`
   },
   '/en/contact': {
-    es: 'https://ecometalix.cl/contacto',
-    en: 'https://ecometalix.cl/en/contact'
+    es: `${BASE_URL}/contacto`,
+    en: `${BASE_URL}/en/contact`
   }
 };
 
@@ -96,10 +98,10 @@ export function getCanonicalUrl(path, lang = 'es') {
   const mapping = pageMapping[path];
   
   if (!mapping) {
-    return `https://ecometalix.cl${path}`;
+    return `${BASE_URL}${path}`;
   }
 
-  return mapping[lang] || mapping.es || `https://ecometalix.cl${path}`;
+  return mapping[lang] || mapping.es || `${BASE_URL}${path}`;
 }
 
 /**

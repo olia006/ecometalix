@@ -119,14 +119,18 @@
   box-shadow: var(--shadow-xl);
 }
 
-.image {
+.image,
+.image img {
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.6s ease;
 }
 
-.imageWrapper:hover .image {
+.imageWrapper:hover .image,
+.imageWrapper:hover .image img {
   transform: scale(1.05);
 }
 
@@ -160,6 +164,7 @@
 .placeholderIcon {
   font-size: 3rem;
   margin-bottom: var(--space-md);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* === INDICATOR === */

@@ -1,7 +1,12 @@
 /* ==============================
    HeroSection.module.css
-   Left Overlay Glassmorphism Design
+   Responsive Hero: Desktop Overlay + Mobile Stacked
    ============================== */
+
+/* ===== DESKTOP HERO (OVERLAY LAYOUT) ===== */
+.desktopHero {
+  display: block;
+}
 
 .heroContainer {
   display: flex;
@@ -11,7 +16,7 @@
   width: 100%;
   position: relative;
   z-index: 2;
-  padding: 0; /* Remove any padding that might create gaps */
+  padding: 0;
 }
 
 .glassContainer {
@@ -70,6 +75,117 @@
   filter: brightness(1.05);
 }
 
+/* ===== MOBILE HERO (STACKED LAYOUT) ===== */
+.mobileHero {
+  display: none;
+  background-image: url('/images/test1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  position: relative;
+}
+
+.mobileHero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.4) 35%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.1) 60%,
+    transparent 70%,
+    rgba(0, 0, 0, 0.4) 80%,
+    rgba(0, 0, 0, 0.7) 90%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mobileContent {
+  /* Full width, no borders or radius */
+  width: 100%;
+  padding: var(--space-sm) var(--space-lg);
+  
+  /* Content positioning */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
+
+.mobileGlassCard {
+  /* Remove card styling - just a content container */
+  width: 100%;
+  max-width: 600px;
+  margin: var(--space-xl) 0 0 0;
+  
+  /* Content positioning */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.mobileImageSection {
+  width: 100%;
+  padding: 0;
+  position: relative;
+}
+
+.mobileImageSection::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+:global(html[data-theme="dark"]) .mobileImageSection::after {
+  display: none;
+}
+
+.mobileHeroImage {
+  width: 100%;
+  height: auto;
+  /* 4:3 aspect ratio for mobile */
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.mobileHero .ctaGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: center;
+  margin-top: var(--space-lg);
+  padding: 0 var(--space-lg);
+  position: relative;
+  z-index: 2;
+}
+
+.mobileHero .lastUpdated {
+  margin-top: var(--space-sm);
+}
+
+
+
+/* ===== SHARED CONTENT STYLES ===== */
 .content {
   display: flex;
   flex-direction: column;
@@ -109,149 +225,199 @@
   text-shadow: var(--shadow-sm);
 }
 
-.trustCues {
-  font-size: var(--font-size-sm);
-  color: var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--space-lg);
-  margin-top: var(--space-md);
-  padding: var(--space-sm) var(--space-md);
-  
-  /* Enhanced matte badge styling using CSS variables */
-  background: var(--glass-heavy);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-pill);
-  
-  /* Refined shadows */
-  box-shadow: var(--shadow-lg);
-  
-  /* Typography refinements */
-  font-weight: var(--font-weight-medium);
-  letter-spacing: 0.02em;
-  text-shadow: var(--shadow-sm);
-  
-  /* Subtle interactions */
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.trustCues::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    var(--glass-light) 50%, 
-    transparent 100%);
-  transition: left 0.6s ease;
-}
-
-.trustCues:hover::before {
-  left: 100%;
-}
-
-.trustCues:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-xl);
-}
-
-/* Individual trust items */
-.trustCues > * {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  white-space: nowrap;
-  position: relative;
-  z-index: 2;
-}
-
-/* Icons styling */
-.trustCues svg {
-  font-size: 1em;
-  color: var(--color-accent);
-  opacity: 0.9;
-  filter: drop-shadow(0 0.5px 1px var(--color-accent));
-}
-
-/* Separators */
-.trustCues > *:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: calc(-1 * var(--space-lg) / 2);
-  top: 50%;
-  transform: translateY(-50%);
-  width: 2px;
-  height: 12px;
-  background: linear-gradient(180deg, 
-    transparent 0%, 
-    var(--glass-border) 50%, 
-    transparent 100%);
-  border-radius: 1px;
-}
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-  .glassContainer,
-  .trustCues {
-    transition: none;
-  }
-  .glassContainer:hover,
-  .trustCues:hover {
-    transform: none;
-  }
-  .trustCues::before {
-    display: none;
-  }
-}
+/* TrustCues styles removed - component not used in current hero layout */
 
 .ctaGroup {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: var(--space-md);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
   margin: var(--space-lg) 0;
   width: 100%;
+}
+
+.whatsappLink {
+  text-decoration: none;
+  outline: none;
+  border-radius: 999vw;
+  align-self: center;
+}
+
+.secondaryAction {
+  display: flex;
+  align-items: center;
+}
+
+.bottomInfo {
+  margin-top: var(--space-xxl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-light);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxs);
 }
 
 .lastUpdated {
   font-size: var(--font-size-sm);
   color: var(--color-white);
   opacity: 0.9;
-  margin-top: var(--space-md);
   text-shadow: var(--shadow-sm);
   font-weight: var(--font-weight-medium);
   letter-spacing: 0.02em;
 }
 
-.locationStatus {
-  margin-top: var(--space-xs);
+.workingHours {
   font-size: var(--font-size-sm);
   color: var(--color-white);
   opacity: 0.85;
-  display: flex;
-  gap: var(--space-sm);
-  align-items: center;
-}
-
-.locationStatus span {
   text-shadow: var(--shadow-sm);
-}
-
-.status {
-  color: var(--color-error);
   font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em;
 }
 
-/* Responsive Design */
-@media (max-width: var(--breakpoint-5xl)) {
+.processLink {
+  margin-top: 0;
+}
+
+.learnProcessLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  padding: 0;
+  background: transparent;
+  color: var(--color-white);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: color 0.3s ease;
+  opacity: 0.85;
+  text-shadow: var(--shadow-sm);
+  letter-spacing: 0.02em;
+}
+
+.learnProcessLink:hover {
+  color: var(--color-accent);
+  opacity: 1;
+}
+
+/* Unused location/status styles removed */
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Mobile: Show stacked layout, hide desktop */
+@media (max-width: var(--breakpoint-3xl)) {
+  .desktopHero {
+    display: none;
+    z-index: -1; /* Ensure desktop layer stays behind mobile */
+  }
+  
+  .mobileHero {
+    display: flex;
+  }
+  
+  /* Improve mobile content spacing */
+  .mobileContent {
+    padding: var(--space-sm) var(--space-lg);
+  }
+  
+  /* Better spacing for mobile subheading */
+  .mobileContent .subheading {
+    margin-bottom: var(--space-xl);
+    font-size: var(--font-size-xl);
+    line-height: 1.4;
+  }
+  
+  /* Mobile content adjustments */
+  .mobileGlassCard .heading {
+    font-size: calc(var(--font-size-hero) * 0.7);
+    text-align: left;
+    padding-top: calc(var(--space-xl) + var(--space-md));
+    margin-bottom: var(--space-lg);
+    line-height: 1.1;
+  }
+  
+  /* Responsive heading sizes within mobile layout - starting from 70% */
+  @media (max-width: var(--breakpoint-2xl)) {
+    .mobileGlassCard .heading {
+      font-size: calc(var(--font-size-xl) * 0.7);
+    }
+  }
+  
+  @media (max-width: var(--breakpoint-xl)) {
+    .mobileGlassCard .heading {
+      font-size: calc(var(--font-size-lg) * 0.7);
+    }
+  }
+  
+  @media (max-width: var(--breakpoint-md)) {
+    .mobileGlassCard .heading {
+      font-size: calc(var(--font-size-md) * 0.7);
+    }
+  }
+  
+  @media (max-width: var(--breakpoint-xs)) {
+    .mobileGlassCard .heading {
+      font-size: calc(var(--font-size-base) * 0.7);
+    }
+  }
+  
+  .mobileGlassCard .subheading {
+    font-size: var(--font-size-base);
+    text-align: left;
+  }
+  
+  .mobileGlassCard .ctaGroup {
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  
+  /* Mobile-appropriate shadow sizes - removed primaryButton overrides */
+
+/* Remove link styling for button links */
+.buttonLink {
+  text-decoration: none !important;
+  color: inherit !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.buttonLink:hover,
+.buttonLink:focus,
+.buttonLink:active,
+.buttonLink:visited {
+  text-decoration: none !important;
+  color: inherit !important;
+  border: none !important;
+  outline: none !important;
+}
+  
+  /* Responsive visibility */
+  .desktopOnly {
+    display: none;
+  }
+  
+
+  
+  .mobileGlassCard .lastUpdated {
+    text-align: center;
+  }
+}
+
+/* Desktop: Show button, hide link */
+@media (min-width: calc(var(--breakpoint-3xl) + 1px)) {
+  .desktopOnly {
+    display: inline-flex;
+  }
+  
+  .mobileImageSection .ctaGroup {
+    display: none;
+  }
+}
+
+/* Tablet: Adjust desktop layout */
+@media (max-width: var(--breakpoint-5xl)) and (min-width: calc(var(--breakpoint-3xl) + 1px)) {
   .glassContainer {
     width: 65%;
     max-width: 500px;
@@ -267,80 +433,68 @@
   }
 }
 
-@media (max-width: var(--breakpoint-3xl)) {
-  .heroContainer {
-    justify-content: center;
+/* Small mobile adjustments */
+@media (max-width: var(--breakpoint-xs)) {
+  .mobileContent {
+    padding: var(--space-xs) var(--space-md);
   }
   
-  .glassContainer {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    padding: var(--space-lg) var(--space-md);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--glass-border); /* Restore border on mobile */
-    left: auto;
-    top: auto;
-    bottom: auto;
-  }
-  
-  .glassContainer:hover {
-    transform: translateY(-2px);
-  }
-  
-  .content {
-    align-items: center;
-    text-align: center;
-    max-width: 100%;
-  }
-  
-  .heading {
-    font-size: var(--font-size-xl);
-  }
-  
-  .subheading {
-    font-size: var(--font-size-base);
-  }
-  
-  .trustCues {
-    flex-wrap: wrap;
-    gap: var(--space-md);
-    padding: var(--space-xs) var(--space-sm);
-    font-size: var(--font-size-xs);
-    justify-content: center;
-  }
-  
-  .trustCues > *:not(:last-child)::after {
-    display: none;
-  }
-  
-  .ctaGroup {
-    justify-content: center;
+  .mobileGlassCard .subheading {
+    font-size: var(--font-size-sm);
   }
 }
 
-@media (max-width: var(--breakpoint-md)) {
+/* ===== DARK THEME OVERRIDES ===== */
+:global(html[data-theme="dark"]) .subheading {
+  color: var(--color-white);
+}
+
+:global(html[data-theme="dark"]) .mobileGlassCard .subheading {
+  color: var(--color-white);
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
   .glassContainer {
-    padding: var(--space-md) var(--space-sm);
+    transition: none;
   }
-  
-  .heading {
-    font-size: var(--font-size-xl);
-  }
-  
-  .subheading {
-    font-size: var(--font-size-sm);
-  }
-  
-  .ctaGroup {
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
-  
-  .trustCues {
-    flex-direction: column;
-    gap: var(--space-xs);
-    padding: var(--space-xs);
+  .glassContainer:hover {
+    transform: none;
   }
 }
+  
+/* Read more link styling for Ver Precios */
+.readMoreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  padding: var(--space-xs) 0;
+  background: transparent;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  transition: color 0.3s ease;
+}
+
+/* Mobile: Move "Ver precios →" down visually without affecting layout */
+@media (max-width: 768px) {
+  .readMoreLink {
+    transform: translateY(var(--space-sm));
+  }
+}
+
+.readMoreLink:hover {
+  color: var(--color-primary);
+}
+
+/* Dark theme for read more link */
+:global(html[data-theme="dark"]) .readMoreLink {
+  color: var(--color-white);
+}
+
+:global(html[data-theme="dark"]) .readMoreLink:hover {
+  color: var(--color-primary);
+}
+  
   

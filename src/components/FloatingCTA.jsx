@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styles from "./FloatingCTA.module.css";
-import { FaWhatsapp } from "react-icons/fa";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function FloatingCTA({
   whatsapp = "56940244042",
@@ -20,10 +21,17 @@ export default function FloatingCTA({
         rel="noopener noreferrer"
         aria-label={label}
       >
-        <FaWhatsapp className={styles.icon} aria-hidden="true" />
+        <WhatsAppIcon className={styles.icon} size={28} aria-hidden="true" />
         <span className={styles.text}>{message}</span>
       </a>
       {extra && <div className={styles.extra}>{extra}</div>}
     </div>
   );
 }
+
+FloatingCTA.propTypes = {
+  whatsapp: PropTypes.string,
+  message: PropTypes.string,
+  label: PropTypes.string,
+  extra: PropTypes.node,
+};

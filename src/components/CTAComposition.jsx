@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./CTAComposition.module.css";
-import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
-// import { FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa"; // Optional icons
 
 export default function CTAComposition({
   title = "¿Listo para vender tu chatarra?",
@@ -19,12 +17,21 @@ export default function CTAComposition({
       <h2 className={styles.ctaTitle}>{title}</h2>
       <p className={styles.ctaDescription}>{description}</p>
       <div className={styles.ctaButtons}>
-        <PrimaryButton href={ctaHref} size="lg">
-          {ctaText}
-        </PrimaryButton>
-        <SecondaryButton href={secondaryHref} size="lg">
-          {secondaryText}
-        </SecondaryButton>
+        <a 
+          href={ctaHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.buttonLink}
+        >
+          <SecondaryButton>
+            {ctaText}
+          </SecondaryButton>
+        </a>
+        <a href={secondaryHref} className={styles.buttonLink}>
+          <SecondaryButton>
+            {secondaryText}
+          </SecondaryButton>
+        </a>
       </div>
       {/* Trust cue */}
       {trustCue && <div className={styles.trustCue}>{trustCue}</div>}

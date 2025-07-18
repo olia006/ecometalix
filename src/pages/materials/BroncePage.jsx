@@ -4,10 +4,11 @@ import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
 import SectionHeader from "../../components/SectionHeader";
-import PrimaryButton from "../../components/PrimaryButton";
+import SecondaryButton from "../../components/SecondaryButton";
 import styles from "./MaterialPage.module.css";
-import bronceImg from "../../assets/images/materials/bronce.jpg";
+// Image will be referenced directly as string path
 import { getPriceById } from "../../data/prices";
+import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 
 export default function BroncePage() {
   return (
@@ -54,7 +55,7 @@ export default function BroncePage() {
         materialKey="bronce"
         name="Bronce"
         subtitle="La aleación noble que marcó una era en la historia"
-        image={bronceImg}
+                  image="/images/materials/bronce.jpg"
         tags={["No ferroso", "Aleación", "Aceptado"]}
         stats={[
           { value: getPriceById("bronce")?.display || "$2.800", label: "Precio por kg" },
@@ -177,13 +178,13 @@ export default function BroncePage() {
             <div className={styles.ctaContent}>
               <h3>¿Tienes bronce para vender?</h3>
               <p>Obtén el mejor precio por tu chatarra de bronce. Evaluamos la calidad y pagamos inmediatamente.</p>
-              <PrimaryButton 
-                href="https://wa.me/56912345678?text=Hola,%20tengo%20bronce%20para%20vender"
+              <SecondaryButton 
+                href={CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.materialInquiry('bronce'))}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Cotizar por WhatsApp
-              </PrimaryButton>
+              </SecondaryButton>
             </div>
           </section>
         </div>

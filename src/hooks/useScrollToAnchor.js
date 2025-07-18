@@ -3,10 +3,9 @@ import { scrollToElement } from '../utils/scrollUtils';
 
 /**
  * Custom hook for handling anchor scrolling within a page
- * @param {Array} dependencies - Dependencies array for re-running effect
  * @returns {Function} scrollToAnchor function for manual scrolling
  */
-export default function useScrollToAnchor(dependencies = []) {
+export default function useScrollToAnchor() {
   
   // Function to scroll to an anchor programmatically
   const scrollToAnchor = (anchorId, options = {}) => {
@@ -48,7 +47,7 @@ export default function useScrollToAnchor(dependencies = []) {
         link.removeEventListener('click', handleAnchorClick);
       });
     };
-  }, dependencies);
+  }, []);
 
   return scrollToAnchor;
 }

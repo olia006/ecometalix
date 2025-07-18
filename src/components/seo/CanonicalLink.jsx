@@ -1,14 +1,14 @@
 // src/components/SEO/CanonicalLink.jsx
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import Head from 'next/head';
 
 const CanonicalLink = ({ url }) => {
   if (!url) return null;
 
   return (
-    <Helmet>
+    <Head>
       <link rel="canonical" href={url} />
-    </Helmet>
+    </Head>
   );
 };
 

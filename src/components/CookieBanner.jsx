@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-import styles from "./CookieBanner.module.css"; // CSS Modules for styling
+import styles from "./CookieBanner.module.css";
 
 const COOKIE_KEY = "cookie_consent";
 
@@ -31,7 +33,7 @@ export default function CookieBanner() {
         {/* Cookie usage message with link to legal policy */}
         <span>
           Utilizamos cookies para mejorar tu experiencia y analizar el tráfico. Al continuar, aceptas nuestra{" "}
-          <a href="/legal" target="_blank" rel="noopener noreferrer">
+          <a href="/privacy" target="_blank" rel="noopener noreferrer">
             Política de Privacidad
           </a>.
         </span>
@@ -40,7 +42,6 @@ export default function CookieBanner() {
         className={styles.acceptBtn}
         onClick={handleAccept}
         aria-label="Aceptar cookies"
-        autoFocus
       >
         {/* Accept button */}
         Aceptar
