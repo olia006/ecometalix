@@ -2,6 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./Navbar.module.css";
 import ThemeSwitcher from "./ThemeSwitcher";
 import DesktopHamburgerMenu from "./DesktopHamburgerMenu";
@@ -14,10 +15,13 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
         {/* Logo / Brand */}
         <div className={styles.logoContainer}>
           <Link href="/" aria-label="Ecometalix - Inicio">
-            <img
+            <Image
               src="/images/logoecometalix.png"
               alt="Ecometalix Logo"
+              width={150}
+              height={50}
               className={styles.logo}
+              priority
             />
           </Link>
         </div>

@@ -4,12 +4,12 @@ import styles from "./MapSection.module.css";
 import Background from "../Background";
 import SectionHeader from "../SectionHeader";
 
-export default function MapSection() {
+export default function MapSection({ isEnglish = false }) {
   return (
     <Background>
-      <section id="mapa" className={styles.mapSection} aria-label="Perfil de empresa en Google">
+      <section id={isEnglish ? "map" : "mapa"} className={styles.mapSection} aria-label={isEnglish ? "Google Business Profile" : "Perfil de empresa en Google"}>
         <SectionHeader as="h2">
-          Nuestra Empresa en Google
+          {isEnglish ? "Our Company on Google" : "Nuestra Empresa en Google"}
         </SectionHeader>
         
         {/* Official Google Business Profile Widget */}
@@ -21,7 +21,7 @@ export default function MapSection() {
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
-            credentialless
+            credentialless="true"
           ></iframe>
         </div>
 
@@ -33,7 +33,7 @@ export default function MapSection() {
             rel="noopener noreferrer"
             className={styles.linkBtn}
           >
-            Ver ubicación completa
+            {isEnglish ? "View complete location" : "Ver ubicación completa"}
           </a>
           <a
             href="https://www.google.com/maps/place/EcoMetalix/@-33.3120766,-70.7984129,17z/data=!4m8!3m7!1s0x9662bf78657b6e2f:0x692dfae6ce3b688d!8m2!3d-33.3120766!4d-70.798438!9m1!1b1!16s%2Fg%2F11q3j6y6yt?hl=es&lsig=AB86z5WqhT9gKgR0R5oOJMC_W0dj#lrd=0x9662bf78657b6e2f:0x692dfae6ce3b688d,1"
@@ -41,7 +41,7 @@ export default function MapSection() {
             rel="noopener noreferrer"
             className={styles.linkBtn}
           >
-            Leer todas las reseñas
+            {isEnglish ? "Read all reviews" : "Leer todas las reseñas"}
           </a>
         </div>
       </section>

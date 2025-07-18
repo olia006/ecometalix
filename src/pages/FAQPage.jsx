@@ -232,7 +232,7 @@ export default function FAQPage() {
       </div>
       
       <PageHeader
-        title="Preguntas Frecuentes"
+        title="Dudas y Consultas Frecuentes"
         subtitle="Resuelve todas tus dudas sobre la compra y venta de chatarra, pago inmediato y más."
         variant="accent"
       />
@@ -241,7 +241,7 @@ export default function FAQPage() {
       
       <main className={styles.faqPageSection}>
         <div className={styles.container}>
-          <h1 className={styles.heading}>Preguntas Frecuentes sobre Compra de Chatarra</h1>
+          <h2 className={styles.heading}>Preguntas Frecuentes sobre Compra de Chatarra</h2>
           <p className={styles.intro}>
             Aquí resolvemos las dudas más comunes sobre precios, pagos, materiales, proceso y mucho más. Si no encuentras tu respuesta, contáctanos por WhatsApp.
           </p>

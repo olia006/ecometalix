@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PageHeader from '../components/PageHeader';
+import styles from './EnglishPages.module.css';
 import HowItWorksSection from '../components/home/HowItWorksSection';
 
 export default function EnglishHowItWorksPage() {
@@ -12,7 +13,7 @@ export default function EnglishHowItWorksPage() {
         subtitle="Simple and transparent process for selling your scrap metal"
       />
 
-      <section style={{ backgroundColor: 'var(--background-page)', minHeight: '100vh', padding: '2rem 0' }}>
+      <section className={styles.pageSection}>
         <HowItWorksSection />
       </section>
     </>

@@ -34,8 +34,8 @@
     display: inline-block;
     padding: 0.75rem 1.7rem;
     border-radius: var(--radius-md, 8px);
-    background: var(--color-primary, #4CAF50);
-    color: #fff;
+      background: var(--color-primary, #4CAF50);
+  color: var(--color-white);
     font-size: var(--font-size-base, 1rem);
     font-weight: var(--font-weight-semibold, 600);
     border: none;

@@ -295,7 +295,7 @@ const ComoFuncionaPage = () => (
       <TrustCues />
 
       {/* --- LOCATION AND CONTACT --- */}
-      <MapSection />
+      <MapSection isEnglish={false} />
 
     </main>
   </>

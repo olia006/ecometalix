@@ -184,7 +184,7 @@ export default function MobileNavBar({ darkMode, toggleDarkMode }) {
             href="/"
             className={`${styles.menuItem} ${activeItem === 0 ? styles.active : ''}`}
             onClick={(e) => handleItemClick(0, e.currentTarget)}
-            style={{"--bgColorItem": "#4343f5"}}
+            style={{"--bgColorItem": "var(--color-electric-blue)"}}
             aria-label="Ir a inicio"
           >
             <Home className={styles.icon} />
@@ -194,7 +194,7 @@ export default function MobileNavBar({ darkMode, toggleDarkMode }) {
           <button 
             className={`${styles.menuItem} ${activeItem === 1 ? styles.active : ''}`}
             onClick={(e) => handleItemClick(1, e.currentTarget)}
-            style={{"--bgColorItem": "#4343f5"}}
+            style={{"--bgColorItem": "var(--color-electric-blue)"}}
             aria-label="Abrir menú principal"
           >
             <Menu className={styles.icon} />
@@ -204,7 +204,7 @@ export default function MobileNavBar({ darkMode, toggleDarkMode }) {
           <button 
             className={`${styles.menuItem} ${activeItem === 2 ? styles.active : ''}`}
             onClick={(e) => handleItemClick(2, e.currentTarget)}
-            style={{"--bgColorItem": "#4343f5"}}
+            style={{"--bgColorItem": "var(--color-electric-blue)"}}
             aria-label="Buscar"
           >
             <Search className={styles.icon} />
@@ -215,7 +215,7 @@ export default function MobileNavBar({ darkMode, toggleDarkMode }) {
             href="/precios"
             className={`${styles.menuItem} ${activeItem === 3 ? styles.active : ''}`}
             onClick={(e) => handleItemClick(3, e.currentTarget)}
-            style={{"--bgColorItem": "#4343f5"}}
+            style={{"--bgColorItem": "var(--color-electric-blue)"}}
             aria-label="Ver precios"
           >
             <DollarSign className={styles.icon} />
@@ -228,7 +228,7 @@ export default function MobileNavBar({ darkMode, toggleDarkMode }) {
             rel="noopener noreferrer"
             className={`${styles.menuItem} ${activeItem === 4 ? styles.active : ''}`}
             onClick={(e) => handleItemClick(4, e.currentTarget)}
-            style={{"--bgColorItem": "#4343f5"}}
+            style={{"--bgColorItem": "var(--color-electric-blue)"}}
             aria-label="Contactar por WhatsApp"
           >
             <WhatsAppIcon />

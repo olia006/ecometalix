@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PageHeader from '../components/PageHeader';
+import styles from './EnglishPages.module.css';
 import MaterialGrid from '../components/MaterialGrid';
 
 export default function EnglishMaterialsPage() {
@@ -12,7 +13,7 @@ export default function EnglishMaterialsPage() {
         subtitle="Discover all the materials we buy and their current market prices"
       />
 
-      <section style={{ backgroundColor: 'var(--background-page)', minHeight: '100vh', padding: '2rem 0' }}>
+      <section className={styles.pageSection}>
         <MaterialGrid />
       </section>
     </>

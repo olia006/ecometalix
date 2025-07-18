@@ -161,9 +161,9 @@ export default function WhyUsPage() {
       <section className="professional-section">
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
-            <h1 className={styles.heroTitle}>
+            <h2 className={styles.heroTitle}>
               La Empresa Líder en <span className={styles.highlight}>Reciclaje de Metales</span>
-            </h1>
+            </h2>
             <p className={styles.heroDescription}>
               Con 10 años de experiencia internacional y 3 años consolidados en Chile, somos la opción preferida para empresas 
               y particulares que buscan <strong>pago inmediato</strong>, <strong>trato profesional</strong> 
@@ -286,7 +286,7 @@ export default function WhyUsPage() {
 
       {/* Map Section */}
       <section className={styles.mapSection}>
-        <MapSection />
+        <MapSection isEnglish={false} />
       </section>
 
       {/* Call to Action Section */}

@@ -73,7 +73,7 @@ export default function BilingualHomePage({
       <FAQPreviewSection />
 
       {/* 7. Google Business Profile & Location */}
-      <MapSection />
+      <MapSection isEnglish={isEnglish} />
 
       {/* Footer is handled in layout.tsx globally */}
     </>

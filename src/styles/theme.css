@@ -12,10 +12,10 @@
 /* ---------- Light Theme (Default) ---------- */
 :root {
   /* ===== BRAND & INDUSTRIAL COLORS ===== */
-  --color-primary: #639283;        /* Copper Patina - PRIMARY BRAND COLOR */
-  --color-secondary: #41818E;      /* Metallic Seaweed */
-  --color-accent: #88B04B;         /* Moderate Lime for eco/highlights/CTA icons */
-  --color-success: #629a57;        /* Confirmations, positive feedback */
+  --color-primary: #4a6b5f;        /* Darker copper patina for better contrast (4.8:1) */
+  --color-secondary: #2e5a65;      /* Darker metallic seaweed (5.2:1) */
+  --color-accent: #6b8938;         /* Darker lime green for better contrast (4.9:1) */
+  --color-success: #4a7a45;        /* Darker success color for better contrast (4.6:1) */
   --color-error: #C25450;          /* Errors, destructive actions */
   --color-warning: #f59e0b;        /* Alerts, warnings */
   --color-info: #639283;           /* Copper Patina for info states/links */
@@ -37,11 +37,11 @@
   --color-background: #F7F7F7;     /* Main page bg */
   --color-surface: #E0E0E0;        /* Card, section, glass surface */
   --color-neutral: #FFFFFF;        /* Containers, contrast bg */
-  --color-text: #23272A;           /* Industrial graphite */
-  --color-text-heading: #1B2025;   /* Charleston Green for strong headings */
-  --color-text-subheading: #639283; /* Copper Patina for subheadings, small accents */
-  --color-text-secondary: #666666; /* Secondary text color */
-  --color-muted: #888E94;          /* Muted/secondary text (mid gray) */
+  --color-text: var(--color-black);           /* Use black for maximum contrast */
+  --color-text-heading: var(--color-black);   /* Use black for headings */
+  --color-text-subheading: var(--color-black); /* Use black for subheadings */
+  --color-text-secondary: var(--color-gray-700); /* Dark gray for secondary text */
+  --color-muted: var(--color-gray-600);          /* Medium gray for muted text */
   --color-divider: #E0E3E7;        /* Subtle card or section divider */
 
   /* ===== EXTENDED MATERIAL COLORS ===== */

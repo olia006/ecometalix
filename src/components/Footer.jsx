@@ -45,7 +45,7 @@ export default function Footer({ isEnglish = false }) {
             <Link href="/precios">Precios</Link>
             <Link href="/materiales">Materiales</Link>
             <Link href="/faq">FAQ</Link>
-            <a href="/#mapa">Ubicación</a>
+            <Link href="/#mapa">Ubicación</Link>
           </>
         )}
       </nav>

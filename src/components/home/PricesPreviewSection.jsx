@@ -41,7 +41,7 @@ const getMaterialImage = (priceId) => {
 };
 
 const PricesPreviewSection = ({
-  title = "Precios de Materiales",
+  title = "Cotizaciones Actualizadas",
   subtitle = "Consulta todos los materiales que compramos y sus precios actualizados.",
   prices = metalPrices
     .filter(item => item.price !== null && item.id !== 'viruta')

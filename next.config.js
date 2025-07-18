@@ -8,10 +8,16 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
+  
   // CSS modules are enabled by default in Next.js
 
   // Security headers
   async headers() {
+    // Only apply security headers in production
+    if (process.env.NODE_ENV !== 'production') {
+      return [];
+    }
+    
     return [
       {
         source: '/(.*)',

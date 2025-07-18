@@ -8,7 +8,7 @@ export default function CTAComposition({
   ctaText = "Vender ahora por WhatsApp",
   ctaHref = "https://wa.me/56940244042?text=Hola,%20quiero%20cotizar%20mi%20chatarra",
   secondaryText = "Ver cómo llegar",
-  secondaryHref = "/mapa",
+  secondaryHref = "/#mapa",
   trustCue = "Más de 200 clientes satisfechos"
 }) {
   return (

@@ -1,0 +1,66 @@
+.pageSection {
+  background-color: var(--color-background);
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.faqSection {
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.sectionContent {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.contactSection {
+  background: var(--color-surface);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.contactTitle {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.contactContent {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.contactLink {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.contactLink:hover {
+  color: var(--color-secondary);
+}
+
+.contactButton {
+  display: inline-block;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 1rem 2rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contactButton:hover {
+  background: var(--color-secondary);
+} 

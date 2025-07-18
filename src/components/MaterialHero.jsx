@@ -39,7 +39,7 @@ export default function MaterialHero({
         <Breadcrumb 
           items={[
             { label: "Inicio", href: "/" },
-            { label: "Materiales", href: "/precios" },
+            { label: "Materiales", href: "/materiales" },
             { label: name, href: `/materiales/${materialKey}` }
           ]}
         />

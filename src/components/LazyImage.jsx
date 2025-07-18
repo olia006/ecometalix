@@ -1,53 +1,40 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import PropTypes from 'prop-types';
 
 const LazyImage = ({ 
   src, 
   alt, 
-  className = '', 
+  className = '',
+  width = 400,
+  height = 300,
+  priority = false,
   ...props 
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
-  const imgRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const handleLoad = () => {
     setIsLoaded(true);
   };
 
   return (
-    <div ref={imgRef} className={className} {...props}>
-      {isInView && (
-        <img
-          src={src}
-          alt={alt}
-          onLoad={handleLoad}
-          style={{
-            opacity: isLoaded ? 1 : 0,
-            transition: 'opacity 0.3s ease',
-          }}
-          loading="lazy"
-          decoding="async"
-        />
-      )}
+    <div className={className} {...props}>
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        onLoad={handleLoad}
+        priority={priority}
+        loading={priority ? "eager" : "lazy"}
+        style={{
+          opacity: isLoaded ? 1 : 0,
+          transition: 'opacity 0.3s ease',
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover'
+        }}
+      />
     </div>
   );
 };
@@ -56,6 +43,9 @@ LazyImage.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   className: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  priority: PropTypes.bool,
 };
 
 export default LazyImage; 

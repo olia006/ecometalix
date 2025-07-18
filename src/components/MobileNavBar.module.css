@@ -291,7 +291,7 @@
 }
 
 :global(.dark) .hamburgerHeader {
-  border-bottom-color: #444;
+  border-bottom-color: var(--color-gray-700);
 }
 
 :global(.dark) .hamburgerItem:hover {
@@ -322,7 +322,7 @@
 }
 
 :global(.light) .hamburgerHeader {
-  border-bottom-color: #e0e0e0;
+  border-bottom-color: var(--color-gray-200);
 }
 
 
@@ -348,7 +348,7 @@
 }
 
 :global(.light) .icon {
-  color: #1a1a1a;
+  color: var(--color-text);
 }
 
 

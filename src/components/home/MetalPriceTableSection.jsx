@@ -110,7 +110,7 @@ export default function MetalPriceTableSection() {
         <div className={styles.titleGroup}>
           <h2 className={styles.heading}>
             <TrendingUp className={styles.headingIcon} />
-            Tabla de Precios de Metales Actualizada
+            Lista Completa de Precios por Kilo
           </h2>
           <p className={styles.subtitle}>
             Consulta nuestros precios competitivos para todos los tipos de metales y chatarra

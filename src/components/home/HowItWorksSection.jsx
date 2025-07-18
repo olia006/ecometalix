@@ -37,7 +37,7 @@ export default function HowItWorksSection() {
             <li className={styles.cards} key={i}>
               <div className={styles.cardGlass}>
                 <div className={styles.cardContent}>
-                  <h4 className={styles.cardTitle}>{step.title}</h4>
+                  <h3 className={styles.cardTitle}>{step.title}</h3>
                   <div className={styles.cardLogo}>{step.number}</div>
                   <p className={styles.cardUrl}>{step.description}</p>
                 </div>
