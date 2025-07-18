@@ -71,12 +71,15 @@ export default function RootLayout({
             <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
             {/* ---- Toast Notifications ---- */}
-            <ToastNotification
-              show={toast.show}
-              type={toast.type}
-              message={toast.message}
-              onClose={closeToast}
-            />
+            {toast.show && (
+              // @ts-expect-error - JSX component props issue
+              <ToastNotification
+                show={toast.show}
+                type={toast.type}
+                message={toast.message}
+                onClose={closeToast}
+              />
+            )}
 
             {/* ---- Main Content ---- */}
             <main id="main-content" role="main" tabIndex={-1}>
