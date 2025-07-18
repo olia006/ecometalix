@@ -10,7 +10,6 @@ build/
 .idea/
 .vscode/
 coverage/
+# Only ignore specific generated files, not all images
 public/og-image.png
-public/*.webp
-public/*.png
-public/*.ico
+# Don't ignore essential website images and favicons
