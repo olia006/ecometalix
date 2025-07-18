@@ -21,6 +21,7 @@ export default function MapSection() {
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
+            credentialless
           ></iframe>
         </div>
 
