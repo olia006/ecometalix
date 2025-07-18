@@ -2,7 +2,6 @@
 
 import React from 'react';
 import PageHeader from '../components/PageHeader';
-import Background from '../components/Background';
 import { Lock, Eye, FileText } from 'lucide-react';
 
 export default function PrivacyPolicyPage() {
@@ -14,7 +13,7 @@ export default function PrivacyPolicyPage() {
         subtitle="Protegemos tu información personal con los más altos estándares de seguridad"
       />
 
-      <Background>
+      <section style={{ backgroundColor: 'var(--background-page)', minHeight: '100vh', padding: '2rem 0' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem' }}>
           
           {/* Last Updated */}
@@ -153,7 +152,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
         </div>
-      </Background>
+      </section>
     </>
   );
 } 

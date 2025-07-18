@@ -2,7 +2,6 @@
 
 import React from 'react';
 import PageHeader from '../components/PageHeader';
-import Background from '../components/Background';
 import { Scale, FileCheck, AlertTriangle, Shield } from 'lucide-react';
 
 export default function TermsConditionsPage() {
@@ -14,7 +13,7 @@ export default function TermsConditionsPage() {
         subtitle="Conoce las condiciones de uso de nuestros servicios de compra y venta de chatarra"
       />
 
-      <Background>
+      <section style={{ backgroundColor: 'var(--background-page)', minHeight: '100vh', padding: '2rem 0' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem' }}>
           
           {/* Last Updated */}
@@ -157,7 +156,7 @@ export default function TermsConditionsPage() {
           </section>
 
         </div>
-      </Background>
+      </section>
     </>
   );
 } 

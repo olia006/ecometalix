@@ -2,7 +2,6 @@
 
 import React from 'react';
 import PageHeader from '../components/PageHeader';
-import Background from '../components/Background';
 import SectionCardsGrid from '../components/SectionCardsGrid';
 
 export default function EnglishWhyUsPage() {
@@ -13,9 +12,9 @@ export default function EnglishWhyUsPage() {
         subtitle="Transparent, safe and profitable scrap metal sales in Santiago"
       />
 
-      <Background>
+      <section style={{ backgroundColor: 'var(--background-page)', minHeight: '100vh', padding: '2rem 0' }}>
         <SectionCardsGrid isEnglish={true} />
-      </Background>
+      </section>
     </>
   );
 } 

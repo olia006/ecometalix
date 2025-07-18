@@ -2,7 +2,6 @@
 
 import React from 'react';
 import PageHeader from '../components/PageHeader';
-import Background from '../components/Background';
 
 export default function EnglishFAQPage() {
   return (
@@ -12,7 +11,7 @@ export default function EnglishFAQPage() {
         subtitle="Everything you need to know about selling scrap metal"
       />
 
-      <Background>
+      <section style={{ backgroundColor: 'var(--background-page)', minHeight: '100vh', padding: '2rem 0' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem' }}>
           
           <div style={{ marginBottom: '2rem' }}>
@@ -89,7 +88,7 @@ export default function EnglishFAQPage() {
           </div>
 
         </div>
-      </Background>
+      </section>
     </>
   );
 } 
