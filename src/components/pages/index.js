@@ -1,10 +1,4 @@
-// Material Pages Index
-import { redirect } from 'next/navigation';
-
-export default function MaterialsIndex() {
-  // Redirect to main materials page
-  redirect('/materials');
-}
+// Material Pages Index - Export all material page components
 
 export { default as CobrePage } from './CobrePage';
 export { default as BroncePage } from './BroncePage';

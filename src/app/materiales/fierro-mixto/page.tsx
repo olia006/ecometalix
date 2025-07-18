@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import FierroMixtoPage from '../../../pages/materials/FierroMixtoPage';
+import FierroMixtoPage from '../../../components/pages/FierroMixtoPage';
 
 export default function FierroMixto() {
   return <FierroMixtoPage />;

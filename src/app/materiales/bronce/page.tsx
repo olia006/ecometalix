@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import BroncePage from '../../../pages/materials/BroncePage';
+import BroncePage from '../../../components/pages/BroncePage';
 
 export default function Bronce() {
   return <BroncePage />;
