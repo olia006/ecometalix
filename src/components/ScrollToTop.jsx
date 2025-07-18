@@ -1,6 +1,8 @@
 "use client";
 
+import React from "react";
 import { useEffect } from "react";
+import { ChevronUp } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function ScrollToTop() {

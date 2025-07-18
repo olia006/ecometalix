@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { X } from "lucide-react";
 import styles from "./CookieBanner.module.css";
 
 const COOKIE_KEY = "cookie_consent";

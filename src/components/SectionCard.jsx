@@ -1,4 +1,7 @@
+"use client";
+
 import React from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import styles from './SectionCard.module.css';
 
