@@ -8,14 +8,17 @@ const TwitterCardTags = ({
   image,
   site = '@ecometalix',
   cardType = 'summary_large_image',
+  creator = '@ecometalix',
 }) => {
   return (
     <Head>
       <meta name="twitter:card" content={cardType} />
       <meta name="twitter:site" content={site} />
+      <meta name="twitter:creator" content={creator} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      {image && <meta name="twitter:image" content={image} />}
+      {image && <meta name="twitter:image:alt" content={title} />}
     </Head>
   );
 };

@@ -54,13 +54,14 @@ const PricesPreviewSection = ({
   lastUpdated: updatedTime = lastUpdated,
   ctaText = "Ver todos los precios",
   ctaHref = "/precios",
-  whatsappHref = CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.priceInquiry)
+  whatsappHref = CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.priceInquiry),
+  isEnglish = false
 }) => {
   return (
     <Background>
-      <section id="precios" className={styles.pricesPreviewSection} aria-label="Precios de materiales">
-        <SectionHeader>{title}</SectionHeader>
-        <p className={styles.subtitle}>{subtitle}</p>
+      <section id="precios" className={styles.pricesPreviewSection} aria-label={isEnglish ? "Material prices" : "Precios de materiales"}>
+        <SectionHeader as="h2">{isEnglish ? "Material Prices" : title}</SectionHeader>
+        <p className={styles.subtitle}>{isEnglish ? "Check all the materials we buy and their updated prices." : subtitle}</p>
         <div className={styles.pricesList}>
           {prices.map(({ metal, key, price, image }) => {
             const material = getMaterialByKey(key);
@@ -79,7 +80,9 @@ const PricesPreviewSection = ({
                     ) : (
                       <span className={styles.icon}>{METAL_ICONS[key] || <Coins />}</span>
                     )}
-                    <h2 className={styles.metal}>precio del {metal.toUpperCase()} por kilo hoy</h2>
+                    <h3 className={styles.metal}>
+                      {isEnglish ? `${metal.toUpperCase()} price per kilo today` : `precio del ${metal.toUpperCase()} por kilo hoy`}
+                    </h3>
                   </div>
                   <span className={styles.price}>{price}</span>
                 </div>
@@ -92,16 +95,20 @@ const PricesPreviewSection = ({
             <div className={`${styles.priceItem} ${styles.otherMaterialsCard}`}>
               <div className={styles.materialInfo}>
                 <span className={styles.icon}><HelpCircle /></span>
-                <h2 className={styles.metal}>conoce todos los materiales que compramos</h2>
+                <h3 className={styles.metal}>
+                  {isEnglish ? "discover all the materials we buy" : "conoce todos los materiales que compramos"}
+                </h3>
               </div>
-              <span className={styles.price}>Ver catálogo</span>
+              <span className={styles.price}>{isEnglish ? "View catalog" : "Ver catálogo"}</span>
             </div>
           </Link>
         </div>
-        <div className={styles.lastUpdated}>Actualizado: {updatedTime}</div>
+        <div className={styles.lastUpdated}>
+          {isEnglish ? `Updated: ${updatedTime}` : `Actualizado: ${updatedTime}`}
+        </div>
         <div className={styles.ctaGroup}>
           <Link href={ctaHref} className={styles.readMoreLink}>
-            {ctaText} →
+            {isEnglish ? "View all prices" : ctaText} →
           </Link>
         </div>
       </section>
@@ -120,7 +127,8 @@ PricesPreviewSection.propTypes = {
   lastUpdated: PropTypes.string,
   ctaText: PropTypes.string,
   ctaHref: PropTypes.string,
-  whatsappHref: PropTypes.string
+  whatsappHref: PropTypes.string,
+  isEnglish: PropTypes.bool
 };
 
 export default PricesPreviewSection;

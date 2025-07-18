@@ -175,6 +175,19 @@
 }
 
 /* ===============================================
+   Table Caption
+   =============================================== */
+
+.tableCaption {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+  font-style: italic;
+  margin-bottom: var(--space-sm);
+  text-align: left;
+  caption-side: top;
+}
+
+/* ===============================================
    Table Rows
    =============================================== */
 

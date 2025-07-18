@@ -4,31 +4,33 @@ import PropTypes from "prop-types";
 import styles from "./TrustCues.module.css";
 import { Clock, MapPin, DollarSign, Scale } from "lucide-react";
 
-const trustCuesData = [
+const getTrustCuesData = (isEnglish) => [
   {
     icon: <Clock className={styles.icon} aria-hidden="true" />,
-    text: "10+ años de experiencia"
+    text: isEnglish ? "10+ years of experience" : "10+ años de experiencia"
   },
   {
     icon: <MapPin className={styles.icon} aria-hidden="true" />,
-    text: "3 años en Chile"
+    text: isEnglish ? "3 years in Chile" : "3 años en Chile"
   },
   {
     icon: <DollarSign className={styles.icon} aria-hidden="true" />,
-    text: "97% de pagos al instante"
+    text: isEnglish ? "97% instant payments" : "97% de pagos al instante"
   },
   {
     icon: <Scale className={styles.icon} aria-hidden="true" />,
-    text: "Balanza certificada 80t/18m"
+    text: isEnglish ? "Certified scale 80t/18m" : "Balanza certificada 80t/18m"
   }
 ];
 
-export default function TrustCues({ className = "", style = {} }) {
+export default function TrustCues({ className = "", style = {}, isEnglish = false }) {
+  const trustCuesData = getTrustCuesData(isEnglish);
+  
   return (
     <section
       className={`${styles.trustCues} ${className}`}
       style={style}
-      aria-label="Indicadores de confianza de Ecometalix"
+      aria-label={isEnglish ? "Ecometalix trust indicators" : "Indicadores de confianza de Ecometalix"}
       itemScope
       itemType="https://schema.org/Organization"
     >
@@ -53,7 +55,7 @@ export default function TrustCues({ className = "", style = {} }) {
 
       {/* Accessible content for screen readers */}
       <div className={styles.srOnly}>
-        <h3>Indicadores de confianza de Ecometalix:</h3>
+        <h3>{isEnglish ? "Ecometalix trust indicators:" : "Indicadores de confianza de Ecometalix:"}</h3>
         <ul>
           {trustCuesData.map((cue, index) => (
             <li key={index}>{cue.text}</li>
@@ -77,5 +79,6 @@ export default function TrustCues({ className = "", style = {} }) {
 
 TrustCues.propTypes = {
   className: PropTypes.string,
-  style: PropTypes.object
+  style: PropTypes.object,
+  isEnglish: PropTypes.bool
 };

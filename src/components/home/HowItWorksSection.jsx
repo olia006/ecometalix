@@ -31,13 +31,13 @@ export default function HowItWorksSection() {
   return (
     <Background>
       <section className={styles.section} aria-label="¿Cómo funciona?">
-        <SectionHeader>¿Cómo funciona?</SectionHeader>
+        <SectionHeader as="h2">¿Cómo funciona?</SectionHeader>
         <ul className={styles.stepsGrid}>
           {steps.map((step, i) => (
             <li className={styles.cards} key={i}>
               <div className={styles.cardGlass}>
                 <div className={styles.cardContent}>
-                  <h3 className={styles.cardTitle}>{step.title}</h3>
+                  <h4 className={styles.cardTitle}>{step.title}</h4>
                   <div className={styles.cardLogo}>{step.number}</div>
                   <p className={styles.cardUrl}>{step.description}</p>
                 </div>

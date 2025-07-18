@@ -8,7 +8,7 @@ export default function MapSection() {
   return (
     <Background>
       <section id="mapa" className={styles.mapSection} aria-label="Perfil de empresa en Google">
-        <SectionHeader>
+        <SectionHeader as="h2">
           Nuestra Empresa en Google
         </SectionHeader>
         

@@ -28,14 +28,14 @@ export default function WhyUsPreviewSection() {
   return (
           <Background>
       <section id="ventajas" className={styles.whyUsPreviewSection} aria-label="Por qué elegirnos">
-        <SectionHeader>
+        <SectionHeader as="h2">
           ¿Por Qué Elegir <span className={styles.brand}>Ecometalix</span>?
         </SectionHeader>
         <ul className={styles.uspGrid}>
           {previewPoints.map(({ icon, title, text }) => (
             <li key={title} className={styles.uspCard}>
               {icon}
-              <h3 className={styles.uspTitle}>{title}</h3>
+              <h4 className={styles.uspTitle}>{title}</h4>
               <p className={styles.uspText}>{text}</p>
             </li>
           ))}

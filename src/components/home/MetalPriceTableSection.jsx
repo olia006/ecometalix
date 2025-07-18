@@ -63,7 +63,7 @@ const PriceTableRow = ({ material, isHighValue = false }) => (
           </div>
         )}
         <div className={styles.materialDetails}>
-          <h3 className={styles.materialName}>{material.metal}</h3>
+          <h4 className={styles.materialName}>{material.metal}</h4>
           {material.description && (
             <p className={styles.materialDescription}>{material.description}</p>
           )}
@@ -110,7 +110,7 @@ export default function MetalPriceTableSection() {
         <div className={styles.titleGroup}>
           <h2 className={styles.heading}>
             <TrendingUp className={styles.headingIcon} />
-            Precios de Compra Actualizados
+            Tabla de Precios de Metales Actualizada
           </h2>
           <p className={styles.subtitle}>
             Consulta nuestros precios competitivos para todos los tipos de metales y chatarra
@@ -130,6 +130,9 @@ export default function MetalPriceTableSection() {
           <h3 className={styles.categoryTitle}>Metales No Ferrosos</h3>
           <div className={styles.tableContainer}>
             <table className={styles.priceTable}>
+              <caption className={styles.tableCaption}>
+                Precios de metales no ferrosos actualizados diariamente
+              </caption>
               <thead>
                 <tr>
                   <th className={styles.materialHeader}>Material</th>
@@ -156,6 +159,9 @@ export default function MetalPriceTableSection() {
           <h3 className={styles.categoryTitle}>Metales Ferrosos</h3>
           <div className={styles.tableContainer}>
             <table className={styles.priceTable}>
+              <caption className={styles.tableCaption}>
+                Precios de metales ferrosos actualizados diariamente
+              </caption>
               <thead>
                 <tr>
                   <th className={styles.materialHeader}>Material</th>
@@ -178,6 +184,9 @@ export default function MetalPriceTableSection() {
           <h3 className={styles.categoryTitle}>Materiales Especiales</h3>
           <div className={styles.tableContainer}>
             <table className={styles.priceTable}>
+              <caption className={styles.tableCaption}>
+                Precios de materiales especiales bajo consulta
+              </caption>
               <thead>
                 <tr>
                   <th className={styles.materialHeader}>Material</th>

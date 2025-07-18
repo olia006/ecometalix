@@ -4,7 +4,7 @@ import styles from "./Footer.module.css";
 import { MapPin } from "lucide-react";
 import SocialLinks from "./SocialLinks";
 
-export default function Footer() {
+export default function Footer({ isEnglish = false }) {
   return (
     <footer className={styles.footer}>
       {/* Brand + Address */}
@@ -28,25 +28,38 @@ export default function Footer() {
       </div>
 
       {/* Nav links */}
-      <nav className={styles.footerNav} aria-label="Pie de página">
-        <Link href="/">Inicio</Link>
-        <Link href="/por-que-nosotros">Por qué Nosotros</Link>
-        <Link href="/precios">Precios</Link>
-        <Link href="/materiales">Materiales</Link>
-        <Link href="/faq">FAQ</Link>
-        <a href="/#mapa">Ubicación</a>
+      <nav className={styles.footerNav} aria-label={isEnglish ? "Footer navigation" : "Pie de página"}>
+        {isEnglish ? (
+          <>
+            <Link href="/en">Home</Link>
+            <Link href="/en/why-us">Why Us</Link>
+            <Link href="/en/prices">Prices</Link>
+            <Link href="/en/materials">Materials</Link>
+            <Link href="/en/faq">FAQ</Link>
+            <a href="/en#map">Location</a>
+          </>
+        ) : (
+          <>
+            <Link href="/">Inicio</Link>
+            <Link href="/por-que-nosotros">Por qué Nosotros</Link>
+            <Link href="/precios">Precios</Link>
+            <Link href="/materiales">Materiales</Link>
+            <Link href="/faq">FAQ</Link>
+            <a href="/#mapa">Ubicación</a>
+          </>
+        )}
       </nav>
 
       {/* Legal */}
       <div className={styles.legalRow}>
         <span>
-          © {new Date().getFullYear()} Ecometalix Spa. Todos los derechos reservados.
+          © {new Date().getFullYear()} Ecometalix Spa. {isEnglish ? "All rights reserved." : "Todos los derechos reservados."}
         </span>
         <a href="/privacy" target="_blank" rel="noopener noreferrer">
-          Política de Privacidad
+          {isEnglish ? "Privacy Policy" : "Política de Privacidad"}
         </a>
         <a href="/terms" target="_blank" rel="noopener noreferrer">
-          Términos y Condiciones
+          {isEnglish ? "Terms & Conditions" : "Términos y Condiciones"}
         </a>
         {/* <span>RUT: 12.345.678-9</span> */}
         {/* <span>Designed by inui.studio</span> */}

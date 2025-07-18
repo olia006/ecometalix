@@ -42,7 +42,7 @@ export default function FAQPreviewSection({ faqs = defaultFaqs }) {
         className={styles.faqPreviewSection}
         aria-labelledby="faq-heading"
       >
-        <SectionHeader icon={<HelpCircle />}>
+        <SectionHeader as="h2" icon={<HelpCircle />}>
           ¿Dudas? Te respondemos:
         </SectionHeader>
 

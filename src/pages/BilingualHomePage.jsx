@@ -52,13 +52,14 @@ export default function BilingualHomePage({
       <HeroSection
         subtitle={pageContent.hero?.subtitle || "Compra y reciclaje de chatarra y metales en Santiago"}
         lastUpdated={pageContent.hero?.lastUpdated || "8 de julio 2025"}
+        isEnglish={isEnglish}
       />
 
       {/* 2. Trust/Certification Badges */}
-      <TrustCues />
+      <TrustCues isEnglish={isEnglish} />
 
       {/* 3. Prices Preview Section */}
-      <PricesPreviewSection />
+      <PricesPreviewSection isEnglish={isEnglish} />
 
       {/* 4. Section Cards Grid - replaces long scrollable sections */}
       <SectionCardsGrid 
@@ -66,7 +67,7 @@ export default function BilingualHomePage({
       />
 
       {/* 5. Stats Section (compact, inline) */}
-      <StatsSection />
+      <StatsSection isEnglish={isEnglish} />
 
       {/* 6. FAQ Preview Section */}
       <FAQPreviewSection />

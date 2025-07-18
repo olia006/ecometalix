@@ -11,7 +11,8 @@ import { CONTACT_URLS } from "../../config/constants";
 
 export default function HeroSection({ 
   subtitle = "Compra y reciclaje de chatarra y metales en Santiago — pesaje certificado, atención personalizada y cotización por WhatsApp.",
-  lastUpdated = "8 de julio 2025" 
+  lastUpdated = "8 de julio 2025",
+  isEnglish = false
 }) {
   return (
     <Background variant="hero" image="/images/homehero.jpg">
@@ -19,7 +20,11 @@ export default function HeroSection({
         <div className={heroStyles.glassContainer}>
           <div className={heroStyles.content}>
             <h1 className={heroStyles.heading}>
-              Vende tu chatarra y recibe <span className={heroStyles.highlight}>pago inmediato</span>
+              {isEnglish ? (
+                <>Sell your scrap metal and receive <span className={heroStyles.highlight}>immediate payment</span></>
+              ) : (
+                <>Vende tu chatarra y recibe <span className={heroStyles.highlight}>pago inmediato</span></>
+              )}
             </h1>
             <p className={heroStyles.subheading}>
               {subtitle}
@@ -34,7 +39,7 @@ export default function HeroSection({
                 className={`${heroStyles.whatsappLink} ${heroStyles.buttonLink}`}
               >
                 <SecondaryButton>
-                  <WhatsAppIcon /> Cotizar por WhatsApp
+                  <WhatsAppIcon /> {isEnglish ? "Get Quote via WhatsApp" : "Cotizar por WhatsApp"}
                 </SecondaryButton>
               </a>
               <a
@@ -42,25 +47,25 @@ export default function HeroSection({
                 className={heroStyles.readMoreLink}
                 aria-label="Ver precios actualizados"
               >
-                Ver precios <ArrowRight size={14} />
+{isEnglish ? "View prices" : "Ver precios"} <ArrowRight size={14} />
               </a>
             </div>
             
             {/* Bottom information unit */}
             <div className={heroStyles.bottomInfo}>
               <div className={heroStyles.lastUpdated}>
-                <small>Precios actualizados: {lastUpdated}</small>
+                <small>{isEnglish ? `Prices updated: ${lastUpdated}` : `Precios actualizados: ${lastUpdated}`}</small>
               </div>
               <div className={heroStyles.workingHours}>
-                <small>Todos los días 8:30-20:00 • Sin descanso</small>
+                <small>{isEnglish ? "Every day 8:30-20:00 • No breaks" : "Todos los días 8:30-20:00 • Sin descanso"}</small>
               </div>
               <div className={heroStyles.processLink}>
                 <a
-                  href="/como-funciona"
+                  href={isEnglish ? "/en/how-it-works" : "/como-funciona"}
                   className={heroStyles.learnProcessLink}
-                  aria-label="Conoce nuestro proceso"
+                  aria-label={isEnglish ? "Learn our process" : "Conoce nuestro proceso"}
                 >
-                  Conoce nuestro proceso <ArrowRight size={12} />
+                  {isEnglish ? "Learn our process" : "Conoce nuestro proceso"} <ArrowRight size={12} />
                 </a>
               </div>
             </div>
