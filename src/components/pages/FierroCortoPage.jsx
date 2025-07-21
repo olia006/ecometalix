@@ -159,9 +159,9 @@ export default function FierroCortoPage() {
                 </div>
               </div>
               
-              <div className="fact-box">
-                <div className="fact-icon"><DollarSign size={24} /></div>
-                <div className="fact-content">
+              <div className={styles.factBox}>
+                <div className={styles.factIcon}><DollarSign size={24} /></div>
+                <div className={styles.factContent}>
                   <h4>Consejo para maximizar valor</h4>
                   <p>
                     Para obtener el mejor precio por tu fierro corto: mantén las piezas libres de basura, plástico, goma y otros contaminantes, separa por grosor y calidad, y presenta el material limpio y organizado. Los compradores pagan más por material que requiere menos procesamiento adicional.

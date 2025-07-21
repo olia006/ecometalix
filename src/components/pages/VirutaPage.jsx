@@ -197,9 +197,9 @@ export default function VirutaPage() {
                 </div>
               </div>
               
-              <div className="fact-box">
-                <div className="fact-icon"><Lightbulb size={24} /></div>
-                <div className="fact-content">
+              <div className={styles.factBox}>
+                <div className={styles.factIcon}><Lightbulb size={24} /></div>
+                <div className={styles.factContent}>
                   <h4>Consejo para talleres</h4>
                   <p>
                     Para maximizar el valor de tu viruta: mantén separados los diferentes tipos de metales, drena aceites y lubricantes, y acumula cantidades significativas antes de vender. La viruta limpia y bien clasificada siempre paga mejor.

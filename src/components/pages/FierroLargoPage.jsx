@@ -87,9 +87,9 @@ export default function FierroLargoPage() {
               title="Dato Curioso"
               subtitle="¿Sabías que...?"
             />
-            <div className="fact-box">
-              <div className="fact-icon">🏗️</div>
-              <div className="fact-content">
+            <div className={styles.factBox}>
+              <div className={styles.factIcon}>🏗️</div>
+              <div className={styles.factContent}>
                 <h4>El Empire State Building se construyó en 410 días</h4>
                 <p>
                   La estructura de acero del Empire State Building fue tan eficiente que se construyó 

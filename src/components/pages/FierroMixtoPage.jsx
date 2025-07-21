@@ -87,9 +87,9 @@ export default function FierroMixtoPage() {
               title="Dato Curioso"
               subtitle="¿Sabías que...?"
             />
-            <div className="fact-box">
-              <div className="fact-icon"><Search size={24} /></div>
-              <div className="fact-content">
+                  <div className={styles.factBox}>
+        <div className={styles.factIcon}><Search size={24} /></div>
+        <div className={styles.factContent}>
                 <h4>Los imanes pueden separar más de 100 tipos diferentes de metales</h4>
                 <p>
                   Las plantas de reciclaje modernas usan separadores magnéticos tan sofisticados 

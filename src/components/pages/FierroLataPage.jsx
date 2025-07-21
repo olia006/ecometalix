@@ -196,9 +196,9 @@ export default function FierroLataPage() {
                 </div>
               </div>
               
-              <div className="fact-box">
-                <div className="fact-icon"><Lightbulb size={24} /></div>
-                <div className="fact-content">
+              <div className={styles.factBox}>
+                <div className={styles.factIcon}><Lightbulb size={24} /></div>
+                <div className={styles.factContent}>
                   <h4>Consejo para vendedores</h4>
                   <p>
                     Aunque el precio por kilo es menor, el fierro lata sigue siendo valioso. Para maximizar tus ingresos: limpia el material de basura, plástico, goma y contaminantes, separa piezas galvanizadas de las pintadas, y acumula cantidades significativas para reducir costos de transporte por viaje.
