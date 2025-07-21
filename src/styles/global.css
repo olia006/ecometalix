@@ -537,6 +537,12 @@ blockquote {
 }
 
 /* Professional Section Layouts */
+.container {
+  max-width: var(--content-width-wide);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
 .professional-section {
   padding: var(--space-xxl) var(--space-lg);
   margin-bottom: var(--space-xl);
