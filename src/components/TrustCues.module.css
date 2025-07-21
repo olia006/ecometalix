@@ -42,7 +42,7 @@
 }
 
 .icon {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   color: var(--color-primary);
   flex-shrink: 0;
 }
@@ -84,9 +84,7 @@
     gap: var(--space-xs);
   }
   
-  .icon {
-    font-size: 1rem;
-  }
+  /* Icon now uses responsive clamp(), no override needed */
   
   .badgeText {
     font-size: var(--font-size-sm);

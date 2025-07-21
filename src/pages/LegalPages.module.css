@@ -20,7 +20,7 @@
 .title {
   color: var(--color-primary);
   margin-bottom: 0.5rem;
-  font-size: 2.5rem;
+  font-size: var(--font-size-xxl);
   font-weight: bold;
 }
 
@@ -36,14 +36,14 @@
 .sectionTitle {
   color: var(--color-primary);
   margin-bottom: 1rem;
-  font-size: 1.8rem;
+  font-size: var(--font-size-xl);
   font-weight: 600;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--color-divider);
 }
 
 .sectionContent {
-  line-height: 1.6;
+  line-height: var(--line-height-body);
   margin-bottom: 1rem;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .list {
-  line-height: 1.6;
+  line-height: var(--line-height-body);
   margin-bottom: 1.5rem;
 }
 
@@ -105,14 +105,14 @@
   gap: 0.5rem;
   color: var(--color-primary);
   margin-bottom: 1rem;
-  font-size: 1.8rem;
+  font-size: var(--font-size-xl);
   font-weight: 600;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--color-divider);
 }
 
 .legalSectionContent {
-  line-height: 1.6;
+  line-height: var(--line-height-body);
   margin-bottom: 1rem;
 }
 
@@ -120,7 +120,7 @@
   color: var(--color-secondary);
   margin-bottom: 0.5rem;
   margin-top: 1.5rem;
-  font-size: 1.3rem;
+  font-size: var(--font-size-lg);
   font-weight: 500;
 }
 
@@ -132,7 +132,7 @@
 
 .legalListItem {
   margin-bottom: 0.5rem;
-  line-height: 1.6;
+  line-height: var(--line-height-body);
 }
 
 .legalSubList {
@@ -143,7 +143,7 @@
 
 .legalSubListItem {
   margin-bottom: 0.3rem;
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
 }
 
 .contactBox {

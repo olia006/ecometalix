@@ -156,8 +156,8 @@ export default function WhyUsPage() {
       <section className="professional-section">
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
-            <h2 className={styles.heroTitle}>
-              La Empresa Líder en <span className={styles.highlight}>Reciclaje de Metales</span>
+            <h2 className="hero-heading hero-heading--dark hero-heading--medium">
+              La Empresa Líder en <span className="hero-highlight">Reciclaje de Metales</span>
             </h2>
             <p className={styles.heroDescription}>
               Con 10 años de experiencia internacional y 3 años consolidados en Chile, somos la opción preferida para empresas 

@@ -1,5 +1,5 @@
 .materialGridSection {
-    max-width: 1100px;
+    max-width: var(--container-materials);
     margin: var(--space-xxl) auto;
     padding: 0 var(--space-md) var(--space-xl) var(--space-md);
     background: transparent; /* section1 from bgStyles will apply background */
@@ -13,7 +13,7 @@
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--grid-min-card), 1fr));
     gap: var(--space-lg);
   }
   @media (max-width: var(--breakpoint-3xl)) {

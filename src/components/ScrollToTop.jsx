@@ -19,10 +19,13 @@ export default function ScrollToTop() {
           if (element) {
             scrollToElement(element);
           }
-        }, 100);
+        }, 150);
       } else {
-        // No hash, scroll to top
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        // No hash, scroll to top instantly (no smooth animation to prevent glitch)
+        // Small delay to ensure new page content is rendered
+        setTimeout(() => {
+          window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        }, 50);
       }
     };
 

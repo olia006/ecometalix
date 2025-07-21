@@ -56,10 +56,10 @@
   }
   
   .uspIcon {
-    font-size: 2.2rem;
-    color: var(--color-primary);
-    margin-bottom: var(--space-sm);
-  }
+  font-size: var(--font-size-xxl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
   
   .uspTitle {
     font-size: var(--font-size-md);

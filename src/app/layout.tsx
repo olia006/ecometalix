@@ -66,6 +66,20 @@ export const metadata = {
   },
 };
 
+// Critical viewport configuration for mobile responsiveness
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#639283' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a1a1a' }
+  ]
+};
+
 export default function RootLayout({
   children,
 }: {

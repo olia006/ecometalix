@@ -14,12 +14,13 @@
 }
 
 .errorCode {
-  font-size: 6rem;
+  font-size: clamp(3rem, 12vw, 6rem);
   font-weight: var(--font-weight-bold);
   color: var(--color-accent);
   margin-bottom: var(--space-md);
   font-family: var(--font-heading);
-  line-height: 1;
+  line-height: var(--line-height-extra-tight);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .heading {
@@ -56,13 +57,11 @@
   }
   
   @media (max-width: var(--breakpoint-2xl)) {
-    .notFoundSection {
+    .notFoundContainer {
       min-height: 40vh;
       padding: var(--space-lg) var(--space-xs);
     }
-    .errorCode {
-      font-size: 3.5rem;
-    }
+    /* Error code now uses responsive clamp(), no override needed */
     .heading {
       font-size: var(--font-size-lg);
     }

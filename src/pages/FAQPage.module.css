@@ -9,7 +9,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--content-width-wide);
   margin: 0 auto;
   padding: 0 var(--space-md);
 }
@@ -26,16 +26,16 @@
   font-weight: var(--font-weight-bold);
   color: var(--color-primary);
   margin: 0 0 var(--space-md) 0;
-  line-height: 1.2;
+  line-height: var(--line-height-heading);
 }
 
 .intro {
   font-size: var(--font-size-base);
   font-family: var(--font-body);
   color: var(--color-muted);
-  max-width: 800px;
+  max-width: var(--content-width-medium);
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: var(--line-height-body);
 }
 
 /* Search and Filter Section */
@@ -44,7 +44,7 @@
 }
 
 .searchContainer {
-  max-width: 800px;
+  max-width: var(--content-width-medium);
   margin: 0 auto;
   display: flex;
   gap: var(--space-sm);
@@ -56,22 +56,22 @@
   display: flex;
   align-items: center;
   background: var(--color-surface);
-  border: 2px solid var(--color-divider);
+  border: var(--border-medium) solid var(--color-divider);
   border-radius: var(--radius-md);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color var(--transition-normal) var(--ease-smooth), box-shadow var(--transition-normal) var(--ease-smooth);
   flex: 1;
 }
 
 .searchInputWrapper:focus-within {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-primary-10);
+  box-shadow: 0 0 0 var(--border-thick) var(--color-primary-10);
 }
 
 .searchIcon {
   position: absolute;
   left: var(--space-sm);
-  width: 20px;
-  height: 20px;
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
   color: var(--color-muted);
   pointer-events: none;
   z-index: 1;
@@ -79,7 +79,7 @@
 
 .searchInput {
   width: 100%;
-  padding: var(--space-md) var(--space-lg) var(--space-md) calc(var(--space-sm) + 20px + var(--space-xs));
+  padding: var(--space-md) var(--space-lg) var(--space-md) calc(var(--space-sm) + var(--size-icon-md) + var(--space-xs));
   border: none;
   background: transparent;
   font-size: var(--font-size-base);
@@ -98,14 +98,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: var(--size-icon-lg);
+  height: var(--size-icon-lg);
   border: none;
   background: var(--color-muted);
   color: var(--color-surface);
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--transition-normal) var(--ease-smooth);
 }
 
 .clearButton:hover {
@@ -113,8 +113,8 @@
 }
 
 .clearButton:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline: var(--border-medium) solid var(--color-primary);
+  outline-offset: var(--border-medium);
 }
 
 /* Filter Toggle Button */
@@ -124,13 +124,13 @@
   gap: var(--space-xs);
   padding: var(--space-md) var(--space-lg);
   background: var(--color-surface);
-  border: 2px solid var(--color-divider);
+  border: var(--border-medium) solid var(--color-divider);
   border-radius: var(--radius-md);
   color: var(--color-text);
   font-size: var(--font-size-sm);
   font-family: var(--font-body);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal) var(--ease-smooth);
   position: relative;
   white-space: nowrap;
 }
@@ -148,13 +148,13 @@
 
 .filterBadge {
   position: absolute;
-  top: -4px;
-  right: -4px;
-  width: 8px;
-  height: 8px;
+  top: calc(var(--border-heavy) * -1);
+  right: calc(var(--border-heavy) * -1);
+  width: var(--space-xs);
+  height: var(--space-xs);
   background: var(--color-accent);
   border-radius: 50%;
-  border: 2px solid var(--color-surface);
+  border: var(--border-medium) solid var(--color-surface);
 }
 
 /* Filters Panel */
@@ -162,9 +162,9 @@
   margin-top: var(--space-md);
   padding: var(--space-md);
   background: var(--color-surface);
-  border: 1px solid var(--color-divider);
+  border: var(--border-thin) solid var(--color-divider);
   border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .categoryFilters {
@@ -180,13 +180,13 @@
   gap: var(--space-xs);
   padding: var(--space-xs) var(--space-sm);
   background: var(--color-background);
-  border: 1px solid var(--color-divider);
+  border: var(--border-thin) solid var(--color-divider);
   border-radius: var(--radius-sm);
   color: var(--color-text);
   font-size: var(--font-size-sm);
   font-family: var(--font-body);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal) var(--ease-smooth);
 }
 
 .categoryFilter:hover {
@@ -203,7 +203,7 @@
 .categoryCount {
   background: var(--color-primary-10);
   color: var(--color-muted);
-  padding: 2px 6px;
+  padding: var(--space-xxs) var(--space-xs);
   border-radius: var(--radius-sm);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
@@ -220,12 +220,12 @@
   gap: var(--space-xs);
   padding: var(--space-xs) var(--space-sm);
   background: none;
-  border: 1px solid var(--color-muted);
+  border: var(--border-thin) solid var(--color-muted);
   border-radius: var(--radius-sm);
   color: var(--color-muted);
   font-size: var(--font-size-sm);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal) var(--ease-smooth);
 }
 
 .clearFiltersButton:hover {
@@ -260,12 +260,12 @@
 .controlButton {
   padding: var(--space-xs) var(--space-sm);
   background: none;
-  border: 1px solid var(--color-divider);
+  border: var(--border-thin) solid var(--color-divider);
   border-radius: var(--radius-sm);
   color: var(--color-text);
   font-size: var(--font-size-xs);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal) var(--ease-smooth);
 }
 
 .controlButton:hover {
@@ -291,8 +291,8 @@
 }
 
 .clearLink:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline: var(--border-medium) solid var(--color-primary);
+  outline-offset: var(--border-medium);
 }
 
 /* FAQ Content */
@@ -308,14 +308,14 @@
 /* Category Cards */
 .categoryCard {
   background: var(--color-surface);
-  border: 1px solid var(--color-divider);
+  border: var(--border-thin) solid var(--color-divider);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow var(--transition-normal) var(--ease-smooth);
 }
 
 .categoryCard:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .categoryHeader {
@@ -327,7 +327,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--transition-normal) var(--ease-smooth);
   text-align: left;
 }
 
@@ -337,7 +337,7 @@
 
 .categoryHeaderExpanded {
   background: var(--color-primary-10);
-  border-bottom: 1px solid var(--color-divider);
+  border-bottom: var(--border-thin) solid var(--color-divider);
 }
 
 .categoryInfo {
@@ -347,8 +347,8 @@
 }
 
 .categoryIcon {
-  width: 32px;
-  height: 32px;
+  width: var(--chip-height);
+  height: var(--chip-height);
   color: var(--color-primary);
   flex-shrink: 0;
 }
@@ -370,10 +370,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: var(--size-icon-lg);
+  height: var(--size-icon-lg);
   color: var(--color-primary);
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-normal) var(--ease-smooth);
 }
 
 /* Category Content */
@@ -390,7 +390,7 @@
 /* Question Cards */
 .questionCard {
   background: var(--color-background);
-  border: 1px solid var(--color-divider);
+  border: var(--border-thin) solid var(--color-divider);
   border-radius: var(--radius-md);
   overflow: hidden;
 }
@@ -404,7 +404,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--transition-normal) var(--ease-smooth);
   text-align: left;
 }
 
@@ -414,23 +414,23 @@
 
 .questionHeaderExpanded {
   background: var(--color-primary-10);
-  border-bottom: 1px solid var(--color-divider);
+  border-bottom: var(--border-thin) solid var(--color-divider);
 }
 
 .questionText {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   color: var(--color-text);
-  line-height: 1.4;
+  line-height: var(--line-height-heading);
   flex: 1;
   margin-right: var(--space-md);
 }
 
 .questionIcon {
-  width: 16px;
-  height: 16px;
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
   color: var(--color-primary);
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-normal) var(--ease-smooth);
   flex-shrink: 0;
 }
 
@@ -445,7 +445,7 @@
 
 .answerContent p {
   font-size: var(--font-size-base);
-  line-height: 1.6;
+  line-height: var(--line-height-body);
   color: var(--color-text);
   margin: 0;
 }
@@ -454,7 +454,7 @@
 .highlight {
   background: var(--color-accent);
   color: var(--color-white);
-  padding: 2px 4px;
+  padding: var(--space-xxs) var(--space-xs);
   border-radius: var(--radius-sm);
   font-weight: var(--font-weight-medium);
 }
@@ -469,8 +469,8 @@
 }
 
 .noResultsIcon {
-  width: 48px;
-  height: 48px;
+  width: var(--size-button-height);
+  height: var(--size-button-height);
   color: var(--color-muted);
   margin: 0 auto var(--space-md);
 }
@@ -495,7 +495,7 @@
   font-size: var(--font-size-base);
   font-family: var(--font-body);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--transition-normal) var(--ease-smooth);
 }
 
 .resetButton:hover {
@@ -503,8 +503,8 @@
 }
 
 .resetButton:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline: var(--border-medium) solid var(--color-primary);
+  outline-offset: var(--border-medium);
 }
 
 /* Responsive design */
@@ -560,8 +560,8 @@
   }
 
   .categoryIcon {
-    width: 24px;
-    height: 24px;
+    width: var(--size-icon-lg);
+    height: var(--size-icon-lg);
   }
 }
 
@@ -580,12 +580,12 @@
 
   .searchInput {
     font-size: var(--font-size-sm);
-    padding: var(--space-sm) var(--space-md) var(--space-sm) calc(var(--space-sm) + 16px + var(--space-xs));
+    padding: var(--space-sm) var(--space-md) var(--space-sm) calc(var(--space-sm) + var(--size-icon-sm) + var(--space-xs));
   }
 
   .searchIcon {
-    width: 16px;
-    height: 16px;
+    width: var(--size-icon-sm);
+    height: var(--size-icon-sm);
   }
 
   .filterToggle {

@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
           {/* Last Updated */}
           <div className={styles.lastUpdated}>
             <p className={styles.lastUpdatedText}>
-              <strong>Última actualización:</strong> 18 de julio de 2025
+              <strong>Última actualización:</strong> 8 de julio 2025
             </p>
           </div>
 

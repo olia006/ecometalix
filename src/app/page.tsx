@@ -60,7 +60,7 @@ export default function Home() {
       {/* 1. Hero Section with dynamic content */}
       <HeroSection
         subtitle={(pageContent as any).hero?.subtitle || "Compra y reciclaje de chatarra y metales en Santiago"}
-        lastUpdated={(pageContent as any).hero?.lastUpdated || "8 de julio 2025"}
+                  lastUpdated={(pageContent as any).hero?.lastUpdated}
       />
 
       {/* 2. Trust/Certification Badges */}

@@ -100,28 +100,31 @@
 
 /* Title styles */
 .title {
-  font-size: 2rem;
+  font-size: clamp(1.25rem, 4vw, 2rem);
   font-weight: 700;
   margin: 0 0 0.5rem 0;
-  line-height: 1.2;
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
   font-family: var(--font-heading);
 }
 
 /* Description styles */
 .description {
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
   margin: 0 0 1rem 0;
   opacity: 0.9;
-  line-height: 1.4;
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-normal);
   font-family: var(--font-body);
 }
 
 /* Animated price styles */
 .animatedPrice {
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
   font-weight: 800;
   margin: 0 0 1rem 0;
-  line-height: 1.1;
+  line-height: var(--line-height-extra-tight);
+  letter-spacing: var(--letter-spacing-tight);
   font-family: var(--font-heading);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
@@ -178,17 +181,7 @@
     padding: 1.5rem;
   }
   
-  .title {
-    font-size: 1.5rem;
-  }
-  
-  .description {
-    font-size: 0.9rem;
-  }
-  
-  .animatedPrice {
-    font-size: 2rem;
-  }
+  /* Typography now uses responsive clamp(), no overrides needed */
 }
 
 @media (max-width: var(--breakpoint-xl)) {
@@ -200,17 +193,7 @@
     padding: 1rem;
   }
   
-  .title {
-    font-size: 1.25rem;
-  }
-  
-  .description {
-    font-size: 0.8rem;
-  }
-  
-  .animatedPrice {
-    font-size: 1.5rem;
-  }
+  /* Typography now uses responsive clamp(), no overrides needed */
 }
 
 /* Accessibility */

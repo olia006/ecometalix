@@ -2,8 +2,10 @@
 // SINGLE SOURCE OF TRUTH for all metal prices
 // Update prices here and they will automatically change across the entire website
 
-// Last update timestamp
-export const lastUpdated = "8 de julio 2025, 15:00";
+import { LAST_PRICE_UPDATE } from '../utils/dateUtils';
+
+// Last update timestamp - imported from centralized date utility
+export const lastUpdated = LAST_PRICE_UPDATE;
 
 // Main price list - used in price table, calculator, and animations
 export const metalPrices = [

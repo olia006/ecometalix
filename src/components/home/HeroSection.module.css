@@ -187,21 +187,7 @@
   max-width: var(--size-modal-sm);
 }
 
-.heading {
-  font-family: var(--font-heading);
-  font-size: var(--font-size-hero);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-white);
-  margin-bottom: var(--space-md);
-  letter-spacing: 0.01em;
-  line-height: 1.15;
-  text-shadow: var(--shadow-sm);
-}
-
-.highlight {
-  color: var(--color-accent);
-  text-shadow: var(--shadow-md);
-}
+/* Hero heading styles moved to global.css as .hero-heading and .hero-highlight */
 
 .subheading {
   font-family: var(--font-body);
@@ -210,7 +196,7 @@
   margin-bottom: var(--space-lg);
   font-weight: var(--font-weight-medium);
   max-width: 100%;
-  line-height: 1.35;
+  line-height: var(--line-height-heading);
   text-shadow: var(--shadow-sm);
 }
 
@@ -314,42 +300,10 @@
   .mobileContent .subheading {
     margin-bottom: var(--space-xl);
     font-size: var(--font-size-xl);
-    line-height: 1.4;
+    line-height: var(--line-height-heading);
   }
   
-  /* Mobile content adjustments */
-  .mobileGlassCard .heading {
-    font-size: calc(var(--font-size-hero) * 0.7);
-    text-align: left;
-    padding-top: calc(var(--space-xl) + var(--space-md));
-    margin-bottom: var(--space-lg);
-    line-height: 1.1;
-  }
-  
-  /* Responsive heading sizes within mobile layout - starting from 70% */
-  @media (max-width: var(--breakpoint-2xl)) {
-    .mobileGlassCard .heading {
-      font-size: calc(var(--font-size-xl) * 0.7);
-    }
-  }
-  
-  @media (max-width: var(--breakpoint-xl)) {
-    .mobileGlassCard .heading {
-      font-size: calc(var(--font-size-lg) * 0.7);
-    }
-  }
-  
-  @media (max-width: var(--breakpoint-md)) {
-    .mobileGlassCard .heading {
-      font-size: calc(var(--font-size-md) * 0.7);
-    }
-  }
-  
-  @media (max-width: var(--breakpoint-xs)) {
-    .mobileGlassCard .heading {
-      font-size: calc(var(--font-size-base) * 0.7);
-    }
-  }
+  /* Mobile content adjustments - heading styles now handled by global .hero-heading class */
   
   .mobileGlassCard .subheading {
     font-size: var(--font-size-base);

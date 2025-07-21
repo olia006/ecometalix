@@ -11,7 +11,7 @@ import { CONTACT_URLS } from "../../config/constants";
 
 export default function HeroSection({ 
   subtitle = "Compra y reciclaje de chatarra y metales en Santiago — pesaje certificado, atención personalizada y cotización por WhatsApp.",
-  lastUpdated = "8 de julio 2025",
+  lastUpdated,
   isEnglish = false
 }) {
   return (
@@ -20,11 +20,11 @@ export default function HeroSection({
         {/* Desktop Hero Layout */}
         <div className={`${heroStyles.desktopHero} ${heroStyles.glassContainer}`}>
           <div className={heroStyles.content}>
-            <h1 className={heroStyles.heading}>
+            <h1 className="hero-heading hero-heading--light">
               {isEnglish ? (
-                <>Sell your scrap metal and receive <span className={heroStyles.highlight}>immediate payment</span></>
+                <>Sell your scrap metal and receive <span className="hero-highlight">immediate payment</span></>
               ) : (
-                <>Vende tu chatarra y recibe <span className={heroStyles.highlight}>pago inmediato</span></>
+                <>Vende tu chatarra y recibe <span className="hero-highlight">pago inmediato</span></>
               )}
             </h1>
             <p className={heroStyles.subheading}>
@@ -81,11 +81,11 @@ export default function HeroSection({
           <div className={heroStyles.mobileContent}>
             <div className={heroStyles.mobileGlassCard}>
               <div className={heroStyles.content}>
-                <p className={heroStyles.heading} aria-hidden="true">
+                <p className="hero-heading hero-heading--light" aria-hidden="true">
                   {isEnglish ? (
-                    <>Sell your scrap metal and receive <span className={heroStyles.highlight}>immediate payment</span></>
+                    <>Sell your scrap metal and receive <span className="hero-highlight">immediate payment</span></>
                   ) : (
-                    <>Vende tu chatarra y recibe <span className={heroStyles.highlight}>pago inmediato</span></>
+                    <>Vende tu chatarra y recibe <span className="hero-highlight">pago inmediato</span></>
                   )}
                 </p>
                 <p className={heroStyles.subheading}>

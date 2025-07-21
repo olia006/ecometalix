@@ -77,6 +77,49 @@ export const API_CONFIG = {
   corsProxy: "https://api.allorigins.win/get?url=" // Consider using your own proxy
 };
 
+// Price Update Configuration
+export const PRICE_UPDATE_CONFIG = {
+  updateTime: '15:00',
+  timezone: 'America/Santiago',
+  
+  // Generate dynamic date string
+  getDynamicDate: () => {
+    const now = new Date();
+    const options = {
+      day: 'numeric',
+      month: 'long', 
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'America/Santiago'
+    };
+    return now.toLocaleDateString('es-CL', options);
+  },
+  
+  // Get last business day update
+  getLastUpdateDate: () => {
+    const now = new Date();
+    const today = now.getDay(); // 0 = Sunday, 6 = Saturday
+    
+    // If today is Sunday (0) or Monday (1), show Friday's date
+    let daysBack = 0;
+    if (today === 0) daysBack = 2; // Sunday -> Friday
+    else if (today === 1) daysBack = 3; // Monday -> Friday
+    
+    const updateDate = new Date(now);
+    updateDate.setDate(updateDate.getDate() - daysBack);
+    
+    const options = {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'America/Santiago'
+    };
+    
+    return `${updateDate.toLocaleDateString('es-CL', options)}, ${PRICE_UPDATE_CONFIG.updateTime}`;
+  }
+};
+
 // Cache Configuration
 export const CACHE_CONFIG = {
   reviewsCacheDuration: 3600000, // 1 hour

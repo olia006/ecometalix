@@ -43,6 +43,55 @@
       "type": "image/png",
       "form_factor": "narrow"
     }
-  ]
+  ],
+  "shortcuts": [
+    {
+      "name": "Cotizar por WhatsApp",
+      "short_name": "Cotizar",
+      "description": "Contacta directamente por WhatsApp para cotizar tu chatarra",
+      "url": "https://wa.me/56940244042?text=Quiero+cotizar+mi+chatarra",
+      "icons": [
+        {
+          "src": "/icons/whatsapp-svgrepo-com.svg",
+          "sizes": "96x96",
+          "purpose": "any"
+        }
+      ]
+    },
+    {
+      "name": "Ver Precios",
+      "short_name": "Precios",
+      "description": "Consulta los precios actualizados de metales",
+      "url": "/precios",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "purpose": "any"
+        }
+      ]
+    },
+    {
+      "name": "Materiales",
+      "short_name": "Materiales",
+      "description": "Conoce qué materiales aceptamos",
+      "url": "/materiales",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "purpose": "any"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
 }
   

@@ -46,7 +46,7 @@ export default function BilingualHomePage({
       {/* 1. Hero Section with dynamic content */}
       <HeroSection
         subtitle={pageContent.hero?.subtitle || "Compra y reciclaje de chatarra y metales en Santiago"}
-        lastUpdated={pageContent.hero?.lastUpdated || "8 de julio 2025"}
+        lastUpdated={pageContent.hero?.lastUpdated}
         isEnglish={isEnglish}
       />
 

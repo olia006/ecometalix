@@ -14,10 +14,10 @@ import { generateHreflangs } from "../utils/hreflangUtils";
 import ProductSchema from "../components/seo/ProductSchema";
 import ServiceSchema from "../components/seo/ServiceSchema";
 import { materials } from "../data/materials";
-import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../config/constants";
+import { CONTACT_URLS, WHATSAPP_MESSAGES, PRICE_UPDATE_CONFIG } from "../config/constants";
 
-// Example: dynamic or static update date
-const lastUpdatedDate = "8 de julio 2025, 15:00";
+// Dynamic date generation for price updates
+const lastUpdatedDate = PRICE_UPDATE_CONFIG.getLastUpdateDate();
 
 // Only include FAQs relevant to prices, payment, process, etc.
 const priceFaqs = [

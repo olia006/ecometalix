@@ -38,13 +38,13 @@
   /* ---- Price Table Section ---- */
   .priceTableWrapper {
   margin: 0 auto;
-  max-width: 700px;
+  max-width: var(--container-prices);
   background: var(--glass-background-medium);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   padding: var(--space-lg) var(--space-md);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(var(--navbar-blur-sm));
+  backdrop-filter: blur(var(--navbar-blur-sm));
   
   /* ---- Price Card ---- */
   .priceCard {

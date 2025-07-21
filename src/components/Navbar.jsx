@@ -14,7 +14,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
       <nav className={styles.nav} aria-label="Navegación principal">
         {/* Logo / Brand */}
         <div className={styles.logoContainer}>
-          <Link href="/" aria-label="Ecometalix - Inicio">
+          <Link href="/" aria-label="Ecometalix - Inicio" className={styles.logoLink}>
             <Image
               src="/images/logoecometalix.png"
               alt="Ecometalix Logo"

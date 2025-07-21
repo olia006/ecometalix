@@ -24,7 +24,7 @@
   font-weight: var(--font-weight-bold);
   color: var(--color-text);
   margin-bottom: var(--space-md);
-  line-height: 1.2;
+  line-height: var(--line-height-heading);
 }
 
 .sectionSubtitle {
@@ -32,7 +32,7 @@
   color: var(--color-muted);
   max-width: 600px;
   margin: 0 auto;
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
 }
 
 /* ===== PROCESS SECTION ===== */
@@ -74,7 +74,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: var(--font-size-md);
   font-weight: 500;
   flex-shrink: 0;
   position: relative;
@@ -120,7 +120,7 @@
   font-size: var(--font-size-base);
   color: var(--color-muted);
   margin-bottom: var(--space-lg);
-  line-height: 1.6;
+  line-height: var(--line-height-body);
 }
 
 /* Step Details List */
@@ -137,7 +137,7 @@
   font-size: var(--font-size-sm);
   color: var(--color-text);
   margin-bottom: var(--space-sm);
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
 }
 
 .checkIcon {
@@ -252,7 +252,7 @@
 .reqDescription {
   font-size: var(--font-size-base);
   color: var(--color-muted);
-  line-height: 1.6;
+  line-height: var(--line-height-body);
 }
 
 /* ===== CTA SECTION ===== */
@@ -283,7 +283,7 @@
   font-size: var(--font-size-lg);
   margin-bottom: var(--space-xl);
   opacity: 0.95;
-  line-height: 1.6;
+  line-height: var(--line-height-body);
 }
 
 .ctaButtons {
@@ -308,7 +308,7 @@
   .stepNumber {
     width: 40px;
     height: 40px;
-    font-size: 0.95rem;
+    /* font-size now uses responsive token, no override needed */
     font-weight: 500;
   }
   
@@ -350,7 +350,7 @@
   .stepNumber {
     width: 36px;
     height: 36px;
-    font-size: 0.85rem;
+    /* font-size now uses responsive token, no override needed */
     font-weight: 500;
   }
   

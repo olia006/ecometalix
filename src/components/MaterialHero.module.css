@@ -12,10 +12,10 @@
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 400px;
+  grid-template-columns: 1fr var(--size-card-max);
   gap: var(--space-xxl);
   align-items: center;
-  min-height: 400px;
+  min-height: var(--size-card-max);
 }
 
 /* === MATERIAL INFO SECTION === */
@@ -29,7 +29,7 @@
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: var(--letter-spacing-uppercase);
   margin-bottom: var(--space-sm);
   opacity: 0.8;
 }
@@ -38,17 +38,17 @@
   font-family: var(--font-heading);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: var(--font-weight-bold);
-  line-height: 1.1;
+  line-height: var(--line-height-extra-tight);
   margin-bottom: var(--space-lg);
   color: white;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: var(--text-shadow-md);
 }
 
 .subtitle {
   font-size: var(--font-size-lg);
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
   margin-bottom: var(--space-xl);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--glass-white-strong);
   font-weight: var(--font-weight-medium);
 }
 
@@ -64,15 +64,15 @@
   border-radius: var(--radius-pill);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
+  border: var(--border-thin) solid var(--glass-white-light);
+  transition: all var(--transition-slow) var(--ease-smooth);
 }
 
 .tag:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(var(--navbar-transform-hover));
+  box-shadow: var(--shadow-lg);
 }
 
 /* === STATS SECTION === */
@@ -97,15 +97,15 @@
 .statLabel {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: var(--letter-spacing-uppercase);
+  color: var(--glass-white-readable);
   margin-top: var(--space-xs);
 }
 
 /* === VISUAL SECTION === */
 .visual {
   position: relative;
-  height: 400px;
+  height: var(--size-card-max);
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
@@ -126,7 +126,7 @@
   max-width: none;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.6s ease;
+  transition: transform var(--transition-extra-slow) var(--ease-smooth);
 }
 
 .imageWrapper:hover .image,
@@ -141,9 +141,9 @@
   right: 0;
   bottom: 0;
   background: linear-gradient(45deg, 
-    rgba(0, 0, 0, 0.1) 0%, 
+    var(--glass-black-subtle) 0%, 
     transparent 50%, 
-    rgba(255, 255, 255, 0.1) 100%);
+    var(--glass-white-subtle) 100%);
   pointer-events: none;
 }
 
@@ -153,18 +153,18 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px dashed rgba(255, 255, 255, 0.3);
+  background: var(--glass-white-subtle);
+  border: var(--border-medium) dashed var(--glass-white-medium);
   border-radius: var(--radius-lg);
-  color: rgba(255, 255, 255, 0.8);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  color: var(--glass-white-primary);
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
 }
 
 .placeholderIcon {
-  font-size: 3rem;
+  font-size: var(--font-size-xxl);
   margin-bottom: var(--space-md);
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--glass-white-primary);
 }
 
 /* === INDICATOR === */
@@ -178,13 +178,13 @@
 
 .indicatorLine {
   flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  height: var(--border-thin);
+  background: linear-gradient(90deg, transparent, var(--glass-white-medium), transparent);
 }
 
 .indicatorText {
   font-size: var(--font-size-sm);
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--glass-white-readable);
   font-weight: var(--font-weight-medium);
   white-space: nowrap;
 }
@@ -194,116 +194,116 @@
 /* Copper - Warm metallics */
 .hero--copper {
   background: linear-gradient(135deg, 
-    #B87333 0%, 
-    #CD7F32 30%, 
-    #8B4513 100%);
+    var(--material-copper-primary) 0%, 
+    var(--material-copper-medium) 30%, 
+    var(--material-copper-dark) 100%);
 }
 
-.hero--copper .tag--1 { background: rgba(184, 115, 51, 0.8); color: white; }
-.hero--copper .tag--2 { background: rgba(205, 127, 50, 0.8); color: white; }
-.hero--copper .tag--3 { background: rgba(139, 69, 19, 0.8); color: white; }
+.hero--copper .tag--1 { background: var(--material-copper-tag-1); color: white; }
+.hero--copper .tag--2 { background: var(--material-copper-tag-2); color: white; }
+.hero--copper .tag--3 { background: var(--material-copper-tag-3); color: white; }
 
 /* Bronze - Rich golden tones */
 .hero--bronze {
   background: linear-gradient(135deg, 
-    #CD7F32 0%, 
-    #B8860B 30%, 
-    #DAA520 100%);
+    var(--material-bronze-primary) 0%, 
+    var(--material-bronze-medium) 30%, 
+    var(--material-bronze-light) 100%);
 }
 
-.hero--bronze .tag--1 { background: rgba(205, 127, 50, 0.8); color: white; }
-.hero--bronze .tag--2 { background: rgba(184, 134, 11, 0.8); color: white; }
-.hero--bronze .tag--3 { background: rgba(218, 165, 32, 0.8); color: white; }
+.hero--bronze .tag--1 { background: var(--material-bronze-tag-1); color: white; }
+.hero--bronze .tag--2 { background: var(--material-bronze-tag-2); color: white; }
+.hero--bronze .tag--3 { background: var(--material-bronze-tag-3); color: white; }
 
 /* Aluminum - Cool silver */
 .hero--aluminum {
   background: linear-gradient(135deg, 
-    #C0C0C0 0%, 
-    #A8A8A8 30%, 
-    #808080 100%);
+    var(--material-aluminum-light) 0%, 
+    var(--material-aluminum-medium) 30%, 
+    var(--material-aluminum-dark) 100%);
 }
 
-.hero--aluminum .tag--1 { background: rgba(192, 192, 192, 0.8); color: var(--color-gray-700); }
-.hero--aluminum .tag--2 { background: rgba(168, 168, 168, 0.8); color: var(--color-gray-700); }
-.hero--aluminum .tag--3 { background: rgba(128, 128, 128, 0.8); color: white; }
+.hero--aluminum .tag--1 { background: var(--material-aluminum-tag-1); color: var(--color-gray-700); }
+.hero--aluminum .tag--2 { background: var(--material-aluminum-tag-2); color: var(--color-gray-700); }
+.hero--aluminum .tag--3 { background: var(--material-aluminum-tag-3); color: white; }
 
 /* Iron - Industrial steel */
 .hero--iron {
   background: linear-gradient(135deg, 
     var(--color-primary) 0%, 
     var(--color-secondary) 50%, 
-    #2C3E50 100%);
+    var(--material-iron-dark-primary) 100%);
 }
 
-.hero--iron .tag--1 { background: rgba(65, 129, 142, 0.8); color: white; }
-.hero--iron .tag--2 { background: rgba(55, 108, 119, 0.8); color: white; }
-.hero--iron .tag--3 { background: rgba(44, 62, 80, 0.8); color: white; }
+.hero--iron .tag--1 { background: var(--material-iron-tag-1); color: white; }
+.hero--iron .tag--2 { background: var(--material-iron-tag-2); color: white; }
+.hero--iron .tag--3 { background: var(--material-iron-tag-3); color: white; }
 
 /* Iron Dark - Darker steel for long iron */
 .hero--iron-dark {
   background: linear-gradient(135deg, 
-    #2C3E50 0%, 
-    #34495E 30%, 
-    #1B2631 100%);
+    var(--material-iron-dark-primary) 0%, 
+    var(--material-iron-dark-medium) 30%, 
+    var(--material-iron-dark-darkest) 100%);
 }
 
-.hero--iron-dark .tag--1 { background: rgba(44, 62, 80, 0.8); color: white; }
-.hero--iron-dark .tag--2 { background: rgba(52, 73, 94, 0.8); color: white; }
-.hero--iron-dark .tag--3 { background: rgba(27, 38, 49, 0.8); color: white; }
+.hero--iron-dark .tag--1 { background: var(--material-iron-dark-tag-1); color: white; }
+.hero--iron-dark .tag--2 { background: var(--material-iron-dark-tag-2); color: white; }
+.hero--iron-dark .tag--3 { background: var(--material-iron-dark-tag-3); color: white; }
 
 /* Iron Light - Lighter steel for short iron */
 .hero--iron-light {
   background: linear-gradient(135deg, 
-    #5D6D7E 0%, 
-    #85929E 30%, 
-    #AEB6BF 100%);
+    var(--material-iron-light-primary) 0%, 
+    var(--material-iron-light-medium) 30%, 
+    var(--material-iron-light-lightest) 100%);
 }
 
-.hero--iron-light .tag--1 { background: rgba(93, 109, 126, 0.8); color: white; }
-.hero--iron-light .tag--2 { background: rgba(133, 146, 158, 0.8); color: white; }
-.hero--iron-light .tag--3 { background: rgba(174, 182, 191, 0.8); color: var(--color-gray-700); }
+.hero--iron-light .tag--1 { background: var(--material-iron-light-tag-1); color: white; }
+.hero--iron-light .tag--2 { background: var(--material-iron-light-tag-2); color: white; }
+.hero--iron-light .tag--3 { background: var(--material-iron-light-tag-3); color: var(--color-gray-700); }
 
 /* Mixed - Multi-color gradient */
 .hero--mixed {
   background: linear-gradient(135deg, 
-    #8E44AD 0%, 
-    #3498DB 25%, 
-    #E67E22 50%, 
-    #27AE60 75%, 
-    #E74C3C 100%);
+    var(--material-mixed-purple) 0%, 
+    var(--material-mixed-blue) 25%, 
+    var(--material-mixed-orange) 50%, 
+    var(--material-mixed-green) 75%, 
+    var(--material-mixed-red) 100%);
 }
 
-.hero--mixed .tag--1 { background: rgba(142, 68, 173, 0.8); color: white; }
-.hero--mixed .tag--2 { background: rgba(52, 152, 219, 0.8); color: white; }
-.hero--mixed .tag--3 { background: rgba(230, 126, 34, 0.8); color: white; }
+.hero--mixed .tag--1 { background: var(--material-mixed-tag-1); color: white; }
+.hero--mixed .tag--2 { background: var(--material-mixed-tag-2); color: white; }
+.hero--mixed .tag--3 { background: var(--material-mixed-tag-3); color: white; }
 
 /* Metal Shavings - Industrial metallic gradient */
 .hero--shavings {
   background: conic-gradient(from 45deg,
-    #2C3E50 0deg,
-    #34495E 72deg,
-    #4A5F7A 144deg,
-    #566B82 216deg,
-    #7F8C8D 288deg,
-    #2C3E50 360deg);
+    var(--material-shavings-primary) 0deg,
+    var(--material-shavings-secondary) 72deg,
+    var(--material-shavings-tertiary) 144deg,
+    var(--material-shavings-quaternary) 216deg,
+    var(--material-shavings-accent) 288deg,
+    var(--material-shavings-primary) 360deg);
 }
 
-.hero--shavings .tag--1 { background: rgba(44, 62, 80, 0.8); color: white; }
-.hero--shavings .tag--2 { background: rgba(52, 73, 94, 0.8); color: white; }
-.hero--shavings .tag--3 { background: rgba(127, 140, 141, 0.8); color: white; }
+.hero--shavings .tag--1 { background: var(--material-shavings-tag-1); color: white; }
+.hero--shavings .tag--2 { background: var(--material-shavings-tag-2); color: white; }
+.hero--shavings .tag--3 { background: var(--material-shavings-tag-3); color: white; }
 
 /* Electrical - Electric blue gradient */
 .hero--electric {
   background: linear-gradient(135deg, 
-    #1E3A8A 0%, 
-    #3B82F6 30%, 
-    #06B6D4 60%, 
-    #0EA5E9 100%);
+    var(--material-electric-primary) 0%, 
+    var(--material-electric-medium) 30%, 
+    var(--material-electric-light) 60%, 
+    var(--material-electric-accent) 100%);
 }
 
-.hero--electric .tag--1 { background: rgba(30, 58, 138, 0.8); color: white; }
-.hero--electric .tag--2 { background: rgba(59, 130, 246, 0.8); color: white; }
-.hero--electric .tag--3 { background: rgba(6, 182, 212, 0.8); color: white; }
+.hero--electric .tag--1 { background: var(--material-electric-tag-1); color: white; }
+.hero--electric .tag--2 { background: var(--material-electric-tag-2); color: white; }
+.hero--electric .tag--3 { background: var(--material-electric-tag-3); color: white; }
 
 /* === RESPONSIVE DESIGN === */
 @media (max-width: var(--breakpoint-3xl)) {
@@ -314,7 +314,7 @@
   }
   
   .visual {
-    height: 300px;
+    height: var(--size-card-min);
   }
   
   .stats {
@@ -341,6 +341,6 @@
   }
   
   .visual {
-    height: 250px;
+    height: calc(var(--size-card-min) - var(--space-lg));
   }
 } 

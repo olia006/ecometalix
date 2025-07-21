@@ -22,7 +22,7 @@
   
   /* Optional: Top icon or image */
   .ctaIcon {
-  font-size: 2.6rem;
+  font-size: clamp(2rem, 6vw, 2.6rem);
   margin-bottom: var(--space-md, 1rem);
   color: var(--color-primary);
   filter: drop-shadow(0 1px 6px var(--color-primary-15));
@@ -37,11 +37,11 @@
   }
   
   .ctaDescription {
-    font-size: var(--font-size-md, 1.125rem);
-    margin-bottom: var(--space-lg, 1.5rem);
-    color: var(--color-text, #212121);
-    line-height: 1.6;
-  }
+  font-size: var(--font-size-md, 1.125rem);
+  margin-bottom: var(--space-lg, 1.5rem);
+  color: var(--color-text, #212121);
+  line-height: var(--line-height-body);
+}
   
   /* Button container */
   .ctaButtons {

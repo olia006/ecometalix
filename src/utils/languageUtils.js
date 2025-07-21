@@ -1,5 +1,6 @@
 // src/utils/languageUtils.js
 import { SEO_CONFIG } from '../config/constants';
+import { formatPriceUpdate } from './dateUtils';
 
 /**
  * Detect current language from URL path
@@ -75,7 +76,7 @@ export const content = {
       hero: {
         title: "Vende tu chatarra y recibe el pago al instante",
         subtitle: "Compra y reciclaje de chatarra y metales en Santiago — pesaje certificado, cotización por WhatsApp.",
-        lastUpdated: "8 de julio 2025"
+        lastUpdated: formatPriceUpdate('es', false)
       },
       prices: {
         title: "Precios Destacados",
@@ -95,7 +96,7 @@ export const content = {
       hero: {
         title: "Sell your scrap metal and get paid instantly",
         subtitle: "Buying and recycling scrap metal in Santiago — certified weighing, personalized attention and WhatsApp quotes.",
-        lastUpdated: "July 8, 2025"
+        lastUpdated: formatPriceUpdate('en', false)
       },
       prices: {
         title: "Featured Prices",
@@ -119,7 +120,7 @@ export const content = {
       hero: {
         title: "Precios de chatarra actualizados",
         subtitle: "Consulta nuestros precios para cobre, aluminio, hierro y más. Pago inmediato, pesaje certificado. Actualizado cada día hábil.",
-        lastUpdated: "8 de julio 2025, 15:00"
+        lastUpdated: formatPriceUpdate('es', true)
       },
       cta: {
         title: "¿Quieres cotizar tu precio en tiempo real?",
@@ -133,7 +134,7 @@ export const content = {
       hero: {
         title: "Updated scrap metal prices",
         subtitle: "Check our prices for copper, aluminum, iron and more. Immediate payment, certified weighing. Updated every business day.",
-        lastUpdated: "July 8, 2025, 3:00 PM"
+        lastUpdated: formatPriceUpdate('en', true)
       },
       cta: {
         title: "Want to quote your price in real time?",
