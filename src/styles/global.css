@@ -455,6 +455,55 @@ blockquote {
   padding: 0 var(--space-lg);
 }
 
+/* ===============================================
+   Hero Typography (Global Design System)
+   =============================================== */
+
+.hero-heading {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-ultra-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: var(--space-md);
+}
+
+.hero-heading--light {
+  color: var(--color-white);
+  text-shadow: var(--shadow-sm);
+}
+
+.hero-heading--dark {
+  color: var(--color-text-heading);
+  text-shadow: var(--text-shadow-light);
+}
+
+.hero-heading--compact {
+  margin-bottom: var(--space-sm);
+  line-height: var(--line-height-ultra-tight);
+}
+
+.hero-highlight {
+  color: var(--color-accent);
+  text-shadow: var(--shadow-md);
+}
+
+/* Hero Heading Size Variants */
+.hero-heading--large {
+  font-size: var(--font-size-hero);
+  line-height: var(--line-height-ultra-tight);
+}
+
+.hero-heading--medium {
+  font-size: var(--font-size-xxl);
+  line-height: var(--line-height-extra-tight);
+}
+
+.hero-heading--small {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-heading);
+}
+
 .professional-section {
   padding: var(--space-xxl) var(--space-lg);
   margin-bottom: var(--space-xl);

@@ -3,54 +3,7 @@
    Responsive Hero: Desktop Overlay + Mobile Stacked
    ============================== */
 
-/* ===============================================
-   Hero Typography (Component-Specific)
-   =============================================== */
 
-.heroHeading {
-  font-family: var(--font-heading);
-  font-size: var(--font-size-hero);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-ultra-tight);
-  letter-spacing: var(--letter-spacing-tight);
-  margin-bottom: var(--space-md);
-}
-
-.heroHeadingLight {
-  color: var(--color-white);
-  text-shadow: var(--shadow-sm);
-}
-
-.heroHeadingDark {
-  color: var(--color-text-heading);
-  text-shadow: var(--text-shadow-light);
-}
-
-.heroHeadingCompact {
-  margin-bottom: var(--space-sm);
-  line-height: var(--line-height-ultra-tight);
-}
-
-.heroHighlight {
-  color: var(--color-accent);
-  text-shadow: var(--shadow-md);
-}
-
-/* Hero Heading Size Variants */
-.heroHeadingLarge {
-  font-size: var(--font-size-hero);
-  line-height: var(--line-height-ultra-tight);
-}
-
-.heroHeadingMedium {
-  font-size: var(--font-size-xxl);
-  line-height: var(--line-height-extra-tight);
-}
-
-.heroHeadingSmall {
-  font-size: var(--font-size-xl);
-  line-height: var(--line-height-heading);
-}
 
 /* ===== DESKTOP HERO (OVERLAY LAYOUT) ===== */
 .desktopHero {

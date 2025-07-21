@@ -20,11 +20,11 @@ export default function HeroSection({
         {/* Desktop Hero Layout */}
         <div className={`${heroStyles.desktopHero} ${heroStyles.glassContainer}`}>
           <div className={heroStyles.content}>
-            <h1 className={`${heroStyles.heroHeading} ${heroStyles.heroHeadingLight}`}>
+            <h1 className="hero-heading hero-heading--light">
               {isEnglish ? (
-                <>Sell your scrap metal and receive <span className={heroStyles.heroHighlight}>immediate payment</span></>
+                <>Sell your scrap metal and receive <span className="hero-highlight">immediate payment</span></>
               ) : (
-                <>Vende tu chatarra y recibe <span className={heroStyles.heroHighlight}>pago inmediato</span></>
+                <>Vende tu chatarra y recibe <span className="hero-highlight">pago inmediato</span></>
               )}
             </h1>
             <p className={heroStyles.subheading}>
@@ -81,11 +81,11 @@ export default function HeroSection({
           <div className={heroStyles.mobileContent}>
             <div className={heroStyles.mobileGlassCard}>
               <div className={heroStyles.content}>
-                          <p className={`${heroStyles.heroHeading} ${heroStyles.heroHeadingLight}`} aria-hidden="true">
+                          <p className="hero-heading hero-heading--light" aria-hidden="true">
             {isEnglish ? (
-              <>Sell your scrap metal and receive <span className={heroStyles.heroHighlight}>immediate payment</span></>
+              <>Sell your scrap metal and receive <span className="hero-highlight">immediate payment</span></>
             ) : (
-              <>Vende tu chatarra y recibe <span className={heroStyles.heroHighlight}>pago inmediato</span></>
+              <>Vende tu chatarra y recibe <span className="hero-highlight">pago inmediato</span></>
             )}
           </p>
                 <p className={heroStyles.subheading}>
