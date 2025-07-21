@@ -697,12 +697,51 @@
    Responsive Design
    =============================================== */
 
-@media (max-width: var(--breakpoint-xl)) {
+/* Desktop Stats - hide on mobile */
+.statsDesktop {
+  display: block;
+}
+
+.statsMobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
   .heroContent {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    display: block;
     text-align: center;
-    background: red; /* TEMP TEST - to verify this rule is actually applied */
+  }
+  
+  /* Hide desktop stats, show mobile overlay stats */
+  .statsDesktop {
+    display: none;
+  }
+  
+  .statsMobile {
+    display: grid;
+    position: absolute;
+    bottom: var(--space-lg);
+    left: var(--space-lg);
+    right: var(--space-lg);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    z-index: 3;
+  }
+  
+  .statsMobile .statItem {
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--color-text);
+  }
+  
+  .statsMobile .statIcon {
+    color: var(--color-primary);
+  }
+  
+  .statsMobile .statValue {
+    color: var(--color-accent);
   }
   
   .statsGrid {

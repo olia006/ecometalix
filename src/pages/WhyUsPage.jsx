@@ -164,7 +164,8 @@ export default function WhyUsPage() {
               y particulares que buscan <strong>pago inmediato</strong>, <strong>trato profesional</strong> 
               y <strong>precios justos</strong> en Santiago.
             </p>
-            <div className={styles.statsGrid}>
+            {/* Desktop Stats - shown here */}
+            <div className={`${styles.statsGrid} ${styles.statsDesktop}`}>
               {stats.map((stat, index) => (
                 <div key={index} className={styles.statItem}>
                   <div className={styles.statIcon}>{stat.icon}</div>
@@ -183,6 +184,18 @@ export default function WhyUsPage() {
                 alt="Instalaciones profesionales de Ecometalix"
                 className="professional-image professional-image--hero"
               />
+              {/* Mobile Stats Overlay */}
+              <div className={`${styles.statsGrid} ${styles.statsMobile}`}>
+                {stats.map((stat, index) => (
+                  <div key={`mobile-${index}`} className={styles.statItem}>
+                    <div className={styles.statIcon}>{stat.icon}</div>
+                    <div className={styles.statContent}>
+                      <span className={styles.statValue}>{stat.value}</span>
+                      <span className={styles.statLabel}>{stat.label}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
               <div className="image-overlay">
                 <div className="overlay-content">
                   <TrendingUp className="overlay-icon" />
