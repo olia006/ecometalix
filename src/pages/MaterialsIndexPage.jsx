@@ -64,21 +64,21 @@ export default function MaterialsIndexPage() {
       />
 
       {/* Search and Filter Section */}
-      <section className="professional-section search-section">
-        <div className="search-container">
-          <div className="search-input-wrapper">
-            <Search className="search-icon" />
+      <section className={`professional-section ${styles.searchSection}`}>
+        <div className={styles.searchContainer}>
+          <div className={styles.searchInputWrapper}>
+            <Search className={styles.searchIcon} />
             <input
               type="text"
               placeholder="Buscar materiales..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-input"
+              className={styles.searchInput}
             />
             {(searchTerm || selectedCategory !== "all") && (
               <button
                 onClick={clearSearch}
-                className="search-clear-button"
+                className={styles.searchClearButton}
                 aria-label="Limpiar búsqueda"
               >
                 <X />

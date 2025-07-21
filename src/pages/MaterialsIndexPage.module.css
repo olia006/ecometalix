@@ -1,5 +1,78 @@
 /* MaterialsIndexPage.module.css */
 
+/* ===============================================
+   Search Component (MaterialsIndex-Specific)
+   =============================================== */
+
+.searchContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.searchInputWrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--glass-heavy);
+  border: var(--border-thin) solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(var(--glass-blur-lg));
+  -webkit-backdrop-filter: blur(var(--glass-blur-lg));
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-fast) var(--ease-smooth);
+}
+
+.searchInputWrapper:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.searchIcon {
+  position: absolute;
+  left: var(--space-md);
+  color: var(--color-muted);
+  z-index: 1;
+}
+
+.searchInput {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg) var(--space-md) calc(var(--space-md) + 20px + var(--space-sm));
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: var(--color-muted);
+}
+
+.searchClearButton {
+  position: absolute;
+  right: var(--space-md);
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  cursor: pointer;
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast) var(--ease-smooth);
+}
+
+.searchClearButton:hover {
+  color: var(--color-text);
+  background: var(--glass-light);
+}
+
+.searchSection {
+  padding: var(--space-xl) 0;
+}
+
 .breadcrumbContainer {
   padding: 0 var(--space-lg);
   margin-bottom: var(--space-lg);
@@ -423,7 +496,11 @@
 @media (max-width: var(--breakpoint-3xl)) {
   .searchContainer {
     flex-direction: column;
-    align-items: stretch;
+    gap: var(--space-sm);
+  }
+  
+  .searchInputWrapper {
+    width: 100%;
   }
   
   .searchBar {
