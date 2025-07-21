@@ -51,6 +51,59 @@
   position: relative;
 }
 
+/* ===============================================
+   Hero Stats Grid (Component-Specific)
+   =============================================== */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  background: var(--glass-light);
+  border: var(--border-thin) solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  -webkit-backdrop-filter: blur(var(--glass-blur-md));
+  backdrop-filter: blur(var(--glass-blur-md));
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-slow) var(--ease-smooth);
+}
+
+.statItem:hover {
+  transform: translateY(var(--navbar-transform-hover));
+  box-shadow: var(--shadow-md);
+}
+
+.statIcon {
+  color: var(--color-primary);
+  font-size: var(--font-size-xl);
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  line-height: var(--line-height-extra-tight);
+}
+
+.statLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
 /* Hero heading styles moved to global.css - using .hero-heading and .hero-highlight classes */
 
 .heroDescription {
@@ -651,7 +704,7 @@
     text-align: center;
   }
   
-  .heroStats {
+  .statsGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
   }
@@ -682,7 +735,7 @@
     font-size: var(--font-size-lg);
   }
   
-  .heroStats {
+  .statsGrid {
     grid-template-columns: 1fr;
     gap: var(--space-sm);
   }

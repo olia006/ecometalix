@@ -164,13 +164,13 @@ export default function WhyUsPage() {
               y particulares que buscan <strong>pago inmediato</strong>, <strong>trato profesional</strong> 
               y <strong>precios justos</strong> en Santiago.
             </p>
-            <div className="stats-grid">
+            <div className={styles.statsGrid}>
               {stats.map((stat, index) => (
-                <div key={index} className="stat-item">
-                  <div className="stat-icon">{stat.icon}</div>
-                  <div className="stat-content">
-                    <span className="stat-value">{stat.value}</span>
-                    <span className="stat-label">{stat.label}</span>
+                <div key={index} className={styles.statItem}>
+                  <div className={styles.statIcon}>{stat.icon}</div>
+                  <div className={styles.statContent}>
+                    <span className={styles.statValue}>{stat.value}</span>
+                    <span className={styles.statLabel}>{stat.label}</span>
                   </div>
                 </div>
               ))}
