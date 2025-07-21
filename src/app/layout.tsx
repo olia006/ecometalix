@@ -7,7 +7,6 @@ import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 import OfflineIndicator from '../components/OfflineIndicator';
 import ErrorBoundary from '../components/ErrorBoundary';
-import FloatingInfo from '../components/FloatingInfo';
 
 // Default metadata for the app
 export const metadata = {
@@ -74,6 +73,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+      <head>
+        {/* Preconnect to font providers for better performance */}
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://api.fontshare.com"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <ScrollToTop />
         <div className="app-wrapper">
@@ -89,9 +106,6 @@ export default function RootLayout({
               </ErrorBoundary>
             </main>
           </ThemeProvider>
-
-          {/* ---- Floating Info Panel (Mobile Only) ---- */}
-          <FloatingInfo />
 
           {/* ---- Site Footer ---- */}
           <footer role="contentinfo">

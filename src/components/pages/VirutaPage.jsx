@@ -1,6 +1,6 @@
 import React from "react";
 import { Wrench, Package, Lightbulb } from "lucide-react";
-import Seo from "../../components/seo/Seo";
+// SEO now handled by App Router metadata
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
@@ -46,13 +46,7 @@ export default function VirutaPage() {
 
   return (
     <>
-      <Seo
-        title="Viruta Fierrosa: Origen, Usos y Curiosidades | EcoMetalix Santiago"
-        description="¿Qué es la viruta fierrosa? Descubre su origen, propiedades, proceso de reciclaje y su valor en la industria chilena. Información técnica y curiosidades sobre la viruta de hierro y acero."
-        canonical="/materiales/viruta"
-        keywords="viruta fierrosa, viruta de fierro, reciclaje viruta hierro, chatarra viruta, residuos industriales, acero reciclado, reciclaje metales chile"
-        structuredData={faqStructuredData}
-      />
+      {/* SEO is now handled by App Router metadata in /app/materiales/viruta/page.tsx */}
       
       <FloatingCTA />
       

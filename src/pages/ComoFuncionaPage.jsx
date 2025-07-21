@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ComoFuncionaPage.module.css";
 
 {/*SEO*/}
-import Seo from "../components/seo/Seo";
+// SEO now handled by App Router metadata
 import PageHeader from "../components/PageHeader";
 import Breadcrumb from "../components/Breadcrumb";
 import { generateHreflangs } from "../utils/hreflangUtils";
@@ -103,13 +103,7 @@ const requirements = [
 
 const ComoFuncionaPage = () => (
   <>
-    {/* --- SEO & Meta --- */}
-    <Seo
-      title="¿Cómo funciona? - Proceso paso a paso | Ecometalix"
-      description="Descubre nuestro proceso simple y transparente: contacto, traslado, pesaje certificado y pago inmediato. Vende tu chatarra en 4 pasos fáciles."
-      canonical="/como-funciona"
-      hreflangs={generateHreflangs('/como-funciona')}
-    />
+    {/* SEO is now handled by App Router metadata in /app/como-funciona/page.tsx */}
 
     {/* Floating WhatsApp CTA */}
     <FloatingCTA />
@@ -281,10 +275,8 @@ const ComoFuncionaPage = () => (
                   <WhatsAppIcon /> Empezar proceso
                 </SecondaryButton>
               </a>
-              <a href="/precios" className="buttonLink">
-                <SecondaryButton>
-                  Ver precios
-                </SecondaryButton>
+              <a href="/precios" className={styles.readMoreLink}>
+                Ver precios <ArrowRight size={14} />
               </a>
             </div>
           </div>

@@ -27,7 +27,7 @@
 
 .googleWidget {
   width: 100%;
-  height: 400px;
+  height: var(--size-map-height);
   border: none;
   display: block;
   background: var(--color-background);
@@ -66,7 +66,7 @@
 /* Responsive Design */
 @media (max-width: var(--breakpoint-lg)) {
   .googleWidget {
-    height: 350px;
+    height: calc(var(--size-map-height) - var(--space-3xl));
   }
 
   .quickLinks {
@@ -83,7 +83,7 @@
   }
 
   .googleWidget {
-    height: 300px;
+    height: var(--size-map-height-mobile);
   }
 
   .quickLinks {

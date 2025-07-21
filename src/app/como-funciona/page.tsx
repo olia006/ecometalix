@@ -1,7 +1,25 @@
-"use client";
-
 import React from 'react';
 import ComoFuncionaPage from '../../pages/ComoFuncionaPage';
+
+// Metadata for the how it works page
+export const metadata = {
+  title: 'Cómo Funciona - Proceso de Venta de Chatarra en 4 Pasos',
+  description: 'Descubre nuestro proceso simple y transparente para vender chatarra: contacto, evaluación, pesaje certificado y pago inmediato. ¡Solo 4 pasos!',
+  keywords: 'como funciona, proceso venta chatarra, pasos vender, contacto, evaluación, pesaje, pago inmediato',
+  alternates: {
+    canonical: '/como-funciona',
+  },
+  openGraph: {
+    title: 'Cómo Funciona Nuestro Proceso | Ecometalix',
+    description: 'Proceso simple y transparente: contacto, evaluación, pesaje certificado y pago inmediato en 4 pasos.',
+    type: 'website',
+    locale: 'es_CL',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function ComoFunciona() {
   return <ComoFuncionaPage />;

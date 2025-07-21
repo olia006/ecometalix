@@ -4,20 +4,42 @@ const nextConfig = {
   images: {
     domains: [],
     formats: ['image/webp', 'image/avif'],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   experimental: {
     optimizeCss: true,
   },
   
   // CSS modules are enabled by default in Next.js
-
-  // Security headers
+  
+  // Preload critical resources and optimize fonts
   async headers() {
-    // Only apply security headers in production
+    // Development environment - minimal headers for HMR and dev tools
     if (process.env.NODE_ENV !== 'production') {
-      return [];
+      return [
+        {
+          source: '/(.*)',
+          headers: [
+            // Allow CORS for development
+            {
+              key: 'Access-Control-Allow-Origin',
+              value: 'http://localhost:3000'
+            },
+            {
+              key: 'Access-Control-Allow-Methods',
+              value: 'GET, POST, PUT, DELETE, OPTIONS'
+            },
+            {
+              key: 'Access-Control-Allow-Headers',
+              value: 'Content-Type, Authorization'
+            }
+          ]
+        }
+      ];
     }
-    
+
+    // Production environment - security headers only
     return [
       {
         source: '/(.*)',

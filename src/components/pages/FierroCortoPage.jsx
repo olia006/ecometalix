@@ -1,6 +1,6 @@
 import React from "react";
 import { Settings, DollarSign } from "lucide-react";
-import Seo from "../../components/seo/Seo";
+// SEO now handled by App Router metadata
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
@@ -13,47 +13,10 @@ import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 
 export default function FierroCortoPage() {
   const fierroCortoImg = "/images/materials/FierroCorto.jpg";
-  // FAQ structured data for SEO
-  const faqStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Qué es el Fierro Corto?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "El Fierro Corto es chatarra ferrosa de dimensiones medianas a pequeñas, como perfiles cortados, trozos de varillas y vigas recortadas. Se utiliza ampliamente en construcción, desarme y reciclaje industrial por su facilidad de manejo."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cómo se diferencia del Fierro Largo y la Lata?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Se diferencia por su tamaño y espesor: Fierro Corto incluye trozos de acero industrial cortados, mientras que Fierro Largo son perfiles enteros y Lata comprende piezas más delgadas como chapas galvanizadas."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cuáles son las ventajas del Fierro Corto en reciclaje?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "El Fierro Corto ofrece ventajas como mayor pureza, facilidad de clasificación, transporte eficiente y procesamiento optimizado en plantas de reciclaje, lo que se traduce en mejor valorización del material."
-        }
-      }
-    ]
-  };
-
+  
   return (
     <>
-      <Seo
-        title="Fierro Corto: Usos, Mercado y Curiosidades | EcoMetalix Santiago"
-        description="Descubre el Fierro Corto: qué es, cómo se clasifica, su valor en Chile y datos interesantes. Todo sobre su reciclaje y relevancia local."
-        canonical="/materiales/fierro-corto"
-        keywords="fierro corto, fierro reciclaje chile, chatarra fierro corto, precios fierro corto, reciclaje fierro"
-        structuredData={faqStructuredData}
-      />
+      {/* SEO is now handled by App Router metadata in /app/materiales/fierro-corto/page.tsx */}
       
       <FloatingCTA />
       

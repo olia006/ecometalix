@@ -32,9 +32,25 @@
   border: none;
 }
 
-/* Hide on mobile and smaller screens to prevent overlap with FloatingInfo */
-@media (max-width: 900px) {
+/* Responsive adjustments for different screen sizes */
+@media (max-width: var(--breakpoint-md)) {
   .infoContainer {
-    display: none;
+    padding: var(--space-xxs) var(--space-sm);
+  }
+  
+  .infoRow {
+    font-size: var(--font-size-xs);
+    gap: var(--space-xs);
+  }
+}
+
+@media (min-width: calc(var(--breakpoint-md) + 1px)) and (max-width: var(--breakpoint-3xl)) {
+  .infoContainer {
+    padding: var(--space-xs) var(--space-md);
+  }
+  
+  .infoRow {
+    font-size: var(--font-size-sm);
+    gap: var(--space-sm);
   }
 } 

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Seo from "../components/seo/Seo";
+// SEO now handled by App Router metadata
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import ServiceSchema from "../components/seo/ServiceSchema";
 import FloatingCTA from "../components/FloatingCTA";
@@ -34,12 +34,7 @@ export default function BilingualHomePage({
   
   return (
     <>
-      {/* SEO with dynamic content based on language */}
-      <Seo
-        title={pageContent.title || "Ecometalix - Reciclaje de Metales"}
-        description={pageContent.description || "Compra y venta de chatarra en Santiago"}
-        canonical={canonicalUrl}
-      />
+      {/* SEO is now handled by App Router metadata in /app/page.tsx and /app/en/page.tsx */}
       
       {/* Structured data (same for both languages) */}
       <LocalBusinessSchema />

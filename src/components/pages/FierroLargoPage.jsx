@@ -1,5 +1,5 @@
 import React from "react";
-import Seo from "../../components/seo/Seo";
+// SEO now handled by App Router metadata
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
@@ -13,11 +13,7 @@ import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 export default function FierroLargoPage() {
   return (
     <>
-      <Seo
-        title="Fierro Largo - Venta y Compra de Chatarra | Ecometalix Spa"
-        description="Información completa sobre el fierro largo: características, usos en construcción y datos curiosos. Vendemos fierro largo al mejor precio en Santiago."
-        canonical="/materiales/fierro-largo"
-      />
+      {/* SEO is now handled by App Router metadata in /app/materiales/fierro-largo/page.tsx */}
       
       <FloatingCTA />
       

@@ -1,5 +1,4 @@
 import React from "react";
-import Seo from "../../components/seo/Seo";
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
@@ -13,41 +12,7 @@ import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 export default function CobrePage() {
   return (
     <>
-      <Seo
-        title="Cobre: Historia, Propiedades y Curiosidades | Ecometalix Spa"
-        description="Descubre el cobre: historia, propiedades únicas, valor para Chile y datos fascinantes. Todo sobre cobre reciclado, su importancia y curiosidades científicas."
-        canonical="/materiales/cobre"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "¿Por qué el cobre es rojizo?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "El cobre es uno de los pocos metales (junto al oro) que no son grises o plateados. Su color rojo se debe a la manera en que sus electrones absorben y reflejan la luz, resultado de su estructura atómica. (Fuente: Royal Society of Chemistry)"
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Qué propiedades antimicrobianas tiene el cobre?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Estudios de la EPA han demostrado que el cobre elimina hasta el 99,9% de bacterias y virus en pocas horas. Por eso se usa en hospitales para prevenir infecciones. (Fuente: EPA)"
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Cuánto cobre reciclado sigue en uso hoy?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Más del 65% del cobre producido desde 1900 sigue en uso gracias al reciclaje. El cobre puede reciclarse infinitamente sin perder calidad. (Fuente: International Copper Study Group)"
-              }
-            }
-          ]
-        }}
-      />
+      {/* SEO is now handled by App Router metadata in /app/materiales/cobre/page.tsx */}
       
       <FloatingCTA />
       

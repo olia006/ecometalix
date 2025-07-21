@@ -1,16 +1,16 @@
 // src/components/SEO/StructuredData.jsx
 import React from 'react';
-import Head from 'next/head';
 
-const StructuredData = ({ jsonLd }) => {
+export default function StructuredData({ jsonLd }) {
+  if (!jsonLd) return null;
+
+  // In App Router, we render script tags directly without next/head
   return (
-    <Head>
-      <script 
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-    </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(jsonLd, null, 0)
+      }}
+    />
   );
-};
-
-export default StructuredData;
+}

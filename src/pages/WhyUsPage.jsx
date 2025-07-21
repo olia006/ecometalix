@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./WhyUsPage.module.css";
 
 // SEO Components
-import Seo from "../components/seo/Seo";
+// SEO now handled by App Router metadata
 import PageHeader from "../components/PageHeader";
 import Breadcrumb from "../components/Breadcrumb";
 import { generateHreflangs } from "../utils/hreflangUtils";
@@ -27,7 +27,8 @@ import {
   Users,
   Award,
   TrendingUp,
-  Phone
+  Phone,
+  ArrowRight
 } from "lucide-react";
 import WhatsAppIcon from "../components/WhatsAppIcon";
 import OptimizedImage from "../components/OptimizedImage";
@@ -134,13 +135,7 @@ const AdvantageCard = ({ advantage, index }) => (
 export default function WhyUsPage() {
   return (
     <main className="professional-page">
-      {/* SEO */}
-      <Seo
-        title="¿Por Qué Elegir Ecometalix? | Líder en Reciclaje de Metales Santiago"
-        description="Pago inmediato, horario extendido, balanza certificada, trato humano. Descubre por qué Ecometalix es el líder en reciclaje de metales en Santiago."
-        canonical="/por-que-nosotros"
-        hreflangs={generateHreflangs('/por-que-nosotros')}
-      />
+      {/* SEO is now handled by App Router metadata in /app/por-que-nosotros/page.tsx */}
 
       {/* Breadcrumb navigation */}
       <div className="container">
@@ -311,11 +306,9 @@ export default function WhyUsPage() {
               </a>
               <a
                 href="/precios"
-                className={styles.buttonLink}
+                className={styles.readMoreLink}
               >
-                <SecondaryButton>
-                  Ver Precios Actualizados
-                </SecondaryButton>
+                Ver Precios Actualizados <ArrowRight size={14} />
               </a>
             </div>
           </div>

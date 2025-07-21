@@ -32,8 +32,7 @@
   border-radius: 0;
   box-shadow: 
     var(--shadow-xl),
-    5px 0 15px rgba(0, 0, 0, 0.2),
-    10px 0 30px rgba(0, 0, 0, 0.15);
+    var(--box-shadow-hero);
   
   /* Layout and positioning - covers left part perfectly */
   position: absolute;
@@ -41,7 +40,7 @@
   top: 0;
   bottom: 0;
   width: 55%;
-  max-width: 700px;
+  max-width: var(--container-md);
   padding: var(--space-xxl, 3rem) var(--space-xl, 2rem);
   
   /* Ensure content positioning */
@@ -95,17 +94,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.4) 35%,
-    rgba(0, 0, 0, 0.2) 50%,
-    rgba(0, 0, 0, 0.1) 60%,
-    transparent 70%,
-    rgba(0, 0, 0, 0.4) 80%,
-    rgba(0, 0, 0, 0.7) 90%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
+  background: var(--gradient-hero-mobile);
   pointer-events: none;
   z-index: 1;
 }
@@ -127,7 +116,7 @@
 .mobileGlassCard {
   /* Remove card styling - just a content container */
   width: 100%;
-  max-width: 600px;
+  max-width: var(--container-sm);
   margin: var(--space-xl) 0 0 0;
   
   /* Content positioning */
@@ -195,7 +184,7 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 500px;
+  max-width: var(--size-modal-sm);
 }
 
 .heading {
@@ -375,22 +364,27 @@
   
   /* Mobile-appropriate shadow sizes - removed primaryButton overrides */
 
-/* Remove link styling for button links */
+/* Remove link styling for button links - using proper specificity */
 .buttonLink {
-  text-decoration: none !important;
-  color: inherit !important;
-  border: none !important;
-  outline: none !important;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
 }
 
 .buttonLink:hover,
 .buttonLink:focus,
 .buttonLink:active,
 .buttonLink:visited {
-  text-decoration: none !important;
-  color: inherit !important;
-  border: none !important;
-  outline: none !important;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
+  background: none;
 }
   
   /* Responsive visibility */
@@ -420,12 +414,12 @@
 @media (max-width: var(--breakpoint-5xl)) and (min-width: calc(var(--breakpoint-3xl) + 1px)) {
   .glassContainer {
     width: 65%;
-    max-width: 500px;
+    max-width: var(--size-modal-sm);
     padding: var(--space-xl) var(--space-lg);
   }
   
   .content {
-    max-width: 400px;
+    max-width: var(--size-modal-sm);
   }
   
   .heading {

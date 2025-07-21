@@ -3,10 +3,8 @@
    EcoMetalix Spa, Santiago
    ======================== */
 
-/* Modern Typography Imports */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+/* Modern Typography Imports - Optimized for Performance */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700,900&display=swap');
 
 /* ---------- Light Theme (Default) ---------- */
@@ -70,6 +68,20 @@
   --color-shadow-md: rgba(0,0,0,0.20);
   --color-shadow-heavy: rgba(0,0,0,0.40);
   --color-border-light: rgba(255,255,255,0.15);
+
+  /* ===== COMPONENT-SPECIFIC TRANSPARENCY ===== */
+  --overlay-dark-light: rgba(0, 0, 0, 0.1);
+  --overlay-dark-medium: rgba(0, 0, 0, 0.2);
+  --overlay-dark-heavy: rgba(0, 0, 0, 0.4);
+  --overlay-dark-hero: rgba(0, 0, 0, 0.6);
+  --overlay-dark-gradient: rgba(0, 0, 0, 0.8);
+  --white-glass-light: rgba(255, 255, 255, 0.05);
+  --white-glass-medium: rgba(255, 255, 255, 0.08);
+  --white-glass-heavy: rgba(255, 255, 255, 0.1);
+  --accent-alpha-light: rgba(var(--accent-rgb), 0.08);
+  --accent-alpha-medium: rgba(var(--accent-rgb), 0.12);
+  --success-alpha-light: rgba(var(--success-rgb), 0.08);
+  --success-alpha-medium: rgba(var(--success-rgb), 0.12);
 
   /* ===== GRAYSCALE ===== */
   --color-gray-50: #fafafa;
@@ -155,6 +167,25 @@
   --section-padding-y: var(--space-3xl);           /* 64px - Vertical padding within sections */
   --section-padding-x: var(--space-lg);            /* 24px - Horizontal padding within sections */
 
+  /* ===== COMPONENT SIZES ===== */
+  --size-avatar-sm: 48px;
+  --size-avatar-md: 64px;
+  --size-avatar-lg: 80px;
+  --size-icon-sm: 16px;
+  --size-icon-md: 20px;
+  --size-icon-lg: 24px;
+  --size-button-height: 48px;
+  --size-input-height: 48px;
+  --size-card-min: 300px;
+  --size-card-max: 400px;
+  --size-sidebar: 320px;
+  --size-modal-sm: 400px;
+  --size-modal-md: 600px;
+  --size-modal-lg: 800px;
+  --size-map-height: 400px;
+  --size-map-height-mobile: 300px;
+  --size-hero-height: 600px;
+
   /* ===== RADIUS ===== */
   --radius-sm: 0px;
   --radius-md: 0px;
@@ -167,6 +198,14 @@
   --shadow-md: 0 4px 12px rgba(27,32,37,0.13);
   --shadow-lg: 0 10px 24px rgba(27,32,37,0.15);
   --shadow-xl: 0 20px 40px rgba(27,32,37,0.16);
+
+  /* ===== DROP SHADOWS & SPECIFIC EFFECTS ===== */
+  --drop-shadow-light: drop-shadow(0 2px 4px var(--overlay-dark-light));
+  --drop-shadow-md: drop-shadow(0 4px 8px var(--overlay-dark-medium));
+  --text-shadow-light: 0 1px 2px var(--overlay-dark-light);
+  --text-shadow-md: 0 2px 4px var(--overlay-dark-medium);
+  --box-shadow-hover: 0 4px 12px var(--overlay-dark-light);
+  --box-shadow-hero: 5px 0 15px var(--overlay-dark-medium), 10px 0 30px rgba(0, 0, 0, 0.15);
 
   /* ===== GLASSMORPHISM ===== */
   --glass-light: rgba(255,255,255,0.30);
@@ -233,6 +272,27 @@
   --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary-dark) 100%);
   --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
   --gradient-neutral: linear-gradient(135deg, var(--color-neutral-600) 0%, var(--color-neutral-800) 100%);
+  
+  /* ===== HERO & OVERLAY GRADIENTS ===== */
+  --gradient-hero-mobile: linear-gradient(to bottom, 
+    var(--overlay-dark-hero) 0%, 
+    var(--overlay-dark-heavy) 35%, 
+    var(--overlay-dark-medium) 50%, 
+    var(--overlay-dark-light) 60%, 
+    transparent 70%, 
+    var(--overlay-dark-heavy) 80%, 
+    rgba(0, 0, 0, 0.7) 90%, 
+    var(--overlay-dark-gradient) 100%);
+  --gradient-glass-highlight: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255,255,255,0.3) 50%, 
+    transparent 100%);
+  --gradient-success-background: linear-gradient(135deg, 
+    var(--success-alpha-light) 0%, 
+    rgba(var(--success-rgb), 0.04) 100%);
+  --gradient-card-background: linear-gradient(135deg, 
+    var(--color-background) 0%, 
+    var(--color-surface) 100%);
   
   /* ===== GLASS MORPHISM BACKGROUNDS ===== */
   --glass-background-light: var(--glass-light);
@@ -322,6 +382,16 @@ html[data-theme="dark"] {
   --glass-background-medium: var(--glass-medium);
   --glass-background-heavy: var(--glass-heavy);
   --glass-background-hero: var(--glass-medium);
+
+  /* ===== DARK THEME OVERLAY VALUES ===== */
+  --overlay-dark-light: rgba(0, 0, 0, 0.15);
+  --overlay-dark-medium: rgba(0, 0, 0, 0.25);
+  --overlay-dark-heavy: rgba(0, 0, 0, 0.5);
+  --overlay-dark-hero: rgba(0, 0, 0, 0.7);
+  --overlay-dark-gradient: rgba(0, 0, 0, 0.85);
+  --white-glass-light: rgba(255, 255, 255, 0.02);
+  --white-glass-medium: rgba(255, 255, 255, 0.05);
+  --white-glass-heavy: rgba(255, 255, 255, 0.08);
 }
 
 /* ====== END THEME CONFIGURATION ====== */

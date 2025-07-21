@@ -1,5 +1,4 @@
 import React from "react";
-import Seo from "../../components/seo/Seo";
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
@@ -13,41 +12,7 @@ import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 export default function BroncePage() {
   return (
     <>
-      <Seo
-        title="Bronce: Historia, Propiedades y Curiosidades | Ecometalix Spa"
-        description="Descubre el bronce: historia, propiedades únicas, valor para Chile y datos fascinantes. Todo sobre bronce reciclado, su importancia y curiosidades científicas."
-        canonical="/materiales/bronce"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "¿Qué es el bronce y cómo se produce?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "El bronce es una aleación principalmente de cobre y estaño, aunque puede contener otros elementos. Se produce fundiendo ambos metales y mezclándolos en proporciones específicas para obtener distintas propiedades según su uso. (Fuente: Copper Development Association)"
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Por qué el bronce fue tan importante en la historia?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "El descubrimiento del bronce permitió a las civilizaciones antiguas crear herramientas, armas y artefactos mucho más resistentes que los de piedra o cobre puro, impulsando grandes avances en tecnología, arte y sociedad. (Fuente: The Metropolitan Museum of Art)"
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿El bronce se puede reciclar?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sí, el bronce se puede reciclar múltiples veces sin perder calidad. Su reciclaje es clave para la economía circular y la protección ambiental. (Fuente: International Copper Association)"
-              }
-            }
-          ]
-        }}
-      />
+      {/* SEO is now handled by App Router metadata in /app/materiales/bronce/page.tsx */}
       
       <FloatingCTA />
       

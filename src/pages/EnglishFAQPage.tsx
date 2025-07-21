@@ -16,9 +16,9 @@ export default function EnglishFAQPage() {
         <div className={styles.container}>
           
           <div className={styles.faqSection}>
-            <h2 className={styles.sectionTitle}>
+            <h3 className={styles.sectionTitle}>
               What types of scrap metal do you buy?
-            </h2>
+            </h3>
             <p className={styles.sectionContent}>
               We buy all types of metals: copper (cables, pipes, sheets), aluminum (profiles, cans, radiators), 
               iron and steel (structures, machinery), bronze, brass, and electronic materials. If you&apos;re not 
@@ -27,9 +27,9 @@ export default function EnglishFAQPage() {
           </div>
 
           <div className={styles.faqSection}>
-            <h2 className={styles.sectionTitle}>
+            <h3 className={styles.sectionTitle}>
               How do you determine the price of materials?
-            </h2>
+            </h3>
             <p className={styles.sectionContent}>
               Our prices are based on international market quotations updated daily. We consider factors 
               such as material type, quality, purity, and quantity. All evaluations are done transparently 
@@ -38,9 +38,9 @@ export default function EnglishFAQPage() {
           </div>
 
           <div className={styles.faqSection}>
-            <h2 className={styles.sectionTitle}>
+            <h3 className={styles.sectionTitle}>
               Do you provide immediate payment?
-            </h2>
+            </h3>
             <p className={styles.sectionContent}>
               Yes! We offer immediate cash payment or bank transfer within 24 business hours. We also 
               provide all necessary tax documentation for your transaction.
@@ -48,9 +48,9 @@ export default function EnglishFAQPage() {
           </div>
 
           <div className={styles.faqSection}>
-            <h2 className={styles.sectionTitle}>
+            <h3 className={styles.sectionTitle}>
               How can I get a quote?
-            </h2>
+            </h3>
             <p className={styles.sectionContent}>
               Send us a photo and description of your materials via WhatsApp to{' '}
               <a href="https://wa.me/56940244042" className={styles.contactLink}>

@@ -55,7 +55,7 @@ export default function TrustCues({ className = "", style = {}, isEnglish = fals
 
       {/* Accessible content for screen readers */}
       <div className={styles.srOnly}>
-        <h3>{isEnglish ? "Ecometalix trust indicators:" : "Indicadores de confianza de Ecometalix:"}</h3>
+        <h2>{isEnglish ? "Ecometalix trust indicators:" : "Indicadores de confianza de Ecometalix:"}</h2>
         <ul>
           {trustCuesData.map((cue, index) => (
             <li key={index}>{cue.text}</li>

@@ -1,5 +1,4 @@
 import React from "react";
-import Seo from "../../components/seo/Seo";
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
@@ -13,41 +12,7 @@ import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 export default function AluminiumPage() {
   return (
     <>
-      <Seo
-        title="Aluminio: Historia, Propiedades y Curiosidades | Ecometalix Spa"
-        description="Descubre el aluminio: historia, propiedades únicas, importancia para Chile y curiosidades científicas. Todo sobre aluminio reciclado y su impacto."
-        canonical="/materiales/aluminio"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "¿Qué es el aluminio y cómo se obtiene?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "El aluminio es un metal ligero y resistente, extraído principalmente de la bauxita. Se obtiene mediante el proceso de electrólisis, separando el aluminio puro de sus minerales. (Fuente: International Aluminium Institute)"
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Por qué es importante el reciclaje de aluminio?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "El reciclaje de aluminio ahorra hasta un 95% de la energía comparado con la producción primaria y reduce significativamente el impacto ambiental. El aluminio puede reciclarse infinitamente sin perder calidad. (Fuente: The Aluminum Association)"
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Cuáles son los usos principales del aluminio?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "El aluminio se utiliza en envases, construcción, transporte, electrónica y energías renovables, gracias a su bajo peso, resistencia y conductividad. (Fuente: European Aluminium)"
-              }
-            }
-          ]
-        }}
-      />
+      {/* SEO is now handled by App Router metadata in /app/materiales/aluminio/page.tsx */}
       
       <FloatingCTA />
       

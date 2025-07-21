@@ -1,6 +1,6 @@
 // src/pages/PricesPage.jsx
 import React from "react";
-import Seo from "../components/seo/Seo";
+// SEO now handled by App Router metadata
 import styles from "./PricesPage.module.css";
 import PageHeader from "../components/PageHeader";
 import Breadcrumb from "../components/Breadcrumb";
@@ -41,13 +41,7 @@ const priceFaqs = [
 
 const PricesPage = () => (
   <>
-    {/* --- SEO & Meta --- */}
-    <Seo
-      title="Precios de chatarra en Santiago 2025 | Ecometalix Spa"
-      description="Consulta precios actualizados de cobre, aluminio, hierro y otros metales en Ecometalix Spa. Pago inmediato y pesaje certificado. ¡Cotiza tu precio por WhatsApp!"
-      canonical="/precios"
-      hreflangs={generateHreflangs('/precios')}
-    />
+    {/* SEO is now handled by App Router metadata in /app/precios/page.tsx */}
     
     {/* Product and Service Schemas */}
     <ProductSchema materials={materials} />

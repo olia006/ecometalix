@@ -5,11 +5,11 @@
 .priceTableSection {
   padding: var(--space-xxl) 0;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.08) 0%, 
-    rgba(255, 255, 255, 0.04) 100%);
+    var(--white-glass-medium) 0%, 
+    var(--white-glass-light) 100%);
   border-radius: var(--radius-xl);
   margin: var(--space-xl) auto;
-  max-width: 1200px;
+  max-width: var(--container-xl);
   position: relative;
   overflow: hidden;
 }
@@ -59,7 +59,7 @@
 
 .headingIcon {
   color: var(--color-accent);
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  filter: var(--drop-shadow-light);
 }
 
 .subtitle {
@@ -250,19 +250,19 @@
 }
 
 .priceTable .tableImage {
-  width: 64px;
-  height: 64px;
+  width: var(--size-avatar-md);
+  height: var(--size-avatar-md);
   object-fit: cover;
   border-radius: var(--radius-lg);
   box-shadow: 
     var(--shadow-md),
-    inset 0 1px 0 rgba(255,255,255,0.2);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 var(--white-glass-medium);
+  border: 2px solid var(--white-glass-heavy);
   transition: all 0.3s ease;
   position: relative;
   top: auto;
   left: auto;
-  max-width: 64px;
+  max-width: var(--size-avatar-md);
   flex-shrink: 0;
   display: block;
 }
@@ -286,8 +286,8 @@
 }
 
 .imagePlaceholder {
-  width: 64px;
-  height: 64px;
+  width: var(--size-avatar-md);
+  height: var(--size-avatar-md);
   display: flex;
   align-items: center;
   justify-content: center;

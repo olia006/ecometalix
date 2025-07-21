@@ -632,6 +632,33 @@
   outline: none;
 }
 
+/* Read more link styling for price links */
+.readMoreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  padding: var(--space-xs) 0;
+  background: transparent;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  transition: color 0.3s ease;
+}
+
+.readMoreLink:hover {
+  color: var(--color-primary);
+}
+
+/* Dark theme for read more link */
+:global(html[data-theme="dark"]) .readMoreLink {
+  color: var(--color-white);
+}
+
+:global(html[data-theme="dark"]) .readMoreLink:hover {
+  color: var(--color-primary);
+}
+
 /* ===============================================
    Responsive Design
    =============================================== */

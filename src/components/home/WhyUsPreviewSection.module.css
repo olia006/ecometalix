@@ -4,7 +4,7 @@
 
    .whyUsPreviewSection {
     padding: var(--space-xl) var(--space-md);
-    max-width: 1000px;
+    max-width: var(--container-lg);
     margin: 0 auto;
     text-align: center;
     position: relative;
@@ -35,9 +35,9 @@
   }
   
   .uspCard {
-    flex: 1 1 190px;
-    min-width: 180px;
-    max-width: 260px;
+    flex: 1 1 var(--size-card-min);
+    min-width: calc(var(--size-card-min) - var(--space-5xl));
+    max-width: var(--size-card-min);
     background: var(--color-background);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);

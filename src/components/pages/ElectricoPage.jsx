@@ -1,6 +1,5 @@
 import React from "react";
 import { Search, Package } from "lucide-react";
-import Seo from "../../components/seo/Seo";
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
@@ -14,41 +13,7 @@ import { CONTACT_URLS } from "../../config/constants";
 export default function ElectricoPage() {
   return (
     <>
-      <Seo
-        title="Residuos Electrónicos: Reciclaje y Recuperación | Ecometalix Spa"
-        description="Reciclaje de residuos electrónicos: placas, circuitos, computadores, TV. Recuperación de metales preciosos como oro, plata y cobre de componentes electrónicos."
-        canonical="/materiales/electrico"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "¿Qué son los residuos electrónicos?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Los residuos electrónicos (e-waste) incluyen placas de circuitos, componentes de computadores, TV, celulares y equipos electrónicos. Contienen metales preciosos como oro, plata y cobre que pueden ser recuperados."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Qué componentes electrónicos tienen mayor valor?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Las placas madre, procesadores, memorias RAM y tarjetas gráficas tienen mayor valor por su contenido de oro. Los conectores dorados y circuitos integrados también son muy valorados."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Por qué es importante el reciclaje de electrónicos?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "El reciclaje de electrónicos recupera metales preciosos, evita la contaminación por elementos tóxicos y reduce la necesidad de minería. Es fundamental para la economía circular y la protección ambiental."
-              }
-            }
-          ]
-        }}
-      />
+      {/* SEO is now handled by App Router metadata in /app/materiales/electrico/page.tsx */}
       
       <FloatingCTA />
       

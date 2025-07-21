@@ -1,6 +1,6 @@
 import React from "react";
 import { Search } from "lucide-react";
-import Seo from "../../components/seo/Seo";
+// SEO now handled by App Router metadata
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
@@ -13,11 +13,7 @@ import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../../config/constants";
 export default function FierroMixtoPage() {
   return (
     <>
-      <Seo
-        title="Fierro Mixto - Venta y Compra de Chatarra | Ecometalix Spa"
-        description="Información completa sobre el fierro mixto: características, composición variada y datos curiosos. Vendemos fierro mixto al mejor precio en Santiago."
-        canonical="/materiales/fierro-mixto"
-      />
+      {/* SEO is now handled by App Router metadata in /app/materiales/fierro-mixto/page.tsx */}
       
       <FloatingCTA />
       

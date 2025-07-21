@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
-import Seo from "../components/seo/Seo";
+// SEO now handled by App Router metadata
 import FloatingCTA from "../components/FloatingCTA";
 import Breadcrumb from "../components/Breadcrumb";
 import PageHeader from "../components/PageHeader";
@@ -47,12 +47,7 @@ export default function MaterialsIndexPage() {
 
   return (
     <>
-      <Seo
-        title="Materiales que Compramos - Lista Completa | Ecometalix Spa"
-        description="Encuentra todos los materiales que compramos en Ecometalix: fierro, cobre, aluminio, bronce, electrónicos y más. Precios actualizados y detalles completos."
-        canonical="/materiales"
-        keywords="materiales reciclaje, fierro, cobre, aluminio, bronce, electrónicos, chatarra santiago, metales reciclables"
-      />
+      {/* SEO is now handled by App Router metadata in /app/materiales/page.tsx */}
       
       <FloatingCTA />
       
@@ -143,9 +138,12 @@ export default function MaterialsIndexPage() {
       <section className="professional-section">
         <div className="section-container">
           <div className="materials-grid">
-            {filteredMaterials.map((material) => (
-              <MaterialCard key={material.key} {...material} />
-            ))}
+            {filteredMaterials.map((material) => {
+              const { key, ...materialProps } = material;
+              return (
+                <MaterialCard key={key} {...materialProps} />
+              );
+            })}
           </div>
 
           {filteredMaterials.length === 0 && (
@@ -186,42 +184,42 @@ export default function MaterialsIndexPage() {
             
             <div className="professional-grid professional-grid--2">
               <div className="professional-card professional-card--light">
-                <h4 className="card-title prohibited-card-title">Cables Eléctricos y de Comunicación</h4>
+                <h3 className="card-title prohibited-card-title">Cables Eléctricos y de Comunicación</h3>
                 <p className="card-description">Prohibido recibir cables eléctricos, telefónicos o de fibra óptica sin documentación que acredite origen legal.</p>
               </div>
               
               <div className="professional-card professional-card--light">
-                <h4 className="card-title prohibited-card-title">Propiedad Pública</h4>
+                <h3 className="card-title prohibited-card-title">Propiedad Pública</h3>
                 <p className="card-description">No se reciben tapas de alcantarilla, señales de tránsito, barandas, luminarias, rejillas de desagüe, rieles, mobiliario urbano ni cualquier elemento de propiedad estatal o municipal.</p>
               </div>
               
               <div className="professional-card professional-card--light">
-                <h4 className="card-title prohibited-card-title">Chatarra de Infraestructura Crítica</h4>
+                <h3 className="card-title prohibited-card-title">Chatarra de Infraestructura Crítica</h3>
                 <p className="card-description">Prohibido comprar materiales provenientes de puentes, líneas eléctricas, torres de telecomunicaciones, tuberías, vías férreas, estaciones eléctricas, etc., sin documentación oficial del propietario o empresa responsable.</p>
               </div>
               
               <div className="professional-card professional-card--light">
-                <h4 className="card-title prohibited-card-title">Piezas y Partes de Vehículos</h4>
+                <h3 className="card-title prohibited-card-title">Piezas y Partes de Vehículos</h3>
                 <p className="card-description">Prohibido recibir motores, catalizadores, o partes de autos, camiones o motos sin documentos que acrediten propiedad legal.</p>
               </div>
               
               <div className="professional-card professional-card--light">
-                <h4 className="card-title prohibited-card-title">Materiales Explosivos o de Uso Militar</h4>
+                <h3 className="card-title prohibited-card-title">Materiales Explosivos o de Uso Militar</h3>
                 <p className="card-description">No aceptamos municiones, armas, explosivos, partes de equipamiento militar o similares.</p>
               </div>
               
               <div className="professional-card professional-card--light">
-                <h4 className="card-title prohibited-card-title">Materiales Radioactivos o Peligrosos</h4>
+                <h3 className="card-title prohibited-card-title">Materiales Radioactivos o Peligrosos</h3>
                 <p className="card-description">Prohibido todo material con radioactividad, asbesto, químicos tóxicos, baterías con ácido, tambores contaminados u otros residuos peligrosos.</p>
               </div>
               
               <div className="professional-card professional-card--light">
-                <h4 className="card-title prohibited-card-title">Electrodomésticos y Máquinas en Funcionamiento</h4>
+                <h3 className="card-title prohibited-card-title">Electrodomésticos y Máquinas en Funcionamiento</h3>
                 <p className="card-description">No recibimos electrodomésticos o maquinaria que esté en buen estado o funcionando. Solo se aceptan equipos totalmente fuera de uso y desmantelados.</p>
               </div>
               
               <div className="professional-card professional-card--light">
-                <h4 className="card-title prohibited-card-title">Metales Mixtos o Contaminados</h4>
+                <h3 className="card-title prohibited-card-title">Metales Mixtos o Contaminados</h3>
                 <p className="card-description">No se acepta chatarra mezclada con aceites, tierra, madera, goma, plásticos u otros residuos no metálicos.</p>
               </div>
             </div>
@@ -248,10 +246,8 @@ export default function MaterialsIndexPage() {
                   Consultar por WhatsApp
                 </SecondaryButton>
               </a>
-              <Link href="/precios" className="buttonLink">
-                <SecondaryButton>
-                  Ver precios <ArrowRight size={14} />
-                </SecondaryButton>
+              <Link href="/precios" className={styles.readMoreLink}>
+                Ver precios <ArrowRight size={14} />
               </Link>
             </div>
           </div>

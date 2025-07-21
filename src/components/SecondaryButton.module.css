@@ -4,20 +4,20 @@
 
 /* Remove link styling when SecondaryButton is wrapped in <a> tag */
 .buttonLink {
-  text-decoration: none !important;
-  color: inherit !important;
-  border: none !important;
-  outline: none !important;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
 }
 
 .buttonLink:hover,
 .buttonLink:focus,
 .buttonLink:active,
 .buttonLink:visited {
-  text-decoration: none !important;
-  color: inherit !important;
-  border: none !important;
-  outline: none !important;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
 }
 
    @property --angle-1 {

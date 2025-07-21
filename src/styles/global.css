@@ -3,7 +3,6 @@
    ========================== */
 
 /* 1. Import Fonts & Tokens */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600;700&display=swap');
 @import './theme.css';
 @import './media.css';
 
@@ -113,6 +112,18 @@ a:hover, a:focus-visible {
   outline: none;
 }
 
+/* Remove link styling for button links - no !important to follow guidelines */
+a.buttonLink,
+a.buttonLink:hover,
+a.buttonLink:focus,
+a.buttonLink:active,
+a.buttonLink:visited {
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
+}
+
 /* Button base — keep your preferred CTA styles untouched */
 button {
   cursor: pointer;
@@ -169,6 +180,14 @@ h5 {
 h6 { 
   font-size: var(--font-size-sm); 
   font-weight: var(--font-weight-regular);
+}
+
+/* Fix deprecated H1 font-size warning in sectioning elements */
+article h1, aside h1, nav h1, section h1 {
+  font-size: var(--font-size-xxl);
+}
+main h1 {
+  font-size: var(--font-size-xxl);
 }
 
 /* Subheadings and taglines */

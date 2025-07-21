@@ -1,6 +1,6 @@
 import React from "react";
 import { Wrench, Package, Lightbulb } from "lucide-react";
-import Seo from "../../components/seo/Seo";
+// SEO now handled by App Router metadata
 import FloatingCTA from "../../components/FloatingCTA";
 import MaterialHero from "../../components/MaterialHero";
 import MaterialNavigation from "../../components/MaterialNavigation";
@@ -46,13 +46,7 @@ export default function FierroLataPage() {
 
   return (
     <>
-      <Seo
-        title="Fierro Lata: Historia, Usos y Curiosidades | EcoMetalix Santiago"
-        description="Descubre el Fierro Lata: historia, propiedades, usos en Chile y curiosidades. Todo sobre reciclaje, sostenibilidad y valor local del fierro lata."
-        canonical="/materiales/fierro-lata"
-        keywords="fierro lata, fierro reciclado, historia del fierro lata, reciclaje de fierro, chatarra de lata, fierro galvanizado, precios fierro chile"
-        structuredData={faqStructuredData}
-      />
+      {/* SEO is now handled by App Router metadata in /app/materiales/fierro-lata/page.tsx */}
       
       <FloatingCTA />
       

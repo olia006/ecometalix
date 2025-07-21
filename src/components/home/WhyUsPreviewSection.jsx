@@ -41,7 +41,7 @@ export default function WhyUsPreviewSection() {
           ))}
         </ul>
         <div className={styles.ctaWrap}>
-          <Link href="#ventajas" className={styles.ctaBtn}>
+          <Link href="/por-que-nosotros" className={styles.ctaBtn}>
             Ver todas las ventajas
           </Link>
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Seo from "../components/seo/Seo";
+// SEO now handled by App Router metadata
 import Breadcrumb from "../components/Breadcrumb";
 import FloatingCTA from "../components/FloatingCTA";
 import TrustCues from "../components/TrustCues";
@@ -218,12 +218,7 @@ FAQSchema.propTypes = {
 export default function FAQPage() {
   return (
     <>
-      <Seo
-        title="Preguntas Frecuentes | Ecometalix Spa"
-        description="Resuelve todas tus dudas sobre la compra y venta de chatarra: pago inmediato, precios, balanza, logística y más."
-        canonical="/faq"
-        hreflangs={generateHreflangs('/faq')}
-      />
+      {/* SEO is now handled by App Router metadata in /app/faq/page.tsx */}
       <FAQSchema categories={faqCategories} />
       
       {/* Breadcrumb navigation */}

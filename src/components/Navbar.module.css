@@ -83,11 +83,6 @@
   -webkit-user-select: none;
   user-select: none;
   filter: hue-rotate(-190deg) drop-shadow(var(--shadow-sm));
-  transition: filter 0.2s ease;
-}
-
-.logo:hover {
-  filter: hue-rotate(-190deg) drop-shadow(var(--shadow-md));
 }
 
 .navLinks {
@@ -179,25 +174,50 @@
   outline-offset: 2px;
 }
 
-/* Hide desktop navbar on phones only */
-@media (max-width: var(--breakpoint-2xl)) {
-  .header, .nav {
-    display: none !important;
+/* Remove the mobile hiding - make navbar responsive for all screens */
+/* Navbar is now responsive and shows on all screen sizes */
+
+/* Small mobile adjustments */
+@media (max-width: var(--breakpoint-md)) {
+  .nav {
+    padding: 0 var(--space-sm);
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  
+  .logoContainer {
+    order: 1;
+  }
+  
+  .centerGroup {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .rightGroup {
+    order: 2;
+    width: 100%;
+    justify-content: space-between;
   }
 }
 
-/* Small desktop adjustments */
-@media (max-width: var(--breakpoint-6xl)) {
+/* Medium mobile and tablet adjustments */
+@media (min-width: calc(var(--breakpoint-md) + 1px)) and (max-width: var(--breakpoint-3xl)) {
   .nav {
     padding: 0 var(--space-md);
   }
   
-  .navLinks {
-    gap: var(--space-md);
+  .centerGroup {
+    flex: 1;
+    justify-content: center;
   }
-  
-  .ctaGroup {
-    gap: var(--space-sm);
+}
+
+/* Desktop adjustments */
+@media (min-width: calc(var(--breakpoint-3xl) + 1px)) {
+  .nav {
+    padding: 0 var(--space-lg);
   }
 }
 

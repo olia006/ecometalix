@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
-import MobileNavBar from './MobileNavBar';
 import ToastNotification from './ToastNotification';
 import { autoSetupAnchorHandlers } from '../utils/scrollUtils';
 
@@ -38,7 +37,7 @@ export default function ThemeProvider({ children }) {
 
   return (
     <>
-      {/* Site Header/Nav */}
+      {/* Site Header/Nav - Desktop only */}
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
       {/* Toast Notifications */}
@@ -54,10 +53,7 @@ export default function ThemeProvider({ children }) {
       {/* Main Content */}
       {children}
 
-      {/* Mobile Nav (app-bar) */}
-      <nav aria-label="Mobile navigation">
-        <MobileNavBar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      </nav>
+      {/* Mobile navigation is now handled by the responsive Navbar */}
     </>
   );
 } 
