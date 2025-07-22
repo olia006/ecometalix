@@ -203,10 +203,16 @@ h6 {
 
 /* Fix deprecated H1 font-size warning in sectioning elements */
 article h1, aside h1, nav h1, section h1 {
-  font-size: var(--font-size-xxl);
+  font-size: var(--font-size-xxl) !important;
 }
 main h1 {
-  font-size: var(--font-size-xxl);
+  font-size: var(--font-size-xxl) !important;
+}
+
+/* Specific fix for hero headings in sections */
+section h1.hero-heading,
+section .heroHeading {
+  font-size: var(--font-size-hero) !important;
 }
 
 /* Subheadings and taglines */
@@ -499,8 +505,17 @@ blockquote {
 }
 
 .hero-highlight {
-  color: var(--color-accent);
-  text-shadow: var(--shadow-md);
+  color: #88B04B; /* Brighter green for hero dark background */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8),
+               0px 0px 8px rgba(136, 176, 75, 0.4);
+  
+  /* Technical CLS prevention - no appearance changes */
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  contain: layout style;
 }
 
 /* Hero Heading Size Variants */

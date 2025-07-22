@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  
+  // Modern JavaScript compilation - eliminates legacy polyfills
+  swcMinify: true,
+  compiler: {
+    // Remove legacy JavaScript transforms
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
   images: {
     domains: [],
     formats: ['image/webp', 'image/avif'],
@@ -9,6 +17,8 @@ const nextConfig = {
   },
   experimental: {
     optimizeCss: true,
+    // Use modern compilation
+    swcTraceProfiling: true,
   },
   
   // CSS modules are enabled by default in Next.js

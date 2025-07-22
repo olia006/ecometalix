@@ -1,6 +1,6 @@
 .header {
     font-size: var(--font-size-xxl);
-    color: var(--color-white);
+    color: var(--color-text-heading);
     font-family: var(--font-heading);
     font-weight: var(--font-weight-bold);
     text-align: center;
