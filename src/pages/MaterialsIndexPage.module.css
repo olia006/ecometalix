@@ -20,8 +20,8 @@
   background: var(--glass-heavy);
   border: var(--border-thin) solid var(--glass-border);
   border-radius: var(--radius-lg);
-  backdrop-filter: blur(var(--glass-blur-lg));
   -webkit-backdrop-filter: blur(var(--glass-blur-lg));
+  backdrop-filter: blur(var(--glass-blur-lg));
   box-shadow: var(--shadow-md);
   transition: all var(--transition-fast) var(--ease-smooth);
 }

@@ -380,8 +380,9 @@ blockquote {
 @media (max-width: var(--breakpoint-3xl)) {
   /* Smooth momentum scrolling on iOS */
   body {
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-y: contain;
+    /* Removed deprecated -webkit-overflow-scrolling */
+    /* Progressive enhancement: overscroll-behavior-y for iOS 16+ */
+    overscroll-behavior-y: contain; /* Gracefully ignored on iOS < 16 */
     
     /* Safe area support for devices with notches */
     padding-top: env(safe-area-inset-top);
@@ -1067,8 +1068,8 @@ blockquote {
   background: var(--glass-light);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-sm);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   transition: all 0.2s ease;
   overflow: hidden;
 }
@@ -1131,8 +1132,8 @@ blockquote {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   transition: all 0.2s ease;
 }
 
@@ -1500,8 +1501,8 @@ blockquote {
   color: var(--color-text);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   box-shadow: var(--shadow-md);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -1615,8 +1616,8 @@ blockquote {
   color: var(--color-text);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   box-shadow: var(--shadow-md);
   cursor: pointer;
   transition: all 0.2s ease;
