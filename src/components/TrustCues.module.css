@@ -12,7 +12,7 @@
 .runningLine {
   white-space: nowrap;
   overflow: hidden;
-  padding: var(--space-xl) 0;
+  padding: var(--space-xs) 0 var(--space-md) 0;
 }
 
 .runningContent {

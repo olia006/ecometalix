@@ -2,16 +2,26 @@
    Professional Price Table Section
    =============================================== */
 
+/* Header Section - Separate container */
+.headerSection {
+  max-width: var(--container-prices);
+  margin: 0 auto var(--space-lg);
+  padding: 0 var(--space-md);
+}
+
+/* Price Table Section - Only for tables */
 .priceTableSection {
-  padding: var(--space-xxl) 0;
+  padding: var(--space-xxl) var(--space-md);
   background: linear-gradient(135deg, 
     var(--white-glass-medium) 0%, 
     var(--white-glass-light) 100%);
   border-radius: var(--radius-xl);
-  margin: var(--space-xl) auto;
-  max-width: var(--container-xl);
+  margin: var(--space-xl) 0;
+  max-width: none;
+  width: 100vw;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .priceTableSection::before {
@@ -34,10 +44,10 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   margin-bottom: var(--space-xl);
-  padding: 0 var(--space-lg);
   gap: var(--space-lg);
 }
 
@@ -98,8 +108,7 @@
    =============================================== */
 
 .categorySection {
-  margin-bottom: var(--space-xl);
-  padding: 0 var(--space-lg);
+  margin-bottom: var(--space-xxl);
 }
 
 .categoryTitle {
@@ -124,6 +133,9 @@
     inset 0 var(--border-thin) 0 var(--white-glass-heavy);
   overflow: hidden;
   position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
 }
 
 .tableContainer::before {
@@ -149,6 +161,8 @@
   border-spacing: 0;
   background: none;
   font-family: var(--font-body);
+  margin: 0 auto;
+  table-layout: auto;
 }
 
 .priceTable thead tr {
@@ -159,7 +173,7 @@
 
 .materialHeader,
 .priceHeader {
-  padding: var(--space-lg) var(--space-xl);
+  padding: var(--space-xl) var(--space-lg);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   color: var(--color-primary);
@@ -182,7 +196,8 @@
   font-size: var(--font-size-sm);
   color: var(--color-muted);
   font-style: italic;
-  margin-bottom: var(--space-sm);
+  margin: var(--space-lg) 0 var(--space-sm) 0;
+  padding-left: var(--space-lg);
   text-align: left;
   caption-side: top;
 }
@@ -224,14 +239,15 @@
    =============================================== */
 
 .materialCell {
-  padding: var(--space-lg) var(--space-xl);
-  width: 60%;
+  padding: var(--space-xl) var(--space-lg);
+  width: auto;
 }
 
 .priceCell {
-  padding: var(--space-lg) var(--space-xl);
+  padding: var(--space-xl) var(--space-lg);
   text-align: right;
-  width: 40%;
+  width: auto;
+  white-space: nowrap;
 }
 
 /* ===============================================
@@ -484,46 +500,107 @@
 }
 
 /* ===============================================
+   CTA Section Wrapper
+   =============================================== */
+
+/* CTA Section - Separate container */
+.ctaSectionWrapper {
+  max-width: var(--container-prices);
+  margin: var(--space-lg) auto 0;
+  padding: 0 var(--space-md);
+}
+
+/* ===============================================
    Responsive Design
    =============================================== */
 
-@media (max-width: var(--breakpoint-xl)) {
+@media (max-width: 768px) {
+  .headerSection {
+    margin-bottom: var(--space-md);
+    padding: 0 var(--space-sm);
+  }
+  
+  .priceTableSection {
+    padding: var(--space-xl) var(--space-sm);
+    margin: var(--space-md) auto;
+    border-radius: var(--radius-lg);
+  }
+  
+  .ctaSectionWrapper {
+    margin-top: var(--space-md);
+    padding: 0 var(--space-sm);
+  }
+  
   .header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: var(--space-md);
   }
   
+  .updateInfo {
+    align-self: stretch;
+    justify-content: center;
+  }
+  
   .heading {
-    font-size: var(--font-size-xl);
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
   }
   
   .subtitle {
-    font-size: var(--font-size-md);
-  }
-}
-
-@media (max-width: var(--breakpoint-lg)) {
-  .priceTableSection {
-    padding: var(--space-xl) 0;
-  }
-  
-  .header,
-  .categorySection,
-  .ctaSection {
-    padding-left: var(--space-md);
-    padding-right: var(--space-md);
+    font-size: clamp(0.875rem, 4vw, 1rem);
   }
   
   .materialHeader,
   .priceHeader {
-    padding: var(--space-md) var(--space-lg);
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerSection {
+    padding: 0 var(--space-xs);
+  }
+  
+  .priceTableSection {
+    padding: var(--space-lg) var(--space-xs);
+    margin: var(--space-sm) auto;
+  }
+  
+  .ctaSectionWrapper {
+    padding: 0 var(--space-xs);
+  }
+  
+
+  
+  .header {
+    gap: var(--space-sm);
+  }
+  
+  .updateInfo {
+    padding: var(--space-sm) var(--space-md);
     font-size: var(--font-size-xs);
+  }
+  
+  .heading {
+    font-size: clamp(1.125rem, 6vw, 1.25rem);
+  }
+  
+  .subtitle {
+    font-size: clamp(0.8rem, 4vw, 0.9rem);
+    line-height: 1.4;
+  }
+  
+  .materialHeader,
+  .priceHeader {
+    padding: var(--space-md) var(--space-sm);
+    font-size: var(--font-size-xs);
+    text-align: center;
   }
   
   .materialCell,
   .priceCell {
-    padding: var(--space-md) var(--space-lg);
+    padding: var(--space-lg) var(--space-md);
   }
   
   .materialInfo {
@@ -560,7 +637,11 @@
   }
 }
 
-@media (max-width: var(--breakpoint-md)) {
+@media (max-width: 375px) {
+  .headerSection,
+  .ctaSectionWrapper {
+    padding: 0 var(--space-xs);
+  }
   .materialInfo {
     flex-direction: column;
     text-align: center;
@@ -575,6 +656,7 @@
     padding: var(--space-lg);
   }
   
+  .materialHeader,
   .priceHeader {
     text-align: center;
   }

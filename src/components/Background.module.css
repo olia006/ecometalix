@@ -21,19 +21,19 @@
   background: var(--background-container);
 }
 
-/* Special case for header/hero - keep existing functionality */
+/* Special case for header/hero - content-driven height */
 .hero {
   background: var(--background-hero);
-  min-height: 100vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: var(--section-spacing-y);
+  margin-bottom: var(--space-sm);
   max-width: none;
-  padding: 0; /* Remove any inherited padding for perfect edge-to-edge coverage */
+  padding: var(--space-3xl) 0; /* Add reasonable padding instead of full-screen */
 }
 
 /* Gradient Variants */
@@ -90,26 +90,49 @@
   backdrop-filter: blur(20px);
 }
 
-/* Overlay for background images using CSS variables */
+/* Enhanced overlay for background images - optimized for hero sections */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    var(--color-black) 0%,
-    transparent 50%,
-    var(--color-black) 100%
-  );
-  opacity: 0.4;
+  background: rgba(0, 0, 0, 0.3);
   z-index: 1;
+  pointer-events: none;
+}
+
+/* Additional gradient overlay for better text readability */
+.overlay::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 30%,
+    rgba(0, 0, 0, 0.3) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
 /* Dark theme overlay adjustments */
 html[data-theme="dark"] .overlay {
-  opacity: 0.6;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+html[data-theme="dark"] .overlay::after {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.7) 30%,
+    rgba(0, 0, 0, 0.4) 60%,
+    transparent 100%
+  );
 }
 
 /* Ensure content appears above overlay */
@@ -128,6 +151,8 @@ html[data-theme="dark"] .overlay {
   
   .hero {
     margin-bottom: var(--section-spacing-y-mobile);
+    min-height: 50vh;
+    padding: var(--space-xl) 0;
   }
   
   .page {
@@ -148,6 +173,8 @@ html[data-theme="dark"] .overlay {
   
   .hero {
     margin-bottom: var(--space-xxl);
+    min-height: 40vh;
+    padding: var(--space-lg) 0;
   }
   
   .page {

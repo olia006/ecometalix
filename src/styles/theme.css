@@ -310,8 +310,8 @@
   --size-icon-xxl: 64px;     /* Large feature icons */
   --size-button-height: 48px;
   --size-input-height: 48px;
-  --size-card-min: 300px;
-  --size-card-max: 400px;
+  --size-card-min: 280px;
+  --size-card-max: 100%;
   --size-sidebar: 320px;
 
   /* ===== NAVBAR COMPONENT SIZES ===== */
@@ -383,6 +383,7 @@
   --content-width-medium: 800px;   /* Medium content */
   --content-width-wide: 1200px;    /* Wide content */
   --content-width-extra-wide: 1400px; /* Extra wide content */
+  --content-width-max: clamp(320px, 95vw, 1400px); /* Maximum content width - mobile-first */
 
   /* ===== STANDARDIZED BORDER WIDTHS ===== */
   --border-thin: 1px;
@@ -393,9 +394,9 @@
   /* ===== GRID SYSTEM ===== */
   --grid-min-card: clamp(240px, 30vw, 260px);         /* Minimum card width */
   --grid-min-material: clamp(220px, 25vw, 240px);     /* Material grid minimum */
-  --size-modal-sm: 400px;
-  --size-modal-md: 600px;
-  --size-modal-lg: 800px;
+  --size-modal-sm: clamp(300px, 90vw, 400px);
+  --size-modal-md: clamp(320px, 90vw, 600px);
+  --size-modal-lg: clamp(340px, 95vw, 800px);
   --size-map-height: 400px;
   --size-map-height-mobile: 300px;
   --size-hero-height: 600px;
@@ -467,11 +468,11 @@
   --container-2xl: 1440px;
   
   /* ===== SPECIALIZED CONTAINERS ===== */
-  --container-prices: clamp(600px, 90vw, 700px);      /* Price table container */
-  --container-materials: clamp(800px, 95vw, 1100px);  /* Materials grid container */
-  --container-price-table: clamp(500px, 85vw, 600px); /* Individual price tables */
-  --container-page-header: clamp(600px, 85vw, 800px); /* Page header content width */
-  --container-page-subtitle: clamp(400px, 80vw, 600px); /* Page subtitle max width */
+  --container-prices: clamp(300px, 95vw, 750px);      /* Price table container - mobile-first */
+  --container-materials: clamp(320px, 95vw, 1100px);  /* Materials grid container - mobile-first */
+  --container-price-table: clamp(300px, 85vw, 600px); /* Individual price tables - mobile-first */
+  --container-page-header: clamp(320px, 85vw, 800px); /* Page header content width - mobile-first */
+  --container-page-subtitle: clamp(300px, 80vw, 600px); /* Page subtitle max width - mobile-first */
 
   --z-tooltip: 1000;
   --z-header: 1020;

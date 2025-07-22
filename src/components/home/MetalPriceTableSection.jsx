@@ -3,7 +3,8 @@ import { Package, TrendingUp, Clock } from "lucide-react";
 import styles from "./MetalPriceTableSection.module.css";
 import WhatsAppIcon from "../WhatsAppIcon";
 import SecondaryButton from "../SecondaryButton";
-import { metalPrices, lastUpdated } from "../../data/prices";
+import { metalPrices } from "../../data/prices";
+import { PRICE_UPDATE_CONFIG } from "../../config/constants";
 import { materials } from "../../data/materials";
 import OptimizedImage from "../OptimizedImage";
 
@@ -73,7 +74,6 @@ const PriceTableRow = ({ material, isHighValue = false }) => (
     <td className={styles.priceCell}>
       {material.price.toLowerCase().includes("consultar") ? (
         <div className={styles.consultarWrapper}>
-          <span className={styles.consultarText}>Precio bajo consulta</span>
           <a 
             href="https://wa.me/56940244042"
             target="_blank"
@@ -104,142 +104,149 @@ export default function MetalPriceTableSection() {
   );
 
   return (
-    <section className={styles.priceTableSection} aria-label="Precios actualizados de metales">
-      {/* Header Section */}
-      <div className={styles.header}>
-        <div className={styles.titleGroup}>
-          <h2 className={styles.heading}>
-            <TrendingUp className={styles.headingIcon} />
-            Lista Completa de Precios por Kilo
-          </h2>
-          <p className={styles.subtitle}>
-            Consulta nuestros precios competitivos para todos los tipos de metales y chatarra
-          </p>
-        </div>
-        <div className={styles.updateInfo}>
-          <Clock className={styles.clockIcon} size={16} />
-          <span className={styles.lastUpdated}>
-            Actualizado: <strong>{lastUpdated}</strong>
-          </span>
-        </div>
-      </div>
-
-      {/* Non-Ferrous Metals (High Value) */}
-      {nonFerrous.length > 0 && (
-        <div className={styles.categorySection}>
-          <h3 className={styles.categoryTitle}>Metales No Ferrosos</h3>
-          <div className={styles.tableContainer}>
-            <table className={styles.priceTable}>
-              <caption className={styles.tableCaption}>
-                Precios de metales no ferrosos actualizados diariamente
-              </caption>
-              <thead>
-                <tr>
-                  <th className={styles.materialHeader}>Material</th>
-                  <th className={styles.priceHeader}>Precio por Kilogramo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {nonFerrous.map((material) => (
-                  <PriceTableRow 
-                    key={material.id} 
-                    material={material} 
-                    isHighValue={material.rawPrice > 1000}
-                  />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
-
-      {/* Ferrous Metals */}
-      {ferrous.length > 0 && (
-        <div className={styles.categorySection}>
-          <h3 className={styles.categoryTitle}>Metales Ferrosos</h3>
-          <div className={styles.tableContainer}>
-            <table className={styles.priceTable}>
-              <caption className={styles.tableCaption}>
-                Precios de metales ferrosos actualizados diariamente
-              </caption>
-              <thead>
-                <tr>
-                  <th className={styles.materialHeader}>Material</th>
-                  <th className={styles.priceHeader}>Precio por Kilogramo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ferrous.map((material) => (
-                  <PriceTableRow key={material.id} material={material} />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
-
-      {/* Special Materials */}
-      {special.length > 0 && (
-        <div className={styles.categorySection}>
-          <h3 className={styles.categoryTitle}>Materiales Especiales</h3>
-          <div className={styles.tableContainer}>
-            <table className={styles.priceTable}>
-              <caption className={styles.tableCaption}>
-                Precios de materiales especiales bajo consulta
-              </caption>
-              <thead>
-                <tr>
-                  <th className={styles.materialHeader}>Material</th>
-                  <th className={styles.priceHeader}>Precio por Kilogramo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {special.map((material) => (
-                  <PriceTableRow key={material.id} material={material} />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
-
-      {/* Call to Action Section */}
-      <div className={styles.ctaSection}>
-        <div className={styles.ctaContent}>
-          <h3 className={styles.ctaTitle}>¿Necesitas una cotización personalizada?</h3>
-          <p className={styles.ctaDescription}>
-            Para grandes volúmenes, materiales especiales o cotizaciones empresariales, 
-            contáctanos directamente y obten el mejor precio del mercado.
-          </p>
-          <a
-            href="https://wa.me/56940244042"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.buttonLink}
-          >
-            <SecondaryButton>
-              <WhatsAppIcon /> Solicitar Cotización Personalizada
-            </SecondaryButton>
-          </a>
-        </div>
-        
-        <div className={styles.disclaimer}>
-          <div className={styles.legalInfo}>
-            <p className={styles.disclaimerText}>
-              *Precios referenciales. Pueden variar según el mercado y el estado del material.
-            </p>
-            <p className={styles.disclaimerText}>
-              Pago inmediato sujeto a verificación y condiciones legales.
-            </p>
-            <p className={styles.disclaimerText}>
-              Empresa autorizada por el Ministerio del Medio Ambiente.
-            </p>
-            <p className={styles.disclaimerText}>
-              Consulta nuestra <a href="/privacy" className={styles.privacyLink}>Política de Privacidad</a>.
+    <>
+      {/* Header Section - SEPARATE CONTAINER */}
+      <section className={styles.headerSection} aria-label="Información de precios">
+        <div className={styles.header}>
+          <div className={styles.titleGroup}>
+            <h2 className={styles.heading}>
+              <TrendingUp className={styles.headingIcon} />
+              Lista Completa de Precios por Kilo
+            </h2>
+            <p className={styles.subtitle}>
+              Consulta nuestros precios competitivos para todos los tipos de metales y chatarra
             </p>
           </div>
+          <div className={styles.updateInfo}>
+            <Clock className={styles.clockIcon} size={16} />
+            <span className={styles.lastUpdated}>
+              Actualizado: <strong>{PRICE_UPDATE_CONFIG.getLastUpdateDate()}</strong>
+            </span>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Table Section - ONLY FOR TABLES */}
+      <section className={styles.priceTableSection} aria-label="Tablas de precios de metales">
+        {/* Non-Ferrous Metals (High Value) */}
+        {nonFerrous.length > 0 && (
+          <div className={styles.categorySection}>
+            <h3 className={styles.categoryTitle}>Metales No Ferrosos</h3>
+            <div className={styles.tableContainer}>
+              <table className={styles.priceTable}>
+                <caption className={styles.tableCaption}>
+                  Precios de metales no ferrosos actualizados diariamente
+                </caption>
+                <thead>
+                  <tr>
+                    <th className={styles.materialHeader}>Material</th>
+                    <th className={styles.priceHeader}>Precio por Kilogramo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {nonFerrous.map((material) => (
+                    <PriceTableRow 
+                      key={material.id} 
+                      material={material} 
+                      isHighValue={material.rawPrice > 1000}
+                    />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* Ferrous Metals */}
+        {ferrous.length > 0 && (
+          <div className={styles.categorySection}>
+            <h3 className={styles.categoryTitle}>Metales Ferrosos</h3>
+            <div className={styles.tableContainer}>
+              <table className={styles.priceTable}>
+                <caption className={styles.tableCaption}>
+                  Precios de metales ferrosos actualizados diariamente
+                </caption>
+                <thead>
+                  <tr>
+                    <th className={styles.materialHeader}>Material</th>
+                    <th className={styles.priceHeader}>Precio por Kilogramo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ferrous.map((material) => (
+                    <PriceTableRow key={material.id} material={material} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* Special Materials */}
+        {special.length > 0 && (
+          <div className={styles.categorySection}>
+            <h3 className={styles.categoryTitle}>Materiales Especiales</h3>
+            <div className={styles.tableContainer}>
+              <table className={styles.priceTable}>
+                <caption className={styles.tableCaption}>
+                  Precios de materiales especiales bajo consulta
+                </caption>
+                <thead>
+                  <tr>
+                    <th className={styles.materialHeader}>Material</th>
+                    <th className={styles.priceHeader}>Precio por Kilogramo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {special.map((material) => (
+                    <PriceTableRow key={material.id} material={material} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </section>
+
+      {/* CTA Section - SEPARATE CONTAINER */}
+      <section className={styles.ctaSectionWrapper} aria-label="Solicitar cotización">
+        <div className={styles.ctaSection}>
+          <div className={styles.ctaContent}>
+            <h3 className={styles.ctaTitle}>¿Necesitas una cotización personalizada?</h3>
+            <p className={styles.ctaDescription}>
+              Para grandes volúmenes, materiales especiales o cotizaciones empresariales, 
+              contáctanos directamente y obten el mejor precio del mercado.
+            </p>
+            <a
+              href="https://wa.me/56940244042"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.buttonLink}
+            >
+              <SecondaryButton>
+                <WhatsAppIcon /> Solicitar Cotización Personalizada
+              </SecondaryButton>
+            </a>
+          </div>
+          
+          <div className={styles.disclaimer}>
+            <div className={styles.legalInfo}>
+              <p className={styles.disclaimerText}>
+                *Precios referenciales. Pueden variar según el mercado y el estado del material.
+              </p>
+              <p className={styles.disclaimerText}>
+                Pago inmediato sujeto a verificación y condiciones legales.
+              </p>
+              <p className={styles.disclaimerText}>
+                Empresa autorizada por el Ministerio del Medio Ambiente.
+              </p>
+              <p className={styles.disclaimerText}>
+                Consulta nuestra <a href="/privacy" className={styles.privacyLink}>Política de Privacidad</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

@@ -1,326 +1,328 @@
-/* ==============================
-   HeroSection.module.css
-   Responsive Hero: Desktop Overlay + Mobile Stacked
-   ============================== */
+/* ===============================================
+   Professional Hero Section - Expert Optimized
+   Mobile-First Responsive Design
+   =============================================== */
 
-
-
-/* ===== DESKTOP HERO (OVERLAY LAYOUT) ===== */
-.desktopHero {
-  display: block;
+/* Base: Mobile-First Layout */
+.hero {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Performance optimizations */
+  contain: layout style paint;
+  will-change: auto;
 }
+
+
 
 .heroContainer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
   width: 100%;
+  max-width: var(--content-width-max);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
   position: relative;
-  z-index: 2;
-  padding: 0;
-}
-
-.glassContainer {
-  /* Matte glassmorphism effect using CSS variables */
-  background: var(--glass-medium);
+  z-index: 3;
   
-  /* Enhanced backdrop blur for matte effect */
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
-  
-  /* Remove border and add strong right edge shadow */
-  border: none;
-  border-radius: 0;
-  box-shadow: 
-    var(--shadow-xl),
-    var(--box-shadow-hero);
-  
-  /* Layout and positioning - covers left part perfectly */
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 55%;
-  max-width: var(--container-md);
-  padding: var(--space-xxl, 3rem) var(--space-xl, 2rem);
-  
-  /* Ensure content positioning */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  
-  /* Subtle interactions */
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glassContainer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, 
-    var(--glass-light) 0%,
-    transparent 50%,
-    var(--glass-light) 100%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.glassContainer:hover {
-  transform: translateX(2px);
-  box-shadow: var(--shadow-xl);
-  filter: brightness(1.05);
-}
-
-/* ===== MOBILE HERO (STACKED LAYOUT) ===== */
-.mobileHero {
-  display: none;
-  background-image: url('/images/test1.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  position: relative;
-}
-
-.mobileHero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--gradient-hero-mobile);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.mobileContent {
-  /* Full width, no borders or radius */
-  width: 100%;
-  padding: var(--space-sm) var(--space-lg);
-  
-  /* Content positioning */
+  /* Mobile: Single column layout */
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  position: relative;
-  z-index: 2;
+  gap: var(--space-xl);
+  text-align: center;
 }
 
-.mobileGlassCard {
-  /* Remove card styling - just a content container */
-  width: 100%;
-  max-width: var(--container-sm);
-  margin: var(--space-xl) 0 0 0;
-  
-  /* Content positioning */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+/* ===============================================
+   Content Column
+   =============================================== */
+
+.heroContent {
+  order: 1;
 }
 
-.mobileImageSection {
-  width: 100%;
-  padding: 0;
-  position: relative;
+.heroHeader {
+  margin-bottom: var(--space-xl);
 }
 
-.mobileImageSection::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: none;
-  pointer-events: none;
-  z-index: 1;
+.heroHeading {
+  margin-bottom: var(--space-md);
+  /* Enhanced for better readability on mobile */
+  font-size: clamp(2rem, 8vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  /* Strong text shadow for better readability */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 
+               0px 0px 16px rgba(0, 0, 0, 0.6);
 }
-
-:global(html[data-theme="dark"]) .mobileImageSection::after {
-  display: none;
-}
-
-.mobileHeroImage {
-  width: 100%;
-  height: auto;
-  /* 4:3 aspect ratio for mobile */
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
-}
-
-.mobileHero .ctaGroup {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  align-items: center;
-  margin-top: var(--space-lg);
-  padding: 0 var(--space-lg);
-  position: relative;
-  z-index: 2;
-}
-
-.mobileHero .lastUpdated {
-  margin-top: var(--space-sm);
-}
-
-
-
-/* ===== SHARED CONTENT STYLES ===== */
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  text-align: left;
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: var(--size-modal-sm);
-}
-
-/* Hero heading styles moved to global.css as .hero-heading and .hero-highlight */
 
 .subheading {
   font-family: var(--font-body);
   font-size: var(--font-size-lg);
-  color: var(--color-gray-100);
+  color: var(--color-white);
   margin-bottom: var(--space-lg);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
   max-width: 100%;
   line-height: var(--line-height-heading);
-  text-shadow: var(--shadow-sm);
+  /* Enhanced text shadow */
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8), 
+               0px 0px 12px rgba(0, 0, 0, 0.6);
 }
 
-/* TrustCues styles removed - component not used in current hero layout */
+
+
+/* ===============================================
+   CTA Group - Expert Hierarchy
+   =============================================== */
 
 .ctaGroup {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: var(--space-lg);
-  margin: var(--space-lg) 0;
-  width: 100%;
+  align-items: center;
+  margin-bottom: var(--space-xl);
 }
 
-.whatsappLink {
+/* Primary CTA - High Intent Users */
+.ctaPrimary {
   text-decoration: none;
   outline: none;
-  border-radius: 999vw;
-  align-self: center;
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-fast) var(--ease-smooth);
+  
+  /* Ensure 44px minimum touch target */
+  min-height: 44px;
+  
+  /* Focus management for accessibility */
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
-.secondaryAction {
-  display: flex;
-  align-items: center;
+.ctaPrimary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
-.bottomInfo {
-  margin-top: var(--space-xxl);
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--color-border-light);
+.ctaPrimary:hover {
+  transform: translateY(-2px);
+}
+
+.primaryButton {
+  width: 100%;
+  min-height: 56px;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  
+  /* Enhanced visual hierarchy and contrast */
+  box-shadow: var(--shadow-lg), 
+              0 0 16px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.buttonText {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-xxs);
+  margin-left: var(--space-sm);
+  /* Text shadow for button text */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 }
 
-.lastUpdated {
-  font-size: var(--font-size-sm);
-  color: var(--color-white);
-  opacity: 0.9;
-  text-shadow: var(--shadow-sm);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: 0.02em;
+.buttonText strong {
+  font-size: var(--font-size-lg);
+  line-height: 1.2;
+  font-weight: var(--font-weight-bold);
 }
 
-.workingHours {
-  font-size: var(--font-size-sm);
-  color: var(--color-white);
-  opacity: 0.85;
-  text-shadow: var(--shadow-sm);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: 0.02em;
+.buttonText small {
+  font-size: var(--font-size-xs);
+  opacity: 0.95;
+  font-weight: var(--font-weight-semibold);
 }
 
-.processLink {
-  margin-top: 0;
-}
-
-.learnProcessLink {
+/* Secondary CTA - Simple Read More Link */
+.readMoreLink {
   display: inline-flex;
   align-items: center;
   gap: 0.25em;
-  padding: 0;
+  padding: var(--space-xs) 0;
   background: transparent;
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  transition: all var(--transition-fast) var(--ease-smooth);
+  /* Enhanced text shadow for better visibility */
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8), 
+               0px 0px 8px rgba(0, 0, 0, 0.6);
+}
+
+.readMoreLink:hover {
+  color: var(--color-accent);
+  /* Enhanced glow effect on hover */
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8), 
+               0px 0px 12px rgba(34, 197, 94, 0.4);
+}
+
+/* ===============================================
+   Supporting Information - Always Visible
+   =============================================== */
+
+.supportingInfo {
+  margin-top: var(--space-lg);
+}
+
+.supportingContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.workingHours {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  /* Text shadow for better readability */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.supportingIcon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.processLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
   color: var(--color-white);
   text-decoration: underline;
   text-underline-offset: 0.2em;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  transition: color 0.3s ease;
-  opacity: 0.85;
-  text-shadow: var(--shadow-sm);
-  letter-spacing: 0.02em;
+  transition: color var(--transition-fast) var(--ease-smooth);
+  /* Text shadow for better readability */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
-.learnProcessLink:hover {
+.processLink:hover {
   color: var(--color-accent);
   opacity: 1;
 }
 
-/* Unused location/status styles removed */
+.processIcon {
+  transition: transform var(--transition-fast) var(--ease-smooth);
+}
 
-/* ===== RESPONSIVE BREAKPOINTS ===== */
+.processLink:hover .processIcon {
+  transform: translateX(var(--space-xxs));
+}
 
-/* Mobile: Show stacked layout, hide desktop */
-@media (max-width: var(--breakpoint-3xl)) {
-  .desktopHero {
-    display: none;
-    z-index: -1; /* Ensure desktop layer stays behind mobile */
+
+
+
+
+
+
+/* ===============================================
+   Responsive Breakpoints - Mobile First
+   =============================================== */
+
+/* Tablet: 768px+ */
+@media (min-width: 768px) {
+  .heroContainer {
+    padding: var(--space-xxl) var(--space-xl);
   }
   
-  .mobileHero {
-    display: flex;
+  .heroHeading {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
   }
   
-  /* Improve mobile content spacing */
-  .mobileContent {
-    padding: var(--space-sm) var(--space-lg);
-  }
+
   
-  /* Better spacing for mobile subheading */
-  .mobileContent .subheading {
-    margin-bottom: var(--space-xl);
-    font-size: var(--font-size-xl);
-    line-height: var(--line-height-heading);
-  }
-  
-  /* Mobile content adjustments - heading styles now handled by global .hero-heading class */
-  
-  .mobileGlassCard .subheading {
-    font-size: var(--font-size-base);
-    text-align: left;
-  }
-  
-  .mobileGlassCard .ctaGroup {
+  .ctaGroup {
+    flex-direction: row;
+    gap: var(--space-xl);
     justify-content: center;
-    flex-direction: column;
-    gap: var(--space-sm);
   }
   
-  /* Mobile-appropriate shadow sizes - removed primaryButton overrides */
+  .ctaPrimary {
+    flex: 0 0 auto;
+  }
+  
 
-/* Remove link styling for button links - using proper specificity */
+  
+
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+  .heroContainer {
+    /* Desktop: Single-column centered layout */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-3xl) var(--space-xl);
+    max-width: 800px;
+  }
+  
+  .heroHeading {
+    font-size: clamp(3rem, 5vw, 4rem);
+  }
+  
+  .ctaGroup {
+    align-items: center;
+    flex-direction: row;
+    gap: var(--space-xl);
+    justify-content: center;
+  }
+  
+  .ctaPrimary {
+    flex: 0 0 auto;
+  }
+  
+  .supportingContent {
+    flex-direction: row;
+    gap: var(--space-lg);
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Large Desktop: 1200px+ */
+@media (min-width: 1200px) {
+  .heroContainer {
+    padding: var(--space-3xl) var(--space-xxl);
+  }
+  
+  .heroHeading {
+    font-size: clamp(3.5rem, 4.5vw, 4.5rem);
+  }
+}
+
+/* ===============================================
+   Accessibility & Performance
+   =============================================== */
+
+/* Remove animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ctaPrimary,
+  .processIcon {
+    transition: none;
+  }
+  
+  .ctaPrimary:hover {
+    transform: none;
+  }
+}
+
+
+
+/* Focus-visible polyfill support */
 .buttonLink {
   text-decoration: none;
   color: inherit;
@@ -342,109 +344,34 @@
   outline: none;
   background: none;
 }
-  
-  /* Responsive visibility */
-  .desktopOnly {
-    display: none;
-  }
-  
 
-  
-  .mobileGlassCard .lastUpdated {
-    text-align: center;
-  }
-}
-
-/* Desktop: Show button, hide link */
-@media (min-width: calc(var(--breakpoint-3xl) + 1px)) {
-  .desktopOnly {
-    display: inline-flex;
-  }
-  
-  .mobileImageSection .ctaGroup {
-    display: none;
-  }
-}
-
-/* Tablet: Adjust desktop layout */
-@media (max-width: var(--breakpoint-5xl)) and (min-width: calc(var(--breakpoint-3xl) + 1px)) {
-  .glassContainer {
-    width: 65%;
-    max-width: var(--size-modal-sm);
-    padding: var(--space-xl) var(--space-lg);
-  }
-  
-  .content {
-    max-width: var(--size-modal-sm);
-  }
-  
-  .heading {
-    font-size: var(--font-size-xxl);
-  }
-}
-
-/* Small mobile adjustments */
-@media (max-width: var(--breakpoint-xs)) {
-  .mobileContent {
-    padding: var(--space-xs) var(--space-md);
-  }
-  
-  .mobileGlassCard .subheading {
-    font-size: var(--font-size-sm);
-  }
-}
-
-/* ===== DARK THEME OVERRIDES ===== */
+/* Dark theme optimizations */
 :global(html[data-theme="dark"]) .subheading {
   color: var(--color-white);
 }
 
-:global(html[data-theme="dark"]) .mobileGlassCard .subheading {
-  color: var(--color-white);
-}
-
-/* ===== ACCESSIBILITY ===== */
-@media (prefers-reduced-motion: reduce) {
-  .glassContainer {
-    transition: none;
-  }
-  .glassContainer:hover {
-    transform: none;
-  }
-}
-  
-/* Read more link styling for Ver Precios */
-.readMoreLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25em;
-  padding: var(--space-xs) 0;
-  background: transparent;
-  color: var(--color-text);
-  text-decoration: none;
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
-  transition: color 0.3s ease;
-}
-
-/* Mobile: Move "Ver precios →" down visually without affecting layout */
-@media (max-width: 768px) {
-  .readMoreLink {
-    transform: translateY(var(--space-sm));
-  }
-}
-
-.readMoreLink:hover {
-  color: var(--color-primary);
-}
-
-/* Dark theme for read more link */
 :global(html[data-theme="dark"]) .readMoreLink {
   color: var(--color-white);
 }
 
 :global(html[data-theme="dark"]) .readMoreLink:hover {
-  color: var(--color-primary);
+  color: var(--color-accent);
 }
+
+/* ===============================================
+   Performance Critical CSS
+   =============================================== */
+
+/* Optimize rendering for above-the-fold content */
+.hero,
+.heroContainer,
+.heroContent {
+  /* Promote to compositing layer for better performance */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+
   
   

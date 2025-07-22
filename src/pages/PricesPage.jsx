@@ -14,10 +14,9 @@ import { generateHreflangs } from "../utils/hreflangUtils";
 import ProductSchema from "../components/seo/ProductSchema";
 import ServiceSchema from "../components/seo/ServiceSchema";
 import { materials } from "../data/materials";
-import { CONTACT_URLS, WHATSAPP_MESSAGES, PRICE_UPDATE_CONFIG } from "../config/constants";
+import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../config/constants";
 
-// Dynamic date generation for price updates
-const lastUpdatedDate = PRICE_UPDATE_CONFIG.getLastUpdateDate();
+
 
 // Only include FAQs relevant to prices, payment, process, etc.
 const priceFaqs = [
@@ -56,7 +55,6 @@ const PricesPage = () => (
     <PageHeader
       title="Precios de chatarra actualizados"
       subtitle="Consulta nuestros precios para cobre, aluminio, hierro y más. Pago inmediato, pesaje certificado. Actualizado cada día hábil."
-      lastUpdated={lastUpdatedDate}
       variant="primary"
     />
 
