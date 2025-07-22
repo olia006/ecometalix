@@ -5,11 +5,12 @@ import styles from "./WhyUsPage.module.css";
 // SEO now handled by App Router metadata
 import PageHeader from "../components/PageHeader";
 import Breadcrumb from "../components/Breadcrumb";
+import StructuredData from "../components/seo/StructuredData";
 import { generateHreflangs } from "../utils/hreflangUtils";
 
 // UI Elements
 import FloatingCTA from "../components/FloatingCTA";
-import TrustCues from "../components/TrustCues";
+
 import MapSection from "../components/home/MapSection";
 import SecondaryButton from "../components/SecondaryButton";
 import { CONTACT_URLS, WHATSAPP_MESSAGES } from "../config/constants";
@@ -28,7 +29,8 @@ import {
   Award,
   TrendingUp,
   Phone,
-  ArrowRight
+  ArrowRight,
+  MapPin
 } from "lucide-react";
 import WhatsAppIcon from "../components/WhatsAppIcon";
 import OptimizedImage from "../components/OptimizedImage";
@@ -55,7 +57,7 @@ const mainAdvantages = [
     icon: <Weight />,
     title: "Balanza Industrial",
     subtitle: "Tecnología de precisión",
-         description: "Balanza certificada INN para camiones de hasta 80 toneladas y 18 metros de longitud. Pesaje transparente y preciso.",
+         description: "Balanza certificada INN para camiones de hasta 80 toneladas y 18 metros de longitud. Pesaje transparente y preciso para todo tipo de materiales.",
     highlight: "Certificada INN",
     color: "accent"
   },
@@ -63,7 +65,7 @@ const mainAdvantages = [
     icon: <Handshake />,
     title: "Trato Personal",
     subtitle: "Atención humana garantizada",
-    description: "Olga (propietaria) y su equipo siempre presentes. Trato directo, sin intermediarios, con años de experiencia.",
+    description: "Propietaria y su equipo siempre presentes. Trato directo, sin intermediarios, con años de experiencia.",
     highlight: "Dueña presente",
     color: "secondary"
   }
@@ -96,7 +98,7 @@ const stats = [
   { value: "500+", label: "Clientes Satisfechos", icon: <Users /> },
   { value: "100%", label: "Pagos Inmediatos", icon: <DollarSign /> },
   { value: "7", label: "Días a la Semana", icon: <Clock /> },
-  { value: "80T/18M", label: "Balanza: 80 Tons, 18 Metros", icon: <Weight /> }
+  { value: "80T/18M", label: "Balanza certificada", icon: <Weight /> }
 ];
 
 const ProcessStep = ({ number, title, description, icon }) => (
@@ -132,9 +134,96 @@ const AdvantageCard = ({ advantage, index }) => (
   </div>
 );
 
+// SEO Structured Data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://ecometalix.cl/#business",
+      "name": "Ecometalix",
+      "description": "Empresa líder en compra de chatarra y metales en Santiago, Chile. Pago inmediato, balanza certificada, horario extendido.",
+      "url": "https://ecometalix.cl",
+      "telephone": "+56912345678",
+      "email": "contacto@ecometalix.cl",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Dirección Principal",
+        "addressLocality": "Santiago",
+        "addressRegion": "Región Metropolitana",
+        "addressCountry": "CL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -33.4489,
+        "longitude": -70.6693
+      },
+      "openingHours": [
+        "Mo-Su 08:00-20:00"
+      ],
+      "priceRange": "$$",
+      "paymentAccepted": "Cash, Bank Transfer",
+      "currenciesAccepted": "CLP",
+      "areaServed": {
+        "@type": "City",
+        "name": "Santiago",
+        "addressCountry": "CL"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://ecometalix.cl/#service",
+      "name": "Compra de Chatarra y Metales",
+      "description": "Servicio profesional de compra de chatarra: aluminio, cobre, fierro, bronce. Pago inmediato y pesaje certificado.",
+      "provider": {
+        "@id": "https://ecometalix.cl/#business"
+      },
+      "areaServed": {
+        "@type": "City", 
+        "name": "Santiago"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Materiales Aceptados",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Aluminio" }},
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Cobre" }},
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Fierro" }},
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Bronce" }}
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ecometalix.cl/por-que-nosotros#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Por qué elegir Ecometalix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ofrecemos pago inmediato, horario extendido hasta las 20:00, balanza certificada INN, trato personalizado y 10 años de experiencia internacional."
+          }
+        },
+        {
+          "@type": "Question", 
+          "name": "¿Qué garantías ofrecen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Balanza certificada INN para camiones hasta 80 toneladas, pesaje transparente que puedes presenciar, permisos municipales y ambiente seguro."
+          }
+        }
+      ]
+    }
+  ]
+};
+
 export default function WhyUsPage() {
   return (
     <main className="professional-page">
+      {/* SEO Structured Data for Search Engines */}
+      <StructuredData jsonLd={structuredData} />
+      
       {/* SEO is now handled by App Router metadata in /app/por-que-nosotros/page.tsx */}
 
       {/* Breadcrumb navigation */}
@@ -152,55 +241,85 @@ export default function WhyUsPage() {
       {/* Floating WhatsApp CTA */}
       <FloatingCTA />
 
-      {/* Hero Section */}
-      <section className="professional-section">
+      {/* Hero Section with Background Image */}
+      <section className={styles.heroSection}>
+        <div className={styles.heroBackground}></div>
+        <div className={styles.heroOverlay}></div>
+        
         <div className={styles.heroContent}>
-          <div className={styles.heroText}>
-            <h2 className="hero-heading hero-heading--dark hero-heading--medium">
-              La Empresa Líder en <span className="hero-highlight">Reciclaje de Metales</span>
-            </h2>
-            <p className={styles.heroDescription}>
-              Con 10 años de experiencia internacional y 3 años consolidados en Chile, somos la opción preferida para empresas 
-              y particulares que buscan <strong>pago inmediato</strong>, <strong>trato profesional</strong> 
-              y <strong>precios justos</strong> en Santiago.
-            </p>
-            {/* Desktop Stats - shown here */}
-            <div className={`${styles.statsGrid} ${styles.statsDesktop}`}>
-              {stats.map((stat, index) => (
-                <div key={index} className={styles.statItem}>
-                  <div className={styles.statIcon}>{stat.icon}</div>
-                  <div className={styles.statContent}>
-                    <span className={styles.statValue}>{stat.value}</span>
-                    <span className={styles.statLabel}>{stat.label}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className={styles.heroVisual}>
-            <div className="image-container">
-              <OptimizedImage
-                src="/images/hometestimonial.jpg"
-                alt="Instalaciones profesionales de Ecometalix"
-                className="professional-image professional-image--hero"
-              />
-              {/* Mobile Stats Overlay */}
-              <div className={`${styles.statsGrid} ${styles.statsMobile}`}>
-                {stats.map((stat, index) => (
-                  <div key={`mobile-${index}`} className={styles.statItem}>
-                    <div className={styles.statIcon}>{stat.icon}</div>
-                    <div className={styles.statContent}>
-                      <span className={styles.statValue}>{stat.value}</span>
-                      <span className={styles.statLabel}>{stat.label}</span>
-                    </div>
-                  </div>
-                ))}
+          <div className={styles.heroMain}>
+            <div className={styles.heroText}>
+              <div className={styles.heroExperience}>
+                <span className={styles.experienceBadge}>10 Años de Experiencia</span>
               </div>
-              <div className="image-overlay">
-                <div className="overlay-content">
-                  <TrendingUp className="overlay-icon" />
-                  <span className="overlay-text">Líder del Mercado</span>
+              
+              <h2 className="hero-heading hero-heading--light hero-heading--large">
+                Ecometalix: Empresa Líder en <span className="hero-highlight">Compra de Chatarra en Santiago</span>
+              </h2>
+              
+              <p className={styles.heroDescription}>
+                Con 10 años de experiencia internacional y 3 años consolidados en Chile, somos la opción preferida para empresas 
+                y particulares que buscan <strong>pago inmediato</strong>, <strong>trato profesional</strong> 
+                y <strong>precios justos</strong> en Santiago.
+              </p>
+              
+              {/* Hero CTAs */}
+              <div className={styles.heroCTAs}>
+                <a
+                  href={CONTACT_URLS.whatsappWithText(WHATSAPP_MESSAGES.general)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.heroButtonLink}
+                >
+                  <SecondaryButton>
+                    <WhatsAppIcon /> Cotizar Ahora por WhatsApp
+                  </SecondaryButton>
+                </a>
+                <a href="/precios" className={styles.heroSecondaryLink}>
+                  Ver Precios Actuales <ArrowRight className={styles.arrowIcon} />
+                </a>
+              </div>
+              
+
+            </div>
+            
+            <div className={styles.heroVisual}>
+              <div className={styles.trustCard}>
+                <div className={styles.trustHeader}>
+                  <Shield className={styles.trustIcon} />
+                  <h3 className={styles.trustTitle}>Empresa Certificada</h3>
                 </div>
+                <div className={styles.trustContent}>
+                  <div className={styles.trustItem}>
+                    <Award className={styles.trustBadgeIcon} />
+                    <span>Balanza Certificada INN</span>
+                  </div>
+                  <div className={styles.trustItem}>
+                    <Building className={styles.trustBadgeIcon} />
+                    <span>Permisos Municipales</span>
+                  </div>
+                  <div className={styles.trustItem}>
+                    <Users className={styles.trustBadgeIcon} />
+                    <span>500+ Clientes Satisfechos</span>
+                  </div>
+                  <div className={styles.trustItem}>
+                    <MapPin className={styles.trustBadgeIcon} />
+                    <span>Presencia en Santiago</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className={styles.materialsPreview}>
+                <h4 className={styles.materialsTitle}>Compramos Todo Tipo de Metales</h4>
+                <div className={styles.materialsList}>
+                  <a href="/materiales/aluminio" className={styles.materialLink}>Aluminio</a>
+                  <a href="/materiales/cobre" className={styles.materialLink}>Cobre</a>
+                  <a href="/materiales/fierro-corto" className={styles.materialLink}>Fierro</a>
+                  <a href="/materiales/bronce" className={styles.materialLink}>Bronce</a>
+                </div>
+                <a href="/materiales" className={styles.viewAllMaterials}>
+                  Ver Todos los Materiales <ArrowRight className={styles.arrowIcon} />
+                </a>
               </div>
             </div>
           </div>
@@ -211,13 +330,13 @@ export default function WhyUsPage() {
       <section className="professional-section">
         <div className="section-container">
           <div className="section-header">
-            <h2 className="section-title">
-              <Star className="section-title-icon" />
-              Nuestras Ventajas Competitivas
-            </h2>
-            <p className="section-subtitle">
-              Lo que nos convierte en la mejor opción para vender tu chatarra
-            </p>
+                      <h2 className="section-title">
+            Ventajas de Ecometalix: Por Qué Somos Líderes en Compra de Chatarra
+          </h2>
+          <p className="section-subtitle">
+            Pago inmediato, balanza certificada y experiencia que nos convierte en la mejor opción para vender tu chatarra en Santiago. 
+            Conoce más sobre cada <a href="/materiales" className="link-internal">tipo de material</a> que compramos.
+          </p>
           </div>
           <div className="professional-grid professional-grid--2">
             {mainAdvantages.map((advantage, index) => (
@@ -253,12 +372,12 @@ export default function WhyUsPage() {
       <section className="professional-section">
         <div className="section-container--lg">
           <div className="section-header">
-            <h2 className="section-title">Nuestro Proceso Profesional</h2>
+            <h2 className="section-title">Proceso de Compra de Chatarra: 4 Pasos Simples</h2>
             <p className="section-subtitle">
-              Un sistema probado que garantiza transparencia y eficiencia
+              Desde el contacto hasta el pago: proceso transparente y eficiente para vender tu chatarra en Santiago
             </p>
           </div>
-          <div className="process-steps">
+          <article className="process-steps">
           <ProcessStep
             number="01"
             title="Contacto Inmediato"
@@ -269,7 +388,7 @@ export default function WhyUsPage() {
             number="02"
             title="Evaluación Profesional"
             description="Nuestro equipo evalúa tu material con transparencia y experiencia."
-            icon={<CheckCircle />}
+            icon={<Users />}
           />
           <ProcessStep
             number="03"
@@ -283,13 +402,8 @@ export default function WhyUsPage() {
             description="Efectivo al instante o transferencia inmediata. Sin esperas ni trámites."
             icon={<DollarSign />}
           />
-          </div>
+          </article>
         </div>
-      </section>
-
-      {/* Trust Section */}
-      <section className={styles.trustSection}>
-        <TrustCues />
       </section>
 
       {/* Map Section */}
@@ -305,6 +419,7 @@ export default function WhyUsPage() {
             <p className="cta-description">
               Únete a los más de 500 clientes que han elegido la excelencia. 
               <br /><strong>Pago inmediato, trato profesional, precios justos.</strong>
+              <br />Consulta nuestros <a href="/precios" className="link-internal">precios actuales</a> o revisa las <a href="/faq" className="link-internal">preguntas frecuentes</a>.
             </p>
             <div className="cta-buttons">
               <a
