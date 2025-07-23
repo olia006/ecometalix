@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { Search, X, Filter } from 'lucide-react';
 import styles from './FAQAccordion.module.css';
 
 const FAQAccordion = ({ 
@@ -10,6 +11,44 @@ const FAQAccordion = ({
   variant = 'default' 
 }) => {
   const [openItems, setOpenItems] = useState({});
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [showFilters, setShowFilters] = useState(false);
+
+  // Sophisticated search and filtering logic
+  const filteredCategories = useMemo(() => {
+    if (!searchTerm && selectedCategory === 'all') {
+      return categories;
+    }
+
+    return categories.map(category => {
+      // Filter by category first
+      if (selectedCategory !== 'all' && category.title !== selectedCategory) {
+        return null;
+      }
+
+      // Filter FAQs by search term (questions + answers)
+      const filteredFaqs = searchTerm 
+        ? category.faqs.filter(faq => {
+            const searchLower = searchTerm.toLowerCase();
+            const questionMatch = faq.question.toLowerCase().includes(searchLower);
+            const answerMatch = faq.answer.toLowerCase().includes(searchLower);
+            return questionMatch || answerMatch;
+          })
+        : category.faqs;
+
+      // Only return category if it has matching FAQs
+      return filteredFaqs.length > 0 ? {
+        ...category,
+        faqs: filteredFaqs
+      } : null;
+    }).filter(Boolean); // Remove null categories
+  }, [categories, searchTerm, selectedCategory]);
+
+  // Get unique category titles for filter dropdown
+  const categoryOptions = useMemo(() => {
+    return ['all', ...categories.map(cat => cat.title).filter(Boolean)];
+  }, [categories]);
 
   const handleToggle = (catIdx, qIdx) => {
     const itemKey = `${catIdx}_${qIdx}`;
@@ -31,9 +70,103 @@ const FAQAccordion = ({
 
   const isOpen = (catIdx, qIdx) => !!openItems[`${catIdx}_${qIdx}`];
 
+  // Search helper functions
+  const clearSearch = () => {
+    setSearchTerm('');
+    setSelectedCategory('all');
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  // Don't show search in preview variant
+  const showSearch = variant !== 'preview';
+
   return (
     <div className={`${styles.faqAccordion} ${styles[variant]}`}>
-      {categories.map((category, catIdx) => (
+      {/* Sophisticated Search Interface */}
+      {showSearch && (
+        <div className={styles.searchContainer}>
+          <div className={styles.searchWrapper}>
+            <div className={styles.searchInputGroup}>
+              <Search className={styles.searchIcon} size={20} />
+              <input
+                type="text"
+                placeholder="Buscar en preguntas y respuestas..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+                aria-label="Buscar FAQs"
+              />
+              {searchTerm && (
+                <button
+                  onClick={clearSearch}
+                  className={styles.clearButton}
+                  aria-label="Limpiar búsqueda"
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+            
+            <div className={styles.filterGroup}>
+              <button
+                onClick={() => setShowFilters(!showFilters)}
+                className={`${styles.filterToggle} ${showFilters ? styles.active : ''}`}
+                aria-label="Mostrar filtros"
+              >
+                <Filter size={16} />
+                Filtros
+              </button>
+              
+              {showFilters && (
+                <div className={styles.filterDropdown}>
+                  <label htmlFor="category-filter" className={styles.filterLabel}>
+                    Categoría:
+                  </label>
+                  <select
+                    id="category-filter"
+                    value={selectedCategory}
+                    onChange={handleCategoryChange}
+                    className={styles.categorySelect}
+                  >
+                    <option value="all">Todas las categorías</option>
+                    {categoryOptions.slice(1).map(category => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+            </div>
+          </div>
+          
+          {/* Search Results Summary */}
+          {(searchTerm || selectedCategory !== 'all') && (
+            <div className={styles.searchSummary}>
+              {filteredCategories.length === 0 ? (
+                                 <span className={styles.noResults}>
+                   No se encontraron resultados para &quot;{searchTerm}&quot;
+                 </span>
+              ) : (
+                <span className={styles.resultsCount}>
+                  {filteredCategories.reduce((total, cat) => total + cat.faqs.length, 0)} resultado(s) encontrado(s)
+                  {selectedCategory !== 'all' && ` en "${selectedCategory}"`}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* FAQ Categories and Items */}
+      {filteredCategories.map((category, catIdx) => (
         <div key={category.title || catIdx} className={styles.faqCategory}>
           {category.title && (
             <h3 className={styles.categoryTitle}>{category.title}</h3>

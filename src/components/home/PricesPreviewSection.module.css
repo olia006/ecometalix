@@ -2,43 +2,55 @@
    PricesPreviewSection.module.css
    ============================== */
 
-   .pricesPreviewSection {
-    text-align: center;
-    max-width: var(--container-lg);
-    margin: 0 auto;
-    padding: var(--space-xl) var(--space-md);
-  }
-  
-  .heading {
-    font-size: var(--font-size-lg);
-    font-family: var(--font-heading);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    margin-bottom: var(--space-sm);
-  }
-  
-  .subtitle {
-    font-size: var(--font-size-base);
-    color: var(--color-muted);
-    margin-bottom: var(--space-lg);
-  }
-  
-  .lastUpdated {
-    font-size: var(--font-size-xs);
-    color: var(--color-success);
-    margin-bottom: var(--space-lg);
-  }
-  
-  .pricesList {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--size-card-min), 1fr));
-    gap: var(--space-md);
-    justify-items: center;
-    margin-bottom: var(--space-lg);
-    max-width: var(--container-lg);
-    margin-left: auto;
-    margin-right: auto;
-  }
+/* Full-width section */
+.pricesPreviewSection {
+  width: 100%;
+  background: linear-gradient(135deg, 
+    var(--color-surface) 0%, 
+    var(--color-background) 100%);
+  padding: var(--space-4xl) 0;
+  margin-bottom: var(--section-spacing-y);
+  position: relative;
+}
+
+/* Inner content container */
+.sectionContent {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  text-align: center;
+}
+
+.heading {
+  font-size: var(--font-size-lg);
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.lastUpdated {
+  font-size: var(--font-size-xs);
+  color: var(--color-success);
+  margin-bottom: var(--space-lg);
+}
+
+.pricesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--size-card-min), 1fr));
+  gap: var(--space-md);
+  justify-items: center;
+  margin-bottom: var(--space-lg);
+  max-width: var(--container-lg);
+  margin-left: auto;
+  margin-right: auto;
+}
 
   .priceItemLink {
     text-decoration: none;

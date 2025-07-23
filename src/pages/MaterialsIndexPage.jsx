@@ -64,7 +64,7 @@ export default function MaterialsIndexPage() {
       />
 
       {/* Search and Filter Section */}
-      <section className={`professional-section ${styles.searchSection}`}>
+      <section className={styles.searchSection}>
         <div className={styles.searchContainer}>
           <div className={styles.searchInputWrapper}>
             <Search className={styles.searchIcon} />
@@ -74,6 +74,7 @@ export default function MaterialsIndexPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className={styles.searchInput}
+              aria-label="Buscar materiales"
             />
             {(searchTerm || selectedCategory !== "all") && (
               <button
@@ -88,7 +89,7 @@ export default function MaterialsIndexPage() {
 
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`filter-toggle ${showFilters ? 'filter-toggle--active' : ''}`}
+            className={`${styles.filterToggle} ${showFilters ? styles.filterToggleActive : ''}`}
             aria-label="Mostrar filtros"
           >
             <Filter />
@@ -98,34 +99,34 @@ export default function MaterialsIndexPage() {
 
         {/* Filter Options */}
         {showFilters && (
-          <div className="filter-panel">
-            <div className="professional-card">
-              <div className="filter-group">
-                <label htmlFor="category-filter" className="filter-label">Categoría:</label>
-                <select
-                  id="category-filter"
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="filter-select"
-                >
-                  <option value="all">Todos</option>
-                  {categories.map(category => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-              </div>
+          <div className={styles.filterPanel}>
+            <div className={styles.filterGroup}>
+              <label htmlFor="category-filter" className={styles.filterLabel}>Categoría:</label>
+              <select
+                id="category-filter"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className={styles.filterSelect}
+              >
+                <option value="all">Todos</option>
+                {categories.map(category => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
         )}
 
         {/* Results Counter */}
-        <div className="results-info">
+        <div className={styles.resultsInfo}>
           {filteredMaterials.length === materials.length ? (
-            <span>Mostrando todos los {materials.length} materiales</span>
+            <span className={styles.resultsCount}>
+              Mostrando todos los {materials.length} materiales
+            </span>
           ) : (
-            <span>
+            <span className={styles.resultsCount}>
               Mostrando {filteredMaterials.length} de {materials.length} materiales
               {searchTerm && ` que contienen "${searchTerm}"`}
               {selectedCategory !== "all" && ` en categoría "${selectedCategory}"`}

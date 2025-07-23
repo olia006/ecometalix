@@ -1,0 +1,162 @@
+/* ==============================
+   ProcessTimeline.module.css - Expert UX Approved
+   Visual Timeline + Static Content
+   Mobile-First, SEO-Optimized, Accessible
+   ============================== */
+
+.processContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+}
+
+/* Mobile: Reduce padding */
+@media (max-width: 1080px) {
+  .processContainer {
+    padding: var(--space-lg) var(--space-sm);
+  }
+  
+  .visualTimeline {
+    margin-bottom: var(--space-xl);
+  }
+}
+
+/* ==============================
+   DECORATIVE VISUAL TIMELINE
+   ============================== */
+
+.visualTimeline {
+  margin-bottom: var(--space-4xl);
+  padding: 0 var(--space-lg);
+}
+
+.timelineSteps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.stepLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  background: var(--color-background);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  padding: var(--space-xs) var(--space-md);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.connector {
+  flex: 1;
+  min-width: 40px;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  position: relative;
+}
+
+.connector::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid var(--color-accent);
+}
+
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+   ============================== */
+
+/* MOBILE & TABLET: Icon-only Timeline (1080px and below) */
+@media (max-width: 1080px) {
+  .visualTimeline {
+    padding: 0 var(--space-xs);
+  }
+  
+  .timelineSteps {
+    gap: var(--space-xs);
+  }
+  
+  .connector {
+    min-width: 12px;
+    height: 2px;
+  }
+  
+  .connector::after {
+    right: -4px;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 8px solid var(--color-accent);
+  }
+  
+  .stepLabel {
+    font-size: 11px;
+    padding: 0;
+    gap: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    justify-content: center;
+    border-width: 2px;
+  }
+  
+  .stepLabel span {
+    display: none;
+  }
+  
+  .stepLabel svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Extra Small Mobile: Even smaller */
+@media (max-width: 360px) {
+  .stepLabel {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+  }
+  
+  .stepLabel svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .connector {
+    min-width: 10px;
+  }
+}
+
+/* ==============================
+   ACCESSIBILITY & PREFERENCES
+   ============================== */
+
+/* HIGH CONTRAST MODE */
+@media (prefers-contrast: high) {
+  .stepLabel {
+    border-width: 3px;
+  }
+}
+
+/* PRINT STYLES */
+@media print {
+  .visualTimeline {
+    margin-bottom: var(--space-lg);
+  }
+} 

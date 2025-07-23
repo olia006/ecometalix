@@ -5,6 +5,7 @@ import styles from "./ComoFuncionaPage.module.css";
 // SEO now handled by App Router metadata
 import PageHeader from "../components/PageHeader";
 import Breadcrumb from "../components/Breadcrumb";
+import ProcessTimeline from "../components/ProcessTimeline";
 import { generateHreflangs } from "../utils/hreflangUtils";
 {/*UI Elements*/} 
 import FloatingCTA from "../components/FloatingCTA";
@@ -22,6 +23,7 @@ import {
   Clock, 
   MapPin,
   CheckCircle,
+  AlertCircle,
   ArrowRight
 } from "lucide-react";
 import WhatsAppIcon from "../components/WhatsAppIcon";
@@ -31,7 +33,7 @@ import OptimizedImage from "../components/OptimizedImage";
 const processSteps = [
   {
     step: "1",
-    icon: <MessageCircle className={styles.stepIcon} aria-label="Contacto inicial" />,
+    icon: <MessageCircle className={styles.stepIconPlain} aria-label="Contacto inicial" />,
     title: "Contacto y Cotización",
     description: "Escríbenos por WhatsApp o llámanos. Te daremos una cotización preliminar basada en el tipo y cantidad de material.",
     details: [
@@ -44,7 +46,7 @@ const processSteps = [
   },
   {
     step: "2", 
-    icon: <Truck className={styles.stepIcon} aria-label="Transporte" />,
+    icon: <Truck className={styles.stepIconPlain} aria-label="Transporte" />,
     title: "Traslado al Centro",
     description: "Trae tu chatarra a nuestras instalaciones. Contamos con fácil acceso para vehículos de todo tamaño.",
     details: [
@@ -57,7 +59,7 @@ const processSteps = [
   },
   {
     step: "3",
-    icon: <Scale className={styles.stepIcon} aria-label="Pesaje certificado" />,
+    icon: <Scale className={styles.stepIconPlain} aria-label="Pesaje certificado" />,
     title: "Pesaje Certificado",
     description: "Pesamos tu material con nuestra balanza certificada. Puedes presenciar todo el proceso para total transparencia.",
     details: [
@@ -70,7 +72,7 @@ const processSteps = [
   },
   {
     step: "4",
-    icon: <DollarSign className={styles.stepIcon} aria-label="Pago inmediato" />,
+    icon: <DollarSign className={styles.stepIconPlain} aria-label="Pago inmediato" />,
     title: "Pago Inmediato",
     description: "Recibe tu pago al instante. Puedes elegir efectivo o transferencia bancaria según tu preferencia.",
     details: [
@@ -85,17 +87,17 @@ const processSteps = [
 
 const requirements = [
   {
-    icon: <CheckCircle className={styles.reqIcon} />,
+    icon: <AlertCircle className={styles.reqIcon} />,
     title: "Material limpio",
     description: "Separado por tipo y libre de contaminantes"
   },
   {
-    icon: <CheckCircle className={styles.reqIcon} />,
+    icon: <AlertCircle className={styles.reqIcon} />,
     title: "Identificación",
     description: "Cédula de identidad o RUT para el pago"
   },
   {
-    icon: <CheckCircle className={styles.reqIcon} />,
+    icon: <AlertCircle className={styles.reqIcon} />,
     title: "Origen legal",
     description: "Certificar que el material es de procedencia lícita"
   }
@@ -120,6 +122,9 @@ const ComoFuncionaPage = () => (
       variant="primary"
     />
 
+    {/* --- ANIMATED TIMELINE OVERVIEW --- */}
+    
+
     <main>
       
       {/* --- PROCESS TIMELINE --- */}
@@ -132,15 +137,12 @@ const ComoFuncionaPage = () => (
             </p>
           </div>
 
+          {/* Process Timeline Component */}
+          <ProcessTimeline />
+
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
             {processSteps.map((step, index) => (
-              <div key={step.step} style={{ 
-                display: 'flex', 
-                alignItems: 'flex-start', 
-                gap: 'var(--space-xl)', 
-                marginBottom: 'var(--space-xl)',
-                position: 'relative'
-              }}>
+              <div key={step.step} className={styles.stepContainer}>
                 <div style={{
                   width: '48px',
                   height: '48px',
@@ -165,13 +167,7 @@ const ComoFuncionaPage = () => (
                     gap: 'var(--space-md)', 
                     marginBottom: 'var(--space-lg)' 
                   }}>
-                    <div style={{ 
-                      color: 'var(--color-primary)',
-                      fontSize: '2rem',
-                      flexShrink: 0
-                    }}>
-                      {step.icon}
-                    </div>
+                    {step.icon}
                     <div style={{ flex: 1 }}>
                       <h3 className="card-title">{step.title}</h3>
                     </div>
@@ -239,9 +235,7 @@ const ComoFuncionaPage = () => (
             {requirements.map((req, index) => (
               <div key={index} className="professional-card professional-card--light">
                 <div style={{ textAlign: 'center' }}>
-                  <div className="card-icon" style={{ 
-                    background: 'var(--color-success)', 
-                    color: 'var(--color-white)', 
+                  <div style={{ 
                     margin: '0 auto var(--space-lg)'
                   }}>
                     {req.icon}

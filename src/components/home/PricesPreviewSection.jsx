@@ -2,7 +2,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./PricesPreviewSection.module.css";
-import Background from "../Background";
 import Link from "next/link";
 import {
   Coins,
@@ -58,8 +57,8 @@ const PricesPreviewSection = ({
   isEnglish = false
 }) => {
   return (
-    <Background>
-      <section id="precios" className={styles.pricesPreviewSection} aria-label={isEnglish ? "Material prices" : "Precios de materiales"}>
+    <section id="precios" className={styles.pricesPreviewSection} aria-label={isEnglish ? "Material prices" : "Precios de materiales"}>
+      <div className={styles.sectionContent}>
         <SectionHeader as="h2">{isEnglish ? "Material Prices" : title}</SectionHeader>
         <p className={styles.subtitle}>{isEnglish ? "Check all the materials we buy and their updated prices." : subtitle}</p>
         <div className={styles.pricesList}>
@@ -111,8 +110,8 @@ const PricesPreviewSection = ({
             {isEnglish ? "View all prices" : ctaText} →
           </Link>
         </div>
-      </section>
-    </Background>
+      </div>
+    </section>
   );
 };
 

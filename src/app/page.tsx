@@ -9,7 +9,6 @@ import { getContent } from '../utils/languageUtils';
 // Home Sections
 import HeroSection from '../components/home/HeroSection';
 import SectionCardsGrid from '../components/SectionCardsGrid';
-import StatsSection from '../components/home/StatsSection';
 import PricesPreviewSection from '../components/home/PricesPreviewSection';
 import FAQPreviewSection from '../components/home/FAQPreviewSection';
 import MapSection from '../components/home/MapSection';
@@ -74,13 +73,10 @@ export default function Home() {
         isEnglish={isEnglish}
       />
 
-      {/* 5. Stats Section (compact, inline) */}
-      <StatsSection />
-
-      {/* 6. FAQ Preview Section */}
+      {/* 5. FAQ Preview Section */}
       <FAQPreviewSection />
 
-      {/* 7. Google Business Profile & Location */}
+      {/* 6. Google Business Profile & Location */}
       <MapSection isEnglish={isEnglish} />
 
       {/* Footer is handled in layout.tsx globally */}

@@ -11,34 +11,35 @@ const SectionCardsGrid = ({ isEnglish = false }) => {
     {
       id: 'proceso',
       title: isEnglish ? 'How it works?' : '¿Cómo funciona?',
-      description: isEnglish ? 'Discover our simple and transparent process' : 'Descubre nuestro proceso simple y transparente',
+      preview: isEnglish 
+        ? 'Discover our simple 4-step process: Contact → Transport → Certified weighing → Immediate payment. See the complete timeline and requirements.' 
+        : 'Descubre nuestro proceso simple en 4 pasos: Contacto → Traslado → Pesaje certificado → Pago inmediato. Ve el cronograma completo y requisitos.',
       variant: 'accent',
       backgroundImage: '/images/materials/materialhero.jpg',
-      href: isEnglish ? '/en/how-it-works' : '/como-funciona'
+      href: isEnglish ? '/en/how-it-works' : '/como-funciona',
+      statsText: isEnglish ? 'Personal attention, no bureaucracy' : 'Atención personalizada, sin burocracia'
     },
     {
       id: 'materiales',
-      title: isEnglish ? 'Materials' : 'Materiales',
-      description: isEnglish ? 'Explore the types of metals we buy' : 'Explora los tipos de metales que compramos',
+      title: isEnglish ? 'Accepted materials' : 'Materiales aceptados',
+      preview: isEnglish 
+        ? 'Explore all metal types we accept: copper, aluminum, iron, bronze, electronics + detailed specs, current prices, and prohibited materials list.' 
+        : 'Explora todos los tipos de metales que aceptamos: cobre, aluminio, fierro, bronce, electrónicos + especificaciones, precios y materiales prohibidos.',
       variant: 'neutral',
       backgroundImage: '/images/materials/fierromixto.JPG',
-      href: isEnglish ? '/en/materials' : '/materiales'
+      href: isEnglish ? '/en/materials' : '/materiales',
+      statsText: isEnglish ? 'Quote via WhatsApp' : 'Cotizar por WhatsApp'
     },
     {
       id: 'porque-nosotros',
-      title: isEnglish ? 'Why choose us?' : '¿Por qué nosotros?',
-      description: isEnglish ? 'Learn the advantages of choosing EcoMetalix' : 'Conoce las ventajas de elegir EcoMetalix',
+      title: isEnglish ? 'Why choose us?' : '¿Por qué elegirnos?',
+      preview: isEnglish 
+        ? 'See our key advantages: immediate payment, extended hours 8-20h, INN certified scale, 10+ years experience, 500+ satisfied customers.' 
+        : 'Ve nuestras ventajas clave: pago inmediato, horario extendido 8-20h, balanza certificada INN, 10+ años experiencia, 500+ clientes satisfechos.',
       variant: 'secondary',
       backgroundImage: '/images/materials/FierroLargo.jpg',
-      href: isEnglish ? '/en/why-us' : '/por-que-nosotros'
-    },
-    {
-      id: 'faq',
-      title: isEnglish ? 'Frequently Asked Questions' : 'Preguntas Frecuentes',
-      description: isEnglish ? 'Find answers to common questions about our services' : 'Encuentra respuestas a preguntas comunes sobre nuestros servicios',
-      variant: 'primary',
-      backgroundImage: '/images/faqpreviewpage.jpg',
-      href: isEnglish ? '/en/faq' : '/faq'
+      href: isEnglish ? '/en/why-us' : '/por-que-nosotros',
+      statsText: isEnglish ? '100% real Google reviews' : 'Opiniones 100% reales en Google'
     }
   ];
 
@@ -50,10 +51,12 @@ const SectionCardsGrid = ({ isEnglish = false }) => {
             <SectionCard
               key={card.id}
               title={card.title}
-              description={card.description}
+              preview={card.preview}
               variant={card.variant}
               backgroundImage={card.backgroundImage}
               href={card.href}
+              statsText={card.statsText}
+              ctaText={card.ctaText}
             />
           ))}
         </div>

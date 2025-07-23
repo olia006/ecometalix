@@ -3,10 +3,13 @@
    ============================== */
 
 .trustCues {
+  width: 100%;
   overflow: hidden;
-  max-width: var(--container-xl);
-  margin: 0 auto;
-  background: transparent;
+  background: linear-gradient(135deg, 
+    var(--color-primary-10) 0%, 
+    var(--color-accent-10) 100%);
+  padding: var(--space-md) 0;
+  position: relative;
 }
 
 .runningLine {
@@ -39,6 +42,18 @@
   padding: var(--space-sm) var(--space-lg);
   white-space: nowrap;
   min-width: max-content;
+  background: var(--white-glass-light);
+  backdrop-filter: blur(var(--glass-blur-xs));
+  -webkit-backdrop-filter: blur(var(--glass-blur-xs));
+  border: var(--border-thin) solid var(--color-border-light);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal) var(--ease-smooth);
+}
+
+.badge:hover {
+  background: var(--white-glass-medium);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .icon {
@@ -73,6 +88,9 @@
 
 /* Responsive Design */
 @media (max-width: var(--breakpoint-3xl)) {
+  .trustCues {
+    padding: var(--space-sm) 0;
+  }
   
   .runningContent {
     gap: var(--space-lg);
@@ -84,14 +102,16 @@
     gap: var(--space-xs);
   }
   
-  /* Icon now uses responsive clamp(), no override needed */
-  
   .badgeText {
     font-size: var(--font-size-sm);
   }
 }
 
 @media (max-width: var(--breakpoint-xl)) {
+  .trustCues {
+    padding: var(--space-xs) 0;
+  }
+  
   .runningContent {
     animation-duration: 12s;
   }
@@ -102,6 +122,37 @@
   
   .badgeText {
     font-size: var(--font-size-xs);
+  }
+}
+
+/* Accessibility & Performance */
+@media (prefers-reduced-motion: reduce) {
+  .runningContent {
+    animation: none;
+  }
+  
+  .runningLine {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+  
+  .badge:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .trustCues {
+    background: var(--color-background);
+    border-top: var(--border-medium) solid var(--color-primary);
+    border-bottom: var(--border-medium) solid var(--color-primary);
+  }
+  
+  .badge {
+    background: var(--color-neutral);
+    border: var(--border-medium) solid var(--color-primary);
   }
 }
   

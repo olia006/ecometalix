@@ -1506,82 +1506,52 @@ blockquote {
 
 
 
-/* Professional Filter Components */
-.filter-toggle {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-md) var(--space-lg);
-  background: var(--glass-heavy);
-  color: var(--color-text);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  box-shadow: var(--shadow-md);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
+/* Professional Search & Filter Utilities */
+.search-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+  background: var(--color-background);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--space-xl);
 }
 
-.filter-toggle:hover {
-  background: var(--color-primary);
-  color: var(--color-white);
-}
-
-.filter-toggle--active {
-  background: var(--color-primary);
-  color: var(--color-white);
-}
-
-.filter-badge {
+.search-container::before {
+  content: "";
   position: absolute;
-  top: -4px;
-  right: -4px;
-  width: 12px;
-  height: 12px;
-  background: var(--color-accent);
-  border-radius: 50%;
-  border: 2px solid var(--color-white);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
 }
 
-.filter-panel {
-  margin-top: var(--space-lg);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.filter-group {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
-
-.filter-label {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text);
-}
-
-.filter-select {
-  padding: var(--space-sm) var(--space-md);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-md);
-  background: var(--glass-light);
-  color: var(--color-text);
-  font-size: var(--font-size-base);
-  cursor: pointer;
-}
-
-/* Results Display */
+/* Professional Results Display */
 .results-info {
-  max-width: 800px;
+  max-width: 900px;
   margin: var(--space-lg) auto 0;
   text-align: center;
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+}
+
+.results-count {
   font-size: var(--font-size-sm);
-  color: var(--color-muted);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
 }
 
 /* Materials Grid */
@@ -1618,27 +1588,6 @@ blockquote {
   background: var(--color-primary-dark);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
-}
-
-
-
-.filter-toggle {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-md) var(--space-lg);
-  background: var(--glass-heavy);
-  color: var(--color-text);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  box-shadow: var(--shadow-md);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
-  position: relative;
 }
 
 /* Professional Responsive Utilities */
