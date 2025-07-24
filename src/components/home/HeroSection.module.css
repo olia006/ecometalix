@@ -10,9 +10,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
   
   /* Performance optimizations */
-  contain: layout style paint;
+  contain: layout style;
   will-change: auto;
 }
 
@@ -212,6 +213,8 @@
   transition: color var(--transition-fast) var(--ease-smooth);
   /* Text shadow for better readability */
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  padding: var(--space-xxs) 0;
+  overflow: visible;
 }
 
 .processLink:hover {
@@ -220,11 +223,15 @@
 }
 
 .processIcon {
+  width: auto;
+  height: 16px;
+  max-width: 20px;
+  flex-shrink: 0;
   transition: transform var(--transition-fast) var(--ease-smooth);
 }
 
 .processLink:hover .processIcon {
-  transform: translateX(var(--space-xxs));
+  transform: scale(1.1);
 }
 
 

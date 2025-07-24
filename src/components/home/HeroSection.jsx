@@ -159,13 +159,15 @@ export default function HeroSection({
                     <span>{isEnglish ? "Every day 8:30-20:00 • No breaks" : "Todos los días 8:30-20:00 • Sin descanso"}</span>
                   </div>
                   <a
-                    href={isEnglish ? "/en/how-it-works" : "/como-funciona"}
+                    href="https://www.google.com/maps/place/EcoMetalix/@-33.3120766,-70.7984129,17z/data=!4m8!3m7!1s0x9662bf78657b6e2f:0x692dfae6ce3b688d!8m2!3d-33.3120766!4d-70.798438!9m1!1b1!16s%2Fg%2F11q3j6y6yt?hl=es"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={heroStyles.processLink}
                     onClick={() => trackHeroInteraction('process_click', 'low')}
-                    aria-label={isEnglish ? "Learn our scrap metal buying process" : "Conoce nuestro proceso de compra de chatarra"}
+                    aria-label={isEnglish ? "View our location on Google Maps" : "Ver nuestra ubicación en Google Maps"}
                   >
-                    {isEnglish ? "Learn our process" : "Conoce nuestro proceso"}
-                    <ArrowRight className={heroStyles.processIcon} aria-hidden="true" size={12} />
+                    <img src="/icons/google-map-icon.svg" alt="" className={heroStyles.processIcon} aria-hidden="true" />
+                    {isEnglish ? "View our location" : "Ver nuestra ubicación"}
                   </a>
                 </div>
               </div>

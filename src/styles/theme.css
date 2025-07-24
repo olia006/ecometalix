@@ -269,6 +269,7 @@
   
   /* Additional line height tokens for specific use cases */
   --line-height-ultra-tight: clamp(0.9, 1.2vw, 1.05);    /* Ultra tight for hero headings */
+  --line-height-hero-tight: 0.95;                        /* Consistently tight for hero headings */
   --line-height-extra-tight: clamp(1.0, 1.5vw, 1.2);     /* Extra tight for large displays */
   --line-height-heading: clamp(1.2, 2.2vw, 1.4);         /* Optimized for headings */
   --line-height-body: clamp(1.4, 2.8vw, 1.6);            /* Optimized for body text */
@@ -397,7 +398,7 @@
   --size-modal-md: clamp(320px, 90vw, 600px);
   --size-modal-lg: clamp(340px, 95vw, 800px);
   --size-map-height: calc(var(--space-5xl) * 6.67); /* 400px */
-  --size-map-height-mobile: calc(var(--space-5xl) * 7);    /* 420px */
+  --size-map-height-mobile: calc(var(--space-5xl) * 5);    /* 300px - landscape orientation */
   --size-hero-height: 600px;
 
   /* ===== RADIUS ===== */

@@ -166,8 +166,8 @@ const ComoFuncionaPage = () => (
                     alignItems: 'center', 
                     gap: 'var(--space-md)', 
                     marginBottom: 'var(--space-lg)' 
-                  }}>
-                    {step.icon}
+                    }}>
+                      {step.icon}
                     <div style={{ flex: 1 }}>
                       <h3 className="card-title">{step.title}</h3>
                     </div>

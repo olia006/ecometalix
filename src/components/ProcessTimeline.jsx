@@ -19,12 +19,12 @@ const ProcessTimeline = () => {
           <div className={styles.stepLabel}>
             <MessageCircle size={20} />
             <span>Paso 1</span>
-          </div>
+              </div>
           <div className={styles.connector}></div>
           <div className={styles.stepLabel}>
             <Truck size={20} />
             <span>Paso 2</span>
-          </div>
+              </div>
           <div className={styles.connector}></div>
           <div className={styles.stepLabel}>
             <Scale size={20} />

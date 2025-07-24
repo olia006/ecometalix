@@ -7,8 +7,8 @@ import FloatingCTA from "../components/FloatingCTA";
 import Breadcrumb from "../components/Breadcrumb";
 import PageHeader from "../components/PageHeader";
 import MaterialCard from "../components/MaterialCard";
-import { Search, Filter, X, ArrowRight, Info } from "lucide-react";
-import { materials } from "../data/materials";
+import { Search, Filter, X, ArrowRight, Info, Shield, Radiation, Cable, Building, Construction, Car } from "lucide-react";
+import { materials, getFerroMaterials, getNonFerroMaterials } from "../data/materials";
 import { CONTACT_URLS } from "../config/constants";
 import styles from "./MaterialsIndexPage.module.css";
 import SecondaryButton from "../components/SecondaryButton";
@@ -27,6 +27,18 @@ export default function MaterialsIndexPage() {
     return Array.from(cats);
   }, []);
 
+  // Group materials by type for organized display
+  const materialGroups = useMemo(() => {
+    const nonFerrous = getNonFerroMaterials();
+    const ferrous = getFerroMaterials();
+    const special = materials.filter(material => 
+      !material.tags.includes("Ferroso") && 
+      !material.tags.includes("No ferroso")
+    );
+
+    return { nonFerrous, ferrous, special };
+  }, []);
+
   // Filter materials based on search and category
   const filteredMaterials = useMemo(() => {
     return materials.filter(material => {
@@ -39,6 +51,25 @@ export default function MaterialsIndexPage() {
       return matchesSearch && matchesCategory;
     });
   }, [searchTerm, selectedCategory]);
+
+  // Filter each group separately for organized display
+  const filteredGroups = useMemo(() => {
+    const filterGroup = (group) => group.filter(material => {
+      const matchesSearch = material.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          material.description.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesCategory = selectedCategory === "all" || 
+                            material.tags.includes(selectedCategory);
+      
+      return matchesSearch && matchesCategory;
+    });
+
+    return {
+      nonFerrous: filterGroup(materialGroups.nonFerrous),
+      ferrous: filterGroup(materialGroups.ferrous),
+      special: filterGroup(materialGroups.special)
+    };
+  }, [materialGroups, searchTerm, selectedCategory]);
 
   const clearSearch = () => {
     setSearchTerm("");
@@ -66,20 +97,20 @@ export default function MaterialsIndexPage() {
       {/* Search and Filter Section */}
       <section className={styles.searchSection}>
         <div className={styles.searchContainer}>
-          <div className={styles.searchInputWrapper}>
-            <Search className={styles.searchIcon} />
+          <div className="search-input-wrapper">
+            <Search className="search-input-icon" />
             <input
               type="text"
               placeholder="Buscar materiales..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className={styles.searchInput}
+              className="search-input"
               aria-label="Buscar materiales"
             />
             {(searchTerm || selectedCategory !== "all") && (
               <button
                 onClick={clearSearch}
-                className={styles.searchClearButton}
+                className="search-clear-button"
                 aria-label="Limpiar búsqueda"
               >
                 <X />
@@ -90,26 +121,26 @@ export default function MaterialsIndexPage() {
           <div className={styles.filterDropdownContainer}>
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className={`${styles.filterToggle} ${showFilters ? styles.filterToggleActive : ''}`}
+              className={`filter-toggle ${showFilters ? 'active' : ''}`}
               aria-label="Filtrar categorías"
             >
-              <Filter />
-              {selectedCategory === 'all' ? 'Todas las categorías' : selectedCategory}
+              <Filter size={20} />
+              {selectedCategory === 'all' ? 'Todos' : selectedCategory}
             </button>
             
             {showFilters && (
-              <div className={styles.filterDropdown}>
+              <div className="filter-dropdown">
                 <button
                   onClick={() => {setSelectedCategory('all'); setShowFilters(false);}}
-                  className={`${styles.filterOption} ${selectedCategory === 'all' ? styles.filterOptionActive : ''}`}
+                  className={`filter-option ${selectedCategory === 'all' ? 'active' : ''}`}
                 >
-                  Todas las categorías
+                  Todos
                 </button>
                 {categories.map(category => (
                   <button
                     key={category}
                     onClick={() => {setSelectedCategory(category); setShowFilters(false);}}
-                    className={`${styles.filterOption} ${selectedCategory === category ? styles.filterOptionActive : ''}`}
+                    className={`filter-option ${selectedCategory === category ? 'active' : ''}`}
                   >
                     {category}
                   </button>
@@ -135,18 +166,65 @@ export default function MaterialsIndexPage() {
         </div>
       </section>
 
-      {/* Materials Grid */}
+      {/* Materials Grid - Organized by Categories */}
       <section className="professional-section">
         <div className="section-container">
-          <div className="materials-grid">
-            {filteredMaterials.map((material) => {
-              const { key, ...materialProps } = material;
-              return (
-                <MaterialCard key={key} {...materialProps} />
-              );
-            })}
-          </div>
+          
+          {/* Non-Ferrous Metals */}
+          {filteredGroups.nonFerrous.length > 0 && (
+            <div className={styles.categorySection}>
+              <h3 className={styles.categoryTitle}>Metales No Ferrosos</h3>
+              <p className={styles.categoryDescription}>
+                Metales que no contienen hierro, generalmente de mayor valor y resistentes a la corrosión.
+              </p>
+              <div className="materials-grid">
+                {filteredGroups.nonFerrous.map((material) => {
+                  const { key, ...materialProps } = material;
+                  return (
+                    <MaterialCard key={key} {...materialProps} />
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
+          {/* Ferrous Metals */}
+          {filteredGroups.ferrous.length > 0 && (
+            <div className={styles.categorySection}>
+              <h3 className={styles.categoryTitle}>Metales Ferrosos</h3>
+              <p className={styles.categoryDescription}>
+                Metales que contienen hierro, magnéticos y ampliamente utilizados en construcción e industria.
+              </p>
+              <div className="materials-grid">
+                {filteredGroups.ferrous.map((material) => {
+                  const { key, ...materialProps } = material;
+                  return (
+                    <MaterialCard key={key} {...materialProps} />
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Special Materials */}
+          {filteredGroups.special.length > 0 && (
+            <div className={styles.categorySection}>
+              <h3 className={styles.categoryTitle}>Materiales Especiales</h3>
+              <p className={styles.categoryDescription}>
+                Materiales mixtos, electrónicos y otros tipos que requieren procesamiento especializado.
+              </p>
+              <div className="materials-grid">
+                {filteredGroups.special.map((material) => {
+                  const { key, ...materialProps } = material;
+                  return (
+                    <MaterialCard key={key} {...materialProps} />
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* No Results */}
           {filteredMaterials.length === 0 && (
             <div className="professional-card no-results">
               <h3 className="card-title">No se encontraron materiales</h3>
@@ -185,44 +263,54 @@ export default function MaterialsIndexPage() {
             
             <div className="professional-grid professional-grid--2">
               <div className="professional-card professional-card--light">
-                <h3 className="card-title prohibited-card-title">Cables Eléctricos y de Comunicación</h3>
+                <h3 className="card-title prohibited-card-title">
+                  <Cable size={24} className="prohibited-icon" />
+                  Cables Eléctricos y de Comunicación
+                </h3>
                 <p className="card-description">Prohibido recibir cables eléctricos, telefónicos o de fibra óptica sin documentación que acredite origen legal.</p>
               </div>
               
               <div className="professional-card professional-card--light">
-                <h3 className="card-title prohibited-card-title">Propiedad Pública</h3>
-                <p className="card-description">No se reciben tapas de alcantarilla, señales de tránsito, barandas, luminarias, rejillas de desagüe, rieles, mobiliario urbano ni cualquier elemento de propiedad estatal o municipal.</p>
+                <h3 className="card-title prohibited-card-title">
+                  <Building size={24} className="prohibited-icon" />
+                  Propiedad Pública
+                </h3>
+                <p className="card-description">No se reciben tapas de alcantarilla, señales de tránsito, barandas, luminarias, rejillas de desagüe, rieles, mobiliario urbano ni cualquier elemento de propiedad estatal o municipal sin documentación legal apropiada.</p>
               </div>
               
               <div className="professional-card professional-card--light">
-                <h3 className="card-title prohibited-card-title">Chatarra de Infraestructura Crítica</h3>
-                <p className="card-description">Prohibido comprar materiales provenientes de puentes, líneas eléctricas, torres de telecomunicaciones, tuberías, vías férreas, estaciones eléctricas, etc., sin documentación oficial del propietario o empresa responsable.</p>
+                <h3 className="card-title prohibited-card-title">
+                  <Construction size={24} className="prohibited-icon" />
+                  Chatarra de Infraestructura Crítica
+                </h3>
+                <p className="card-description">Prohibido recibir materiales provenientes de puentes, líneas eléctricas, torres de telecomunicaciones, tuberías, vías férreas, estaciones eléctricas, etc., sin documentación oficial apropiada del propietario o empresa responsable.</p>
               </div>
               
               <div className="professional-card professional-card--light">
-                <h3 className="card-title prohibited-card-title">Piezas y Partes de Vehículos</h3>
-                <p className="card-description">Prohibido recibir motores, catalizadores, o partes de autos, camiones o motos sin documentos que acrediten propiedad legal.</p>
+                <h3 className="card-title prohibited-card-title">
+                  <Car size={24} className="prohibited-icon" />
+                  Piezas y Partes de Vehículos
+                </h3>
+                <p className="card-description">Prohibido recibir motores, catalizadores, o partes de autos, camiones o motos sin documentación apropiada que acredite propiedad legal.</p>
               </div>
               
               <div className="professional-card professional-card--light">
-                <h3 className="card-title prohibited-card-title">Materiales Explosivos o de Uso Militar</h3>
+                <h3 className="card-title prohibited-card-title">
+                  <Shield size={24} className="prohibited-icon" />
+                  Materiales Explosivos o de Uso Militar
+                </h3>
                 <p className="card-description">No aceptamos municiones, armas, explosivos, partes de equipamiento militar o similares.</p>
               </div>
               
               <div className="professional-card professional-card--light">
-                <h3 className="card-title prohibited-card-title">Materiales Radioactivos o Peligrosos</h3>
+                <h3 className="card-title prohibited-card-title">
+                  <Radiation size={24} className="prohibited-icon" />
+                  Materiales Radioactivos o Peligrosos
+                </h3>
                 <p className="card-description">Prohibido todo material con radioactividad, asbesto, químicos tóxicos, baterías con ácido, tambores contaminados u otros residuos peligrosos.</p>
               </div>
               
-              <div className="professional-card professional-card--light">
-                <h3 className="card-title prohibited-card-title">Electrodomésticos y Máquinas en Funcionamiento</h3>
-                <p className="card-description">No recibimos electrodomésticos o maquinaria que esté en buen estado o funcionando. Solo se aceptan equipos totalmente fuera de uso y desmantelados.</p>
-              </div>
-              
-              <div className="professional-card professional-card--light">
-                <h3 className="card-title prohibited-card-title">Metales Mixtos o Contaminados</h3>
-                <p className="card-description">No se acepta chatarra mezclada con aceites, tierra, madera, goma, plásticos u otros residuos no metálicos.</p>
-              </div>
+
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { IBM_Plex_Sans, JetBrains_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css'
 
 // Optimize fonts with Next.js (Satoshi loaded via Fontshare in theme.css)
@@ -14,6 +15,13 @@ const ibmPlexSans = IBM_Plex_Sans({
 const jetBrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains',
+  display: 'swap',
+  preload: false,
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
   preload: false,
 });
@@ -109,6 +117,11 @@ export default function RootLayout({
         <link rel="preload" href="/images/logoecometalix.webp" as="image" />
         <link rel="preload" href="/images/homehero.webp" as="image" />
         
+        {/* Roboto font for authentic Google logo styling */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+        
         {/* DNS prefetching for external resources */}
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//connect.facebook.net" />
@@ -124,7 +137,7 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className={`${ibmPlexSans.variable} ${jetBrainsMono.variable}`}>
+              <body className={`${ibmPlexSans.variable} ${jetBrainsMono.variable} ${inter.variable}`}>
         <ScrollToTop />
         <div className="app-wrapper">
           <ThemeProvider>

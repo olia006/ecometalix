@@ -60,35 +60,13 @@ export default function DesktopHamburgerMenu() {
     return () => clearInterval(interval);
   }, []);
 
-  // Enhanced keyboard navigation
+  // Basic keyboard navigation (Escape only)
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'Escape' && isOpen) {
       closeMenu();
       hamburgerButtonRef.current?.focus();
     }
-    
-    // Quick navigation shortcuts (Jakob Nielsen - Keyboard Accessibility)
-    if (e.altKey && isOpen) {
-      switch(e.key) {
-        case 'p':
-          e.preventDefault();
-          router.push('/precios');
-          closeMenu();
-          trackMenuEvent('keyboard_shortcut', 'precios');
-          break;
-        case 'm':
-          e.preventDefault();
-          router.push('/materiales');
-          closeMenu();
-          trackMenuEvent('keyboard_shortcut', 'materiales');
-          break;
-        case 's':
-          e.preventDefault();
-          searchInputRef.current?.focus();
-          break;
-      }
-    }
-  }, [isOpen, router]);
+  }, [isOpen]);
 
   // Global keyboard listener
   useEffect(() => {
@@ -107,7 +85,7 @@ export default function DesktopHamburgerMenu() {
     setTimeout(() => {
       searchInputRef.current?.focus();
     }, 150);
-    
+
     // Prevent body scroll (Luke Wroblewski - Mobile UX)
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
@@ -215,9 +193,9 @@ export default function DesktopHamburgerMenu() {
         Saltar al contenido principal
       </a>
       
-      <div 
-        className={styles.overlay}
-        onClick={closeMenu}
+        <div 
+          className={styles.overlay} 
+          onClick={closeMenu}
         onTouchStart={(e) => {
           handleTouchStart.current = {
             x: e.touches[0].clientX,
@@ -229,16 +207,16 @@ export default function DesktopHamburgerMenu() {
         aria-modal="true"
         aria-labelledby="menu-header"
         aria-describedby="menu-description"
-      >
-        <div 
+        >
+          <div 
           ref={menuPanelRef}
-          className={styles.menuPanel}
+            className={styles.menuPanel}
           id="navigation-menu"
           onClick={(e) => e.stopPropagation()}
           role="document"
-        >
+          >
           {/* Enhanced Header Section */}
-          <div className={styles.headerSection}>
+            <div className={styles.headerSection}>
             <button
               className={styles.closeButton}
               onClick={closeMenu}
@@ -261,10 +239,10 @@ export default function DesktopHamburgerMenu() {
             <p id="menu-description" className={styles.welcomeMessage}>
               Navegación rápida y búsqueda inteligente
             </p>
-          </div>
+            </div>
 
           {/* Enhanced Search Section */}
-          <div className={styles.searchSection}>
+            <div className={styles.searchSection}>
             <form 
               className={styles.searchContainer}
               onSubmit={handleSearchSubmit}
@@ -285,7 +263,7 @@ export default function DesktopHamburgerMenu() {
                   autoComplete="off"
                   spellCheck="false"
                 />
-                <kbd className={styles.shortcutHint}>Alt+S</kbd>
+
               </div>
               
               {/* Search suggestions */}
@@ -310,8 +288,7 @@ export default function DesktopHamburgerMenu() {
               )}
               
               <span id="search-hint" className="sr-only">
-                Escribe para buscar materiales, precios o información del sitio. 
-                Usa Alt+S para enfocar rápidamente.
+                Escribe para buscar materiales, precios o información del sitio.
               </span>
             </form>
           </div>
@@ -330,7 +307,7 @@ export default function DesktopHamburgerMenu() {
                     >
                       <DollarSign className={styles.quickActionIcon} size={24} aria-hidden="true" />
                       <span>Precios</span>
-                      <kbd>Alt+P</kbd>
+
                     </Link>
                     
                     <a
@@ -352,7 +329,7 @@ export default function DesktopHamburgerMenu() {
                     >
                       <Wrench className={styles.quickActionIcon} size={24} aria-hidden="true" />
                       <span>Materiales</span>
-                      <kbd>Alt+M</kbd>
+
                     </Link>
               </div>
             </div>
@@ -396,7 +373,7 @@ export default function DesktopHamburgerMenu() {
                     <ArrowRight size={16} className={styles.navLinkArrow} aria-hidden="true" />
                   </Link>
                 </li>
-                
+
                 <li role="listitem">
                   <Link
                     href="/faq"
@@ -410,7 +387,7 @@ export default function DesktopHamburgerMenu() {
                 </li>
               </ul>
             </div>
-          </nav>
+            </nav>
 
           {/* Enhanced Footer Section */}
           <div className={styles.footerSection}>
@@ -463,7 +440,7 @@ export default function DesktopHamburgerMenu() {
           aria-expanded={isOpen}
           aria-haspopup="dialog"
           aria-controls="navigation-menu"
-          aria-keyshortcuts="Escape"
+
         >
           <span className={styles.hamburgerIcon}>
             {isOpen ? (

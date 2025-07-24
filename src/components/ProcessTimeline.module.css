@@ -53,7 +53,7 @@
   padding: var(--space-xs) var(--space-md);
   white-space: nowrap;
   flex-shrink: 0;
-}
+  }
 
 .connector {
   flex: 1;
@@ -113,16 +113,16 @@
     border-radius: 50%;
     justify-content: center;
     border-width: 2px;
-  }
-  
+}
+
   .stepLabel span {
     display: none;
-  }
-  
+}
+
   .stepLabel svg {
     width: 22px;
     height: 22px;
-  }
+}
 }
 
 /* Extra Small Mobile: Even smaller */

@@ -43,8 +43,8 @@
   white-space: nowrap;
   min-width: max-content;
   background: var(--white-glass-light);
-  backdrop-filter: blur(var(--glass-blur-xs));
   -webkit-backdrop-filter: blur(var(--glass-blur-xs));
+  backdrop-filter: blur(var(--glass-blur-xs));
   border: var(--border-thin) solid var(--color-border-light);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal) var(--ease-smooth);

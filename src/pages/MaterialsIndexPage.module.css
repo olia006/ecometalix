@@ -173,121 +173,11 @@
   align-items: center;
 }
 
-.searchBar {
-  flex: 1;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
+/* Search styles moved to global.css */
 
-.searchIcon {
-  position: absolute;
-  left: var(--space-md);
-  color: var(--color-text-secondary);
-  z-index: 1;
-}
+/* Old search and filter styles removed - now using global.css */
 
-.searchInput {
-  width: 100%;
-  padding: var(--space-md) var(--space-xl);
-  padding-left: calc(var(--space-xl) + 20px);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  font-size: var(--font-size-base);
-  background: var(--color-surface);
-  color: var(--color-text);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.searchInput:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-primary-10);
-}
-
-.clearButton {
-  position: absolute;
-  right: var(--space-md);
-  background: none;
-  border: none;
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
-  cursor: pointer;
-  padding: var(--space-xs);
-  border-radius: var(--radius-sm);
-  transition: color 0.3s ease;
-}
-
-.clearButton:hover {
-  color: var(--color-primary);
-}
-
-.filterToggle {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-md) var(--space-lg);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  background: var(--color-surface);
-  color: var(--color-text);
-  font-size: var(--font-size-base);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.filterToggle:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.filterOptions {
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  margin-bottom: var(--space-lg);
-  animation: slideDown 0.3s ease;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.filterGroup {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
-
-.filterLabel {
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text);
-  font-size: var(--font-size-base);
-}
-
-.filterSelect {
-  padding: var(--space-sm) var(--space-md);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-background);
-  color: var(--color-text);
-  font-size: var(--font-size-base);
-  cursor: pointer;
-  transition: border-color 0.3s ease;
-}
-
-.filterSelect:focus {
-  outline: none;
-  border-color: var(--color-primary);
-}
+/* Filter styles moved to global.css */
 
 .resultsInfo {
   text-align: center;
@@ -345,6 +235,92 @@
 
 .clearFiltersButton:hover {
   background: var(--color-primary-dark);
+}
+
+/* ===============================================
+   Category Sections
+   =============================================== */
+
+.categorySection {
+  margin-bottom: var(--space-xxl);
+  position: relative;
+  padding: var(--space-lg) 0;
+  border-radius: var(--radius-lg);
+}
+
+.categoryTitle {
+  font-size: var(--font-size-xl);
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-md);
+  border-left: var(--border-heavy) solid var(--color-primary);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.categoryDescription {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+  padding-left: var(--space-md);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.categorySection:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--color-divider) 50%, 
+    transparent 100%);
+  opacity: 0.5;
+}
+
+/* Enhanced category titles with icons */
+.categoryTitle::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  display: inline-block;
+  margin-right: var(--space-xs);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+/* Responsive category sections */
+@media (max-width: var(--breakpoint-lg)) {
+  .categorySection {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .categoryTitle {
+    font-size: var(--font-size-lg);
+    padding-left: var(--space-sm);
+  }
+  
+  .categoryDescription {
+    padding-left: var(--space-sm);
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: var(--breakpoint-md)) {
+  .categoryTitle {
+    border-left-width: 3px;
+    font-size: var(--font-size-md);
+  }
 }
 
 /* CTA Section */
@@ -565,61 +541,7 @@
   border-color: var(--color-primary-dark);
 }
 
-.filterDropdown {
-  position: absolute;
-  top: calc(100% + var(--space-xs));
-  right: 0;
-  padding: var(--space-sm);
-  background: var(--color-background);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-md);
-  box-shadow: 
-    0 8px 24px rgba(0, 0, 0, 0.12),
-    0 2px 8px rgba(0, 0, 0, 0.08);
-  z-index: 100;
-  min-width: calc(var(--space-5xl) + var(--space-3xl));
-  animation: slideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.filterOption {
-  display: block;
-  width: 100%;
-  padding: var(--space-sm) var(--space-md);
-  border: none;
-  background: transparent;
-  color: var(--color-text);
-  font-size: var(--font-size-sm);
-  font-family: var(--font-body);
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border-radius: var(--radius-sm);
-}
-
-.filterOption:hover {
-  background: var(--color-primary-10);
-  color: var(--color-primary);
-}
-
-.filterOptionActive {
-  background: var(--color-primary);
-  color: var(--color-white);
-}
-
-.filterOptionActive:hover {
-  background: var(--color-primary-dark);
-}
+/* Filter dropdown styles moved to global.css */
 
 /* Professional Results Info */
 .resultsInfo {

@@ -282,56 +282,39 @@
 
 .searchIcon {
   position: absolute;
-  left: var(--space-md);
+  left: var(--space-sm);
   color: var(--color-text-secondary);
   z-index: 1;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .searchInput {
   width: 100%;
-  padding: var(--space-md) var(--space-xl) var(--space-md) calc(var(--space-xl) + var(--space-md));
-  border: 2px solid var(--color-divider);
-  border-radius: var(--radius-lg);
-  background: var(--color-background);
+  padding: var(--space-sm) var(--space-lg) var(--space-sm) calc(var(--space-lg) + var(--space-md));
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
   color: var(--color-text);
-  font-size: var(--font-size-base);
-  font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  /* Enhanced touch targets */
-  min-height: 48px;
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  transition: border-color 0.2s ease;
+  min-height: 40px;
 }
 
 .searchInput:hover {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 4px var(--color-primary-10);
+  border-color: var(--color-text-secondary);
 }
 
 .searchInput:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 
-    0 0 0 4px var(--color-primary-15),
-    0 4px 12px rgba(0, 0, 0, 0.1);
-  background: var(--color-white);
 }
 
 .searchInput:focus + .searchIcon {
   color: var(--color-primary);
-  transform: scale(1.1);
 }
 
-.shortcutHint {
-  position: absolute;
-  right: var(--space-md);
-  background: var(--color-neutral-200);
-  color: var(--color-text-secondary);
-  padding: 2px 6px;
-  border-radius: var(--radius-sm);
-  font-size: var(--font-size-xs);
-  font-family: var(--font-mono);
-  font-weight: 500;
-}
+
 
 /* Search Suggestions (Neil Patel - Conversion Optimization) */
 .searchSuggestions {
@@ -412,15 +395,7 @@
   flex-shrink: 0;
 }
 
-.quickAction kbd {
-  background: var(--color-neutral-200);
-  color: var(--color-text-secondary);
-  padding: 2px 4px;
-  border-radius: var(--radius-xs);
-  font-size: var(--font-size-xxs);
-  font-family: var(--font-mono);
-  margin-top: auto;
-}
+
 
 .quickAction:hover {
   border-color: var(--color-primary);
@@ -435,10 +410,7 @@
   color: var(--color-white);
 }
 
-.quickActionActive kbd {
-  background: rgba(255, 255, 255, 0.2);
-  color: var(--color-white);
-}
+
 
 /* Main Navigation */
 .mainNavigation {
@@ -585,7 +557,7 @@
 }
 
 :global(html[data-theme="dark"]) .searchInput {
-  background: var(--color-background);
+  background: var(--color-surface);
   border-color: var(--color-divider);
 }
 
@@ -680,7 +652,11 @@
     min-height: 40px;
   }
   
-  .searchInput,
+  .searchInput {
+    min-height: 44px;
+    font-size: var(--font-size-base);
+  }
+  
   .navLink,
   .contactItem,
   .languageButton {

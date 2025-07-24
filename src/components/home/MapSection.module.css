@@ -2,6 +2,21 @@
    MapSection.module.css - Google Business Widget
    ============================== */
 
+/* Google Logo Image */
+.googleLogo {
+  height: 1.2em;
+  width: auto;
+  display: inline-block;
+  vertical-align: baseline;
+  margin: 0 0.2em;
+  filter: none;
+}
+
+/* Dark theme adaptation for Google logo */
+:global(html[data-theme="dark"]) .googleLogo {
+  filter: brightness(1.1) contrast(0.9);
+}
+
 .mapSection {
   padding: var(--space-xl) var(--space-md);
   border-radius: var(--radius-lg);
@@ -17,9 +32,10 @@
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--color-border);
   overflow: hidden;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
   transition: box-shadow 0.3s ease;
   position: relative;
+  pointer-events: auto;
 }
 
 .widgetContainer:hover {
@@ -32,30 +48,28 @@
   border: none;
   display: block;
   background: var(--color-background);
+  pointer-events: auto;
+  touch-action: auto;
 }
 
-/* Business Profile Card for Mobile */
+/* Business Profile Card for Desktop and Mobile */
 .businessProfileCard {
-  background: var(--color-primary-10);
-  border: 1px solid var(--color-primary);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
   margin-bottom: var(--space-md);
   text-align: center;
-  display: none;
+  display: block;
 }
 
 .businessProfileCard h3 {
   color: var(--color-primary);
   font-size: var(--font-size-base);
-  margin: 0 0 var(--space-xs) 0;
+  margin: 0 0 var(--space-lg) 0;
   font-weight: var(--font-weight-semibold);
 }
 
 .businessProfileCard p {
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
-  margin: 0;
+  margin: 0 0 var(--space-lg) 0;
   line-height: var(--line-height-body);
 }
 
@@ -92,7 +106,7 @@
 /* Responsive Design */
 @media (max-width: var(--breakpoint-lg)) {
   .googleWidget {
-    height: calc(var(--size-map-height) - var(--space-3xl));
+    height: 280px;
   }
 
   .quickLinks {
@@ -102,15 +116,16 @@
   }
 }
 
-@media (max-width: var(--breakpoint-md)) {
+@media (max-width: 768px) {
   .mapSection {
     padding: var(--space-lg) var(--space-sm);
     margin: var(--space-md) auto;
   }
 
   .googleWidget {
-    height: var(--size-map-height-mobile);
-    min-height: var(--size-map-height-mobile); /* Ensure enough height for business card */
+    height: 250px !important;
+    min-height: 250px !important;
+    max-height: 250px !important;
   }
   
   .businessProfileCard {
@@ -119,13 +134,20 @@
 
   .quickLinks {
     gap: var(--space-lg);
-    margin-top: var(--space-md);
   }
   
   .linkBtn {
     padding: var(--space-md) var(--space-lg);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
+  }
+}
+
+@media (max-width: 480px) {
+  .googleWidget {
+    height: 220px !important;
+    min-height: 220px !important;
+    max-height: 220px !important;
   }
 }
 

@@ -146,8 +146,8 @@
   color: var(--color-white);
   padding: var(--space-xs) var(--space-sm);
   background: var(--white-glass-light);
-  backdrop-filter: blur(var(--glass-blur-sm));
   -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+  backdrop-filter: blur(var(--glass-blur-sm));
   border: var(--border-thin) solid var(--color-border-light);
   border-radius: var(--space-sm);
   text-align: center;

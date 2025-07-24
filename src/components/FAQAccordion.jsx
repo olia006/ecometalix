@@ -217,7 +217,7 @@ const FAQAccordion = ({
                   >
                     <div className={styles.answerContent}>
                       {typeof faq.answer === 'string' ? (
-                        <p>{faq.answer}</p>
+                      <p>{faq.answer}</p>
                       ) : (
                         <div>{faq.answer}</div>
                       )}

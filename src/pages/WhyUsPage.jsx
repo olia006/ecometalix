@@ -38,15 +38,15 @@ import OptimizedImage from "../components/OptimizedImage";
 // Professional USP Data with enhanced descriptions
 const mainAdvantages = [
   {
-    icon: <DollarSign />,
+    icon: <DollarSign size={28} />,
     title: "Pago Inmediato",
     subtitle: "Sin esperas ni trámites",
-    description: "Te pagamos en el momento, en efectivo o transferencia bancaria. Sin burocracia, sin demoras, sin excusas.",
+    description: "Te pagamos en el momento, transferencia bancaria inmediata o otros métodos seguros. Sin burocracia, sin demoras, sin excusas.",
     highlight: "100% inmediato",
     color: "success"
   },
   {
-    icon: <Clock />,
+    icon: <Clock size={28} />,
     title: "Horario Extendido",
     subtitle: "Máxima flexibilidad",
     description: "Abierto de 8:30 a 20:00, incluidos fines de semana. Horarios especiales para clientes frecuentes.",
@@ -54,7 +54,7 @@ const mainAdvantages = [
     color: "primary"
   },
   {
-    icon: <Weight />,
+    icon: <Weight size={28} />,
     title: "Balanza Industrial",
     subtitle: "Tecnología de precisión",
          description: "Balanza certificada INN para camiones de hasta 80 toneladas y 18 metros de longitud. Pesaje transparente y preciso para todo tipo de materiales.",
@@ -62,7 +62,7 @@ const mainAdvantages = [
     color: "accent"
   },
   {
-    icon: <Handshake />,
+    icon: <Handshake size={28} />,
     title: "Trato Personal",
     subtitle: "Atención humana garantizada",
     description: "Propietaria y su equipo siempre presentes. Trato directo, sin intermediarios, con años de experiencia.",
@@ -73,32 +73,32 @@ const mainAdvantages = [
 
 const additionalBenefits = [
   {
-    icon: <Building />,
+    icon: <Building size={20} />,
     title: "Empresas y Particulares",
     description: "Ofertas personalizadas para grandes volúmenes y contratos empresariales."
   },
   {
-    icon: <Shield />,
+    icon: <Shield size={20} />,
     title: "Confianza Certificada",
     description: "Permisos municipales, balanza certificada, ambiente seguro y profesional."
   },
   {
-    icon: <Users />,
+    icon: <Users size={20} />,
     title: "Equipo Experimentado",
     description: "10 años de experiencia internacional, 3 años establecidos en Chile con conocimiento profundo del mercado local."
   },
   {
-    icon: <Award />,
+    icon: <Award size={20} />,
     title: "Mejor Precio del Mercado",
     description: "Precios competitivos y actualizados diariamente según cotizaciones internacionales."
   }
 ];
 
 const stats = [
-  { value: "500+", label: "Clientes Satisfechos", icon: <Users /> },
-  { value: "100%", label: "Pagos Inmediatos", icon: <DollarSign /> },
-  { value: "7", label: "Días a la Semana", icon: <Clock /> },
-  { value: "80T/18M", label: "Balanza certificada", icon: <Weight /> }
+  { value: "500+", label: "Clientes Satisfechos", icon: <Users size={24} /> },
+  { value: "100%", label: "Pagos Inmediatos", icon: <DollarSign size={24} /> },
+  { value: "7", label: "Días a la Semana", icon: <Clock size={24} /> },
+  { value: "80T/18M", label: "Balanza certificada", icon: <Weight size={24} /> }
 ];
 
 const ProcessStep = ({ number, title, description, icon }) => (
@@ -115,7 +115,7 @@ const ProcessStep = ({ number, title, description, icon }) => (
 const AdvantageCard = ({ advantage, index }) => (
   <div className={`professional-card professional-card--${advantage.color}`}>
     <div className="card-header">
-      <div className="card-icon">
+      <div className={styles.advantageIcon}>
         {advantage.icon}
       </div>
       <div className="card-badge">
@@ -162,7 +162,7 @@ const structuredData = {
         "Mo-Su 08:30-20:00"
       ],
       "priceRange": "$$",
-      "paymentAccepted": "Cash, Bank Transfer",
+      "paymentAccepted": "Bank Transfer, Electronic Payment",
       "currenciesAccepted": "CLP",
       "areaServed": {
         "@type": "City",
@@ -254,7 +254,7 @@ export default function WhyUsPage() {
               </div>
               
               <h2 className="hero-heading hero-heading--light hero-heading--large">
-                Ecometalix: Empresa Líder en <span className="hero-highlight">Compra de Chatarra en Santiago</span>
+                Ecometalix: Empresa de Confianza en <span className="hero-highlight">Compra de Chatarra en Santiago</span>
               </h2>
               
               <p className={styles.heroDescription}>
@@ -320,6 +320,36 @@ export default function WhyUsPage() {
                 <a href="/materiales" className={styles.viewAllMaterials}>
                   Ver Todos los Materiales <ArrowRight className={styles.arrowIcon} />
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Company Intro Section */}
+      <section className="professional-section">
+        <div className="section-container--md">
+          <div className={styles.introSection}>
+            <div className={styles.introCard}>
+              <h2 className={styles.introTitle}>Quiénes somos</h2>
+              <p className={styles.introDescription}>
+                Somos una empresa especializada en el reciclaje y compra de metales, con más de 10 años de experiencia internacional y presencia en Chile desde hace 3 años. Nuestro enfoque es ofrecer atención directa, transparente y adaptada a cada cliente.
+              </p>
+            </div>
+            
+            <div className="professional-grid professional-grid--2">
+              <div className="professional-card professional-card--light">
+                <h3 className="card-title">Misión</h3>
+                <p className="card-description">
+                  Facilitar el reciclaje responsable de metales en Chile, entregando procesos claros y pagos inmediatos que benefician tanto al cliente como al medio ambiente.
+                </p>
+              </div>
+              
+              <div className="professional-card professional-card--light">
+                <h3 className="card-title">Visión</h3>
+                <p className="card-description">
+                  Ser reconocidos como un referente confiable y transparente en la compra y reciclaje de metales, contribuyendo al desarrollo sostenible en Chile.
+                </p>
               </div>
             </div>
           </div>
@@ -399,7 +429,7 @@ export default function WhyUsPage() {
           <ProcessStep
             number="04"
             title="Pago Inmediato"
-            description="Efectivo al instante o transferencia inmediata. Sin esperas ni trámites."
+            description="Transferencia bancaria inmediata o métodos de pago seguros. Sin esperas ni trámites."
             icon={<DollarSign />}
           />
           </article>
@@ -439,6 +469,20 @@ export default function WhyUsPage() {
                 Ver Precios Actualizados <ArrowRight size={14} />
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Canal de Denuncias */}
+      <section className={styles.denunciasSection}>
+        <div className="section-container">
+          <div className={styles.denunciasContainer}>
+            <a 
+              href="/canal-denuncias" 
+              className={styles.denunciasLink}
+            >
+              Canal de Denuncias
+            </a>
           </div>
         </div>
       </section>

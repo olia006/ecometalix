@@ -9,7 +9,11 @@ export default function MapSection({ isEnglish = false }) {
     <Background>
       <section id={isEnglish ? "map" : "mapa"} className={styles.mapSection} aria-label={isEnglish ? "Google Business Profile" : "Perfil de empresa en Google"}>
         <SectionHeader as="h2">
-          {isEnglish ? "Our Company on Google" : "Nuestra Empresa en Google"}
+          {isEnglish ? (
+            <>Our Company on <img src="/images/google-logo.png" alt="Google" className={styles.googleLogo} /></>
+          ) : (
+            <>Nuestra Empresa en <img src="/images/google-logo.png" alt="Google" className={styles.googleLogo} /></>
+          )}
         </SectionHeader>
         
         {/* Google My Business Card with Reviews */}
@@ -21,6 +25,7 @@ export default function MapSection({ isEnglish = false }) {
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
+            style={{ pointerEvents: 'auto', touchAction: 'auto' }}
           ></iframe>
         </div>
         
