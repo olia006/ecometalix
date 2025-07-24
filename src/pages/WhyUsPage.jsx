@@ -428,7 +428,7 @@ export default function WhyUsPage() {
           />
           <ProcessStep
             number="04"
-            title="Pago Inmediato"
+            title="Pago Garantizado"
             description="Transferencia bancaria inmediata o métodos de pago seguros. Sin esperas ni trámites."
             icon={<DollarSign />}
           />
