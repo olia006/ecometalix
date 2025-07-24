@@ -11,8 +11,11 @@ export default function Clock({ variant = "default" }) {
   const [showDots, setShowDots] = useState(true);
   const [mounted, setMounted] = useState(false);
 
-  // Santiago timezone offset (UTC-4), adjust if needed for DST
-  const closingHour = 20;
+  // Business hours configuration
+  const openingHour = 8;
+  const openingMinute = 30;
+  const closingHour = 20; // 8 PM
+  const closingMinute = 0;
 
   // Prevent hydration mismatch by only showing time after component mounts
   useEffect(() => {
@@ -20,25 +23,44 @@ export default function Clock({ variant = "default" }) {
   }, []);
 
   useEffect(() => {
-    // Update time every second for smoother animation
-    const timeInterval = setInterval(() => {
-      setNow(new Date());
-    }, 1000);
-
-    // Animate dots every 500ms
-    const dotsInterval = setInterval(() => {
+    let tickCount = 0;
+    
+    // Single optimized timer - updates time every second, dots every 500ms
+    const timer = setInterval(() => {
+      tickCount++;
+      
+      // Update time every second (every 2 ticks)
+      if (tickCount % 2 === 0) {
+        setNow(new Date());
+      }
+      
+      // Toggle dots every 500ms (every tick)
       setShowDots(prev => !prev);
     }, 500);
 
+    // Initialize time immediately to prevent delay
+    setNow(new Date());
+
     return () => {
-      clearInterval(timeInterval);
-      clearInterval(dotsInterval);
+      clearInterval(timer);
     };
   }, []);
 
-  const santiagoTime = new Date(
-    now.toLocaleString("en-US", { timeZone: "America/Santiago" })
-  );
+  // Get Santiago time with fallback for older browsers
+  const santiagoTime = (() => {
+    try {
+      // Try modern timezone support
+      return new Date(
+        now.toLocaleString("en-US", { timeZone: "America/Santiago" })
+      );
+    } catch (error) {
+      // Fallback for older browsers: UTC-4 (Santiago standard time)
+      // Note: This doesn't account for DST automatically
+      const utcTime = now.getTime();
+      const santiagoOffset = -4 * 60 * 60 * 1000; // UTC-4 in milliseconds
+      return new Date(utcTime + santiagoOffset);
+    }
+  })();
 
   const hours = santiagoTime.getHours();
   const minutes = santiagoTime.getMinutes();
@@ -46,45 +68,57 @@ export default function Clock({ variant = "default" }) {
   // Format time manually to control the dots animation
   const timeStr = mounted ? `${hours.toString().padStart(2, '0')}${showDots ? ':' : ' '}${minutes.toString().padStart(2, '0')}` : '--:--';
 
-  const hoursLeft = closingHour - hours - (minutes > 0 ? 1 : 0);
-  const minutesLeft = (60 - minutes) % 60;
-
-  const openNow = mounted ? (hours < closingHour && hours >= 8) : true;
+  // Calculate time until closing
+  const currentMinutes = hours * 60 + minutes;
+  const openingMinutes = openingHour * 60 + openingMinute;
+  const closingMinutes = closingHour * 60 + closingMinute;
+  
+  const openNow = mounted ? (currentMinutes >= openingMinutes && currentMinutes < closingMinutes) : true;
+  
+  // Calculate time left until closing
+  const minutesUntilClosing = closingMinutes - currentMinutes;
+  const hoursLeft = Math.floor(minutesUntilClosing / 60);
+  const minutesLeft = minutesUntilClosing % 60;
 
   if (variant === "minimal") {
     return (
-      <div className={styles.minimal}>
-        <div className={styles.locationTimeLine}>
-          <span className={styles.location}>
-            Stgo., Chile
-          </span>
-          <span className={styles.time}>
-            {timeStr}
-          </span>
-        </div>
-        <div className={styles.statusLine}>
-          <span className={openNow ? styles.open : styles.closed}>
-            {mounted ? (openNow ? "ABIERTO" : "CERRADO") : "ABIERTO"}
-          </span>
-        </div>
-      </div>
+      <span 
+        className={openNow ? styles.open : styles.closed}
+        role="status"
+        aria-live="polite"
+                  aria-label={`Estado del negocio: ${mounted ? (openNow ? "Abierto" : "Abre a las 8:30") : "Abierto"}`}
+        >
+          {mounted ? (openNow ? "ABIERTO" : "Abre a las 8:30") : "ABIERTO"}
+      </span>
     );
   }
 
   return (
-    <div className={styles.clockWrap}>
-                <ClockIcon className={styles.icon} />
+    <div className={styles.clockWrap} role="region" aria-label="Horarios de atención comercial">
+      <ClockIcon className={styles.icon} aria-hidden="true" />
       <div className={styles.timeDisplay}>
-        <span className={styles.timeLabel}>
-          <MapPin className={styles.locationIcon} />
+        <span className={styles.timeLabel} aria-label="Ubicación del negocio">
+          <MapPin className={styles.locationIcon} aria-hidden="true" />
           Santiago, Chile
         </span>
-        <span className={styles.timeValue}>{timeStr}</span>
-        <span className={styles.statusText}>
+        <time 
+          className={styles.timeValue}
+          dateTime={mounted ? santiagoTime.toISOString() : new Date().toISOString()}
+          aria-label={`Hora actual en Santiago: ${timeStr}`}
+          aria-live="polite"
+        >
+          {timeStr}
+        </time>
+        <span 
+          className={styles.statusText}
+          role="status"
+          aria-live="polite"
+          aria-label={openNow ? `Negocio abierto, cerramos en ${hoursLeft} horas y ${minutesLeft} minutos` : "Negocio abre a las 8:30"}
+        >
           {openNow ? (
-            `Cerramos en ${hoursLeft}h ${minutesLeft}m`
+            `cerramos en ${hoursLeft}h ${minutesLeft}m`
           ) : (
-            "Cerrado"
+            "Abre a las 8:30"
           )}
         </span>
       </div>

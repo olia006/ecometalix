@@ -53,7 +53,7 @@ const processSteps = [
       "Fácil acceso para camiones grandes",
       "Estacionamiento disponible",
       "Personal de apoyo para descarga",
-      "Horario: Lunes a sábado 8:00-20:00"
+      "Horario: Lunes a domingo 8:30-20:00"
     ],
     image: "/images/materials/FierroLargo.webp"
   },

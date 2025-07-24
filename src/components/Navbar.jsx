@@ -6,7 +6,7 @@ import Image from "next/image";
 import styles from "./Navbar.module.css";
 import ThemeSwitcher from "./ThemeSwitcher";
 import DesktopHamburgerMenu from "./DesktopHamburgerMenu";
-import DesktopNavInfo from "./DesktopNavInfo";
+import Clock from "./Clock";
 export default function Navbar({ darkMode, toggleDarkMode }) {
 
   return (
@@ -16,7 +16,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
         <div className={styles.logoContainer}>
           <Link href="/" aria-label="Ecometalix - Inicio" className={styles.logoLink}>
             <Image
-              src="/images/logoecometalix.png"
+              src="/images/logoecometalix.webp"
               alt="Ecometalix Logo"
               width={150}
               height={50}
@@ -28,7 +28,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
 
         {/* Center Group: Location/Time/Status Info */}
         <div className={styles.centerGroup}>
-          <DesktopNavInfo />
+          <Clock variant="minimal" />
         </div>
 
         {/* Right Group: Theme Switcher + Hamburger Menu */}

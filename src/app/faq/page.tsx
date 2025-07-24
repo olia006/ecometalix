@@ -4,6 +4,9 @@ import FloatingCTA from '../../components/FloatingCTA';
 import TrustCues from '../../components/TrustCues';
 import FAQAccordion from '../../components/FAQAccordion';
 import PageHeader from '../../components/PageHeader';
+import MapSection from '../../components/home/MapSection';
+import FAQManagerContact from '../../components/FAQManagerContact';
+import FAQInternalLink from '../../components/FAQInternalLink';
 import styles from '../../pages/FAQPage.module.css';
 
 // Metadata for the FAQ page
@@ -48,13 +51,19 @@ const faqCategories = [
       },
       {
         question: "¿Tienen precios especiales para grandes volúmenes o empresas?",
-        answer:
-          "Sí, ofrecemos tarifas preferenciales para empresas, constructoras, talleres mecánicos y clientes que manejan grandes volúmenes de chatarra. Nuestros precios mayoristas pueden ser hasta un 10-15% superiores a las tarifas estándar, dependiendo del tipo de material y la cantidad. Solicita tu cotización personalizada por WhatsApp o teléfono para conocer nuestros precios especiales.",
+        answer: (
+          <>
+            Sí, ofrecemos tarifas preferenciales para empresas, constructoras, talleres mecánicos y clientes que manejan grandes volúmenes de chatarra. Nuestros <FAQInternalLink href="/precios">precios mayoristas</FAQInternalLink> pueden ser hasta un 10-15% superiores a las tarifas estándar, dependiendo del tipo de material y la cantidad. Descubre <FAQInternalLink href="/por-que-nosotros">por qué las empresas nos eligen</FAQInternalLink> y solicita tu cotización personalizada por WhatsApp o teléfono.
+          </>
+        ),
       },
       {
         question: "¿Cómo puedo saber el precio actual antes de ir?",
-        answer:
-          "Puedes consultar nuestros precios actualizados de varias maneras: enviando un mensaje por WhatsApp con el tipo de material que tienes, visitando nuestra página web donde publicamos los precios diarios, o llamándonos directamente. También puedes enviar fotos de tu chatarra por WhatsApp para una evaluación más precisa. Actualizamos los precios cada mañana según las cotizaciones internacionales.",
+        answer: (
+          <>
+            Puedes consultar nuestros <FAQInternalLink href="/precios">precios actualizados</FAQInternalLink> de varias maneras: enviando un mensaje por WhatsApp con el tipo de material que tienes, visitando nuestra página web donde publicamos los precios diarios, o llamándonos directamente. También puedes enviar fotos de tu chatarra por WhatsApp para una evaluación más precisa. Actualizamos los precios cada mañana según las cotizaciones internacionales.
+          </>
+        ),
       },
     ],
   },
@@ -63,8 +72,11 @@ const faqCategories = [
     faqs: [
       {
         question: "¿Cómo se pesa la chatarra?",
-        answer:
-          "Utilizamos una balanza certificada de alta precisión con capacidad para camiones de hasta 80 toneladas y 18 metros de largo. El proceso es completamente transparente: primero pesamos tu vehículo con la carga, luego sin ella, y la diferencia nos da el peso exacto de tu chatarra. Nuestro sistema de pesaje está calibrado y certificado por organismos oficiales para garantizar mediciones precisas.",
+        answer: (
+          <>
+            Utilizamos una balanza certificada de alta precisión con capacidad para camiones de hasta 80 toneladas y 18 metros de largo. El proceso es completamente transparente: primero pesamos tu vehículo con la carga, luego sin ella, y la diferencia nos da el peso exacto de tu chatarra. Nuestro sistema de pesaje está calibrado y certificado por organismos oficiales para garantizar mediciones precisas. Conoce más detalles sobre <FAQInternalLink href="/como-funciona">nuestro proceso</FAQInternalLink> completo.
+          </>
+        ),
       },
       {
         question: "¿Puedo ver el peso de mi chatarra?",
@@ -78,8 +90,11 @@ const faqCategories = [
       },
       {
         question: "¿Separan los materiales antes de pesar?",
-        answer:
-          "Sí, separamos cuidadosamente todos los materiales según su tipo antes del pesaje: cobre, aluminio, fierro, bronce, etc. Cada material tiene un precio diferente, por lo que la separación correcta asegura que recibas el mejor valor por tu chatarra. Nuestro equipo está capacitado para identificar y clasificar correctamente cada tipo de metal, maximizando tu ganancia.",
+        answer: (
+          <>
+            Sí, separamos cuidadosamente todos los materiales según su tipo antes del pesaje: <FAQInternalLink href="/materiales/cobre">cobre</FAQInternalLink>, <FAQInternalLink href="/materiales/aluminio">aluminio</FAQInternalLink>, fierro, bronce, etc. Cada material tiene un precio diferente, por lo que la separación correcta asegura que recibas el mejor valor por tu chatarra. Nuestro equipo está capacitado para identificar y clasificar correctamente cada tipo de metal, maximizando tu ganancia.
+          </>
+        ),
       },
     ],
   },
@@ -88,18 +103,27 @@ const faqCategories = [
     faqs: [
       {
         question: "¿Qué tipos de chatarra compran?",
-        answer:
-          "Compramos una amplia variedad de metales: cobre (cables, tuberías, chapas), aluminio (perfiles, latas, radiadores), fierro y acero (estructuras, vigas, chapas), bronce (grifería, accesorios), materiales eléctricos (motores, transformadores), chatarra mixta y viruta metálica. Si tienes dudas sobre un material específico, envíanos una foto por WhatsApp y te confirmaremos si lo recibimos.",
+        answer: (
+          <>
+            Compramos una amplia variedad de metales: <FAQInternalLink href="/materiales/cobre">cobre</FAQInternalLink> (cables, tuberías, chapas), <FAQInternalLink href="/materiales/aluminio">aluminio</FAQInternalLink> (perfiles, latas, radiadores), fierro y acero (estructuras, vigas, chapas), bronce (grifería, accesorios), materiales eléctricos (motores, transformadores), chatarra mixta y viruta metálica. Si tienes dudas sobre un material específico, envíanos una foto por WhatsApp y te confirmaremos si lo recibimos. Ve todos los <FAQInternalLink href="/materiales">tipos de materiales</FAQInternalLink> que aceptamos.
+          </>
+        ),
       },
       {
         question: "¿Cómo sé si mi material es cobre, aluminio o fierro?",
-        answer:
-          "Te ayudamos a identificar tus materiales: el cobre tiene color rojizo y es pesado, el aluminio es plateado y muy liviano, el fierro se pega a un imán. En nuestras instalaciones, nuestro equipo experto realiza la clasificación final usando herramientas especializadas y años de experiencia. No te preocupes si no estás seguro - nosotros nos encargamos de identificar correctamente cada material.",
+        answer: (
+          <>
+            Te ayudamos a identificar tus materiales: el <FAQInternalLink href="/materiales/cobre">cobre</FAQInternalLink> tiene color rojizo y es pesado, el <FAQInternalLink href="/materiales/aluminio">aluminio</FAQInternalLink> es plateado y muy liviano, el fierro se pega a un imán. En nuestras instalaciones, nuestro equipo experto realiza la clasificación final usando herramientas especializadas y años de experiencia. No te preocupes si no estás seguro - nosotros nos encargamos de identificar correctamente cada material.
+          </>
+        ),
       },
       {
         question: "¿Reciben chatarra mixta o solo materiales separados?",
-        answer:
-          "Recibimos tanto materiales separados como chatarra mixta. Si traes materiales ya separados, obtendrás mejores precios al recibir la tarifa específica de cada metal. La chatarra mixta también la recibimos, pero el precio será menor ya que incluye el costo de separación. Te recomendamos separar lo que puedas en casa - cobre, aluminio y fierro - para maximizar tus ganancias.",
+        answer: (
+          <>
+            Recibimos tanto materiales separados como <FAQInternalLink href="/materiales/fierro-mixto">chatarra mixta</FAQInternalLink>. Si traes materiales ya separados, obtendrás mejores <FAQInternalLink href="/precios">precios</FAQInternalLink> al recibir la tarifa específica de cada metal. La chatarra mixta también la recibimos, pero el precio será menor ya que incluye el costo de separación. Te recomendamos separar lo que puedas en casa - cobre, aluminio y fierro - para maximizar tus ganancias.
+          </>
+        ),
       },
       {
         question: "¿Hay materiales que no reciben?",
@@ -139,7 +163,7 @@ const faqCategories = [
       {
         question: "¿Cuáles son los horarios de atención?",
         answer:
-          "Atendemos de lunes a viernes de 8:00 a 18:00 horas, y sábados de 8:00 a 14:00 horas. Domingos y festivos permanecemos cerrados. Te recomendamos llegar al menos 30 minutos antes del cierre para completar el proceso sin apuros. Para grandes volúmenes, podemos coordinar horarios especiales previo acuerdo.",
+          "Atendemos los 7 días de la semana de 8:30 a 20:00 horas, incluyendo sábados, domingos y feriados. Te recomendamos llegar al menos 30 minutos antes del cierre para completar el proceso sin apuros. Para grandes volúmenes, podemos coordinar horarios especiales previo acuerdo.",
       },
       {
         question: "¿Dónde están ubicados?",
@@ -184,6 +208,9 @@ export default function FAQPage() {
           />
         </div>
         
+        <FAQManagerContact isEnglish={false} />
+        
+        <MapSection isEnglish={false} />
         <TrustCues />
       </main>
     </>

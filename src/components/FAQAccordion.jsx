@@ -32,7 +32,11 @@ const FAQAccordion = ({
         ? category.faqs.filter(faq => {
             const searchLower = searchTerm.toLowerCase();
             const questionMatch = faq.question.toLowerCase().includes(searchLower);
-            const answerMatch = faq.answer.toLowerCase().includes(searchLower);
+            // Handle both string and React element answers for search
+            const answerText = typeof faq.answer === 'string' 
+              ? faq.answer 
+              : (faq.answer?.props?.children || '').toString();
+            const answerMatch = answerText.toLowerCase().includes(searchLower);
             return questionMatch || answerMatch;
           })
         : category.faqs;
@@ -115,35 +119,36 @@ const FAQAccordion = ({
             </div>
             
             <div className={styles.filterGroup}>
-              <button
-                onClick={() => setShowFilters(!showFilters)}
-                className={`${styles.filterToggle} ${showFilters ? styles.active : ''}`}
-                aria-label="Mostrar filtros"
-              >
-                <Filter size={16} />
-                Filtros
-              </button>
-              
-              {showFilters && (
-                <div className={styles.filterDropdown}>
-                  <label htmlFor="category-filter" className={styles.filterLabel}>
-                    Categoría:
-                  </label>
-                  <select
-                    id="category-filter"
-                    value={selectedCategory}
-                    onChange={handleCategoryChange}
-                    className={styles.categorySelect}
-                  >
-                    <option value="all">Todas las categorías</option>
+              <div className={styles.filterDropdownContainer}>
+                <button
+                  onClick={() => setShowFilters(!showFilters)}
+                  className={`${styles.filterToggle} ${showFilters ? styles.active : ''}`}
+                  aria-label="Filtrar categorías"
+                >
+                  <Filter size={16} />
+                  {selectedCategory === 'all' ? 'Todas las categorías' : selectedCategory}
+                </button>
+                
+                {showFilters && (
+                  <div className={styles.filterDropdown}>
+                    <button
+                      onClick={() => {setSelectedCategory('all'); setShowFilters(false);}}
+                      className={`${styles.filterOption} ${selectedCategory === 'all' ? styles.filterOptionActive : ''}`}
+                    >
+                      Todas las categorías
+                    </button>
                     {categoryOptions.slice(1).map(category => (
-                      <option key={category} value={category}>
+                      <button
+                        key={category}
+                        onClick={() => {setSelectedCategory(category); setShowFilters(false);}}
+                        className={`${styles.filterOption} ${selectedCategory === category ? styles.filterOptionActive : ''}`}
+                      >
                         {category}
-                      </option>
+                      </button>
                     ))}
-                  </select>
-                </div>
-              )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           
@@ -211,7 +216,11 @@ const FAQAccordion = ({
                     aria-labelledby={`faq-question-${itemKey}`}
                   >
                     <div className={styles.answerContent}>
-                      <p>{faq.answer}</p>
+                      {typeof faq.answer === 'string' ? (
+                        <p>{faq.answer}</p>
+                      ) : (
+                        <div>{faq.answer}</div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -231,7 +240,10 @@ FAQAccordion.propTypes = {
       faqs: PropTypes.arrayOf(
         PropTypes.shape({
           question: PropTypes.string.isRequired,
-          answer: PropTypes.string.isRequired
+          answer: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ]).isRequired
         })
       ).isRequired
     })

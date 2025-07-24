@@ -2,6 +2,19 @@
    global.css — Refined Base
    ========================== */
 
+/* System preference fallback for browsers without JavaScript */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+  }
+}
+
 /* 1. Import Fonts & Tokens */
 @import './theme.css';
 @import './media.css';

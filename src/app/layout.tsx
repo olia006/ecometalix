@@ -1,15 +1,8 @@
 import React from 'react';
-import { Inter, IBM_Plex_Sans, JetBrains_Mono } from 'next/font/google';
+import { IBM_Plex_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css'
 
-// Optimize fonts with Next.js
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-  preload: true,
-});
-
+// Optimize fonts with Next.js (Satoshi loaded via Fontshare in theme.css)
 const ibmPlexSans = IBM_Plex_Sans({
   weight: ['300', '400', '500', '600', '700'],
   subsets: ['latin'],
@@ -126,12 +119,12 @@ export default function RootLayout({
             /* Critical above-the-fold styles */
             *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
             html{height:100%;scroll-behavior:auto;scroll-padding-top:90px}
-            body{height:100%;min-height:100vh;font-family:var(--font-inter),-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:var(--color-background);color:var(--color-text);font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+            body{height:100%;min-height:100vh;font-family:'Satoshi',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:var(--color-background);color:var(--color-text);font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
             .app-wrapper{min-height:100vh;background:var(--color-background)}
           `
         }} />
       </head>
-      <body className={`${inter.variable} ${ibmPlexSans.variable} ${jetBrainsMono.variable}`}>
+      <body className={`${ibmPlexSans.variable} ${jetBrainsMono.variable}`}>
         <ScrollToTop />
         <div className="app-wrapper">
           <ThemeProvider>

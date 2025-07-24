@@ -15,7 +15,6 @@ import SectionCardsGrid from "../components/SectionCardsGrid";
 import PricesPreviewSection from "../components/home/PricesPreviewSection";
 import FAQPreviewSection from "../components/home/FAQPreviewSection";
 import MapSection from "../components/home/MapSection";
-import TrustCues from "../components/TrustCues";
 
 export default function BilingualHomePage({ 
   pathname = "/", 
@@ -49,21 +48,18 @@ export default function BilingualHomePage({
         isEnglish={isEnglish}
       />
 
-      {/* 2. Trust/Certification Badges */}
-      <TrustCues isEnglish={isEnglish} />
-
-      {/* 3. Prices Preview Section */}
+      {/* 2. Prices Preview Section */}
       <PricesPreviewSection isEnglish={isEnglish} />
 
-      {/* 4. Section Cards Grid - replaces long scrollable sections */}
+      {/* 3. Section Cards Grid - replaces long scrollable sections */}
       <SectionCardsGrid 
         isEnglish={isEnglish}
       />
 
-      {/* 5. FAQ Preview Section */}
+      {/* 4. FAQ Preview Section */}
       <FAQPreviewSection />
 
-      {/* 6. Google Business Profile & Location */}
+      {/* 5. Google Business Profile & Location */}
       <MapSection isEnglish={isEnglish} />
 
       {/* Footer is handled in layout.tsx globally */}

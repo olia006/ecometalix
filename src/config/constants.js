@@ -9,8 +9,10 @@ export const BUSINESS_INFO = {
   legalName: "Ecometalix Spa",
   phone: "56940244042", // ✅ Real phone number
   phoneFormatted: "+56 9 4024 4042",
+  whatsapp: "56940244042", // WhatsApp number (same as phone)
   email: "contacto@ecometalix.cl",
   domain: "ecometalix.cl",
+  maps: "https://maps.app.goo.gl/wXznrHdkKCL1Ej5LA", // ✅ Real Google Maps URL
   address: {
     street: "Calle Ficticia 1234", // TODO: Update with real address
     city: "Santiago",

@@ -49,7 +49,7 @@ const mainAdvantages = [
     icon: <Clock />,
     title: "Horario Extendido",
     subtitle: "Máxima flexibilidad",
-    description: "Abierto de 8:00 a 20:00, incluidos fines de semana. Horarios especiales para clientes frecuentes.",
+    description: "Abierto de 8:30 a 20:00, incluidos fines de semana. Horarios especiales para clientes frecuentes.",
     highlight: "7 días a la semana",
     color: "primary"
   },
@@ -159,7 +159,7 @@ const structuredData = {
         "longitude": -70.6693
       },
       "openingHours": [
-        "Mo-Su 08:00-20:00"
+        "Mo-Su 08:30-20:00"
       ],
       "priceRange": "$$",
       "paymentAccepted": "Cash, Bank Transfer",

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PageHeader from '../components/PageHeader';
+import FAQManagerContact from '../components/FAQManagerContact';
 import styles from './EnglishFAQPage.module.css';
 
 export default function EnglishFAQPage() {
@@ -59,23 +60,10 @@ export default function EnglishFAQPage() {
             </p>
           </div>
 
-          <div className={styles.contactSection}>
-            <h2 className={styles.contactTitle}>
-              Have More Questions?
-            </h2>
-            <p className={styles.contactContent}>
-              Contact us directly via WhatsApp for personalized assistance and quick responses.
-            </p>
-            <a 
-              href="https://wa.me/56940244042" 
-              className={styles.contactButton}
-            >
-              Contact us on WhatsApp
-            </a>
-          </div>
-
         </div>
       </section>
+      
+      <FAQManagerContact isEnglish={true} />
     </>
   );
 } 

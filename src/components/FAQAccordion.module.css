@@ -2,7 +2,7 @@
 
 .faqAccordion {
   width: 100%;
-  max-width: 900px;
+  max-width: calc(var(--space-5xl) * 15);
   margin: 0 auto;
 }
 
@@ -11,16 +11,16 @@
    ============================== */
 
 .searchContainer {
-  margin-bottom: var(--space-xl);
-  padding: var(--space-xl);
+  margin-bottom: var(--section-spacing-y);
+  padding: var(--space-lg) var(--space-xl);
   background: var(--color-background);
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-xl);
   box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.08),
-    0 1px 3px rgba(0, 0, 0, 0.05);
+    0 var(--space-sm) var(--space-xl) rgba(0, 0, 0, 0.08),
+    0 var(--space-xxs) var(--space-xs) rgba(0, 0, 0, 0.05);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .searchContainer::before {
@@ -29,7 +29,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: var(--space-xs);
   background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
 }
 
@@ -48,9 +48,9 @@
 
 .searchInput {
   width: 100%;
-  padding: var(--space-lg) var(--space-lg) var(--space-lg) 3.5rem;
+  padding: var(--space-lg) var(--space-lg) var(--space-lg) calc(var(--space-lg) + var(--space-xl));
   border: 2px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-pill);
   font-size: var(--font-size-base);
   font-family: var(--font-body);
   background: var(--color-surface);
@@ -66,7 +66,7 @@
     0 0 0 3px rgba(var(--color-primary-rgb), 0.1),
     inset 0 1px 3px rgba(0, 0, 0, 0.05),
     0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
+  transform: translateY(calc(-1 * var(--space-xxs)));
 }
 
 .searchInput::placeholder {
@@ -122,6 +122,10 @@
   gap: var(--space-lg);
 }
 
+.filterDropdownContainer {
+  position: relative;
+}
+
 .filterToggle {
   display: flex;
   align-items: center;
@@ -129,7 +133,7 @@
   padding: var(--space-md) var(--space-lg);
   background: var(--color-surface);
   border: 2px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-pill);
   color: var(--color-text);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
@@ -162,19 +166,17 @@
 
 .filterDropdown {
   position: absolute;
-  top: calc(100% + var(--space-sm));
-  left: 0;
+  top: calc(100% + var(--space-xs));
   right: 0;
-  margin-top: var(--space-xs);
-  padding: var(--space-lg);
+  padding: var(--space-sm);
   background: var(--color-background);
   border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   box-shadow: 
-    0 10px 40px rgba(0, 0, 0, 0.12),
-    0 4px 20px rgba(0, 0, 0, 0.08);
+    0 var(--space-xs) var(--space-lg) rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08);
   z-index: 100;
-  min-width: 280px;
+  min-width: calc(var(--space-5xl) + var(--space-3xl));
   animation: slideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -189,38 +191,33 @@
   }
 }
 
-.filterLabel {
+.filterOption {
   display: block;
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text);
-  margin-bottom: var(--space-sm);
-  font-family: var(--font-body);
-}
-
-.categorySelect {
   width: 100%;
-  padding: var(--space-md);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
+  padding: var(--space-sm) var(--space-md);
+  border: none;
+  background: transparent;
   color: var(--color-text);
   font-size: var(--font-size-sm);
   font-family: var(--font-body);
+  text-align: left;
   cursor: pointer;
   transition: all 0.2s ease;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right var(--space-md) center;
-  background-repeat: no-repeat;
-  background-size: 16px;
-  padding-right: 3rem;
+  border-radius: var(--radius-sm);
 }
 
-.categorySelect:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+.filterOption:hover {
+  background: var(--color-primary-10);
+  color: var(--color-primary);
+}
+
+.filterOptionActive {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.filterOptionActive:hover {
+  background: var(--color-primary-dark);
 }
 
 /* Professional Search Summary */
@@ -275,7 +272,7 @@
   }
   
   .searchInput {
-    padding: var(--space-md) var(--space-md) var(--space-md) 3rem;
+    padding: var(--space-md) var(--space-md) var(--space-md) calc(var(--space-md) + var(--space-lg));
     font-size: var(--font-size-sm);
   }
   
@@ -359,7 +356,7 @@
   justify-content: space-between;
   gap: var(--space-md);
   transition: all 0.2s ease;
-  min-height: 44px; /* Accessibility: minimum tap target */
+  min-height: var(--size-input-height); /* Accessibility: minimum tap target */
 }
 
 .faqQuestion:hover {
@@ -389,8 +386,8 @@
 
 .indicator {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: var(--size-icon-lg);
+  height: var(--size-icon-lg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -429,7 +426,7 @@
   opacity: 1;
   transform: translateY(0);
   padding: 0 var(--space-lg) var(--space-lg);
-  max-height: 500px; /* Reasonable limit */
+  max-height: calc(var(--space-5xl) * 8.33); /* Reasonable limit */
   transition: opacity 0.3s ease, transform 0.3s ease, padding 0.3s ease, max-height 0.4s ease;
 }
 
@@ -446,11 +443,16 @@
 
 /* Variant: Preview (for homepage) */
 .faqAccordion.preview {
-  max-width: 800px;
-  background: var(--color-neutral);
+  max-width: calc(var(--space-5xl) * 13.33);
+  background: var(--glass-background-light);
+  border: 1px solid var(--glass-white-light);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
-  box-shadow: var(--shadow-md);
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
+  backdrop-filter: blur(var(--glass-blur-sm));
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .faqAccordion.preview .categoryTitle {
@@ -532,8 +534,8 @@
   }
   
   .indicator {
-    width: 20px;
-    height: 20px;
+      width: var(--size-icon-md);
+  height: var(--size-icon-md);
   }
 }
 
@@ -606,10 +608,10 @@
 /* Screen reader only text */
 .sr-only {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: var(--space-xxs);
+  height: var(--space-xxs);
   padding: 0;
-  margin: -1px;
+  margin: calc(-1 * var(--space-xxs));
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;

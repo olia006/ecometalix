@@ -3,7 +3,8 @@
    EcoMetalix Spa, Santiago
    ======================== */
 
-/* Fonts now optimized via Next.js font loading in layout.tsx */
+/* Fontshare Satoshi Font Import */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@1,900,700,500,301,701,300,501,401,901,400&display=swap');
 
 /* ---------- Light Theme (Default) ---------- */
 :root {
@@ -219,10 +220,11 @@
   --mobile-breakpoint: 640px;
   --mobile-breakpoint-small: 375px;
 
-  /* ===== TYPOGRAPHY ===== */
-  --font-heading: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-  --font-accent: var(--font-ibm-plex), var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  /* ===== TYPOGRAPHY - SATOSHI FONTS ===== */
+  --font-satoshi: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-heading: var(--font-satoshi);
+  --font-body: var(--font-satoshi);
+  --font-accent: var(--font-satoshi);
   --font-mono: var(--font-jetbrains), 'SF Mono', 'Monaco', 'Consolas', monospace;
 
   /* ===== RESPONSIVE FONT SIZES WITH MOBILE OPTIMIZATION ===== */
@@ -324,7 +326,6 @@
   --navbar-blur-lg: 12px;
   --navbar-blur-xl: 16px;      /* Extra blur for heavy effects */
   --navbar-transform-hover: -1px;
-  --navbar-hue-rotation: -190deg;
   --navbar-shadow: 0 -6px 25px var(--overlay-dark-light), 0 15px 35px var(--overlay-dark-medium);
   
   /* ===== TIMING & ANIMATION SYSTEM ===== */
@@ -377,10 +378,10 @@
   --chip-height: 32px;            /* Chip/pill height */
   
   /* Content width constraints */
-  --content-width-narrow: 600px;   /* Narrow content (reading) */
-  --content-width-medium: 800px;   /* Medium content */
-  --content-width-wide: 1200px;    /* Wide content */
-  --content-width-extra-wide: 1400px; /* Extra wide content */
+  --content-width-narrow: calc(var(--space-5xl) * 10);   /* Narrow content (reading) - 600px */
+  --content-width-medium: calc(var(--space-5xl) * 13.33);   /* Medium content - 800px */
+  --content-width-wide: calc(var(--space-5xl) * 20);    /* Wide content - 1200px */
+  --content-width-extra-wide: calc(var(--space-5xl) * 23.33); /* Extra wide content - 1400px */
   --content-width-max: clamp(320px, 95vw, 1400px); /* Maximum content width - mobile-first */
 
   /* ===== STANDARDIZED BORDER WIDTHS ===== */
@@ -395,8 +396,8 @@
   --size-modal-sm: clamp(300px, 90vw, 400px);
   --size-modal-md: clamp(320px, 90vw, 600px);
   --size-modal-lg: clamp(340px, 95vw, 800px);
-  --size-map-height: 400px;
-  --size-map-height-mobile: 300px;
+  --size-map-height: calc(var(--space-5xl) * 6.67); /* 400px */
+  --size-map-height-mobile: calc(var(--space-5xl) * 7);    /* 420px */
   --size-hero-height: 600px;
 
   /* ===== RADIUS ===== */
@@ -461,7 +462,7 @@
   --container-xs: 100%;
   --container-sm: 540px;
   --container-md: 768px;
-  --container-lg: 1024px;
+  --container-lg: calc(var(--space-5xl) * 17.07); /* 1024px */
   --container-xl: 1200px;
   --container-2xl: 1440px;
   

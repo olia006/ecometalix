@@ -7,6 +7,9 @@ import TrustCues from "../components/TrustCues";
 import FAQAccordion from "../components/FAQAccordion";
 import { generateHreflangs } from "../utils/hreflangUtils";
 import PageHeader from "../components/PageHeader";
+import MapSection from "../components/home/MapSection";
+import FAQManagerContact from "../components/FAQManagerContact";
+import FAQInternalLink from "../components/FAQInternalLink";
 import styles from './FAQPage.module.css';
 
 // FAQ DATA
@@ -31,13 +34,19 @@ const faqCategories = [
       },
       {
         question: "¿Tienen precios especiales para grandes volúmenes o empresas?",
-        answer:
-          "Sí, ofrecemos tarifas preferenciales para empresas, constructoras, talleres mecánicos y clientes que manejan grandes volúmenes de chatarra. Nuestros precios mayoristas pueden ser hasta un 10-15% superiores a las tarifas estándar, dependiendo del tipo de material y la cantidad. Solicita tu cotización personalizada por WhatsApp o teléfono para conocer nuestros precios especiales.",
+        answer: (
+          <>
+            Sí, ofrecemos tarifas preferenciales para empresas, constructoras, talleres mecánicos y clientes que manejan grandes volúmenes de chatarra. Nuestros <FAQInternalLink href="/precios">precios mayoristas</FAQInternalLink> pueden ser hasta un 10-15% superiores a las tarifas estándar, dependiendo del tipo de material y la cantidad. Descubre <FAQInternalLink href="/por-que-nosotros">por qué las empresas nos eligen</FAQInternalLink> y solicita tu cotización personalizada por WhatsApp o teléfono.
+          </>
+        ),
       },
       {
         question: "¿Cómo puedo saber el precio actual antes de ir?",
-        answer:
-          "Puedes consultar nuestros precios actualizados de varias maneras: enviando un mensaje por WhatsApp con el tipo de material que tienes, visitando nuestra página web donde publicamos los precios diarios, o llamándonos directamente. También puedes enviar fotos de tu chatarra por WhatsApp para una evaluación más precisa. Actualizamos los precios cada mañana según las cotizaciones internacionales.",
+        answer: (
+          <>
+            Puedes consultar nuestros <FAQInternalLink href="/precios">precios actualizados</FAQInternalLink> de varias maneras: enviando un mensaje por WhatsApp con el tipo de material que tienes, visitando nuestra página web donde publicamos los precios diarios, o llamándonos directamente. También puedes enviar fotos de tu chatarra por WhatsApp para una evaluación más precisa. Actualizamos los precios cada mañana según las cotizaciones internacionales.
+          </>
+        ),
       },
     ],
   },
@@ -76,8 +85,11 @@ const faqCategories = [
     faqs: [
       {
         question: "¿Qué tipos de metales compran?",
-        answer:
-          "Compramos una amplia variedad de metales: cobre (cable, tubería, lámina), aluminio (perfiles, latas, radiadores), bronce, latón, hierro, acero inoxidable, zinc, y plomo. También aceptamos chatarra mixta, electrodomésticos, baterías de auto, y chatarra electrónica. Cada material tiene precios diferenciados según su pureza y demanda. Si tienes dudas sobre algún material específico, consúltanos por WhatsApp.",
+        answer: (
+          <>
+            Compramos una amplia variedad de metales: <FAQInternalLink href="/materiales/cobre">cobre</FAQInternalLink> (cable, tubería, lámina), <FAQInternalLink href="/materiales/aluminio">aluminio</FAQInternalLink> (perfiles, latas, radiadores), bronce, latón, hierro, acero inoxidable, zinc, y plomo. También aceptamos chatarra mixta, electrodomésticos, baterías de auto, y chatarra electrónica. Cada material tiene precios diferenciados según su pureza y demanda. Ve todos los <FAQInternalLink href="/materiales">tipos de materiales</FAQInternalLink> que aceptamos.
+          </>
+        ),
       },
       {
         question: "¿Compran electrodomésticos, baterías o chatarra electrónica?",
@@ -102,7 +114,7 @@ const faqCategories = [
       {
         question: "¿Atienden fines de semana y feriados?",
         answer:
-          "Trabajamos los 7 días de la semana de 8:00 AM a 8:00 PM, incluyendo sábados y domingos. En feriados también atendemos en horario normal. Somos uno de los pocos centros de reciclaje que opera sin descanso para tu comodidad. Puedes venir cualquier día de la semana en nuestro horario de atención.",
+          "Trabajamos los 7 días de la semana de 8:30 AM a 8:00 PM, incluyendo sábados y domingos. En feriados también atendemos en horario normal. Somos uno de los pocos centros de reciclaje que opera sin descanso para tu comodidad. Puedes venir cualquier día de la semana en nuestro horario de atención.",
       },
       {
         question: "¿Puedo vender sin cita previa?",
@@ -248,6 +260,9 @@ export default function FAQPage() {
           />
         </div>
         
+        <FAQManagerContact isEnglish={false} />
+        
+        <MapSection isEnglish={false} />
         <TrustCues />
       </main>
     </>

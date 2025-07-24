@@ -12,8 +12,8 @@ export default function ThemeSwitcher({ darkMode, toggleDarkMode }) {
       onClick={toggleDarkMode}
       aria-label={darkMode ? "Activar modo claro" : "Activar modo oscuro"}
     >
-      <Sun className={styles.sunIcon} size={24} />
-      <Moon className={styles.moonIcon} size={24} />
+      <Sun className={styles.sunIcon} size={16} />
+      <Moon className={styles.moonIcon} size={16} />
     </button>
   );
 }

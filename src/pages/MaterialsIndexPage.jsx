@@ -87,37 +87,37 @@ export default function MaterialsIndexPage() {
             )}
           </div>
 
-          <button
-            onClick={() => setShowFilters(!showFilters)}
-            className={`${styles.filterToggle} ${showFilters ? styles.filterToggleActive : ''}`}
-            aria-label="Mostrar filtros"
-          >
-            <Filter />
-            Filtros
-          </button>
-        </div>
-
-        {/* Filter Options */}
-        {showFilters && (
-          <div className={styles.filterPanel}>
-            <div className={styles.filterGroup}>
-              <label htmlFor="category-filter" className={styles.filterLabel}>Categoría:</label>
-              <select
-                id="category-filter"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className={styles.filterSelect}
-              >
-                <option value="all">Todos</option>
+          <div className={styles.filterDropdownContainer}>
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className={`${styles.filterToggle} ${showFilters ? styles.filterToggleActive : ''}`}
+              aria-label="Filtrar categorías"
+            >
+              <Filter />
+              {selectedCategory === 'all' ? 'Todas las categorías' : selectedCategory}
+            </button>
+            
+            {showFilters && (
+              <div className={styles.filterDropdown}>
+                <button
+                  onClick={() => {setSelectedCategory('all'); setShowFilters(false);}}
+                  className={`${styles.filterOption} ${selectedCategory === 'all' ? styles.filterOptionActive : ''}`}
+                >
+                  Todas las categorías
+                </button>
                 {categories.map(category => (
-                  <option key={category} value={category}>
+                  <button
+                    key={category}
+                    onClick={() => {setSelectedCategory(category); setShowFilters(false);}}
+                    className={`${styles.filterOption} ${selectedCategory === category ? styles.filterOptionActive : ''}`}
+                  >
                     {category}
-                  </option>
+                  </button>
                 ))}
-              </select>
-            </div>
+              </div>
+            )}
           </div>
-        )}
+        </div>
 
         {/* Results Counter */}
         <div className={styles.resultsInfo}>

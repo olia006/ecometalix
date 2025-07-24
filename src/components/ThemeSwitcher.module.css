@@ -1,65 +1,154 @@
-/* src/components/ThemeSwitcher.module.css */
+/* iOS-Style Theme Toggle Switch */
 
-.theme__icon {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background: transparent;
+/* Higher specificity to override global button styles */
+button.theme__icon {
+  width: 60px;
+  height: 32px;
+  border-radius: 999px; /* Force pill radius - override global button 0px */
+  border: none;
+  background: var(--color-border); /* Light mode: darker than navbar surface */
   cursor: pointer;
   position: relative;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   align-items: center;
-  justify-content: center;
   outline: none;
+  padding: 3px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: inherit; /* Override global button font */
+  font-weight: inherit; /* Override global button weight */
 }
 
-.theme__icon:hover {
+/* Toggle background colors - proper contrast for each theme */
+:global([data-theme="dark"]) button.theme__icon {
+  background: var(--color-gray-300); /* Dark mode: distinctly lighter than navbar surface */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Sliding circle */
+button.theme__icon::after {
+  content: '';
+  width: 26px;
+  height: 26px;
+  border-radius: 999px; /* Force perfect circle - override global styles */
+  background: var(--color-background);
+  position: absolute;
+  left: 3px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Slide to right and change color when dark mode */
+:global([data-theme="dark"]) button.theme__icon::after {
+  transform: translateX(28px);
   background: var(--color-surface);
-  border-color: var(--color-neutral-600);
 }
 
-.theme__icon:active {
-  background: var(--color-surface);
-  border-color: var(--color-primary);
-}
-
-.theme__icon:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Sun icon styling */
+/* Icons positioned at ends */
 .sunIcon {
-  color: var(--color-text);
-  transition: opacity 0.2s ease;
-  opacity: 1;
   position: absolute;
+  left: 7px;
+  color: var(--color-text);
+  z-index: 1;
+  transition: opacity 0.2s ease;
 }
 
-/* Moon icon styling */
 .moonIcon {
-  color: var(--color-text);
-  transition: opacity 0.2s ease;
-  opacity: 0;
   position: absolute;
+  right: 7px;
+  color: var(--color-text);
+  z-index: 1;
+  transition: opacity 0.2s ease;
 }
 
-/* Dark mode - hide sun, show moon */
+/* Icon visibility based on state */
+.sunIcon {
+  opacity: 1;
+}
+
+.moonIcon {
+  opacity: 0.5;
+}
+
 :global([data-theme="dark"]) .sunIcon {
-  opacity: 0;
+  opacity: 0.5;
 }
 
 :global([data-theme="dark"]) .moonIcon {
   opacity: 1;
 }
 
+/* Hover state */
+button.theme__icon:hover {
+  background: var(--color-surface);
+}
+
+:global([data-theme="dark"]) button.theme__icon:hover {
+  background: var(--color-neutral);
+}
+
+/* Focus state */
+button.theme__icon:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Active state */
+button.theme__icon:active::after {
+  transform: scale(0.95);
+}
+
+:global([data-theme="dark"]) button.theme__icon:active::after {
+  transform: translateX(28px) scale(0.95);
+  background: var(--color-neutral);
+}
+
+/* Mobile optimization - override global button styles */
+@media (max-width: var(--breakpoint-md)) {
+  button.theme__icon {
+    width: 50px;
+    height: 27px;
+    padding: 2px;
+    border-radius: 999px; /* Force pill radius - critical for mobile */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  :global([data-theme="dark"]) button.theme__icon {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(0, 0, 0, 0.15);
+  }
+  
+  button.theme__icon::after {
+    width: 23px;
+    height: 23px;
+    left: 2px;
+    border-radius: 999px; /* Force perfect circle on mobile */
+  }
+  
+  :global([data-theme="dark"]) button.theme__icon::after {
+    transform: translateX(23px);
+  }
+  
+  :global([data-theme="dark"]) button.theme__icon:active::after {
+    transform: translateX(23px) scale(0.95);
+  }
+  
+  .sunIcon {
+    left: 6px;
+  }
+  
+  .moonIcon {
+    right: 6px;
+  }
+}
+
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
+  button.theme__icon,
+  button.theme__icon::after,
   .sunIcon,
-  .moonIcon,
-  .theme__icon {
+  .moonIcon {
     transition: none;
   }
 }

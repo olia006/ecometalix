@@ -10,13 +10,32 @@ export default function ThemeProvider({ children }) {
   const [mounted, setMounted] = useState(false);
   const [toast, setToast] = useState({ show: false, type: "info", message: "" });
 
-  // Initialize theme from localStorage after mount to prevent hydration mismatch
+  // Initialize theme from localStorage or system preference after mount
   useEffect(() => {
     setMounted(true);
     const saved = localStorage.getItem("darkMode");
-    if (saved) {
+    
+    if (saved !== null) {
+      // Use saved preference
       setDarkMode(JSON.parse(saved));
+    } else {
+      // No saved preference - detect system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setDarkMode(prefersDark);
     }
+
+    // Listen for system theme changes (when no saved preference exists)
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleSystemThemeChange = (e) => {
+      const savedPreference = localStorage.getItem("darkMode");
+      if (savedPreference === null) {
+        // Only follow system if user hasn't manually set preference
+        setDarkMode(e.matches);
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleSystemThemeChange);
+    return () => mediaQuery.removeEventListener('change', handleSystemThemeChange);
   }, []);
 
   // Apply theme to document
@@ -32,7 +51,30 @@ export default function ThemeProvider({ children }) {
     autoSetupAnchorHandlers();
   }, []);
 
-  const toggleDarkMode = () => setDarkMode(prev => !prev);
+  // Analytics tracking for theme changes
+  const trackThemeChange = (newTheme) => {
+    // Google Analytics 4 tracking
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'theme_preference', {
+        theme: newTheme ? 'dark' : 'light',
+        timestamp: Date.now(),
+        page_title: document.title
+      });
+    }
+    
+    // Console logging for development
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Theme changed to:', newTheme ? 'dark' : 'light');
+    }
+  };
+
+  const toggleDarkMode = () => {
+    setDarkMode(prev => {
+      const newValue = !prev;
+      trackThemeChange(newValue);
+      return newValue;
+    });
+  };
   const closeToast = () => setToast(prev => ({ ...prev, show: false }));
 
   return (

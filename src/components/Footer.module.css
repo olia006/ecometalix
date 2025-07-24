@@ -131,7 +131,7 @@
 }
 
 .legalRow a {
-  color: var(--color-accent);
+  color: var(--color-electric-blue);
   text-decoration: none;
   margin-left: var(--space-xs);
   transition: color 0.2s ease;

@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import { HelpCircle } from "lucide-react";
 import Background from "../Background";
-import SectionHeader from "../SectionHeader";
 import FAQAccordion from "../FAQAccordion";
 import styles from "./FAQPreviewSection.module.css";
 
@@ -20,7 +19,7 @@ const defaultFaqs = [
   },
   {
     question: "¿Atienden fines de semana?",
-    answer: "Trabajamos los 7 días de la semana de 8:00 AM a 8:00 PM, incluyendo sábados, domingos y feriados. Somos uno de los pocos centros de reciclaje que opera sin descanso para tu comodidad.",
+    answer: "Trabajamos los 7 días de la semana de 8:30 AM a 8:00 PM, incluyendo sábados, domingos y feriados. Somos uno de los pocos centros de reciclaje que opera sin descanso para tu comodidad.",
   },
 ];
 
@@ -42,9 +41,10 @@ export default function FAQPreviewSection({ faqs = defaultFaqs }) {
         className={styles.faqPreviewSection}
         aria-labelledby="faq-heading"
       >
-        <SectionHeader as="h2" icon={<HelpCircle />}>
+        <h2 className={styles.title}>
+          <HelpCircle className={styles.titleIcon} />
           ¿Dudas? Te respondemos:
-        </SectionHeader>
+        </h2>
 
         <FAQAccordion 
           categories={categories}

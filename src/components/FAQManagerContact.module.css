@@ -1,0 +1,245 @@
+/* FAQ Manager Contact Component - Using Project Design System */
+.faqContactSection {
+  background: linear-gradient(135deg, var(--color-primary-10) 0%, var(--color-background) 100%);
+  border: 1px solid var(--color-primary-20);
+  border-radius: var(--radius-lg);
+  margin: var(--section-spacing-y) 0;
+  padding: var(--space-xl) var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Electric gradient blue decorative line - keep this! */
+.faqContactSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-electric-blue));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.container {
+  max-width: var(--container-sm);
+  margin: 0 auto;
+}
+
+.content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+/* Header - icon removed */
+
+.title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-heading);
+  margin: 0 0 var(--space-sm) 0;
+  line-height: var(--line-height-heading);
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  margin: 0 0 var(--space-xs) 0;
+  line-height: var(--line-height-body);
+  text-align: center;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+  max-width: 60ch;
+  text-align: center;
+}
+
+.helpText {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin: 0;
+  line-height: var(--line-height-body);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Contact Options */
+.contactOptions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  width: 100%;
+  max-width: var(--container-xs);
+}
+
+/* WhatsApp Section - using SecondaryButton */
+.whatsappSection {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Quick Links - using same style as MapSection */
+.quickLinks {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+/* Link buttons - exact same style as MapSection linkBtn */
+.linkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  background: transparent;
+  color: var(--color-text);
+  text-decoration: none;
+  border: 1px solid var(--color-electric-blue);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.linkBtn:hover,
+.linkBtn:focus {
+  background: var(--color-electric-blue);
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Availability */
+.availability {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.availabilityText {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+}
+
+/* Compact Variant */
+.compact {
+  margin: var(--space-xl) 0;
+  padding: var(--space-lg) var(--space-md);
+}
+
+.compact .title {
+  font-size: var(--font-size-xl);
+}
+
+.compact .description {
+  font-size: var(--font-size-sm);
+}
+
+.compact .contactOptions {
+  gap: var(--space-md);
+}
+
+/* Responsive Design */
+@media (max-width: var(--breakpoint-md)) {
+  .faqContactSection {
+    margin: var(--section-spacing-y-mobile) 0;
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .content {
+    gap: var(--space-md);
+  }
+  
+  .title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .description {
+    font-size: var(--font-size-sm);
+  }
+  
+  .linkBtn {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  .quickLinks {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contactOptions {
+    gap: var(--space-md);
+  }
+  
+  .availability {
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .availabilityText {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* Focus States for Accessibility */
+.linkBtn:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .faqContactSection {
+    border-width: 2px;
+  }
+  
+  .linkBtn {
+    border-width: 2px;
+  }
+  
+  .headerIcon {
+    border-width: 3px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .linkBtn {
+    transition: none;
+  }
+  
+  .linkBtn:hover {
+    transform: none;
+  }
+} 

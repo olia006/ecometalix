@@ -16,7 +16,7 @@
         background: var(--color-whatsapp);
   color: var(--color-white);
   font-weight: var(--font-weight-semibold, 600);
-  font-family: var(--font-body, 'Inter', Arial, sans-serif);
+  font-family: var(--font-body);
   border-radius: 50%;
   box-shadow: var(--shadow-lg);
     width: var(--space-3xl); /* UX-compliant desktop FAB size (64px) */

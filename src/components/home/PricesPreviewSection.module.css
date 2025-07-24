@@ -37,8 +37,9 @@
 
 .lastUpdated {
   font-size: var(--font-size-xs);
-  color: var(--color-success);
+  color: var(--color-primary-dark);
   margin-bottom: var(--space-lg);
+  font-weight: var(--font-weight-medium);
 }
 
 .pricesList {

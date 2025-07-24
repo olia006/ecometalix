@@ -12,17 +12,22 @@ export default function MapSection({ isEnglish = false }) {
           {isEnglish ? "Our Company on Google" : "Nuestra Empresa en Google"}
         </SectionHeader>
         
-        {/* Official Google Business Profile Widget */}
+        {/* Google My Business Card with Reviews */}
         <div className={styles.widgetContainer}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.5!2d-70.7984129!3d-33.3120766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662bf78657b6e2f%3A0x692dfae6ce3b688d!2sEcoMetalix!5e0!3m2!1ses!2scl!4v1699876543210!5m2!1ses!2scl"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.5!2d-70.7984129!3d-33.3120766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662bf78657b6e2f%3A0x692dfae6ce3b688d!2sEcoMetalix!5e0!3m2!1ses!2scl!4v1703276543210!5m2!1ses!2scl&iwloc=near&output=embed"
             className={styles.googleWidget}
-            title="EcoMetalix - Perfil de Empresa en Google con Reseñas"
+            title="EcoMetalix - Perfil Completo con Reseñas y Ubicación"
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
-            credentialless="true"
           ></iframe>
+        </div>
+        
+        {/* Alternative: Direct Google Business Profile Link for Better Mobile Experience */}
+        <div className={styles.businessProfileCard}>
+          <h3>📍 Visítanos o Ve Nuestras Reseñas</h3>
+          <p>Para ver nuestro perfil completo con reseñas y fotos, haz clic en los enlaces:</p>
         </div>
 
         {/* Quick access links */}

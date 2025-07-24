@@ -8,6 +8,34 @@
   text-align: center;
   position: relative;
   z-index: 2;
+  color: var(--color-white);
+  text-shadow: var(--text-shadow-md);
+}
+
+/* Custom title for image background - EXACT SectionCard pattern */
+.title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-white);
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 4px 8px rgba(0, 0, 0, 0.6),
+    0 1px 2px rgba(0, 0, 0, 1);
+  font-family: var(--font-heading);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.titleIcon {
+  color: var(--color-white);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  font-size: 1.25em;
 }
 
 .readMoreLink {
@@ -16,27 +44,53 @@
   gap: 0.25em;
   padding: var(--space-xs) 0;
   background: transparent;
-  color: var(--color-text);
+  color: var(--color-white);
   text-decoration: none;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   transition: color 0.3s ease;
   margin-top: var(--space-xl);
+  text-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.9),
+    0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .readMoreLink:hover,
 .readMoreLink:focus {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-/* Dark theme for read more link */
-:global(html[data-theme="dark"]) .readMoreLink {
   color: var(--color-white);
+  text-decoration: none;
+  opacity: 0.8;
 }
 
-:global(html[data-theme="dark"]) .readMoreLink:hover {
-  color: var(--color-primary);
+/* FAQ Accordion text styling - using SectionCard pattern */
+.faqPreviewSection :global(.faqQuestion) {
+  color: var(--color-white);
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 4px 8px rgba(0, 0, 0, 0.6),
+    0 1px 2px rgba(0, 0, 0, 1);
+}
+
+.faqPreviewSection :global(.questionText) {
+  color: var(--color-white);
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 4px 8px rgba(0, 0, 0, 0.6),
+    0 1px 2px rgba(0, 0, 0, 1);
+}
+
+.faqPreviewSection :global(.answerContent) {
+  color: var(--color-white);
+  text-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.9),
+    0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.faqPreviewSection :global(.answerContent p) {
+  color: var(--color-white);
+  text-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.9),
+    0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 /* Mobile */
