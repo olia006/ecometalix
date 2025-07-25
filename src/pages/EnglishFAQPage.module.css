@@ -1,27 +1,83 @@
+/* English FAQ Page Styles */
 .pageSection {
-  background-color: var(--color-background);
-  min-height: 100vh;
-  padding: 2rem 0;
+  padding: var(--space-4xl) 0;
+  background: var(--color-background);
 }
 
 .container {
-  max-width: 800px;
+  max-width: var(--container-lg);
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0 var(--space-lg);
 }
 
-.faqSection {
-  margin-bottom: 2rem;
+.mainTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+  line-height: var(--line-height-tight);
+}
+
+.faqList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.faqItem {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  border: 1px solid var(--color-divider);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal) var(--ease-smooth);
+}
+
+.faqItem:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .sectionTitle {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0 0 var(--space-md) 0;
+  line-height: var(--line-height-tight);
 }
 
 .sectionContent {
-  line-height: var(--line-height-body);
-  margin-bottom: 1.5rem;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  opacity: 0.9;
+}
+
+.faqSection {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  border: 1px solid var(--color-divider);
+  box-shadow: var(--shadow-sm);
+  margin-top: var(--space-xl);
+}
+
+.contactLink {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all var(--transition-fast) var(--ease-smooth);
+}
+
+.contactLink:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
 }
 
 .contactSection {
@@ -42,15 +98,6 @@
   margin-bottom: 1.5rem;
 }
 
-.contactLink {
-  color: var(--color-primary);
-  text-decoration: underline;
-}
-
-.contactLink:hover {
-  color: var(--color-secondary);
-}
-
 .contactButton {
   display: inline-block;
   background: var(--color-primary);
@@ -63,4 +110,32 @@
 
 .contactButton:hover {
   background: var(--color-secondary);
+} 
+
+/* Responsive adjustments */
+@media (max-width: var(--breakpoint-md)) {
+  .pageSection {
+    padding: var(--space-3xl) 0;
+  }
+  
+  .container {
+    padding: 0 var(--space-md);
+  }
+  
+  .mainTitle {
+    font-size: var(--font-size-xl);
+  }
+  
+  .faqItem,
+  .faqSection {
+    padding: var(--space-lg);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-md);
+  }
+  
+  .sectionContent {
+    font-size: var(--font-size-sm);
+  }
 } 

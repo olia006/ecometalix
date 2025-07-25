@@ -1,11 +1,282 @@
+/* Page section styling */
 .pageSection {
-  background-color: var(--color-background);
-  min-height: 100vh;
-  padding: 2rem 0;
+  padding: var(--space-2xl) 0;
+  background: var(--color-surface);
 }
 
 .container {
-  max-width: 800px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0 var(--space-lg);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sectionTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+  line-height: var(--line-height-tight);
+}
+
+.sectionDescription {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: 0;
+}
+
+/* Introduction sections */
+.introSection {
+  margin-bottom: var(--space-3xl);
+}
+
+.mainTitle {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+/* Benefits list for prices page */
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-xl) 0;
+  display: grid;
+  gap: var(--space-md);
+}
+
+.benefitItem {
+  padding: var(--space-md);
+  background: var(--glass-light);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+.benefitItem strong {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Material categories for materials page */
+.materialCategories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.categoryColumn {
+  background: var(--glass-light);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-divider);
+}
+
+.categoryTitle {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.materialList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.materialList li {
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  position: relative;
+  padding-left: var(--space-xl);
+}
+
+.materialList li::before {
+  content: "✓";
+  position: absolute;
+  left: var(--space-md);
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* FAQ list styling */
+.faqList {
+  list-style: none;
+  counter-reset: faq-counter;
+  padding: 0;
+  margin: var(--space-xl) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.faqItem {
+  counter-increment: faq-counter;
+  background: var(--glass-light);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-divider);
+  position: relative;
+}
+
+.faqItem::before {
+  content: counter(faq-counter);
+  position: absolute;
+  top: var(--space-lg);
+  left: var(--space-lg);
+  background: var(--color-primary);
+  color: var(--color-white);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: var(--font-size-sm);
+}
+
+.faqItem .sectionTitle {
+  margin-left: calc(2rem + var(--space-md));
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-lg);
+}
+
+.faqItem .sectionContent {
+  margin-left: calc(2rem + var(--space-md));
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+/* Process list for how it works page */
+.processList {
+  list-style: none;
+  counter-reset: step-counter;
+  padding: 0;
+  margin: var(--space-xl) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.processStep {
+  counter-increment: step-counter;
+  background: var(--glass-light);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-divider);
+  position: relative;
+}
+
+.processStep::before {
+  content: counter(step-counter);
+  position: absolute;
+  top: -1rem;
+  left: var(--space-xl);
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: var(--font-size-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.stepTitle {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+.stepDetails {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.stepDetails li {
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  position: relative;
+  padding-left: var(--space-xl);
+}
+
+.stepDetails li::before {
+  content: "→";
+  position: absolute;
+  left: var(--space-md);
+  color: var(--color-secondary);
+  font-weight: bold;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .pageSection {
+    padding: var(--space-xl) 0;
+  }
+  
+  .sectionHeader {
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-xl);
+  }
+  
+  .sectionDescription {
+    font-size: var(--font-size-base);
+  }
+  
+  .materialCategories {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .categoryColumn {
+    padding: var(--space-lg);
+  }
+  
+  .faqItem::before,
+  .processStep::before {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: var(--font-size-sm);
+  }
+  
+  .faqItem .sectionTitle,
+  .faqItem .sectionContent {
+    margin-left: calc(1.5rem + var(--space-sm));
+  }
 } 

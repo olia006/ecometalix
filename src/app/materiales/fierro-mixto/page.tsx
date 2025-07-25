@@ -14,6 +14,24 @@ export const metadata = {
     description: 'Fierro mixto: chatarra de hierro con composición variada. Procesos de separación y valorización.',
     type: 'article',
     locale: 'es_CL',
+    url: 'https://ecometalix.cl/materiales/fierro-mixto',
+    siteName: 'Ecometalix',
+    images: [
+      {
+        url: '/images/materials/fierromixto.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Fierro Mixto - Chatarra Variada | Ecometalix',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
+    title: 'Fierro Mixto - Chatarra Variada | Ecometalix',
+    description: 'Fierro mixto: chatarra de hierro con composición variada. Procesos de separación y valorización.',
+    images: ['/images/logoecometalix.webp'],
   },
   robots: {
     index: true,

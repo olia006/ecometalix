@@ -478,7 +478,7 @@ export default function WhyUsPage() {
         <div className="section-container">
           <div className={styles.denunciasContainer}>
             <a 
-              href="/canal-denuncias" 
+              href="mailto:contacto@ecometalix.cl?subject=Canal%20de%20Denuncias" 
               className={styles.denunciasLink}
             >
               Canal de Denuncias

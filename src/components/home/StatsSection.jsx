@@ -30,15 +30,12 @@ export default function StatsSection({ isEnglish = false }) {
     <section 
       className={styles.statsSection} 
       aria-label={isEnglish ? "Ecometalix service statistics" : "Estadísticas de servicio de Ecometalix"}
-      itemScope
-      itemType="https://schema.org/LocalBusiness"
     >
         <div className={styles.statsBadges}>
           {statsData.map((stat, index) => (
             <div 
               key={index}
               className={styles.statBadge}
-              itemProp={stat.schemaProperty}
               role="group"
               aria-label={isEnglish ? `Service statistic: ${stat.text}` : `Estadística de servicio: ${stat.text}`}
             >
@@ -72,28 +69,7 @@ export default function StatsSection({ isEnglish = false }) {
           </ul>
         </div>
         
-        {/* Schema.org structured data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "EcoMetalix",
-            "serviceType": "Scrap Metal Buying and Selling",
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": `+${BUSINESS_INFO.phone}`,
-              "contactType": "customer service",
-              "availableLanguage": "Spanish"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "bestRating": "5",
-              "ratingCount": "100+",
-              "reviewCount": "100+"
-            }
-          })}
-        </script>
+
       </section>
   );
 }

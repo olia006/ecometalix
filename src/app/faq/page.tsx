@@ -22,6 +22,24 @@ export const metadata = {
     description: 'Resuelve todas tus dudas sobre venta de chatarra: proceso, precios, requisitos y más.',
     type: 'website',
     locale: 'es_CL',
+    url: 'https://ecometalix.cl/faq',
+    siteName: 'Ecometalix',
+    images: [
+      {
+        url: '/images/logoecometalix.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Preguntas Frecuentes sobre Chatarra | Ecometalix',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
+    title: 'Preguntas Frecuentes sobre Chatarra | Ecometalix',
+    description: 'Resuelve todas tus dudas sobre venta de chatarra: proceso, precios, requisitos y más.',
+    images: ['/images/logoecometalix.webp'],
   },
   robots: {
     index: true,
@@ -194,6 +212,7 @@ export default function FAQPage() {
         <PageHeader 
           title="Preguntas Frecuentes"
           subtitle="Resuelve todas tus dudas sobre la venta de chatarra"
+          backgroundImage="/images/faqpreviewpage.jpg"
         />
         
         <div className={styles.container}>

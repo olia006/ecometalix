@@ -109,10 +109,10 @@ export default function MetalPriceTableSection() {
       <section className={styles.headerSection} aria-label="Información de precios">
         <div className={styles.header}>
           <div className={styles.titleGroup}>
-            <h2 className={styles.heading}>
-              <TrendingUp className={styles.headingIcon} />
-              Lista Completa de Precios por Kilo
-            </h2>
+            <div className={styles.headingWrapper}>
+              <TrendingUp className={styles.headingIcon} aria-hidden="true" />
+              <h2 className={styles.heading}>Lista Completa de Precios por Kilo</h2>
+            </div>
             <p className={styles.subtitle}>
               Consulta nuestros precios competitivos para todos los tipos de metales y chatarra
             </p>

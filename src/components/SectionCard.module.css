@@ -1,7 +1,7 @@
-/* Base Section Card Styles */
+/* MODERN SECTION CARDS */
 .sectionCard {
   display: block;
-  min-height: 320px;
+  min-height: 350px; /* Increased for better horizontal layout */
   border-radius: var(--radius-lg);
   overflow: hidden;
   position: relative;
@@ -9,16 +9,14 @@
   transition: transform var(--transition-normal) var(--ease-smooth), box-shadow var(--transition-normal) var(--ease-smooth);
   text-decoration: none;
   color: inherit;
-  background: var(--color-primary);
+  
+  /* Modern card styling */
+  background: var(--color-surface);
+  border: 0.5px solid var(--color-divider);
   box-shadow: var(--shadow-sm);
   
   /* Subtle breathing animation */
   animation: cardBreathe 6s ease-in-out infinite;
-  
-  /* Ensure background covers entire card with no gaps using theme system */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 /* Subtle breathing animation for professional feel */
@@ -27,10 +25,11 @@
   50% { transform: scale(1.002); }
 }
 
-.sectionCard:hover {
+.sectionCard.active {
   transform: translateY(-6px) scale(1.015);
+  background: var(--color-surface);
   box-shadow: var(--shadow-xl);
-  animation: none; /* Stop breathing on hover */
+  animation: none; /* Stop breathing on active */
 }
 
 .sectionCard:focus {
@@ -38,7 +37,7 @@
   outline-offset: 2px;
 }
 
-/* OVERLAY - PERFECT COVERAGE USING THEME SYSTEM */
+/* CLEAN OVERLAY */
 .overlay {
   /* Absolute positioning to fill entire parent */
   position: absolute;
@@ -54,21 +53,12 @@
   /* Match parent border radius exactly */
   border-radius: inherit;
   
-  /* DARKER overlay for better text readability */
-  background: linear-gradient(
-    135deg,
-    var(--overlay-dark-heavy) 0%,
-    var(--overlay-dark-medium) 40%,
-    var(--overlay-dark-gradient) 100%
-  );
-  
-  /* Use theme blur values */
-  -webkit-backdrop-filter: blur(var(--glass-blur-xs));
-  backdrop-filter: blur(var(--glass-blur-xs));
+  /* Clean background */
+  background: transparent;
   
   /* Content positioning */
   display: flex;
-  align-items: center; /* Changed from flex-end to center for better mobile layout */
+  align-items: center;
   padding: var(--space-xl);
   
   /* Use theme transitions */
@@ -83,26 +73,16 @@
   outline: none;
 }
 
-.sectionCard:hover .overlay {
-  background: linear-gradient(
-    135deg,
-    var(--overlay-dark-medium) 0%,
-    var(--overlay-dark-light) 40%,
-    var(--overlay-dark-heavy) 100%
-  );
-}
-
-/* Content container - Preview window design */
+/* Content container - Clean content design */
 .contentContainer {
   width: 100%;
   height: 100%;
-  color: var(--color-white);
-  text-shadow: var(--text-shadow-md);
+  color: var(--color-text);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Changed from space-between for better control */
-  padding: var(--space-md) var(--space-lg) var(--space-lg) var(--space-lg); /* Reduced top padding from lg to md */
-  gap: var(--space-md); /* Added gap for consistent spacing */
+  justify-content: flex-start;
+  padding: var(--space-md) var(--space-md) var(--space-lg) var(--space-md);
+  gap: var(--space-md);
 }
 
 /* Preview Content - Main information area */
@@ -110,224 +90,296 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Changed from center for better top spacing */
-  gap: var(--space-sm); /* Added gap for consistent element spacing */
+  justify-content: flex-start;
+  gap: var(--space-sm);
 }
 
-/* Typography - Clean preview hierarchy */
+/* Typography - Clean text styling */
 .title {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
-  color: var(--color-white);
-  text-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.8),
-    0 4px 8px rgba(0, 0, 0, 0.6),
-    0 1px 2px rgba(0, 0, 0, 1);
+  color: var(--color-text);
   font-family: var(--font-heading);
 }
 
 .preview {
   font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
-  color: var(--color-white);
-  text-shadow: 
-    0 1px 3px rgba(0, 0, 0, 0.9),
-    0 2px 6px rgba(0, 0, 0, 0.7);
+  color: var(--color-text);
   font-family: var(--font-body);
   font-weight: var(--font-weight-medium);
-  opacity: 0.95;
+  opacity: 0.9;
 }
 
-/* Stats Text - Preview indicator */
+/* Stats Text - Repositioned as subtle top-right badge */
 .statsText {
+  /* Absolute positioning in top-right corner */
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 2;
+  
+  /* Subtle styling */
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-white);
   padding: var(--space-xs) var(--space-sm);
-  background: var(--white-glass-light);
-  -webkit-backdrop-filter: blur(var(--glass-blur-sm));
-  backdrop-filter: blur(var(--glass-blur-sm));
-  border: var(--border-thin) solid var(--color-border-light);
-  border-radius: var(--space-sm);
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-pill);
   text-align: center;
-  text-shadow: var(--text-shadow-light);
   font-family: var(--font-body);
   letter-spacing: var(--letter-spacing-normal);
   transition: all var(--transition-normal) var(--ease-smooth);
-  opacity: 0.9;
-  max-width: fit-content;
+  opacity: 0.8;
   text-transform: uppercase;
-  align-self: flex-start; /* Align to start instead of stretching */
+  
+  /* Subtle badge appearance */
+  font-size: var(--font-size-xs);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
-.sectionCard:hover .statsText {
-  background: var(--white-glass-medium);
+.sectionCard.active .statsText {
   opacity: 1;
+  transform: scale(1.05);
 }
 
-/* See More Indicator - Clear preview CTA */
-.seeMoreIndicator {
+/* Prominent CTA Button Container */
+.ctaContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding-top: var(--space-sm); /* Reduced padding since gap handles spacing */
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  margin-top: auto; /* Push to bottom */
+  padding-top: var(--space-sm);
+  margin-top: auto;
 }
 
-.seeMoreText {
+/* Prominent CTA Button - Matching Map Section Style */
+.ctaButton {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  background: transparent;
+  color: var(--color-text);
+  text-decoration: none;
+  border: 1px solid var(--color-electric-blue);
+  border-radius: var(--radius-pill);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-white);
-  opacity: 0.9;
-  text-shadow: var(--text-shadow-light);
+  transition: all 0.3s ease;
+  white-space: nowrap;
   font-family: var(--font-body);
-  transition: opacity var(--transition-fast) var(--ease-smooth);
+  text-align: center;
+  cursor: pointer;
+  
+  /* Enhanced visual prominence */
+  min-width: 120px;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
 }
 
-.sectionCard:hover .seeMoreText {
-  opacity: 1;
+/* Ensure link styling doesn't interfere */
+.ctaButton:link,
+.ctaButton:visited {
+  color: var(--color-text);
+  text-decoration: none;
 }
 
-/* Arrow Icon - Preview navigation */
-.arrow {
-  width: var(--size-icon-md);
-  height: var(--size-icon-md);
+.ctaButton:hover,
+.ctaButton:focus {
+  background: var(--color-electric-blue);
   color: var(--color-white);
-  transition: transform var(--transition-fast) var(--ease-smooth);
-  opacity: 0.8;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
 }
 
-.sectionCard:hover .arrow {
-  transform: translateX(var(--space-xs));
-  opacity: 1;
-}
-
-/* Enhanced variant styles */
-.primary {
-  background: var(--gradient-primary);
-}
-
-.secondary {
-  background: var(--gradient-secondary);
-}
-
-.accent {
-  background: var(--gradient-accent);
-}
-
-.neutral {
-  background: var(--gradient-neutral);
+.sectionCard.active .ctaButton {
+  background: var(--color-electric-blue);
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Responsive Design */
-@media (max-width: var(--breakpoint-xl)) {
+@media (max-width: var(--breakpoint-lg)) {
   .sectionCard {
-    min-height: 280px;
+    min-height: 300px;
   }
-
-  .overlay {
-    padding: var(--space-sm);
-    align-items: stretch;
-  }
-
-  .contentContainer {
-    padding: var(--space-sm) var(--space-md) var(--space-md) var(--space-md); /* Reduced top padding for mobile */
-    gap: var(--space-sm); /* Reduced gap for mobile */
-  }
-
-  .previewContent {
-    gap: var(--space-xs); /* Reduced gap for mobile */
-  }
-
-  .title {
-    font-size: var(--font-size-lg);
-  }
-
-  .preview {
-    font-size: var(--font-size-sm);
-  }
-
-  .arrow {
-    width: var(--size-icon-lg);
-    height: var(--size-icon-lg);
+  
+  .ctaButton {
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--font-size-xs);
+    min-width: 100px;
   }
 }
 
 @media (max-width: var(--breakpoint-md)) {
   .sectionCard {
-    min-height: 240px;
+    min-height: 280px;
   }
-
-  .overlay {
-    padding: var(--space-xs);
-    align-items: stretch;
-  }
-
+  
   .contentContainer {
-    padding: var(--space-xs) var(--space-sm) var(--space-sm) var(--space-sm); /* Minimal top padding for small mobile */
-    gap: var(--space-xs); /* Minimal gap for small mobile */
+    padding: var(--space-sm) var(--space-md) var(--space-md) var(--space-md);
+    gap: var(--space-sm);
   }
-
-  .previewContent {
-    gap: var(--space-xs); /* Minimal gap for small mobile */
-  }
-
-  .title {
-    font-size: var(--font-size-md);
-  }
-
+  
+  /* Title size handled by 768px mobile query - don't override */
+  
   .preview {
+    font-size: var(--font-size-xs);
+  }
+  
+  /* Button styling handled by 768px mobile query - don't override */
+}
+
+/* Narrow mobile cards - improved text sizing */
+@media (max-width: 768px) {
+  .sectionCard {
+    min-height: 260px; /* Slightly shorter for narrow cards */
+  }
+  
+  .sectionCard .title {
+    font-size: var(--font-size-xl); /* Larger title for mobile cards - more specific selector */
+    line-height: var(--line-height-tight);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  .preview {
+    font-size: var(--font-size-sm); /* Optimal preview text size */
+    line-height: var(--line-height-relaxed);
+    margin-top: var(--space-xs); /* Add space after larger title */
+  }
+  
+  .contentContainer {
+    padding: var(--space-sm) var(--space-sm) var(--space-md) var(--space-sm);
+    gap: var(--space-sm); /* Better spacing with larger title */
+  }
+  
+  .ctaContainer {
+    padding-top: var(--space-xs); /* Reduce spacing to button */
+  }
+  
+  .ctaButton {
+    padding: var(--space-xs) var(--space-md);
     font-size: var(--font-size-sm);
-  }
-
-  .statsText {
-    font-size: var(--font-size-xs);
-    padding: var(--space-xs);
-  }
-
-  .seeMoreText {
-    font-size: var(--font-size-xs);
-  }
-
-  .seeMoreIndicator {
-    padding-top: var(--space-xs); /* Minimal padding on mobile */
-  }
-
-  .arrow {
-    width: var(--size-icon-md);
-    height: var(--size-icon-md);
+    font-weight: var(--font-weight-medium);
+    min-width: 120px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
   }
 }
 
-/* Accessibility & Performance */
+/* Trust Cues and Badges */
+.trustedBadge {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-success);
+  color: var(--color-white);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  z-index: 2;
+  font-family: var(--font-body);
+}
+
+/* Variant Styles */
+.primary {
+  border-color: var(--color-primary);
+}
+
+.secondary {
+  border-color: var(--color-secondary);
+}
+
+.accent {
+  border-color: var(--color-accent);
+}
+
+.neutral {
+  border-color: var(--color-neutral);
+}
+
+/* FLIPPABLE CARDS */
+.flippableCard {
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flipInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flippableCard.flipped .flipInner {
+  transform: rotateY(180deg);
+}
+
+.flipFront, .flipBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.flipBack {
+  transform: rotateY(180deg);
+}
+
+/* Theme adjustments */
+[data-theme="dark"] .sectionCard {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .ctaButton {
+  border-color: var(--color-electric-blue);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .sectionCard.active .ctaButton,
+[data-theme="dark"] .ctaButton:hover,
+[data-theme="dark"] .ctaButton:focus {
+  background: var(--color-electric-blue);
+  color: var(--color-white);
+}
+
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .sectionCard,
-  .arrow {
+  .sectionCard {
     animation: none;
     transition: none;
   }
   
-  .sectionCard:hover {
-    transform: none;
+  .flipInner {
+    transition: none;
+  }
+  
+  .ctaButton {
+    transition: none;
   }
 }
 
 @media (prefers-contrast: high) {
-  .sectionCard {
-    border: var(--border-medium) solid var(--color-text);
+  .ctaButton {
+    border-width: 2px;
+    font-weight: var(--font-weight-bold);
   }
   
-  .overlay {
-    background: var(--overlay-dark-gradient);
-  }
-  
-  .title,
-  .preview,
-  .arrow svg {
-    color: var(--color-white);
-    text-shadow: var(--text-shadow-md);
+  .sectionCard.active .ctaButton,
+  .ctaButton:hover,
+  .ctaButton:focus {
+    border-width: 2px;
   }
 } 

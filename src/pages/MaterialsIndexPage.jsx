@@ -244,9 +244,10 @@ export default function MaterialsIndexPage() {
       <section className="professional-section professional-background">
         <div className="section-container">
           <div className="section-header">
-            <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--space-sm)' }}>
-              <Info size={20} className="section-title-icon" /> Materiales Prohibidos y Restringidos
-            </h2>
+            <div className="section-header-with-icon">
+              <Info size={20} className="section-title-icon" aria-hidden="true" />
+              <h2 className="section-title">Materiales Prohibidos y Restringidos</h2>
+            </div>
             <p className="section-subtitle">
               En EcoMetalix Spa, cumplimos rigurosamente con la legislación chilena para garantizar un reciclaje responsable y seguro. Por ello, no aceptamos los siguientes materiales como chatarra:
             </p>

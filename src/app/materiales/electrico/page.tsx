@@ -14,6 +14,24 @@ export const metadata = {
     description: 'Reciclaje responsable de residuos electrónicos. Proceso certificado y seguro para el medio ambiente.',
     type: 'article',
     locale: 'es_CL',
+    url: 'https://ecometalix.cl/materiales/electrico',
+    siteName: 'Ecometalix',
+    images: [
+      {
+        url: '/images/materials/electrico.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Residuos Electrónicos - Reciclaje RAEE | Ecometalix',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
+    title: 'Residuos Electrónicos - Reciclaje RAEE | Ecometalix',
+    description: 'Reciclaje responsable de residuos electrónicos. Proceso certificado y seguro para el medio ambiente.',
+    images: ['/images/logoecometalix.webp'],
   },
   robots: {
     index: true,

@@ -82,6 +82,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
     title: 'Ecometalix - Compra y Venta de Chatarra en Santiago',
     description: 'Compra y venta de chatarra y metales reciclables en Santiago. Pago inmediato, balanza certificada y atención personalizada.',
     images: ['/images/logoecometalix.webp'],
@@ -95,8 +97,6 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  minimumScale: 1,
-  maximumScale: 5,
   userScalable: true,
   viewportFit: 'cover',
   themeColor: [

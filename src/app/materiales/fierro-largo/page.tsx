@@ -14,6 +14,24 @@ export const metadata = {
     description: 'Fierro largo: barras, vigas y estructuras metálicas para reciclaje responsable.',
     type: 'article',
     locale: 'es_CL',
+    url: 'https://ecometalix.cl/materiales/fierro-largo',
+    siteName: 'Ecometalix',
+    images: [
+      {
+        url: '/images/materials/FierroLargo.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Fierro Largo - Estructuras Metálicas | Ecometalix',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
+    title: 'Fierro Largo - Estructuras Metálicas | Ecometalix',
+    description: 'Fierro largo: barras, vigas y estructuras metálicas para reciclaje responsable.',
+    images: ['/images/logoecometalix.webp'],
   },
   robots: {
     index: true,

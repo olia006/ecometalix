@@ -97,7 +97,7 @@ export default function CobrePage() {
               <div className={styles.curiosityItem}>
                 <h4>Propiedades antimicrobianas</h4>
                 <p>
-                  Las superficies de cobre pueden eliminar hasta el 99,9% de bacterias y virus en pocas horas. Por eso hospitales modernos usan cobre en manillas, barandas y superficies críticas (<a href="https://www.epa.gov/antimicrobials/copper-alloy-surfaces" rel="noopener noreferrer" target="_blank">U.S. EPA</a>).
+                  Las superficies de cobre pueden eliminar hasta el 99,9% de bacterias y virus en pocas horas. Por eso hospitales modernos usan cobre en manillas, barandas y superficies críticas (<a href="https://www.copperalloystewardship.com/" rel="noopener noreferrer" target="_blank">Copper Alloy Stewardship</a>).
                 </p>
               </div>
 
@@ -125,7 +125,7 @@ export default function CobrePage() {
               <div className={styles.curiosityItem}>
                 <h4>El cobre en la arquitectura</h4>
                 <p>
-                  La &ldquo;pátina&rdquo; verde de estatuas como la Estatua de la Libertad se debe al óxido de cobre, que protege el metal contra la corrosión (<a href="https://www.si.edu/spotlight/statue-of-liberty-patina" rel="noopener noreferrer" target="_blank">Smithsonian Institution</a>).
+                  La &ldquo;pátina&rdquo; verde de estatuas como la Estatua de la Libertad se debe al óxido de cobre, que protege el metal contra la corrosión (<a href="https://www.nps.gov/stli/planyourvisit/frequently-asked-questions-statue-of-liberty.htm" rel="noopener noreferrer" target="_blank">National Park Service</a>).
                 </p>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function CobrePage() {
                 <li><a href="https://www.cochilco.cl" rel="noopener noreferrer" target="_blank">Comisión Chilena del Cobre (Cochilco)</a></li>
                 <li><a href="https://copperalliance.org/about-copper/recycling/" rel="noopener noreferrer" target="_blank">International Copper Association</a></li>
                 <li><a href="https://www.mnhn.gob.cl/" rel="noopener noreferrer" target="_blank">Museo Chileno de Historia Natural</a></li>
-                <li><a href="https://www.epa.gov/antimicrobials/copper-alloy-surfaces" rel="noopener noreferrer" target="_blank">U.S. Environmental Protection Agency</a></li>
+                <li><a href="https://www.copperalloystewardship.com/" rel="noopener noreferrer" target="_blank">Copper Alloy Stewardship (EPA-mandated)</a></li>
                 <li><a href="https://www.icsg.org/" rel="noopener noreferrer" target="_blank">International Copper Study Group</a></li>
               </ul>
             </div>

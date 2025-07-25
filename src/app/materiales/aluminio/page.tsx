@@ -14,6 +14,24 @@ export const metadata = {
     description: 'Aluminio: metal ligero, resistente y 100% reciclable. Propiedades técnicas y precios actualizados.',
     type: 'article',
     locale: 'es_CL',
+    url: 'https://ecometalix.cl/materiales/aluminio',
+    siteName: 'Ecometalix',
+    images: [
+      {
+        url: '/images/materials/aluminium.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Aluminio - Reciclaje y Propiedades | Ecometalix',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
+    title: 'Aluminio - Reciclaje y Propiedades | Ecometalix',
+    description: 'Aluminio: metal ligero, resistente y 100% reciclable. Propiedades técnicas y precios actualizados.',
+    images: ['/images/logoecometalix.webp'],
   },
   robots: {
     index: true,

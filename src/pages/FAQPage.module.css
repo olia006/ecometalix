@@ -8,13 +8,25 @@
   padding-bottom: var(--space-xl);
 }
 
+.main {
+  background: var(--background-page);
+  min-height: 100vh;
+  padding-bottom: var(--space-xl);
+}
+
+.faqPageSection {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-4xl) 0;
+}
+
 .container {
   max-width: var(--content-width-wide);
   margin: 0 auto;
   padding: 0 var(--space-md);
 }
 
-/* Page Introduction */
+/* Page Introduction - Normal styling for regular background */
 .pageIntro {
   text-align: center;
   margin-bottom: var(--space-xl);
@@ -27,6 +39,7 @@
   color: var(--color-primary);
   margin: 0 0 var(--space-md) 0;
   line-height: var(--line-height-heading);
+  text-align: center;
 }
 
 .intro {

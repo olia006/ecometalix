@@ -14,6 +14,24 @@ export const metadata = {
     description: 'Fierro lata: reciclaje responsable de envases metálicos y hojalata. Beneficios ambientales.',
     type: 'article',
     locale: 'es_CL',
+    url: 'https://ecometalix.cl/materiales/fierro-lata',
+    siteName: 'Ecometalix',
+    images: [
+      {
+        url: '/images/materials/FierroLata.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Fierro Lata - Reciclaje de Envases | Ecometalix',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
+    title: 'Fierro Lata - Reciclaje de Envases | Ecometalix',
+    description: 'Fierro lata: reciclaje responsable de envases metálicos y hojalata. Beneficios ambientales.',
+    images: ['/images/logoecometalix.webp'],
   },
   robots: {
     index: true,

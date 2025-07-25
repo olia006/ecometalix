@@ -14,6 +14,24 @@ export const metadata = {
     description: 'Bronce: aleación de cobre y estaño con historia milenaria. Propiedades y reciclaje responsable.',
     type: 'article',
     locale: 'es_CL',
+    url: 'https://ecometalix.cl/materiales/bronce',
+    siteName: 'Ecometalix',
+    images: [
+      {
+        url: '/images/materials/bronce.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Bronce - Aleación Histórica | Ecometalix',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
+    title: 'Bronce - Aleación Histórica | Ecometalix',
+    description: 'Bronce: aleación de cobre y estaño con historia milenaria. Propiedades y reciclaje responsable.',
+    images: ['/images/logoecometalix.webp'],
   },
   robots: {
     index: true,

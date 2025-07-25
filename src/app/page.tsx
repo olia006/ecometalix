@@ -23,12 +23,24 @@ export const metadata = {
     description: 'Ecometalix Spa: Compra y venta de chatarra, pago inmediato, horario extendido, balanza certificada. Santiago. Recibe tu dinero al instante.',
     type: 'website',
     locale: 'es_CL',
+    url: 'https://ecometalix.cl/',
     siteName: 'Ecometalix',
+    images: [
+      {
+        url: '/images/logoecometalix.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Compra y Venta de Chatarra en Santiago | Ecometalix Spa',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
     title: 'Compra y Venta de Chatarra en Santiago | Ecometalix Spa',
     description: 'Ecometalix Spa: Compra y venta de chatarra, pago inmediato, horario extendido, balanza certificada.',
+    images: ['/images/logoecometalix.webp'],
   },
   robots: {
     index: true,

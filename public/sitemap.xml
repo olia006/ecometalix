@@ -22,11 +22,7 @@
     <lastmod>2025-07-10</lastmod>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://ecometalix.cl/contacto</loc>
-    <lastmod>2025-07-10</lastmod>
-    <priority>0.7</priority>
-  </url>
+
 
   <!-- English Main Pages -->
   <url>
@@ -50,15 +46,10 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Legal/Contact/404 (optional, less priority) -->
+  <!-- Legal pages (optional, less priority) -->
   <!--
   <url>
     <loc>https://ecometalix.cl/legal</loc>
-    <lastmod>2025-07-10</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://ecometalix.cl/contacto</loc>
     <lastmod>2025-07-10</lastmod>
     <priority>0.4</priority>
   </url>

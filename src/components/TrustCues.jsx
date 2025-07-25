@@ -31,8 +31,6 @@ export default function TrustCues({ className = "", style = {}, isEnglish = fals
       className={`${styles.trustCues} ${className}`}
       style={style}
       aria-label={isEnglish ? "Ecometalix trust indicators" : "Indicadores de confianza de Ecometalix"}
-      itemScope
-      itemType="https://schema.org/Organization"
     >
       <div className={styles.runningLine}>
         <div className={styles.runningContent}>
@@ -63,16 +61,7 @@ export default function TrustCues({ className = "", style = {}, isEnglish = fals
         </ul>
       </div>
 
-      {/* Schema.org structured data */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "EcoMetalix",
-          "foundingDate": "2014",
-          "yearsInOperation": "3"
-        })}
-      </script>
+
     </section>
   );
 }

@@ -1,7 +1,8 @@
 /* Section Cards Grid Container */
 .sectionCardsGrid {
-  background: transparent;
   margin-bottom: var(--section-spacing-y);
+  padding: var(--space-4xl) 0;
+  background: var(--color-background);
 }
 
 .container {
@@ -10,24 +11,51 @@
   padding: 0 var(--space-md);
 }
 
-/* Grid Layout - 1 column everywhere */
+/* Grid Layout - Horizontal on desktop, vertical on mobile */
 .grid {
   display: grid;
-  grid-template-columns: 1fr; /* Single column everywhere */
-  gap: var(--space-xl);
-  max-width: var(--container-lg); /* Increased from 800px to use theme container size */
+  grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
+  gap: var(--space-lg);
+  max-width: var(--container-xl);
   margin: 0 auto;
 }
 
-/* Mobile adjustments */
-@media (max-width: 1080px) {
+/* Extra large screens - More spacing */
+@media (min-width: 1400px) {
   .grid {
-    gap: var(--space-md);
+    gap: var(--space-xl);
+    max-width: 1200px; /* Constrain width on very large screens */
   }
+}
+
+/* Tablet adjustments */
+@media (max-width: var(--breakpoint-lg)) {
+  .grid {
+    grid-template-columns: 1fr; /* Single column on tablet and below */
+    gap: var(--space-xl);
+    max-width: var(--container-lg);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .sectionCardsGrid {
+    padding: var(--space-3xl) 0;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr; /* Single column on mobile - fixes iPhone 14 Pro Max */
+    gap: var(--space-md);
+    max-width: 380px; /* Wider mobile cards for better readability */
+    margin: 0 auto; /* Center the narrower cards */
+  }
+  
   .container {
-    padding: 0 var(--space-sm);
+    padding: 0 var(--space-lg); /* More side padding for narrower cards */
   }
 }
 
 /* Dark theme adjustments */
-[data-theme="dark"] .sectionCardsGrid {} 
+[data-theme="dark"] .sectionCardsGrid {
+  background: var(--color-background);
+} 

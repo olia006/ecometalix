@@ -7,7 +7,7 @@ import heroStyles from "./HeroSection.module.css";
 import Background from "../Background";
 import WhatsAppIcon from "../WhatsAppIcon";
 import SecondaryButton from "../SecondaryButton";
-import StructuredData from "../seo/StructuredData";
+
 import { ArrowRight, Clock } from "lucide-react";
 
 import { CONTACT_URLS } from "../../config/constants";
@@ -53,37 +53,13 @@ export default function HeroSection({
     : "Hola, quisiera cotizar mi chatarra";
 
   // Structured data for enhanced SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Ecometalix",
-    "description": isEnglish 
-      ? "Immediate payment for scrap metal in Santiago. Certified scale, extended hours." 
-      : "Pago inmediato por chatarra en Santiago. Balanza certificada, horario extendido.",
-    "url": isEnglish ? "https://ecometalix.cl/en" : "https://ecometalix.cl",
-    "telephone": "+56912345678",
-    "openingHours": "Mo-Su 08:30-20:00",
-    "areaServed": "Santiago, Chile",
-    "serviceType": "Scrap Metal Buying",
-    "paymentAccepted": "Cash, Transfer",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "500"
-    }
-  };
-
   return (
     <>
-      {/* SEO Structured Data */}
-      <StructuredData jsonLd={structuredData} />
       
       <Background variant="hero" image="/images/homehero.webp">
         {/* Semantic HTML with structured data for SEO */}
         <section 
           className={heroStyles.hero}
-          itemScope 
-          itemType="https://schema.org/LocalBusiness"
           role="banner"
           aria-label={isEnglish ? "Ecometalix hero section" : "Sección principal de Ecometalix"}
         >
@@ -93,8 +69,14 @@ export default function HeroSection({
             <div className={heroStyles.heroContent}>
               <header className={heroStyles.heroHeader}>
                 
+                {/* Working Hours - eyebrow above headings */}
+                <div className={heroStyles.workingHours}>
+                  <Clock className={heroStyles.supportingIcon} aria-hidden="true" size={16} />
+                  <span>{isEnglish ? "Every day 8:30-20:00 • No breaks" : "Todos los días 8:30-20:00 • Sin descanso"}</span>
+                </div>
+                
                 {/* Value Proposition */}
-                <h1 className={`${heroStyles.heroHeading} hero-heading hero-heading--light`} itemProp="name">
+                <h1 className={`${heroStyles.heroHeading} hero-heading hero-heading--light`}>
                   {isEnglish ? (
                     <>
                       <span className="sr-only">Ecometalix: </span>
@@ -127,7 +109,6 @@ export default function HeroSection({
                     className={`${heroStyles.ctaPrimary} ${heroStyles.buttonLink}`}
                     onClick={() => trackHeroInteraction('whatsapp_click', 'high')}
                     aria-label={isEnglish ? "Contact via WhatsApp for immediate quote" : "Contactar por WhatsApp para cotización inmediata"}
-                    itemProp="url"
                   >
                     <SecondaryButton className={heroStyles.primaryButton}>
                       <WhatsAppIcon aria-hidden="true" />
@@ -138,15 +119,7 @@ export default function HeroSection({
                     </SecondaryButton>
                   </a>
                   
-                  {/* Secondary CTA - Simple Link */}
-                  <a
-                    href={isEnglish ? "/en/prices" : "/precios"}
-                    className={heroStyles.readMoreLink}
-                    onClick={() => trackHeroInteraction('prices_click', 'research')}
-                    aria-label={isEnglish ? "View current scrap metal prices" : "Ver precios actuales de chatarra"}
-                  >
-                    {isEnglish ? "View prices" : "Ver precios"} <ArrowRight size={14} />
-                  </a>
+
                 </div>
                 
               </header>
@@ -154,10 +127,6 @@ export default function HeroSection({
               {/* Supporting Information - Always Visible */}
               <div className={heroStyles.supportingInfo}>
                 <div className={heroStyles.supportingContent}>
-                  <div className={heroStyles.workingHours} itemProp="openingHours" content="Mo-Su 08:30-20:00">
-                    <Clock className={heroStyles.supportingIcon} aria-hidden="true" size={16} />
-                    <span>{isEnglish ? "Every day 8:30-20:00 • No breaks" : "Todos los días 8:30-20:00 • Sin descanso"}</span>
-                  </div>
                   <a
                     href="https://www.google.com/maps/place/EcoMetalix/@-33.3120766,-70.7984129,17z/data=!4m8!3m7!1s0x9662bf78657b6e2f:0x692dfae6ce3b688d!8m2!3d-33.3120766!4d-70.798438!9m1!1b1!16s%2Fg%2F11q3j6y6yt?hl=es"
                     target="_blank"

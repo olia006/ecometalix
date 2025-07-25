@@ -242,6 +242,7 @@ export default function FAQPage() {
         title="Dudas y Consultas Frecuentes"
         subtitle="Resuelve todas tus dudas sobre la compra y venta de chatarra, pago inmediato y más."
         variant="accent"
+        backgroundImage="/images/faqpreviewpage.jpg"
       />
       
       <FloatingCTA />
@@ -259,12 +260,12 @@ export default function FAQPage() {
             showOneAtTime={false}
           />
         </div>
-        
-        <FAQManagerContact isEnglish={false} />
-        
-        <MapSection isEnglish={false} />
-        <TrustCues />
       </main>
+        
+      <FAQManagerContact isEnglish={false} />
+      
+      <MapSection isEnglish={false} />
+      <TrustCues />
     </>
   );
 }

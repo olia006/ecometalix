@@ -20,10 +20,7 @@ const pageMapping = {
     es: `${BASE_URL}/faq`,
     en: `${BASE_URL}/en/faq`
   },
-  '/contacto': {
-    es: `${BASE_URL}/contacto`,
-    en: `${BASE_URL}/en/contact`
-  },
+
   '/en/': {
     es: `${BASE_URL}/`,
     en: `${BASE_URL}/en/`
@@ -40,10 +37,7 @@ const pageMapping = {
     es: `${BASE_URL}/faq`,
     en: `${BASE_URL}/en/faq`
   },
-  '/en/contact': {
-    es: `${BASE_URL}/contacto`,
-    en: `${BASE_URL}/en/contact`
-  }
+
 };
 
 /**

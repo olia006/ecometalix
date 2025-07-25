@@ -13,14 +13,14 @@ const routeTitles = {
   "/por-que-nosotros": "¿Por qué nosotros?",
   "/precios": "Precios",
   "/faq": "FAQ",
-  "/contacto": "Contacto",
+
   
   // English routes
   "/en": "Home",
   "/en/why-us": "Why Us",
   "/en/prices": "Prices", 
   "/en/faq": "FAQ",
-  "/en/contact": "Contact"
+
 };
 
 // eslint-disable-next-line react/prop-types

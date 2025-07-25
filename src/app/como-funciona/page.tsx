@@ -14,6 +14,24 @@ export const metadata = {
     description: 'Proceso simple y transparente: contacto, evaluación, pesaje certificado y pago inmediato en 4 pasos.',
     type: 'website',
     locale: 'es_CL',
+    url: 'https://ecometalix.cl/como-funciona',
+    siteName: 'Ecometalix',
+    images: [
+      {
+        url: '/images/logoecometalix.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Cómo Funciona Nuestro Proceso | Ecometalix',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
+    title: 'Cómo Funciona Nuestro Proceso | Ecometalix',
+    description: 'Proceso simple y transparente: contacto, evaluación, pesaje certificado y pago inmediato en 4 pasos.',
+    images: ['/images/logoecometalix.webp'],
   },
   robots: {
     index: true,

@@ -3,7 +3,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import { HelpCircle } from "lucide-react";
-import Background from "../Background";
 import FAQAccordion from "../FAQAccordion";
 import styles from "./FAQPreviewSection.module.css";
 
@@ -35,28 +34,26 @@ export default function FAQPreviewSection({ faqs = defaultFaqs }) {
   const categories = faqs === defaultFaqs ? faqCategories : [{ faqs }];
   
   return (
-    <Background variant="hero" image="/images/faqpreviewpage.jpg">
-      <section
-        id="faq-preview" 
-        className={styles.faqPreviewSection}
-        aria-labelledby="faq-heading"
-      >
-        <h2 className={styles.title}>
-          <HelpCircle className={styles.titleIcon} />
-          ¿Dudas? Te respondemos:
-        </h2>
+    <section
+      id="faq-preview" 
+      className={styles.faqPreviewSection}
+      aria-labelledby="faq-heading"
+    >
+      <div className={styles.titleWrapper}>
+        <HelpCircle className={styles.titleIcon} aria-hidden="true" />
+        <h2 className={styles.title}>¿Dudas? Te respondemos:</h2>
+      </div>
 
-        <FAQAccordion 
-          categories={categories}
-          variant="preview"
-          showOneAtTime={true}
-        />
+      <FAQAccordion 
+        categories={categories}
+        variant="preview"
+        showOneAtTime={true}
+      />
 
-        <Link href="/faq" className={styles.readMoreLink}>
-          Ver todas las preguntas frecuentes →
-        </Link>
-      </section>
-    </Background>
+      <Link href="/faq" className={styles.readMoreLink}>
+        Ver todas las preguntas frecuentes →
+      </Link>
+    </section>
   );
 }
 

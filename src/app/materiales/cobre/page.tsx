@@ -14,6 +14,24 @@ export const metadata = {
     description: 'Todo sobre el cobre: propiedades, historia, importancia para Chile y reciclaje responsable.',
     type: 'article',
     locale: 'es_CL',
+    url: 'https://ecometalix.cl/materiales/cobre',
+    siteName: 'Ecometalix',
+    images: [
+      {
+        url: '/images/materials/cobre.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Cobre - Historia y Reciclaje | Ecometalix',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
+    title: 'Cobre - Historia y Reciclaje | Ecometalix',
+    description: 'Todo sobre el cobre: propiedades, historia, importancia para Chile y reciclaje responsable.',
+    images: ['/images/logoecometalix.webp'],
   },
   robots: {
     index: true,

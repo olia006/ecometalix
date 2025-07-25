@@ -36,7 +36,7 @@ export default function Footer({ isEnglish = false }) {
             <Link href="/en/prices">Prices</Link>
             <Link href="/en/materials">Materials</Link>
             <Link href="/en/faq">FAQ</Link>
-            <a href="/en#map">Location</a>
+            <a href="mailto:contacto@ecometalix.cl">Contact</a>
           </>
         ) : (
           <>
@@ -45,7 +45,7 @@ export default function Footer({ isEnglish = false }) {
             <Link href="/precios">Precios</Link>
             <Link href="/materiales">Materiales</Link>
             <Link href="/faq">FAQ</Link>
-            <Link href="/#mapa">Ubicación</Link>
+            <a href="mailto:contacto@ecometalix.cl">Contacto</a>
           </>
         )}
       </nav>

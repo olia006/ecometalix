@@ -7,10 +7,21 @@ export default function PageHeader({
   subtitle, 
   lastUpdated,
   variant = "default",
-  className = ""
+  className = "",
+  backgroundImage
 }) {
+  const headerStyle = backgroundImage ? {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  } : {};
+
+  const headerClasses = `${styles.pageHeader} ${styles[`variant--${variant}`]} ${backgroundImage ? styles.withBackground : ''} ${className}`;
+
   return (
-    <header className={`${styles.pageHeader} ${styles[`variant--${variant}`]} ${className}`}>
+    <header className={headerClasses} style={headerStyle}>
+      {backgroundImage && <div className={styles.overlay} />}
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title}>{title}</h1>
@@ -32,5 +43,6 @@ PageHeader.propTypes = {
   subtitle: PropTypes.string,
   lastUpdated: PropTypes.string,
   variant: PropTypes.oneOf(["default", "primary", "secondary", "accent"]),
-  className: PropTypes.string
+  className: PropTypes.string,
+  backgroundImage: PropTypes.string
 }; 

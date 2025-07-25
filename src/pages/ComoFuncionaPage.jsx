@@ -27,7 +27,6 @@ import {
   ArrowRight
 } from "lucide-react";
 import WhatsAppIcon from "../components/WhatsAppIcon";
-import OptimizedImage from "../components/OptimizedImage";
 
 {/*Process Steps DATA*/}
 const processSteps = [
@@ -41,8 +40,7 @@ const processSteps = [
       "Cotización sin compromiso",
       "Asesoría sobre tipos de material",
       "Horarios de atención flexibles"
-    ],
-    image: "/images/materials/materialhero.webp"
+    ]
   },
   {
     step: "2", 
@@ -54,8 +52,7 @@ const processSteps = [
       "Estacionamiento disponible",
       "Personal de apoyo para descarga",
       "Horario: Lunes a domingo 8:30-20:00"
-    ],
-    image: "/images/materials/FierroLargo.webp"
+    ]
   },
   {
     step: "3",
@@ -67,8 +64,7 @@ const processSteps = [
       "Capacidad hasta 80 toneladas",
       "Proceso transparente y supervisado",
       "Tickets de pesaje oficiales"
-    ],
-    image: "/images/materials/fierromixto.webp"
+    ]
   },
   {
     step: "4",
@@ -80,8 +76,7 @@ const processSteps = [
       "Transferencia bancaria al momento",
       "Sin trámites burocráticos",
       "Facturación electrónica disponible"
-    ],
-    image: "/images/materials/cobre.webp"
+    ]
   }
 ];
 
@@ -120,6 +115,7 @@ const ComoFuncionaPage = () => (
       title="¿Cómo funciona nuestro proceso?"
       subtitle="Un proceso simple, transparente y seguro en solo 4 pasos. Desde el contacto inicial hasta el pago inmediato."
       variant="primary"
+      backgroundImage="/images/materials/materialhero.jpg"
     />
 
     {/* --- ANIMATED TIMELINE OVERVIEW --- */}
@@ -195,13 +191,6 @@ const ComoFuncionaPage = () => (
                         </li>
                       ))}
                     </ul>
-                    <div className="image-container" style={{ height: '200px', marginTop: 'var(--space-md)' }}>
-                      <OptimizedImage 
-                        src={step.image} 
-                        alt={step.title}
-                        className="professional-image professional-image--card"
-                      />
-                    </div>
                   </div>
                 </div>
                 {index < processSteps.length - 1 && (

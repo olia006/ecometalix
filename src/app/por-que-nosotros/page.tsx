@@ -14,12 +14,24 @@ export const metadata = {
     description: 'Pago inmediato, balanza certificada INN, horario 8-20h, 10 años experiencia. La mejor opción para vender tu chatarra en Santiago.',
     type: 'website',
     locale: 'es_CL',
+    url: 'https://ecometalix.cl/por-que-nosotros',
     siteName: 'Ecometalix',
+    images: [
+      {
+        url: '/images/logoecometalix.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Ecometalix - Líder en Compra de Chatarra Santiago | Ventajas',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
     title: 'Ecometalix - Líder en Compra de Chatarra Santiago',
     description: 'Pago inmediato, balanza certificada, mejor precio del mercado.',
+    images: ['/images/logoecometalix.webp'],
   },
   robots: {
     index: true,

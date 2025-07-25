@@ -14,6 +14,24 @@ export const metadata = {
     description: 'Precios actualizados de chatarra: cobre, aluminio, hierro, bronce. Pago inmediato y cotización por WhatsApp.',
     type: 'website',
     locale: 'es_CL',
+    url: 'https://ecometalix.cl/precios',
+    siteName: 'Ecometalix',
+    images: [
+      {
+        url: '/images/logoecometalix.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Precios de Chatarra Actualizados | Ecometalix',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@ecometalix_spa',
+    creator: '@ecometalix_spa',
+    title: 'Precios de Chatarra Actualizados | Ecometalix',
+    description: 'Precios actualizados de chatarra: cobre, aluminio, hierro, bronce. Pago inmediato y cotización por WhatsApp.',
+    images: ['/images/logoecometalix.webp'],
   },
   robots: {
     index: true,

@@ -10,7 +10,6 @@ const SectionCard = ({
   preview, 
   href, 
   variant = 'primary',
-  backgroundImage,
   onClick,
   className = '',
   isFlippable = false,
@@ -18,15 +17,10 @@ const SectionCard = ({
   backContent,
   animatedPrice,
   statsText,
-  ctaText
+  ctaText,
+  isActive = false
 }) => {
-  const cardClasses = `${styles.sectionCard} ${styles[variant]} ${className}`;
-  
-  const cardStyle = backgroundImage ? {
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center'
-  } : {};
+  const cardClasses = `${styles.sectionCard} ${styles[variant]} ${className} ${isActive ? styles.active : ''}`;
 
   const handleClick = (e) => {
     if (onClick) {
@@ -44,32 +38,48 @@ const SectionCard = ({
     }
   };
 
+  // Function to get appropriate CTA text based on card content
+  const getCtaText = () => {
+    if (ctaText) return ctaText;
+    
+    if (title.includes('How it works') || title.includes('Cómo funciona')) {
+      return title.includes('How') ? 'View Process' : 'Ver Proceso';
+    } else if (title.includes('Materials') || title.includes('Materiales')) {
+      return title.includes('Materials') ? 'Browse Materials' : 'Ver Materiales';
+    } else if (title.includes('Why') || title.includes('Por qué')) {
+      return title.includes('Why') ? 'Learn More' : 'Saber Más';
+    }
+    
+    return title.includes('English') || title.includes('How') || title.includes('Materials') || title.includes('Why') 
+      ? 'Learn More' : 'Saber Más';
+  };
+
   const renderContent = (previewText, showStats = true) => (
-    <div className={styles.contentContainer}>
-      {/* Preview Content */}
-      <div className={styles.previewContent}>
-        <h3 className={styles.title}>{title}</h3>
-        {previewText && <p className={styles.preview}>{previewText}</p>}
-        {showStats && statsText && <div className={styles.statsText}>{statsText}</div>}
-      </div>
+    <>
+      {/* Stats badge positioned absolutely in top-right */}
+      {showStats && statsText && <div className={styles.statsText}>{statsText}</div>}
       
-      {/* "See More" Indicator */}
-      <div className={styles.seeMoreIndicator}>
-        <span className={styles.seeMoreText}>
-          {title.includes('How it works') || title.includes('Cómo funciona') ? 
-            (title.includes('How') ? 'See full process →' : 'Ver proceso completo →') :
-            title.includes('Materials') || title.includes('Materiales') ?
-            (title.includes('Materials') ? 'Browse catalog →' : 'Explorar catálogo →') :
-            (title.includes('Why') ? 'See all benefits →' : 'Ver todas las ventajas →')
-          }
-        </span>
-        <div className={styles.arrow}>
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6l6 6-6 6l-1.41-1.41z"/>
-          </svg>
+      <div className={styles.contentContainer}>
+        {/* Preview Content */}
+        <div className={styles.previewContent}>
+          <h3 className={styles.title}>{title}</h3>
+          {previewText && <p className={styles.preview}>{previewText}</p>}
+        </div>
+        
+        {/* Prominent CTA Button - Only the button is clickable */}
+        <div className={styles.ctaContainer}>
+          {href ? (
+            <Link href={href} className={styles.ctaButton}>
+              {getCtaText()}
+            </Link>
+          ) : (
+            <span className={styles.ctaButton}>
+              {getCtaText()}
+            </span>
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 
   // Flippable card
@@ -77,7 +87,6 @@ const SectionCard = ({
     return (
       <div 
         className={`${cardClasses} ${styles.flippableCard} ${isFlipped ? styles.flipped : ''}`}
-        style={cardStyle}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         tabIndex={0}
@@ -100,22 +109,15 @@ const SectionCard = ({
     );
   }
 
-  // Link card
+  // Regular card with clickable button (href handled in renderContent)
   if (href) {
     return (
-      <a 
-        href={href}
-        className={cardClasses}
-        style={cardStyle}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        role="link"
-        aria-label={`Navigate to: ${title}`}
-      >
+      <div className={cardClasses}>
         <div className={styles.overlay}>
+          <span className="sr-only">Industrial scrap metal processing facility</span>
           {renderContent(preview)}
         </div>
-      </a>
+      </div>
     );
   }
 
@@ -123,7 +125,6 @@ const SectionCard = ({
   return (
     <div 
       className={cardClasses}
-      style={cardStyle}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={onClick ? 0 : undefined}
@@ -142,7 +143,6 @@ SectionCard.propTypes = {
   preview: PropTypes.string,
   href: PropTypes.string,
   variant: PropTypes.oneOf(['primary', 'secondary', 'accent', 'neutral']),
-  backgroundImage: PropTypes.string,
   onClick: PropTypes.func,
   className: PropTypes.string,
   isFlippable: PropTypes.bool,
@@ -150,7 +150,8 @@ SectionCard.propTypes = {
   backContent: PropTypes.string,
   animatedPrice: PropTypes.string,
   statsText: PropTypes.string,
-  ctaText: PropTypes.string
+  ctaText: PropTypes.string,
+  isActive: PropTypes.bool
 };
 
 export default SectionCard; 

@@ -1,4 +1,6 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import SectionCard from './SectionCard';
 import styles from './SectionCardsGrid.module.css';
@@ -6,58 +8,74 @@ import styles from './SectionCardsGrid.module.css';
 // Material images for backgrounds (using public paths)
 
 const SectionCardsGrid = ({ isEnglish = false }) => {
+  // State to track which card is currently hovered
+  // Default to 'materiales' so it appears active by default
+  const [hoveredCard, setHoveredCard] = useState('materiales');
 
   const cards = [
     {
       id: 'proceso',
       title: isEnglish ? 'How it works?' : '¿Cómo funciona?',
       preview: isEnglish 
-        ? 'Discover our simple 4-step process: Contact → Transport → Certified weighing → Immediate payment. See the complete timeline and requirements.' 
-        : 'Descubre nuestro proceso simple en 4 pasos: Contacto → Traslado → Pesaje certificado → Pago inmediato. Ve el cronograma completo y requisitos.',
+        ? 'Simple 4-step process: Contact, transport, certified weighing, and immediate guaranteed payment.' 
+        : 'Proceso simple en 4 pasos: Contacto, traslado, pesaje y pago inmediato garantizado.',
       variant: 'accent',
-      backgroundImage: '/images/materials/materialhero.jpg',
       href: isEnglish ? '/en/how-it-works' : '/como-funciona',
-      statsText: isEnglish ? 'Personal attention, no bureaucracy' : 'Atención personalizada, sin burocracia'
+      statsText: isEnglish ? 'Fast' : 'Rápido'
     },
     {
       id: 'materiales',
       title: isEnglish ? 'Accepted materials' : 'Materiales aceptados',
       preview: isEnglish 
-        ? 'Explore all metal types we accept: copper, aluminum, iron, bronze, electronics + detailed specs, current prices, and prohibited materials list.' 
-        : 'Explora todos los tipos de metales que aceptamos: cobre, aluminio, fierro, bronce, electrónicos + especificaciones, precios y materiales prohibidos.',
+        ? 'Copper, aluminum, iron, bronze, electronics. Updated prices and complete specifications.' 
+        : 'Cobre, aluminio, fierro, bronce, electrónicos. Precios y detalles actualizados.',
       variant: 'neutral',
-      backgroundImage: '/images/materials/fierromixto.JPG',
       href: isEnglish ? '/en/materials' : '/materiales',
-      statsText: isEnglish ? 'Quote via WhatsApp' : 'Cotizar por WhatsApp'
+      statsText: isEnglish ? 'WhatsApp' : 'WhatsApp'
     },
     {
       id: 'porque-nosotros',
       title: isEnglish ? 'Why choose us?' : '¿Por qué elegirnos?',
       preview: isEnglish 
-        ? 'See our key advantages: immediate payment, extended hours 8-20h, INN certified scale, 10+ years experience, 500+ satisfied customers.' 
-        : 'Ve nuestras ventajas clave: pago inmediato, horario extendido 8-20h, balanza certificada INN, 10+ años experiencia, 500+ clientes satisfechos.',
+        ? 'Immediate payment, INN certified scale, 10+ years of reliable experience.' 
+        : 'Pago inmediato, balanza certificada INN, 10+ años de experiencia confiable.',
       variant: 'secondary',
-      backgroundImage: '/images/materials/FierroLargo.jpg',
       href: isEnglish ? '/en/why-us' : '/por-que-nosotros',
-      statsText: isEnglish ? '100% real Google reviews' : 'Opiniones 100% reales en Google'
+      statsText: isEnglish ? '500+ reviews' : '500+ reseñas'
     }
   ];
+
+  // Handle card hover events
+  const handleCardHover = (cardId) => {
+    setHoveredCard(cardId);
+  };
+
+  // Handle when mouse leaves the entire grid
+  const handleGridLeave = () => {
+    setHoveredCard('materiales'); // Return to materials as default active
+  };
 
   return (
     <section className={styles.sectionCardsGrid}>
       <div className={styles.container}>
-        <div className={styles.grid}>
+        <div 
+          className={styles.grid}
+          onMouseLeave={handleGridLeave}
+        >
           {cards.map((card) => (
-            <SectionCard
+            <div 
               key={card.id}
-              title={card.title}
-              preview={card.preview}
-              variant={card.variant}
-              backgroundImage={card.backgroundImage}
-              href={card.href}
-              statsText={card.statsText}
-              ctaText={card.ctaText}
-            />
+              onMouseEnter={() => handleCardHover(card.id)}
+            >
+              <SectionCard
+                title={card.title}
+                preview={card.preview}
+                href={card.href}
+                variant={card.variant}
+                statsText={card.statsText}
+                isActive={hoveredCard === card.id}
+              />
+            </div>
           ))}
         </div>
       </div>
@@ -66,7 +84,7 @@ const SectionCardsGrid = ({ isEnglish = false }) => {
 };
 
 SectionCardsGrid.propTypes = {
-  isEnglish: PropTypes.bool
+  isEnglish: PropTypes.bool,
 };
 
 export default SectionCardsGrid; 
